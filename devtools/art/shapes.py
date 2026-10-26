@@ -374,5 +374,177 @@ def arrow() -> Klass:
     ], "small", 1.0)
 
 
+# --- phase 4: food -------------------------------------------------------------------------------
+
+def ring(cx: float, cz: float, apothem: float, thick: float, y0: float, y1: float, role: str) -> list[Box]:
+    """A hollow octagonal wall: eight tangential segments, each a side of the octagon whose apothem is `apothem`
+    (centre to the middle of a side, at the wall's middle), `thick` through; four square to the axes, four turned
+    45 degrees about the centre."""
+    side = 2 * apothem * math.tan(math.radians(22.5)) + thick * 0.42  # long enough to close each corner
+    out = []
+    for angle in (0.0, 45.0):
+        for dx, dz, along_x in ((apothem, 0.0, False), (-apothem, 0.0, False), (0.0, apothem, True), (0.0, -apothem, True)):
+            hx, hz = (side / 2, thick / 2) if along_x else (thick / 2, side / 2)
+            out.append(box((cx + dx - hx, y0, cz + dz - hz), (cx + dx + hx, y1, cz + dz + hz), role,
+                           None if angle == 0 else Rotation((cx, (y0 + y1) / 2, cz), "y", angle)))
+    return out
+
+
+def fruit() -> Klass:
+    """A round fruit (an apple, a beetroot, an eye): three octagonal tiers rounding a body 6.6 across, a stem and
+    a leaf turned off it."""
+    return material("fruit", [
+        *octagon(8, 8, 2.4, 5.6, 6.4, "skin", "skin", "skin"),
+        *octagon(8, 8, 3.3, 6.4, 8.8, "skin", "skin", None),
+        *octagon(8, 8, 2.5, 8.8, 9.7, "skin_top", "skin", None),
+        box((7.75, 9.7, 7.75), (8.25, 11.2, 8.25), "stem", down=None),
+        box((8.25, 10.5, 7.6), (10.6, 10.75, 8.6), "leaf", Rotation((8.25, 10.6, 8.1), "z", -22.5)),
+    ], "small", 0.8)
+
+
+def egg() -> Klass:
+    """The egg: four octagonal tiers, standing, its narrow end up."""
+    return material("egg", [
+        *octagon(8, 8, 2.0, 5.8, 6.6, "skin", "skin", "skin"),
+        *octagon(8, 8, 2.8, 6.6, 8.4, "skin", "skin", None),
+        *octagon(8, 8, 2.4, 8.4, 9.6, "skin", "skin", None),
+        *octagon(8, 8, 1.4, 9.6, 10.3, "skin_top", "skin", None),
+    ], "tiny", 0.7)
+
+
+def root() -> Klass:
+    """The root (a carrot): diamond-section segments tapering along x to a point, a tuft of three leaves at the
+    crown."""
+    out = []
+    x = 4.0
+    for side, length in ((2.6, 2.6), (2.2, 2.4), (1.7, 2.2), (1.1, 1.8), (0.55, 1.2)):
+        h = side / 2
+        out.append(box((x, 8 - h, 8 - h), (x + length, 8 + h, 8 + h), "skin", Rotation((x + length / 2, 8.0, 8.0), "x", 45.0),
+                       west="skin_top", east="skin_top"))
+        x += length
+    for angle in (-22.5, 0.0, 22.5):
+        out.append(box((1.6, 7.85, 7.4), (4.0, 8.15, 8.6), "leaf", Rotation((4.0, 8.0, 8.0), "y", angle) if angle else None))
+    return material("root", out, "small", 1.0)
+
+
+def tuber() -> Klass:
+    """The tuber (a potato): a lump 8 x 3.6 x 5 rounded along its length, and a nub."""
+    return material("tuber", [
+        *chamfered((4, 6.2, 5.5), (12, 9.8, 10.5), 1.2, "skin_top", "skin", "skin", "skin", cb=1.0, end="skin"),
+        box((10.5, 7.0, 6.2), (12.8, 9.0, 8.5), "skin", Rotation((11.6, 8.0, 7.3), "y", 22.5)),
+    ], "small", 0.85)
+
+
+def loaf() -> Klass:
+    """The loaf: 10 x 4 x 5, its crown rounded by a deep cut along its top edges, its foot hardly at all."""
+    return material("loaf", chamfered((3, 6.5, 5.5), (13, 10.5, 10.5), 1.6, "crust_top", "crust_top", "crust", "crust", cb=0.4, end="crust"),
+                    "small", 1.0)
+
+
+def disc() -> Klass:
+    """The cookie: an octagon 7 across and a sixteenth thick."""
+    return material("disc", octagon(8, 8, 3.6, 7.5, 8.5, "crust_top", "crust", "crust"), "tiny", 0.75, GUI_TURN_FLAT)
+
+
+def pie() -> Klass:
+    """The whole pie: an octagonal crust 9 across, its filling set a hair high inside the rim."""
+    return material("pie", [
+        *octagon(8, 8, 4.6, 7.0, 8.4, "crust_top", "crust", "crust"),
+        *octagon(8, 8, 3.8, 8.4, 8.7, "filling", "filling", None),
+    ], None, 1.0, GUI_TURN_FLAT)
+
+
+def pie_slice() -> Klass:
+    """A slice of pie: a wedge stepped to its point, its crust at the back."""
+    out = []
+    for i, (x0, x1) in enumerate(((4.0, 12.0), (5.0, 11.0), (6.0, 10.0), (7.0, 9.0))):
+        out.append(box((x0, 7.0, 6.0 + i * 1.5), (x1, 8.5, 7.5 + i * 1.5), "crust", up="filling", north="crust_top" if i == 0 else None))
+    return material("pie_slice", out, "small", 0.9, GUI_TURN_FLAT)
+
+
+def steak() -> Klass:
+    """A cut of meat or a fillet: a slab 9 x 1.6 x 8, its corners cut by two crossed slabs a hair apart."""
+    return material("steak", [
+        box((3.5, 7.2, 5.0), (12.5, 8.8, 11.0), "meat_edge", up="meat", down="meat"),
+        box((4.5, 7.21, 4.0), (11.5, 8.79, 12.0), "meat_edge", up="meat", down="meat"),
+    ], "small", 0.95, GUI_TURN_FLAT)
+
+
+def drumstick() -> Klass:
+    """A drumstick: a rounded joint of meat, the bone running out of it to a knuckle."""
+    return material("drumstick", [
+        *chamfered((4.0, 6.3, 5.5), (10.5, 9.7, 10.5), 1.2, "meat", "meat", "meat_edge", "meat_edge", cb=1.2, end="meat"),
+        box((10.5, 7.6, 7.6), (13.4, 8.4, 8.4), "bone", west=None),
+        box((13.4, 7.3, 7.2), (14.4, 8.7, 8.8), "bone"),
+    ], "small", 0.95)
+
+
+def fish() -> Klass:
+    """A fish, upright on its belly as it swims, thin side to side: a body rounded along its back and belly, a
+    tapering head, a tail fin and a dorsal fin; it lies on its side set down or framed."""
+    b = centred([
+        *chamfered((3.5, 6.0, 7.0), (11.5, 10.0, 9.0), 0.9, "body", "body", "body", "body", end="body"),
+        box((11.5, 6.6, 7.2), (13.2, 9.4, 8.8), "body"),
+        box((1.4, 5.4, 7.85), (3.5, 10.6, 8.15), "fin"),
+        box((6.0, 10.0, 7.9), (9.0, 11.0, 8.1), "fin"),
+    ])
+    return Klass("fish", b, upright_display(b), None, lies="face_out")
+
+
+def berries() -> Klass:
+    """A bunch of berries: five round-cornered berries on a stalk."""
+    pts = ((6.2, 6.6, 7.0), (8.4, 6.6, 6.4), (7.4, 6.6, 8.8), (9.4, 6.6, 8.6), (7.8, 8.2, 7.6))
+    out = []
+    for i, (x, y, z) in enumerate(pts):
+        out.append(box((x - 0.9, y - 0.9, z - 0.9), (x + 0.9, y + 0.9, z + 0.9), "skin",
+                       Rotation((x, y, z), "y", 22.5) if i % 2 else None, up="skin_top"))
+    out.append(box((7.65, 9.0, 7.45), (7.95, 10.2, 7.75), "stem", down=None))
+    return material("berries", out, "tiny", 0.75)
+
+
+def wedge() -> Klass:
+    """A slice of melon: its rind along the bottom, its flesh stepped to a point, thin front to back, standing face
+    on as a sign does."""
+    b = centred([
+        box((2.5, 5.0, 7.25), (13.5, 6.0, 8.75), "rind"),
+        box((3.5, 6.0, 7.25), (12.5, 7.5, 8.75), "flesh", down=None),
+        box((4.8, 7.5, 7.25), (11.2, 9.0, 8.75), "flesh", down=None),
+        box((6.2, 9.0, 7.25), (9.8, 10.5, 8.75), "flesh", down=None),
+        box((7.4, 10.5, 7.25), (8.6, 11.4, 8.75), "flesh", down=None),
+    ])
+    return Klass("wedge", b, upright_display(b), "small", lies="face_out")
+
+
+def bowl() -> Klass:
+    """A bowl of something: an octagonal foot, a hollow octagonal wall of eight segments, and what is in it set
+    half a sixteenth below the rim."""
+    return material("bowl", [
+        *octagon(8, 8, 2.8, 5.8, 6.3, "bowl", "bowl", "bowl"),
+        *ring(8, 8, 3.85, 0.7, 6.3, 8.8, "bowl"),
+        *octagon(8, 8, 3.85, 6.3, 8.3, "fill", "bowl", None),  # its apothem (3.56) just past the wall's inner face (3.5)
+    ], None, 1.0, GUI_TURN_FLAT)
+
+
+def plated() -> Klass:
+    """A plated meal: a flat octagonal dish and the food heaped on it in two tiers."""
+    return material("plated", [
+        *octagon(8, 8, 4.7, 6.2, 6.8, "dish", "dish", "dish"),
+        *octagon(8, 8, 2.9, 6.8, 8.5, "food", "food", None),
+        *octagon(8.3, 7.8, 1.8, 8.5, 9.5, "food_top", "food", None),
+    ], None, 1.0, GUI_TURN_FLAT)
+
+
+def stack() -> Klass:
+    """A sandwich: two slices of bread, their edges eased, and a filling showing between them."""
+    return material("stack", [
+        *chamfered((3.5, 5.8, 4.5), (12.5, 7.2, 11.5), 0.5, "bread", "bread", "bread", "bread", cb=0.5, end="bread"),
+        box((3.0, 7.2, 4.0), (13.0, 8.2, 12.0), "filling"),
+        *chamfered((3.5, 8.2, 4.5), (12.5, 9.8, 11.5), 0.8, "bread_top", "bread_top", "bread", "bread", cb=0.2, end="bread"),
+    ], "small", 1.0)
+
+
 CLASSES = {"ingot": ingot, "nugget": nugget, "bar": bar, "raw": raw, "lump": lump, "gem": gem, "shard": shard, "dust": dust,
-           "rod": rod, "plate": plate, "book": book, "sign": sign, "hanging_sign": hanging_sign, "arrow": arrow}
+           "rod": rod, "plate": plate, "book": book, "sign": sign, "hanging_sign": hanging_sign, "arrow": arrow,
+           "fruit": fruit, "egg": egg, "root": root, "tuber": tuber, "loaf": loaf, "disc": disc, "pie": pie, "pie_slice": pie_slice,
+           "steak": steak, "drumstick": drumstick, "fish": fish, "berries": berries, "wedge": wedge, "bowl": bowl, "plated": plated,
+           "stack": stack}

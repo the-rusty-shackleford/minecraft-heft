@@ -24,7 +24,12 @@ AGPL-3.0-or-later, `com.chunkworks.heft`. Client-side: on a server the jar only 
 - **Shared tools**: `minecraft mods/tools/pbr/` (measure, LabPBR encoding and range checks, noise),
   lifted from Survivalist Armor's art pipeline.
 
-## Status: phase 3 (rods, plates, books, signs, arrows) built 2026-10-25, unreleased, no remote
+## Status: phase 4 (food) built 2026-10-25, unreleased, no remote
+
+**Phase 4**: 82 food items in 16 classes (D-0003), vanilla's and Farmer's Delight's; 167 solid items in all.
+Heft's atlas in the booth's game: 4096x2048 (the solid sheets and the long tail together).
+
+## Phase 3 (rods, plates, books, signs, arrows) built 2026-10-25
 
 **Phase 3**: six classes over 44 items (D-0003): rod (stick, blaze and breeze rods, bone), plate (paper,
 map, leather, rabbit and kangaroo hide, membrane), book (five), sign and hanging sign (13 woods each,

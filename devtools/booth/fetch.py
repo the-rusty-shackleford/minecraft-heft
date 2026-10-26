@@ -86,6 +86,15 @@ def main():
     missing += [m for m in MODS if not any(h.startswith(m) for h in have)]
     if missing:
         sys.exit(f"not in the pack: {missing}")
+    # No early loading window: on Xwayland its handoff to the game's window can fail ("We seem to be having trouble
+    # handing off the window"), and NeoForge then waits on a dialog until the booth times out.
+    fml = booth / "config" / "fml.toml"
+    text = fml.read_text() if fml.exists() else ""
+    if "earlyWindowControl" in text:
+        text = "\n".join("earlyWindowControl = false" if l.strip().startswith("earlyWindowControl") else l for l in text.splitlines()) + "\n"
+    else:
+        text += "earlyWindowControl = false\n"
+    fml.write_text(text)
     (booth / "config" / "iris.properties").write_text(
         f"enableShaders={'true' if gpu else 'false'}\nshaderPack={SHADER}\ndisableUpdateMessage=true\nmaxShadowRenderDistance=8\n")
     order = ["vanilla", "mod_resources"] + ["file/" + p for p in packs + LOCAL]

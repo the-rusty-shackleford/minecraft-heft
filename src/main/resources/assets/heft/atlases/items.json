@@ -42,6 +42,162 @@
   },
   {
    "type": "single",
+   "resource": "heft:solid/farmersdelight/bacon_sandwich"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/baked_cod_stew"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/bone_broth"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/cabbage_rolls"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/chicken_cuts"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/chicken_sandwich"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/chicken_soup"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/cod_slice"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/cooked_chicken_cuts"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/cooked_cod_slice"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/cooked_salmon_slice"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/egg_sandwich"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/fish_stew"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/fried_rice"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/gleaming_salad"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/grilled_salmon"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/honey_cookie"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/honey_glazed_ham"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/minced_beef"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/mixed_salad"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/mushroom_rice"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/nether_salad"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/onion_soup"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/pasta_with_meatballs"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/pasta_with_mutton_chop"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/pumpkin_pie_slice"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/pumpkin_slice"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/pumpkin_soup"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/ratatouille"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/roast_chicken"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/roasted_mutton_chops"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/salmon_slice"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/shepherds_pie"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/squid_ink_pasta"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/stuffed_potato"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/sweet_berry_cookie"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/tomato_sauce"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/vegetable_noodles"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/farmersdelight/vegetable_soup"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/galestone/galestone_crystal"
   },
   {
@@ -70,7 +226,15 @@
   },
   {
    "type": "single",
+   "resource": "heft:solid/minecraft/apple"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/minecraft/arrow"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/baked_potato"
   },
   {
    "type": "single",
@@ -79,6 +243,18 @@
   {
    "type": "single",
    "resource": "heft:solid/minecraft/bamboo_sign"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/beef"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/beetroot"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/beetroot_soup"
   },
   {
    "type": "single",
@@ -110,11 +286,19 @@
   },
   {
    "type": "single",
+   "resource": "heft:solid/minecraft/bread"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/minecraft/breeze_rod"
   },
   {
    "type": "single",
    "resource": "heft:solid/minecraft/brick"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/carrot"
   },
   {
    "type": "single",
@@ -130,7 +314,51 @@
   },
   {
    "type": "single",
+   "resource": "heft:solid/minecraft/chicken"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/chorus_fruit"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/minecraft/coal"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/cod"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/cooked_beef"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/cooked_chicken"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/cooked_cod"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/cooked_mutton"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/cooked_porkchop"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/cooked_rabbit"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/cooked_salmon"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/cookie"
   },
   {
    "type": "single",
@@ -158,7 +386,15 @@
   },
   {
    "type": "single",
+   "resource": "heft:solid/minecraft/dried_kelp"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/minecraft/echo_shard"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/egg"
   },
   {
    "type": "single",
@@ -167,6 +403,22 @@
   {
    "type": "single",
    "resource": "heft:solid/minecraft/enchanted_book"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/enchanted_golden_apple"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/fermented_spider_eye"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/glistering_melon_slice"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/glow_berries"
   },
   {
    "type": "single",
@@ -179,6 +431,14 @@
   {
    "type": "single",
    "resource": "heft:solid/minecraft/gold_nugget"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/golden_apple"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/golden_carrot"
   },
   {
    "type": "single",
@@ -226,6 +486,18 @@
   },
   {
    "type": "single",
+   "resource": "heft:solid/minecraft/melon_slice"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/mushroom_stew"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/mutton"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/minecraft/nether_brick"
   },
   {
@@ -262,7 +534,31 @@
   },
   {
    "type": "single",
+   "resource": "heft:solid/minecraft/poisonous_potato"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/popped_chorus_fruit"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/porkchop"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/potato"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/minecraft/prismarine_shard"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/pufferfish"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/pumpkin_pie"
   },
   {
    "type": "single",
@@ -270,7 +566,15 @@
   },
   {
    "type": "single",
+   "resource": "heft:solid/minecraft/rabbit"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/minecraft/rabbit_hide"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/rabbit_stew"
   },
   {
    "type": "single",
@@ -290,7 +594,19 @@
   },
   {
    "type": "single",
+   "resource": "heft:solid/minecraft/rotten_flesh"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/salmon"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/minecraft/spectral_arrow"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/spider_eye"
   },
   {
    "type": "single",
@@ -310,7 +626,19 @@
   },
   {
    "type": "single",
+   "resource": "heft:solid/minecraft/suspicious_stew"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/sweet_berries"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/minecraft/tipped_arrow"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/tropical_fish"
   },
   {
    "type": "single",

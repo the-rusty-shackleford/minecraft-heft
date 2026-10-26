@@ -54,6 +54,16 @@ FINISHES = {
     "wood": Finish(broad=0.45, fine=0.12, speck=0.06, bevel=3.0, bevel_drop=10, relief=8, relief_scale=4, smooth=0.30, smooth_spread=0.06, porosity=20, grain=(40.0, 1.6)),
     "stack": Finish(broad=0.25, fine=0.10, speck=0.04, bevel=1.5, bevel_drop=4, relief=10, relief_scale=1, smooth=0.20, smooth_spread=0.04, porosity=30, grain=(60.0, 1.1)),
     "paper": Finish(broad=0.20, fine=0.10, speck=0.05, bevel=2.0, bevel_drop=4, relief=3, relief_scale=6, smooth=0.22, smooth_spread=0.04, porosity=35),
+    "skin": Finish(broad=0.35, fine=0.12, speck=0.05, bevel=2.5, bevel_drop=6, relief=3, relief_scale=6, smooth=0.55, smooth_spread=0.08, porosity=5),
+    "gilt": Finish(broad=0.30, fine=0.10, speck=0.04, bevel=2.5, bevel_drop=6, relief=2, relief_scale=8, smooth=0.75, smooth_spread=0.06),
+    "shell": Finish(broad=0.25, fine=0.15, speck=0.10, bevel=2.5, bevel_drop=6, relief=2, relief_scale=3, smooth=0.40, smooth_spread=0.04, porosity=20),
+    "crust": Finish(broad=0.45, fine=0.30, speck=0.12, bevel=3.0, bevel_drop=10, relief=12, relief_scale=4, smooth=0.22, smooth_spread=0.06, porosity=40),
+    "meat": Finish(broad=0.50, fine=0.25, speck=0.08, bevel=3.0, bevel_drop=8, relief=8, relief_scale=5, smooth=0.50, smooth_spread=0.10, porosity=10),
+    "cooked": Finish(broad=0.50, fine=0.35, speck=0.12, bevel=3.0, bevel_drop=10, relief=12, relief_scale=4, smooth=0.32, smooth_spread=0.10, porosity=20),
+    "scales": Finish(broad=0.35, fine=0.25, speck=0.10, bevel=2.5, bevel_drop=6, relief=5, relief_scale=2, smooth=0.60, smooth_spread=0.08),
+    "flesh": Finish(broad=0.35, fine=0.25, speck=0.15, bevel=2.0, bevel_drop=6, relief=4, relief_scale=3, smooth=0.50, smooth_spread=0.06, porosity=10),
+    "liquid": Finish(broad=0.40, fine=0.15, speck=0.08, bevel=1.0, bevel_drop=2, relief=4, relief_scale=4, smooth=0.80, smooth_spread=0.06),
+    "ceramic": Finish(broad=0.15, fine=0.08, speck=0.03, bevel=2.0, bevel_drop=6, relief=0, relief_scale=8, smooth=0.70, smooth_spread=0.04),
     "hide": Finish(broad=0.45, fine=0.25, speck=0.08, bevel=3.0, bevel_drop=8, relief=8, relief_scale=5, smooth=0.32, smooth_spread=0.08, porosity=15),
 }
 
@@ -70,6 +80,12 @@ ROLES = {
     "cover": (0.55, 1.0), "cover_edge": (0.45, 0.6), "pages": (0.70, 0.3),
     "board_face": (0.58, 1.0), "board_edge": (0.48, 0.6), "post": (0.50, 0.8), "bar": (0.45, 0.8), "chain": (0.55, 0.5),
     "shaft": (0.55, 0.5), "head": (0.58, 0.6), "fletch": (0.70, 0.3),
+    "skin": (0.55, 0.6), "skin_top": (0.62, 0.6), "stem": (0.45, 0.4), "leaf": (0.55, 0.4),
+    "crust": (0.50, 0.8), "crust_top": (0.62, 0.8), "filling": (0.58, 0.4),
+    "meat": (0.58, 0.6), "meat_edge": (0.45, 0.5), "bone": (0.70, 0.5),
+    "body": (0.55, 0.6), "fin": (0.48, 0.4), "rind": (0.50, 0.6), "flesh": (0.62, 0.4),
+    "bowl": (0.50, 0.6), "fill": (0.60, 0.2), "dish": (0.70, 0.4), "food": (0.55, 0.5), "food_top": (0.62, 0.5),
+    "bread": (0.55, 0.8), "bread_top": (0.62, 0.8),
 }
 
 
@@ -83,6 +99,8 @@ class Material:
     keep: tuple[float, float] = (0.0, 1.0)  # the share of the palette kept, darkest to lightest: a 16x sprite's
     # darkest colours are its outline, never the material
     parts: tuple[tuple[str, str], ...] = ()  # role -> another material that role is made of (a book's pages, a sign's chains)
+    band: tuple[float, float] | None = None  # only the palette's colours whose hue lies in this band (degrees, wrapping)
+    minus: str | None = None  # without the palette's colours close to another class's (a stew's sprite less its bowl)
 
 
 SPRITE = (0.25, 1.0)  # a palette measured off a mod's 16x sprite: its outline left out
@@ -124,9 +142,63 @@ MATERIALS = {m.name: m for m in (
     Material("flint_head", "flint", "crystal", 10, keep=SPRITE), Material("feather_fletch", "feather", "paper", 4, keep=SPRITE),
     Material("spectral_head", "spectral_arrow", "metal", M.GOLD, keep=(0.55, 1.0)), Material("tipped_head", "iron", "crystal", 10),
     Material("arrow", "stick", "wood", 6, keep=SPRITE, parts=(("head", "flint_head"), ("fletch", "feather_fletch"))),
+    # Phase 4's parts: what a food's class makes of other things.
+    Material("food_stem", "stick", "wood", 6, keep=SPRITE), Material("foliage", "food_minecraft_carrot", "skin", 6, keep=(0.0, 1.0), band=(60, 170)),
+    Material("bowl_wood", "bowl", "wood", 6, keep=(0.45, 1.0)), Material("dish", "quartz", "ceramic", 12),
+    Material("food_bone", "bone", "mineral", 8, keep=SPRITE), Material("bread_food", "food_minecraft_bread", "crust", 6, keep=SPRITE),
     Material("spectral_arrow", "stick", "wood", 6, keep=SPRITE, parts=(("head", "spectral_head"), ("fletch", "feather_fletch"))),
     Material("tipped_arrow", "stick", "wood", 6, keep=SPRITE, parts=(("head", "tipped_head"), ("fletch", "feather_fletch"))),
 )}
+
+
+# The hue band a class's own colour is taken from, where its sprite also draws something else (a carrot's leaves).
+BAND = {"wedge": (330, 50), "root": (0, 65)}
+
+
+def _food_materials() -> list[Material]:
+    """Each food item's material: its own sprite's palette (its outline left out), its finish, its class's parts."""
+    import food
+    parts = {
+        "fruit": (("stem", "food_stem"), ("leaf", "foliage")), "root": (("leaf", "foliage"),), "berries": (("stem", "food_stem"),),
+        "drumstick": (("bone", "food_bone"),), "bowl": (("bowl", "bowl_wood"),), "plated": (("dish", "dish"),),
+        "stack": (("bread", "bread_food"), ("bread_top", "bread_food")),
+    }
+    minus = {"bowl": "bowl", "plated": "quartz", "stack": "food_minecraft_bread"}
+    out = []
+    for item, (klass, finish) in food.FOOD.items():
+        name = food.colour(item)
+        p = parts.get(klass, ())
+        if klass == "wedge":
+            out.append(Material(name + "_rind", name, finish, 8, keep=SPRITE, band=(60, 170)))
+            p = (("rind", name + "_rind"),)
+        out.append(Material(item, name, finish, food.F0.get(finish, 8), glows=item in food.GLOWS, keep=SPRITE, parts=p,
+                            band=food.BAND.get(item, BAND.get(klass)), minus=minus.get(klass)))
+    return out
+
+
+def select(palette: list[str], material: Material) -> list[str]:
+    """effects: returns the colours of palette (darkest first) the material keeps: its share by value, then those in its
+    hue band and not close to its `minus` class's colours; the share alone if a filter would leave fewer than two"""
+    import colorsys
+    lo, hi = material.keep
+    kept = palette[int(round(lo * 7)):int(round(hi * 7)) + 1]
+    out = kept
+    if material.band is not None:
+        a, b = material.band
+
+        def inside(c):
+            r, g, bl = style.rgb(c)
+            h, sat, _ = colorsys.rgb_to_hsv(r, g, bl)
+            d = h * 360
+            return sat > 0.12 and ((a <= d <= b) if a <= b else (d >= a or d <= b))
+        out = [c for c in out if inside(c)]
+    if material.minus is not None:
+        other = [style.rgb(c) for c in STYLE[material.minus]["palette"]]
+        out = [c for c in out if min(float(np.abs(style.rgb(c) - o).sum()) for o in other) > 0.18]
+    return out if len(out) >= 2 else kept
+
+
+MATERIALS.update({m.name: m for m in _food_materials()})
 
 
 def part(role: str, material: Material) -> Material:
@@ -162,8 +234,7 @@ def paint(role: str, w: int, h: int, material: Material) -> Layers:
     relief_field = noise.value_noise(rng, h, w, finish.relief_scale)
     edge = np.clip(1.0 - noise.edge_distance(h, w) / finish.bevel, 0.0, 1.0) * bevel_reach
     key = tone + broad * finish.broad + fine * finish.fine + speck * finish.speck - edge * 0.12
-    lo, hi = material.keep
-    palette = numbers["palette"][int(round(lo * 7)):int(round(hi * 7)) + 1]
+    palette = select(numbers["palette"], material)
     albedo = style.ramp(palette, np.clip(key, 0.0, 1.0))
     # Height: the face at its level; its edges rolled off; the finish's relief hung below the face (pits,
     # grains, a cast top's ripples), never above it.

@@ -10,7 +10,7 @@ from shapes import DIRECTIONS, Klass
 
 PPU = 8  # texels per sixteenth: 128 to the block, the density of a 128x pack
 SHEET = 16  # sixteenths across the sheet: 128 texels, a multiple of 16 so mipmaps keep every level
-TALLER = (16, 24, 32)  # the sheet's heights tried in turn, sixteenths (128, 192, 256 texels: each a multiple of 16)
+TALLER = (16, 24, 32, 48)  # the sheet's heights tried in turn, sixteenths (128 to 384 texels: each a multiple of 16)
 GAP = 0.25  # sixteenths between patches, filled from each patch's own edge (same material either side)
 STEP = 0.25  # the skyline's column width, sixteenths
 

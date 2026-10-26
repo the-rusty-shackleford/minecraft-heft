@@ -67,6 +67,9 @@ ITEMS: dict[str, tuple[str, str]] = {
     "minecraft:arrow": ("arrow", "arrow"), "minecraft:spectral_arrow": ("arrow", "spectral_arrow"),
     "minecraft:tipped_arrow": ("arrow", "tipped_arrow"),
 }
+# Phase 4: food, each item its own material (paint._food_materials).
+import food  # noqa: E402
+ITEMS.update({item: (klass, item) for item, (klass, _) in food.FOOD.items()})
 
 NORMAL_STRENGTH = 30.0  # a 4-level-per-texel bevel tilts its normal about 25 degrees; the face's own noise about 7
 

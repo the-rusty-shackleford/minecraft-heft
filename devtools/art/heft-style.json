@@ -3129,6 +3129,2904 @@
    ],
    "rim": 0.0,
    "from": "minecraft-1.21.1-client.jar: item/arrow"
+  },
+  "food_minecraft_apple": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.099,
+    0.21,
+    0.212,
+    0.259,
+    0.374
+   ],
+   "hue": 0.4,
+   "saturation": [
+    0.894,
+    0.983
+   ],
+   "palette": [
+    "#540f0d",
+    "#9c1017",
+    "#752802",
+    "#b4131e",
+    "#dd1725",
+    "#7e370e",
+    "#ff1c2b",
+    "#ff838c"
+   ],
+   "grain": [
+    0.0505,
+    0.0879,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/apple"
+  },
+  "food_minecraft_golden_apple": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.123,
+    0.21,
+    0.642,
+    0.786,
+    0.906
+   ],
+   "hue": 38.5,
+   "saturation": [
+    0.904,
+    0.983
+   ],
+   "palette": [
+    "#541609",
+    "#752802",
+    "#b26411",
+    "#b26411",
+    "#dba213",
+    "#dba213",
+    "#eccb45",
+    "#eff27a"
+   ],
+   "grain": [
+    0.1555,
+    0.2208,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/golden_apple"
+  },
+  "food_minecraft_beetroot": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.16,
+    0.164,
+    0.259,
+    0.259,
+    0.375
+   ],
+   "hue": 1.3,
+   "saturation": [
+    0.747,
+    0.885
+   ],
+   "palette": [
+    "#71160d",
+    "#5b1d17",
+    "#5b1d17",
+    "#5b1d17",
+    "#a4272c",
+    "#a4272c",
+    "#8f2d2f",
+    "#ba5559"
+   ],
+   "grain": [
+    0.0861,
+    0.1209,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/beetroot"
+  },
+  "food_minecraft_chorus_fruit": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.121,
+    0.314,
+    0.384,
+    0.447,
+    0.854
+   ],
+   "hue": 301.1,
+   "saturation": [
+    0.275,
+    0.655
+   ],
+   "palette": [
+    "#4a1f49",
+    "#6c4e6b",
+    "#8e678d",
+    "#8e678d",
+    "#a381a2",
+    "#ba9bba",
+    "#e1d7e1",
+    "#f7f4f7"
+   ],
+   "grain": [
+    0.0891,
+    0.1763,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/chorus_fruit"
+  },
+  "food_minecraft_popped_chorus_fruit": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.206,
+    0.28,
+    0.349,
+    0.44,
+    0.531
+   ],
+   "hue": 300.0,
+   "saturation": [
+    0.353,
+    0.463
+   ],
+   "palette": [
+    "#4f2a4f",
+    "#522c52",
+    "#643c64",
+    "#643c64",
+    "#643c64",
+    "#643c64",
+    "#774d77",
+    "#976e97"
+   ],
+   "grain": [
+    0.0838,
+    0.1001,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/popped_chorus_fruit"
+  },
+  "food_minecraft_spider_eye": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.04,
+    0.04,
+    0.086,
+    0.15,
+    0.414
+   ],
+   "hue": 341.5,
+   "saturation": [
+    0.976,
+    1.0
+   ],
+   "palette": [
+    "#2a0010",
+    "#550222",
+    "#550222",
+    "#65062b",
+    "#7b0d27",
+    "#a32736",
+    "#e0aeb4",
+    "#e0c9cc"
+   ],
+   "grain": [
+    0.1162,
+    0.1274,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/spider_eye"
+  },
+  "food_minecraft_fermented_spider_eye": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.04,
+    0.081,
+    0.132,
+    0.15,
+    0.309
+   ],
+   "hue": 341.5,
+   "saturation": [
+    0.894,
+    1.0
+   ],
+   "palette": [
+    "#2a0214",
+    "#420521",
+    "#550222",
+    "#65062b",
+    "#7b0d27",
+    "#9d1e2d",
+    "#c45f6b",
+    "#d39a88"
+   ],
+   "grain": [
+    0.081,
+    0.1133,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/fermented_spider_eye"
+  },
+  "food_minecraft_egg": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.185,
+    0.325,
+    0.659,
+    0.875,
+    0.928
+   ],
+   "hue": 45.4,
+   "saturation": [
+    0.31,
+    0.473
+   ],
+   "palette": [
+    "#3b331e",
+    "#5a5135",
+    "#8a7d55",
+    "#b6a77d",
+    "#e0cf9c",
+    "#f0dea8",
+    "#f9e9b3",
+    "#f7f5d4"
+   ],
+   "grain": [
+    0.0307,
+    0.0841,
+    0.228
+   ],
+   "rim": 0.0,
+   "smoothness": [
+    0.514,
+    0.514
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 23.4,
+   "occlusion": 0.953,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/egg"
+  },
+  "food_minecraft_carrot": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.21,
+    0.292,
+    0.466,
+    0.589,
+    0.699
+   ],
+   "hue": 64.0,
+   "saturation": [
+    0.965,
+    1.0
+   ],
+   "palette": [
+    "#005000",
+    "#8e3001",
+    "#036703",
+    "#1f9a1c",
+    "#1f9a1c",
+    "#e4780b",
+    "#33be30",
+    "#ffaf50"
+   ],
+   "grain": [
+    0.1507,
+    0.2435,
+    0.0
+   ],
+   "rim": 0.1326,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/carrot"
+  },
+  "food_minecraft_golden_carrot": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.118,
+    0.186,
+    0.321,
+    0.642,
+    0.887
+   ],
+   "hue": 35.3,
+   "saturation": [
+    0.913,
+    0.931
+   ],
+   "palette": [
+    "#301600",
+    "#301600",
+    "#531f07",
+    "#634607",
+    "#b26411",
+    "#dba213",
+    "#ebdb4d",
+    "#feffe6"
+   ],
+   "grain": [
+    0.1631,
+    0.3618,
+    0.0
+   ],
+   "rim": 0.2254,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/golden_carrot"
+  },
+  "food_minecraft_potato": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.245,
+    0.367,
+    0.535,
+    0.681,
+    0.744
+   ],
+   "hue": 36.5,
+   "saturation": [
+    0.707,
+    1.0
+   ],
+   "palette": [
+    "#6d3701",
+    "#6d3701",
+    "#9a5500",
+    "#b28639",
+    "#d9aa51",
+    "#d9aa51",
+    "#e9ba62",
+    "#f8d086"
+   ],
+   "grain": [
+    0.0899,
+    0.2042,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/potato"
+  },
+  "food_minecraft_baked_potato": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.245,
+    0.367,
+    0.478,
+    0.676,
+    0.801
+   ],
+   "hue": 38.3,
+   "saturation": [
+    0.707,
+    1.0
+   ],
+   "palette": [
+    "#6d3701",
+    "#6d3701",
+    "#9a5500",
+    "#9a5500",
+    "#9d772e",
+    "#a07a42",
+    "#c89d3a",
+    "#e3b955"
+   ],
+   "grain": [
+    0.1079,
+    0.1908,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/baked_potato"
+  },
+  "food_minecraft_poisonous_potato": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.245,
+    0.367,
+    0.483,
+    0.681,
+    0.795
+   ],
+   "hue": 64.8,
+   "saturation": [
+    0.627,
+    0.991
+   ],
+   "palette": [
+    "#6d3701",
+    "#3e5d3b",
+    "#9a5500",
+    "#86693e",
+    "#6b863e",
+    "#be8f3e",
+    "#b0c83a",
+    "#d4c055"
+   ],
+   "grain": [
+    0.1309,
+    0.2032,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/poisonous_potato"
+  },
+  "food_minecraft_bread": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.186,
+    0.301,
+    0.411,
+    0.552,
+    0.552
+   ],
+   "hue": 39.6,
+   "saturation": [
+    0.786,
+    0.793
+   ],
+   "palette": [
+    "#564014",
+    "#8c661e",
+    "#8c661e",
+    "#a27924",
+    "#bc8927",
+    "#bc8927",
+    "#bc8927",
+    "#bc8927"
+   ],
+   "grain": [
+    0.0676,
+    0.1472,
+    0.0
+   ],
+   "rim": 0.2193,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/bread"
+  },
+  "food_minecraft_cookie": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.099,
+    0.295,
+    0.484,
+    0.592,
+    0.658
+   ],
+   "hue": 25.6,
+   "saturation": [
+    0.717,
+    0.855
+   ],
+   "palette": [
+    "#341707",
+    "#5e3017",
+    "#874b24",
+    "#ab6429",
+    "#c37534",
+    "#d58540",
+    "#e2924b",
+    "#ed9d56"
+   ],
+   "grain": [
+    0.0601,
+    0.1086,
+    0.1777
+   ],
+   "rim": 0.0619,
+   "smoothness": [
+    0.384,
+    0.451
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 17.27,
+   "occlusion": 0.965,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/cookie"
+  },
+  "food_farmersdelight_honey_cookie": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.207,
+    0.427,
+    0.591,
+    0.715,
+    0.865
+   ],
+   "hue": 37.7,
+   "saturation": [
+    0.741,
+    0.883
+   ],
+   "palette": [
+    "#6e381d",
+    "#966a12",
+    "#c59333",
+    "#c59333",
+    "#e9b115",
+    "#e8c464",
+    "#e8c464",
+    "#fbdc8a"
+   ],
+   "grain": [
+    0.1346,
+    0.1813,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/honey_cookie"
+  },
+  "food_farmersdelight_sweet_berry_cookie": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.157,
+    0.338,
+    0.566,
+    0.723,
+    0.723
+   ],
+   "hue": 23.4,
+   "saturation": [
+    0.691,
+    0.962
+   ],
+   "palette": [
+    "#a00801",
+    "#472914",
+    "#8b4b2b",
+    "#b97335",
+    "#e1874e",
+    "#fbad66",
+    "#fbad66",
+    "#ffcfa3"
+   ],
+   "grain": [
+    0.1588,
+    0.2246,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/sweet_berry_cookie"
+  },
+  "food_minecraft_pumpkin_pie": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.349,
+    0.502,
+    0.593,
+    0.717,
+    0.82
+   ],
+   "hue": 30.4,
+   "saturation": [
+    0.59,
+    0.845
+   ],
+   "palette": [
+    "#8a571b",
+    "#ab775c",
+    "#ab775c",
+    "#d98645",
+    "#d59f4b",
+    "#ea9e60",
+    "#ea9e60",
+    "#f1ba6e"
+   ],
+   "grain": [
+    0.0967,
+    0.174,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/pumpkin_pie"
+  },
+  "food_farmersdelight_pumpkin_pie_slice": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.349,
+    0.416,
+    0.518,
+    0.645,
+    0.82
+   ],
+   "hue": 29.2,
+   "saturation": [
+    0.648,
+    0.902
+   ],
+   "palette": [
+    "#77561f",
+    "#77561f",
+    "#77561f",
+    "#b25a12",
+    "#ab775c",
+    "#db7422",
+    "#db7422",
+    "#e8a862"
+   ],
+   "grain": [
+    0.1218,
+    0.1665,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/pumpkin_pie_slice"
+  },
+  "food_minecraft_beef": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.089,
+    0.232,
+    0.376,
+    0.442,
+    0.609
+   ],
+   "hue": 3.7,
+   "saturation": [
+    0.763,
+    0.915
+   ],
+   "palette": [
+    "#470a06",
+    "#9f1b16",
+    "#e03e35",
+    "#e2534a",
+    "#e2534a",
+    "#e2534a",
+    "#e26960",
+    "#ea8873"
+   ],
+   "grain": [
+    0.1047,
+    0.1975,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/beef"
+  },
+  "food_minecraft_cooked_beef": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.1,
+    0.181,
+    0.209,
+    0.32,
+    0.404
+   ],
+   "hue": 16.8,
+   "saturation": [
+    0.622,
+    0.69
+   ],
+   "palette": [
+    "#2a160d",
+    "#3f2116",
+    "#502b1c",
+    "#673728",
+    "#713f2d",
+    "#7c4835",
+    "#8e523c",
+    "#985c43"
+   ],
+   "grain": [
+    0.0779,
+    0.1179,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/cooked_beef"
+  },
+  "food_minecraft_porkchop": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.185,
+    0.396,
+    0.545,
+    0.645,
+    0.824
+   ],
+   "hue": 0.0,
+   "saturation": [
+    0.531,
+    0.534
+   ],
+   "palette": [
+    "#512626",
+    "#853e3e",
+    "#a75353",
+    "#ef7070",
+    "#ff7777",
+    "#ff8c8c",
+    "#ffadad",
+    "#ffc6c6"
+   ],
+   "grain": [
+    0.1105,
+    0.2273,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/porkchop"
+  },
+  "food_minecraft_cooked_porkchop": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.312,
+    0.44,
+    0.65,
+    0.753,
+    0.829
+   ],
+   "hue": 41.2,
+   "saturation": [
+    0.396,
+    0.643
+   ],
+   "palette": [
+    "#5f4f27",
+    "#8a6831",
+    "#997942",
+    "#c1a976",
+    "#cfba81",
+    "#d3c088",
+    "#dacba4",
+    "#e2d3ac"
+   ],
+   "grain": [
+    0.0991,
+    0.2067,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/cooked_porkchop"
+  },
+  "food_minecraft_mutton": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.089,
+    0.225,
+    0.314,
+    0.489,
+    0.617
+   ],
+   "hue": 3.4,
+   "saturation": [
+    0.783,
+    0.915
+   ],
+   "palette": [
+    "#470a06",
+    "#96211b",
+    "#bc2922",
+    "#ad332e",
+    "#d12e26",
+    "#d12e26",
+    "#dd3830",
+    "#e5776f"
+   ],
+   "grain": [
+    0.1366,
+    0.1605,
+    0.0
+   ],
+   "rim": 0.2706,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/mutton"
+  },
+  "food_minecraft_cooked_mutton": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.1,
+    0.209,
+    0.327,
+    0.423,
+    0.476
+   ],
+   "hue": 16.3,
+   "saturation": [
+    0.554,
+    0.69
+   ],
+   "palette": [
+    "#2a160d",
+    "#522f1f",
+    "#522f1f",
+    "#522f1f",
+    "#522f1f",
+    "#713c2c",
+    "#844b3c",
+    "#9f6952"
+   ],
+   "grain": [
+    0.0889,
+    0.1167,
+    0.0
+   ],
+   "rim": 0.2197,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/cooked_mutton"
+  },
+  "food_minecraft_rotten_flesh": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.092,
+    0.196,
+    0.269,
+    0.35,
+    0.552
+   ],
+   "hue": 20.9,
+   "saturation": [
+    0.805,
+    0.829
+   ],
+   "palette": [
+    "#28140a",
+    "#28140a",
+    "#28140a",
+    "#522c10",
+    "#622c10",
+    "#814019",
+    "#b44420",
+    "#c5734d"
+   ],
+   "grain": [
+    0.1141,
+    0.1642,
+    0.0
+   ],
+   "rim": 0.191,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/rotten_flesh"
+  },
+  "food_farmersdelight_minced_beef": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.089,
+    0.172,
+    0.232,
+    0.376,
+    0.581
+   ],
+   "hue": 3.2,
+   "saturation": [
+    0.846,
+    0.877
+   ],
+   "palette": [
+    "#470a06",
+    "#7b1713",
+    "#7b1713",
+    "#ad1d17",
+    "#ad1d17",
+    "#ad1d17",
+    "#d43831",
+    "#e67b6c"
+   ],
+   "grain": [
+    0.0998,
+    0.1452,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/minced_beef"
+  },
+  "food_farmersdelight_cod_slice": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.455,
+    0.555,
+    0.651,
+    0.78,
+    0.913
+   ],
+   "hue": 32.9,
+   "saturation": [
+    0.429,
+    0.531
+   ],
+   "palette": [
+    "#986d4e",
+    "#b18953",
+    "#b18953",
+    "#b18953",
+    "#b18953",
+    "#c6a271",
+    "#c6a271",
+    "#dfceb7"
+   ],
+   "grain": [
+    0.1274,
+    0.1633,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/cod_slice"
+  },
+  "food_farmersdelight_cooked_cod_slice": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.3,
+    0.436,
+    0.644,
+    0.814,
+    0.913
+   ],
+   "hue": 36.0,
+   "saturation": [
+    0.592,
+    0.689
+   ],
+   "palette": [
+    "#674920",
+    "#9a753d",
+    "#cea054",
+    "#cea054",
+    "#cea054",
+    "#eccd96",
+    "#f7e7d2",
+    "#f7e7d2"
+   ],
+   "grain": [
+    0.14,
+    0.1975,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/cooked_cod_slice"
+  },
+  "food_farmersdelight_salmon_slice": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.219,
+    0.371,
+    0.393,
+    0.612,
+    0.856
+   ],
+   "hue": 19.0,
+   "saturation": [
+    0.765,
+    0.914
+   ],
+   "palette": [
+    "#692e09",
+    "#692e09",
+    "#ab3533",
+    "#ab3533",
+    "#bb502c",
+    "#ec6718",
+    "#f58a48",
+    "#f3c7ad"
+   ],
+   "grain": [
+    0.1609,
+    0.2464,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/salmon_slice"
+  },
+  "food_farmersdelight_cooked_salmon_slice": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.219,
+    0.306,
+    0.393,
+    0.438,
+    0.732
+   ],
+   "hue": 14.1,
+   "saturation": [
+    0.765,
+    0.955
+   ],
+   "palette": [
+    "#692e09",
+    "#b6472e",
+    "#df590a",
+    "#df590a",
+    "#df590a",
+    "#f46f20",
+    "#f46f20",
+    "#f99a9a"
+   ],
+   "grain": [
+    0.1323,
+    0.1515,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/cooked_salmon_slice"
+  },
+  "food_minecraft_chicken": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.361,
+    0.524,
+    0.702,
+    0.775,
+    0.923
+   ],
+   "hue": 15.8,
+   "saturation": [
+    0.327,
+    0.485
+   ],
+   "palette": [
+    "#a46d5a",
+    "#c19280",
+    "#deaa83",
+    "#dfa996",
+    "#efbcac",
+    "#eecaac",
+    "#f2c9bd",
+    "#ffe7dc"
+   ],
+   "grain": [
+    0.1247,
+    0.201,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/chicken"
+  },
+  "food_minecraft_cooked_chicken": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.203,
+    0.316,
+    0.542,
+    0.66,
+    0.771
+   ],
+   "hue": 22.0,
+   "saturation": [
+    0.639,
+    0.822
+   ],
+   "palette": [
+    "#5a2c10",
+    "#944b25",
+    "#cd7d4a",
+    "#cd7d4a",
+    "#d28e62",
+    "#de9e7c",
+    "#e6bea4",
+    "#eecaac"
+   ],
+   "grain": [
+    0.1439,
+    0.2308,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/cooked_chicken"
+  },
+  "food_minecraft_rabbit": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.361,
+    0.515,
+    0.67,
+    0.819,
+    0.914
+   ],
+   "hue": 16.5,
+   "saturation": [
+    0.358,
+    0.485
+   ],
+   "palette": [
+    "#865245",
+    "#b47864",
+    "#b88473",
+    "#daa08c",
+    "#daa08c",
+    "#daa08c",
+    "#daa08c",
+    "#f6d1c1"
+   ],
+   "grain": [
+    0.1237,
+    0.2171,
+    0.0
+   ],
+   "rim": 0.3144,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/rabbit"
+  },
+  "food_minecraft_cooked_rabbit": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.206,
+    0.281,
+    0.422,
+    0.682,
+    0.774
+   ],
+   "hue": 23.1,
+   "saturation": [
+    0.704,
+    0.775
+   ],
+   "palette": [
+    "#592d14",
+    "#7f411e",
+    "#a95f32",
+    "#d28e62",
+    "#d28e62",
+    "#dba581",
+    "#e7bfa2",
+    "#e7bfa2"
+   ],
+   "grain": [
+    0.1345,
+    0.2515,
+    0.0
+   ],
+   "rim": 0.2911,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/cooked_rabbit"
+  },
+  "food_farmersdelight_chicken_cuts": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.361,
+    0.524,
+    0.524,
+    0.775,
+    0.923
+   ],
+   "hue": 15.5,
+   "saturation": [
+    0.439,
+    0.485
+   ],
+   "palette": [
+    "#865245",
+    "#865245",
+    "#b47b65",
+    "#c19280",
+    "#dfa993",
+    "#efbdac",
+    "#f2c9bd",
+    "#ffe7dc"
+   ],
+   "grain": [
+    0.131,
+    0.2508,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/chicken_cuts"
+  },
+  "food_farmersdelight_cooked_chicken_cuts": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.203,
+    0.316,
+    0.418,
+    0.542,
+    0.771
+   ],
+   "hue": 22.0,
+   "saturation": [
+    0.715,
+    0.822
+   ],
+   "palette": [
+    "#5a2c10",
+    "#5a2c10",
+    "#5a2c10",
+    "#8b4420",
+    "#ac5d31",
+    "#cd7d4a",
+    "#d28e62",
+    "#e3b192"
+   ],
+   "grain": [
+    0.1694,
+    0.2291,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/cooked_chicken_cuts"
+  },
+  "food_minecraft_cod": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.292,
+    0.455,
+    0.555,
+    0.651,
+    0.78
+   ],
+   "hue": 29.9,
+   "saturation": [
+    0.487,
+    0.598
+   ],
+   "palette": [
+    "#644028",
+    "#986d4e",
+    "#986d4e",
+    "#b18953",
+    "#b18953",
+    "#b18953",
+    "#c6a271",
+    "#d6c5ad"
+   ],
+   "grain": [
+    0.1185,
+    0.19,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/cod"
+  },
+  "food_minecraft_cooked_cod": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.325,
+    0.455,
+    0.564,
+    0.78,
+    0.887
+   ],
+   "hue": 34.1,
+   "saturation": [
+    0.408,
+    0.487
+   ],
+   "palette": [
+    "#896144",
+    "#b18953",
+    "#ae8b67",
+    "#ae8b67",
+    "#c6a271",
+    "#cfb88c",
+    "#d6c5ad",
+    "#e2e5c6"
+   ],
+   "grain": [
+    0.144,
+    0.2002,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/cooked_cod"
+  },
+  "food_minecraft_salmon": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.151,
+    0.249,
+    0.289,
+    0.374,
+    0.509
+   ],
+   "hue": 34.9,
+   "saturation": [
+    0.318,
+    0.716
+   ],
+   "palette": [
+    "#252926",
+    "#6d3528",
+    "#a2312f",
+    "#4b4a42",
+    "#be4644",
+    "#5e7a66",
+    "#99736d",
+    "#bd928b"
+   ],
+   "grain": [
+    0.1058,
+    0.1094,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/salmon"
+  },
+  "food_minecraft_cooked_salmon": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.151,
+    0.279,
+    0.314,
+    0.44,
+    0.56
+   ],
+   "hue": 51.6,
+   "saturation": [
+    0.612,
+    0.812
+   ],
+   "palette": [
+    "#1b2824",
+    "#3d2b29",
+    "#6d4023",
+    "#9e441f",
+    "#9e441f",
+    "#4c6252",
+    "#ba4f23",
+    "#cb8557"
+   ],
+   "grain": [
+    0.1256,
+    0.1294,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/cooked_salmon"
+  },
+  "food_minecraft_tropical_fish": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.219,
+    0.393,
+    0.438,
+    0.612,
+    0.87
+   ],
+   "hue": 19.9,
+   "saturation": [
+    0.765,
+    0.914
+   ],
+   "palette": [
+    "#9c4320",
+    "#df590a",
+    "#f46f20",
+    "#f46f20",
+    "#f46f20",
+    "#f46f20",
+    "#f58a48",
+    "#f1c1a5"
+   ],
+   "grain": [
+    0.1506,
+    0.2332,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/tropical_fish"
+  },
+  "food_minecraft_pufferfish": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.338,
+    0.499,
+    0.63,
+    0.779,
+    0.906
+   ],
+   "hue": 41.6,
+   "saturation": [
+    0.791,
+    0.893
+   ],
+   "palette": [
+    "#1d2c26",
+    "#895411",
+    "#3e95b4",
+    "#c59034",
+    "#7ea8bd",
+    "#7ea8bd",
+    "#e9a213",
+    "#f5dbaf"
+   ],
+   "grain": [
+    0.1609,
+    0.2047,
+    0.0
+   ],
+   "rim": 0.0453,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/pufferfish"
+  },
+  "food_minecraft_sweet_berries": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.09,
+    0.12,
+    0.157,
+    0.191,
+    0.326
+   ],
+   "hue": 16.7,
+   "saturation": [
+    0.71,
+    1.0
+   ],
+   "palette": [
+    "#380e0f",
+    "#380e0f",
+    "#451415",
+    "#691f21",
+    "#a01113",
+    "#1d3822",
+    "#295230",
+    "#286240"
+   ],
+   "grain": [
+    0.0468,
+    0.1026,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/sweet_berries"
+  },
+  "food_minecraft_glow_berries": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.26,
+    0.32,
+    0.455,
+    0.641,
+    0.769
+   ],
+   "hue": 46.1,
+   "saturation": [
+    0.741,
+    0.88
+   ],
+   "palette": [
+    "#634617",
+    "#92441a",
+    "#3d6c26",
+    "#bf6717",
+    "#d57219",
+    "#f19645",
+    "#f2a04b",
+    "#e3cd50"
+   ],
+   "grain": [
+    0.1488,
+    0.1894,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/glow_berries"
+  },
+  "food_minecraft_melon_slice": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.211,
+    0.282,
+    0.307,
+    0.51,
+    0.733
+   ],
+   "hue": 31.9,
+   "saturation": [
+    0.817,
+    0.937
+   ],
+   "palette": [
+    "#6a180e",
+    "#af160b",
+    "#bf3123",
+    "#4b5712",
+    "#848920",
+    "#ca715d",
+    "#a39b20",
+    "#d2ad92"
+   ],
+   "grain": [
+    0.1235,
+    0.1903,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/melon_slice"
+  },
+  "food_minecraft_glistering_melon_slice": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.211,
+    0.307,
+    0.461,
+    0.603,
+    0.838
+   ],
+   "hue": 24.5,
+   "saturation": [
+    0.843,
+    0.937
+   ],
+   "palette": [
+    "#af160b",
+    "#5e540b",
+    "#5e540b",
+    "#5e540b",
+    "#c1361e",
+    "#be8a1c",
+    "#deaeaa",
+    "#ffdcd7"
+   ],
+   "grain": [
+    0.1861,
+    0.2377,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/glistering_melon_slice"
+  },
+  "food_farmersdelight_pumpkin_slice": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.28,
+    0.378,
+    0.48,
+    0.585,
+    0.683
+   ],
+   "hue": 30.8,
+   "saturation": [
+    0.889,
+    0.931
+   ],
+   "palette": [
+    "#7e3d0e",
+    "#7e3d0e",
+    "#a0560b",
+    "#a0560b",
+    "#a0560b",
+    "#c46f14",
+    "#e38a1d",
+    "#f7a946"
+   ],
+   "grain": [
+    0.1257,
+    0.1341,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/pumpkin_slice"
+  },
+  "food_minecraft_dried_kelp": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.047,
+    0.138,
+    0.138,
+    0.25,
+    0.362
+   ],
+   "hue": 38.9,
+   "saturation": [
+    0.231,
+    0.4
+   ],
+   "palette": [
+    "#0d0c0a",
+    "#26231e",
+    "#3c3324",
+    "#3c3324",
+    "#3c3324",
+    "#473f31",
+    "#473f31",
+    "#615c50"
+   ],
+   "grain": [
+    0.084,
+    0.0953,
+    0.0
+   ],
+   "rim": 0.0745,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/dried_kelp"
+  },
+  "food_minecraft_mushroom_stew": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.085,
+    0.176,
+    0.201,
+    0.522,
+    0.633
+   ],
+   "hue": 32.8,
+   "saturation": [
+    0.825,
+    0.935
+   ],
+   "palette": [
+    "#1f1502",
+    "#1f1502",
+    "#3d2a0a",
+    "#4a340c",
+    "#714f0f",
+    "#be785e",
+    "#cd8c6f",
+    "#cc9978"
+   ],
+   "grain": [
+    0.0621,
+    0.1732,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/mushroom_stew"
+  },
+  "food_minecraft_rabbit_stew": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.085,
+    0.201,
+    0.32,
+    0.556,
+    0.622
+   ],
+   "hue": 31.0,
+   "saturation": [
+    0.812,
+    0.935
+   ],
+   "palette": [
+    "#201603",
+    "#432f0c",
+    "#5d3510",
+    "#714f0f",
+    "#9c4d2a",
+    "#d18359",
+    "#f6870a",
+    "#eda44c"
+   ],
+   "grain": [
+    0.101,
+    0.1513,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/rabbit_stew"
+  },
+  "food_minecraft_beetroot_soup": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.085,
+    0.159,
+    0.176,
+    0.224,
+    0.32
+   ],
+   "hue": 27.9,
+   "saturation": [
+    0.867,
+    0.935
+   ],
+   "palette": [
+    "#1f1502",
+    "#6d1615",
+    "#3d2a0a",
+    "#84160d",
+    "#84160d",
+    "#4a340c",
+    "#b82a30",
+    "#714f0f"
+   ],
+   "grain": [
+    0.0293,
+    0.0688,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/beetroot_soup"
+  },
+  "food_minecraft_suspicious_stew": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.085,
+    0.176,
+    0.232,
+    0.558,
+    0.768
+   ],
+   "hue": 36.9,
+   "saturation": [
+    0.825,
+    0.935
+   ],
+   "palette": [
+    "#1f1502",
+    "#3d2a0a",
+    "#4b350b",
+    "#714f0f",
+    "#946579",
+    "#cd9072",
+    "#c5a45e",
+    "#8ede6a"
+   ],
+   "grain": [
+    0.1023,
+    0.212,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/suspicious_stew"
+  },
+  "food_farmersdelight_baked_cod_stew": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.085,
+    0.176,
+    0.32,
+    0.535,
+    0.884
+   ],
+   "hue": 39.1,
+   "saturation": [
+    0.867,
+    0.935
+   ],
+   "palette": [
+    "#1f1502",
+    "#3b2808",
+    "#005000",
+    "#a6272b",
+    "#69490d",
+    "#9e913c",
+    "#ecc187",
+    "#faf3e9"
+   ],
+   "grain": [
+    0.1305,
+    0.2299,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/baked_cod_stew"
+  },
+  "food_farmersdelight_bone_broth": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.085,
+    0.176,
+    0.32,
+    0.59,
+    0.858
+   ],
+   "hue": 44.7,
+   "saturation": [
+    0.825,
+    0.935
+   ],
+   "palette": [
+    "#1f1502",
+    "#1f1502",
+    "#392606",
+    "#3f2b0b",
+    "#61440c",
+    "#967e4f",
+    "#b9b38f",
+    "#ece9d7"
+   ],
+   "grain": [
+    0.1365,
+    0.2462,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/bone_broth"
+  },
+  "food_farmersdelight_chicken_soup": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.085,
+    0.232,
+    0.455,
+    0.62,
+    0.887
+   ],
+   "hue": 40.8,
+   "saturation": [
+    0.715,
+    0.935
+   ],
+   "palette": [
+    "#1f1502",
+    "#3b280a",
+    "#62440c",
+    "#aa784e",
+    "#71aa42",
+    "#e5a253",
+    "#c8c97e",
+    "#eee8cc"
+   ],
+   "grain": [
+    0.1278,
+    0.2185,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/chicken_soup"
+  },
+  "food_farmersdelight_fish_stew": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.085,
+    0.176,
+    0.303,
+    0.436,
+    0.814
+   ],
+   "hue": 32.3,
+   "saturation": [
+    0.839,
+    0.937
+   ],
+   "palette": [
+    "#2f2006",
+    "#941e33",
+    "#533909",
+    "#6e4d14",
+    "#c5530d",
+    "#906b39",
+    "#dbb471",
+    "#f7e7d2"
+   ],
+   "grain": [
+    0.1111,
+    0.2427,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/fish_stew"
+  },
+  "food_farmersdelight_onion_soup": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.085,
+    0.176,
+    0.385,
+    0.495,
+    0.74
+   ],
+   "hue": 42.4,
+   "saturation": [
+    0.786,
+    0.935
+   ],
+   "palette": [
+    "#2c1e05",
+    "#584e1c",
+    "#714f0f",
+    "#93622f",
+    "#b87345",
+    "#bc8927",
+    "#86ad5c",
+    "#dbac6d"
+   ],
+   "grain": [
+    0.1424,
+    0.1988,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/onion_soup"
+  },
+  "food_farmersdelight_pumpkin_soup": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.085,
+    0.224,
+    0.32,
+    0.48,
+    0.766
+   ],
+   "hue": 39.7,
+   "saturation": [
+    0.889,
+    0.935
+   ],
+   "palette": [
+    "#201603",
+    "#483109",
+    "#005000",
+    "#715b1a",
+    "#a0560b",
+    "#db831b",
+    "#f9b85c",
+    "#e9e2d9"
+   ],
+   "grain": [
+    0.1492,
+    0.2137,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/pumpkin_soup"
+  },
+  "food_farmersdelight_vegetable_soup": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.085,
+    0.21,
+    0.311,
+    0.462,
+    0.607
+   ],
+   "hue": 44.2,
+   "saturation": [
+    0.867,
+    0.968
+   ],
+   "palette": [
+    "#1f1502",
+    "#302109",
+    "#3c2908",
+    "#005000",
+    "#5c3507",
+    "#724e0e",
+    "#7d7d2d",
+    "#dd8b24"
+   ],
+   "grain": [
+    0.1198,
+    0.1409,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/vegetable_soup"
+  },
+  "food_farmersdelight_tomato_sauce": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.085,
+    0.176,
+    0.19,
+    0.315,
+    0.439
+   ],
+   "hue": 34.5,
+   "saturation": [
+    0.868,
+    0.948
+   ],
+   "palette": [
+    "#201603",
+    "#97141b",
+    "#463009",
+    "#6b3a22",
+    "#096209",
+    "#c0341f",
+    "#c0341f",
+    "#de5441"
+   ],
+   "grain": [
+    0.0732,
+    0.1181,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/tomato_sauce"
+  },
+  "food_farmersdelight_fried_rice": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.085,
+    0.19,
+    0.358,
+    0.676,
+    0.89
+   ],
+   "hue": 38.3,
+   "saturation": [
+    0.825,
+    0.935
+   ],
+   "palette": [
+    "#453008",
+    "#627348",
+    "#ed800b",
+    "#e9b115",
+    "#e9b115",
+    "#bab1a7",
+    "#f1d243",
+    "#ebe4db"
+   ],
+   "grain": [
+    0.1627,
+    0.2135,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/fried_rice"
+  },
+  "food_farmersdelight_mushroom_rice": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.085,
+    0.232,
+    0.406,
+    0.535,
+    0.728
+   ],
+   "hue": 31.1,
+   "saturation": [
+    0.449,
+    0.92
+   ],
+   "palette": [
+    "#1f1502",
+    "#3f2b0b",
+    "#bc1215",
+    "#533909",
+    "#664b38",
+    "#714f0f",
+    "#957454",
+    "#cdb17f"
+   ],
+   "grain": [
+    0.1555,
+    0.2403,
+    0.0
+   ],
+   "rim": 0.2614,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/mushroom_rice"
+  },
+  "food_farmersdelight_vegetable_noodles": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.085,
+    0.232,
+    0.419,
+    0.538,
+    0.777
+   ],
+   "hue": 44.3,
+   "saturation": [
+    0.615,
+    0.935
+   ],
+   "palette": [
+    "#1a1f02",
+    "#493209",
+    "#674d1e",
+    "#806940",
+    "#4d843f",
+    "#9b785c",
+    "#e2760c",
+    "#bfb695"
+   ],
+   "grain": [
+    0.1387,
+    0.2099,
+    0.0
+   ],
+   "rim": 0.2586,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/vegetable_noodles"
+  },
+  "food_farmersdelight_pasta_with_meatballs": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.085,
+    0.181,
+    0.232,
+    0.477,
+    0.771
+   ],
+   "hue": 23.7,
+   "saturation": [
+    0.741,
+    0.935
+   ],
+   "palette": [
+    "#3b230e",
+    "#7d1f36",
+    "#533909",
+    "#764a26",
+    "#9a6c49",
+    "#cf6c1a",
+    "#e8c464",
+    "#ffeabc"
+   ],
+   "grain": [
+    0.1568,
+    0.2304,
+    0.0
+   ],
+   "rim": 0.1965,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/pasta_with_meatballs"
+  },
+  "food_farmersdelight_pasta_with_mutton_chop": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.085,
+    0.232,
+    0.32,
+    0.494,
+    0.781
+   ],
+   "hue": 30.6,
+   "saturation": [
+    0.607,
+    0.892
+   ],
+   "palette": [
+    "#2f2007",
+    "#633329",
+    "#5b3f0b",
+    "#7f513b",
+    "#4d8c3b",
+    "#a7784e",
+    "#dfbf6d",
+    "#f3e1bc"
+   ],
+   "grain": [
+    0.1733,
+    0.2524,
+    0.0
+   ],
+   "rim": 0.2519,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/pasta_with_mutton_chop"
+  },
+  "food_farmersdelight_squid_ink_pasta": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.085,
+    0.108,
+    0.214,
+    0.317,
+    0.455
+   ],
+   "hue": 348.0,
+   "saturation": [
+    0.579,
+    0.935
+   ],
+   "palette": [
+    "#1f1502",
+    "#373261",
+    "#373261",
+    "#583113",
+    "#005000",
+    "#5f598d",
+    "#447e3c",
+    "#b28160"
+   ],
+   "grain": [
+    0.1155,
+    0.1517,
+    0.0
+   ],
+   "rim": 0.095,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/squid_ink_pasta"
+  },
+  "food_farmersdelight_ratatouille": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.085,
+    0.222,
+    0.358,
+    0.534,
+    0.784
+   ],
+   "hue": 34.6,
+   "saturation": [
+    0.715,
+    0.935
+   ],
+   "palette": [
+    "#292606",
+    "#6b2a23",
+    "#835209",
+    "#846f5c",
+    "#4c873d",
+    "#e16050",
+    "#c8973a",
+    "#d8bc89"
+   ],
+   "grain": [
+    0.2031,
+    0.2268,
+    0.0
+   ],
+   "rim": 0.2336,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/ratatouille"
+  },
+  "food_farmersdelight_mixed_salad": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.085,
+    0.224,
+    0.385,
+    0.474,
+    0.784
+   ],
+   "hue": 77.1,
+   "saturation": [
+    0.579,
+    0.935
+   ],
+   "palette": [
+    "#2f3305",
+    "#ba3831",
+    "#3c713e",
+    "#4d8c3b",
+    "#4d8c3b",
+    "#4d8c3b",
+    "#83a354",
+    "#c5c384"
+   ],
+   "grain": [
+    0.1153,
+    0.1939,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/mixed_salad"
+  },
+  "food_farmersdelight_nether_salad": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.085,
+    0.159,
+    0.249,
+    0.326,
+    0.559
+   ],
+   "hue": 35.7,
+   "saturation": [
+    0.89,
+    0.959
+   ],
+   "palette": [
+    "#1f1502",
+    "#730408",
+    "#3b2808",
+    "#a62427",
+    "#65460d",
+    "#166b69",
+    "#f76217",
+    "#13ab85"
+   ],
+   "grain": [
+    0.0812,
+    0.1837,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/nether_salad"
+  },
+  "food_farmersdelight_gleaming_salad": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.085,
+    0.253,
+    0.385,
+    0.474,
+    0.87
+   ],
+   "hue": 62.3,
+   "saturation": [
+    0.618,
+    0.929
+   ],
+   "palette": [
+    "#201603",
+    "#4c3408",
+    "#8d421f",
+    "#2f5d31",
+    "#5b983e",
+    "#d67435",
+    "#c2ed92",
+    "#f7e26b"
+   ],
+   "grain": [
+    0.1507,
+    0.2221,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/gleaming_salad"
+  },
+  "food_farmersdelight_cabbage_rolls": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.352,
+    0.474,
+    0.477,
+    0.65,
+    0.919
+   ],
+   "hue": 83.2,
+   "saturation": [
+    0.579,
+    0.627
+   ],
+   "palette": [
+    "#765f3d",
+    "#48853c",
+    "#59853c",
+    "#b67a27",
+    "#7ab244",
+    "#7ab244",
+    "#b2d26e",
+    "#c7ff87"
+   ],
+   "grain": [
+    0.1476,
+    0.2452,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/cabbage_rolls"
+  },
+  "food_farmersdelight_grilled_salmon": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.085,
+    0.193,
+    0.342,
+    0.438,
+    0.676
+   ],
+   "hue": 32.7,
+   "saturation": [
+    0.765,
+    0.955
+   ],
+   "palette": [
+    "#3f2a0c",
+    "#a3221e",
+    "#3f723e",
+    "#bb502c",
+    "#bb502c",
+    "#e35d0e",
+    "#f39496",
+    "#b7ab9b"
+   ],
+   "grain": [
+    0.1145,
+    0.1883,
+    0.0
+   ],
+   "rim": 0.1699,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/grilled_salmon"
+  },
+  "food_farmersdelight_roasted_mutton_chops": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.085,
+    0.209,
+    0.264,
+    0.431,
+    0.744
+   ],
+   "hue": 23.0,
+   "saturation": [
+    0.625,
+    0.892
+   ],
+   "palette": [
+    "#1a1f02",
+    "#522029",
+    "#4a320a",
+    "#723c3f",
+    "#5c6324",
+    "#9f5e47",
+    "#cea66a",
+    "#dcd4ca"
+   ],
+   "grain": [
+    0.1423,
+    0.2253,
+    0.0
+   ],
+   "rim": 0.1863,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/roasted_mutton_chops"
+  },
+  "food_farmersdelight_honey_glazed_ham": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.085,
+    0.232,
+    0.368,
+    0.534,
+    0.781
+   ],
+   "hue": 31.2,
+   "saturation": [
+    0.76,
+    0.935
+   ],
+   "palette": [
+    "#1f1502",
+    "#4f2f0e",
+    "#92370d",
+    "#2a5f3a",
+    "#b1655f",
+    "#db8820",
+    "#d9b599",
+    "#fae6e0"
+   ],
+   "grain": [
+    0.1397,
+    0.2401,
+    0.0
+   ],
+   "rim": 0.2496,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/honey_glazed_ham"
+  },
+  "food_farmersdelight_roast_chicken": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.085,
+    0.224,
+    0.367,
+    0.478,
+    0.801
+   ],
+   "hue": 36.2,
+   "saturation": [
+    0.825,
+    1.0
+   ],
+   "palette": [
+    "#2f2006",
+    "#005000",
+    "#7b430d",
+    "#517f48",
+    "#a36934",
+    "#e97c0b",
+    "#d5a150",
+    "#f5d3bd"
+   ],
+   "grain": [
+    0.1421,
+    0.2162,
+    0.0
+   ],
+   "rim": 0.2486,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/roast_chicken"
+  },
+  "food_farmersdelight_shepherds_pie": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.085,
+    0.232,
+    0.32,
+    0.541,
+    0.865
+   ],
+   "hue": 33.4,
+   "saturation": [
+    0.714,
+    0.91
+   ],
+   "palette": [
+    "#302107",
+    "#522f1f",
+    "#5b3f0b",
+    "#794633",
+    "#986347",
+    "#cb8b28",
+    "#7bb34e",
+    "#fae4af"
+   ],
+   "grain": [
+    0.1267,
+    0.2074,
+    0.0
+   ],
+   "rim": 0.2713,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/shepherds_pie"
+  },
+  "food_farmersdelight_stuffed_potato": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.245,
+    0.357,
+    0.476,
+    0.62,
+    0.949
+   ],
+   "hue": 31.6,
+   "saturation": [
+    0.621,
+    0.991
+   ],
+   "palette": [
+    "#522f1f",
+    "#7f4301",
+    "#83583a",
+    "#a3705a",
+    "#908c36",
+    "#ca9039",
+    "#d4bea4",
+    "#f9f3ec"
+   ],
+   "grain": [
+    0.1544,
+    0.2757,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/stuffed_potato"
+  },
+  "food_farmersdelight_bacon_sandwich": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.165,
+    0.301,
+    0.411,
+    0.552,
+    0.678
+   ],
+   "hue": 34.3,
+   "saturation": [
+    0.772,
+    0.793
+   ],
+   "palette": [
+    "#333213",
+    "#6a4326",
+    "#bd3f3f",
+    "#8c661e",
+    "#56903f",
+    "#bc8927",
+    "#d2aa5d",
+    "#e0ac81"
+   ],
+   "grain": [
+    0.094,
+    0.1525,
+    0.0
+   ],
+   "rim": 0.1518,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/bacon_sandwich"
+  },
+  "food_farmersdelight_chicken_sandwich": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.186,
+    0.225,
+    0.385,
+    0.474,
+    0.596
+   ],
+   "hue": 47.7,
+   "saturation": [
+    0.778,
+    0.793
+   ],
+   "palette": [
+    "#31360b",
+    "#6d4518",
+    "#8c661e",
+    "#8c661e",
+    "#8c661e",
+    "#a47327",
+    "#518a3e",
+    "#c38e3b"
+   ],
+   "grain": [
+    0.0984,
+    0.1479,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/chicken_sandwich"
+  },
+  "food_farmersdelight_egg_sandwich": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.186,
+    0.301,
+    0.411,
+    0.552,
+    0.756
+   ],
+   "hue": 37.5,
+   "saturation": [
+    0.772,
+    0.793
+   ],
+   "palette": [
+    "#3f2e0e",
+    "#654b17",
+    "#8c661e",
+    "#8c661e",
+    "#a27924",
+    "#9c7656",
+    "#cb9625",
+    "#dfcdb9"
+   ],
+   "grain": [
+    0.1143,
+    0.2264,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "FarmersDelight-1.21.1-1.3.3.jar: farmersdelight:item/egg_sandwich"
+  },
+  "bowl": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.085,
+    0.159,
+    0.194,
+    0.232,
+    0.32
+   ],
+   "hue": 38.6,
+   "saturation": [
+    0.867,
+    0.935
+   ],
+   "palette": [
+    "#1f1502",
+    "#1f1502",
+    "#392606",
+    "#3f2b0b",
+    "#3f2b0b",
+    "#43300b",
+    "#533909",
+    "#714f0f"
+   ],
+   "grain": [
+    0.0335,
+    0.07,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: item/bowl"
   }
  }
 }
