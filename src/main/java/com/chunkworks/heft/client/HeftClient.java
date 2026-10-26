@@ -46,7 +46,7 @@ public final class HeftClient {
     private static volatile ShapeLibrary.Read lastRead = new ShapeLibrary.Read(Map.of(), java.util.List.of());
 
     /** effects: returns what the last model bake read of the shape files */
-    static ShapeLibrary.Read lastRead() {
+    public static ShapeLibrary.Read lastRead() {
         return lastRead;
     }
 

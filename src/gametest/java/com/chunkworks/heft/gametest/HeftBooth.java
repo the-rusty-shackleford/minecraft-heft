@@ -18,6 +18,8 @@
 package com.chunkworks.heft.gametest;
 
 import com.chunkworks.heft.client.HeftAtlas;
+import com.chunkworks.heft.client.HeftClient;
+import com.chunkworks.heft.client.Solid;
 import com.chunkworks.heft.client.Report;
 import com.mojang.blaze3d.vertex.PoseStack;
 import java.util.ArrayList;
@@ -39,6 +41,7 @@ import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
@@ -52,6 +55,7 @@ import net.minecraft.world.entity.decoration.GlowItemFrame;
 import net.minecraft.world.entity.decoration.ItemFrame;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.inventory.InventoryMenu;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -73,11 +77,11 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Solid items on film, in a flat world, among the mods that touch how items are drawn
- * (devtools/booth/fetch.py fills the game directory). Scenes: item frames and a glow frame on a wall;
- * drops on the ground, one and a stack; ingots set down by Set It Down on a bench, one and a pile of
- * four, and one on a wall; the hand in first and third person; the inventory. The gold ingot is the
- * loud twin (devtools/booth/loud.py): the iron ingot's colour with ridged LabPBR normals, which a
- * shader shows only if it reads Heft's maps. The copper ingot is left flat, for comparison.
+ * (devtools/booth/fetch.py fills the game directory). Scenes: every solid item in a frame on a wall, and on
+ * the ground, and a stack of ingots; one of each class set down by Set It Down on a bench, piles of four,
+ * and an ingot on a wall; three classes held in first person, and the third-person view; the inventory
+ * full of them. Flint is the loud twin (devtools/booth/loud.py): the iron ingot's colour with ridged
+ * LabPBR normals, which a shader shows only if it reads Heft's maps. A stick is left flat, for comparison.
  *
  * <p>The checks draw what they judge into a {@link Capture} and count what each render type was given:
  * a solid item is drawn whole on Heft's atlas in every view, and by nothing else. One {@code booth: PASS}
@@ -171,6 +175,27 @@ public final class HeftBooth {
 
     // --- the scenes ----------------------------------------------------------------
 
+    /** Every solid item in this game, by class then name: what the shape files name and the registry has. */
+    private static List<ItemStack> solids() {
+        List<ItemStack> out = new ArrayList<>();
+        HeftClient.lastRead().solids().values().stream()
+                .filter(s -> BuiltInRegistries.ITEM.containsKey(s.item()) && !s.material().equals("loud"))
+                .sorted(java.util.Comparator.comparing((Solid s) -> s.klass()).thenComparing(s -> s.item().toString()))
+                .forEach(s -> out.add(new ItemStack(BuiltInRegistries.ITEM.get(s.item()))));
+        return out;
+    }
+
+    /** One of each class, in class order. */
+    private static List<ItemStack> oneOfEach() {
+        java.util.Map<String, ItemStack> first = new java.util.TreeMap<>();
+        for (Solid s : HeftClient.lastRead().solids().values()) {
+            if (BuiltInRegistries.ITEM.containsKey(s.item()) && !s.material().equals("loud")) {
+                first.putIfAbsent(s.klass(), new ItemStack(BuiltInRegistries.ITEM.get(s.item())));
+            }
+        }
+        return new ArrayList<>(first.values());
+    }
+
     private static void setUp(ServerPlayer sp) {
         ServerLevel level = sp.serverLevel();
         // The photographs' sun is low in the west, so relief and metal catch it.
@@ -181,41 +206,51 @@ public final class HeftBooth {
         sp.getAbilities().mayfly = true;
         sp.getAbilities().flying = true;
         sp.onUpdateAbilities();
-        // A wall to the north with frames: iron (solid), the loud twin, copper (flat), and iron in a glow frame.
-        fill(level, -4, 0, -9, 4, 3, -9, Blocks.STONE_BRICKS);
-        ItemStack[] framed = {new ItemStack(Items.IRON_INGOT), new ItemStack(Items.GOLD_INGOT), new ItemStack(Items.COPPER_INGOT)};
-        for (int i = 0; i < framed.length; i++) {
-            ItemFrame frame = new ItemFrame(level, new BlockPos(-3 + i * 2, ground + 1, -8), Direction.SOUTH);
-            frame.setItem(framed[i], false);
+        List<ItemStack> all = solids();
+        // A wall to the north with a frame for every solid item, two rows; then the loud twin (flint) and a
+        // flat stick, for comparison, and an iron ingot in a glow frame.
+        fill(level, -13, 0, -9, 13, 4, -9, Blocks.STONE_BRICKS);
+        List<ItemStack> framed = new ArrayList<>(all);
+        framed.add(new ItemStack(Items.FLINT));
+        framed.add(new ItemStack(Items.STICK));
+        for (int i = 0; i < framed.size(); i++) {
+            int row = i / 25, col = i % 25;
+            ItemFrame frame = new ItemFrame(level, new BlockPos(-12 + col, ground + 3 - row * 2, -8), Direction.SOUTH);
+            frame.setItem(framed.get(i), false);
             level.addFreshEntity(frame);
         }
-        GlowItemFrame glow = new GlowItemFrame(level, new BlockPos(3, ground + 1, -8), Direction.SOUTH);
+        GlowItemFrame glow = new GlowItemFrame(level, new BlockPos(12, ground + 1, -8), Direction.SOUTH);
         glow.setItem(new ItemStack(Items.IRON_INGOT), false);
         level.addFreshEntity(glow);
-        // On the ground: one iron ingot, a stack of sixteen (the game draws several copies), the twin, copper.
-        ItemStack[] dropped = {new ItemStack(Items.IRON_INGOT), new ItemStack(Items.IRON_INGOT, 16), new ItemStack(Items.GOLD_INGOT),
-                new ItemStack(Items.COPPER_INGOT)};
-        for (int i = 0; i < dropped.length; i++) {
-            ItemEntity drop = new ItemEntity(level, -2.25 + i * 1.5, ground, 3.5, dropped[i]);
+        // On the ground: every solid item, a row, and a stack of sixteen ingots (the game draws several copies).
+        for (int i = 0; i < all.size(); i++) {
+            ItemEntity drop = new ItemEntity(level, -12.5 + (i % 25), ground, 3.5 + (i / 25) * 1.2, all.get(i));
             drop.setNeverPickUp();
             drop.setUnlimitedLifetime();
             drop.setDeltaMovement(Vec3.ZERO);
             level.addFreshEntity(drop);
         }
-        // The bench: one iron ingot set down, and a pile of four beside it; one more on the wall's face.
-        fill(level, 10, 0, 4, 14, 0, 4, Blocks.SMOOTH_STONE);
-        setDown(sp, new ItemStack(Items.IRON_INGOT), BENCH.above(ground), Direction.UP);
-        for (int i = 0; i < 4; i++) {
-            setDown(sp, new ItemStack(Items.IRON_INGOT), PILE.above(ground), Direction.UP);
+        ItemEntity stack = new ItemEntity(level, -12.5, ground, 6.5, new ItemStack(Items.IRON_INGOT, 16));
+        stack.setNeverPickUp();
+        stack.setUnlimitedLifetime();
+        stack.setDeltaMovement(Vec3.ZERO);
+        level.addFreshEntity(stack);
+        // The bench: one of each class set down, two blocks apart; beyond, piles of four ingots, diamonds and redstone.
+        fill(level, 18, 0, 4, 40, 0, 4, Blocks.SMOOTH_STONE);
+        List<ItemStack> each = oneOfEach();
+        for (int i = 0; i < each.size(); i++) {
+            setDown(sp, each.get(i).copy(), new BlockPos(BENCH.getX() + 8 + i * 2, ground, BENCH.getZ()), Direction.UP);
         }
-        setDown(sp, new ItemStack(Items.IRON_INGOT), new BlockPos(-4, ground + 2, -9), Direction.SOUTH);
-        // The hotbar: the solid ingot first (held), the twin, flat copper; a row of them in the inventory.
-        sp.getInventory().setItem(0, new ItemStack(Items.IRON_INGOT));
-        sp.getInventory().setItem(1, new ItemStack(Items.GOLD_INGOT));
-        sp.getInventory().setItem(2, new ItemStack(Items.COPPER_INGOT));
-        sp.getInventory().setItem(3, new ItemStack(Items.IRON_INGOT, 64));
-        for (int i = 0; i < 9; i++) {
-            sp.getInventory().setItem(9 + i, new ItemStack(i % 3 == 0 ? Items.IRON_INGOT : i % 3 == 1 ? Items.GOLD_INGOT : Items.COPPER_INGOT));
+        Item[] piled = {Items.IRON_INGOT, Items.DIAMOND, Items.REDSTONE};
+        for (int k = 0; k < piled.length; k++) {
+            for (int i = 0; i < 4; i++) {
+                setDown(sp, new ItemStack(piled[k]), new BlockPos(PILE.getX() + 22 + k * 2, ground, PILE.getZ()), Direction.UP);
+            }
+        }
+        setDown(sp, new ItemStack(Items.IRON_INGOT), new BlockPos(-13, ground + 2, -9), Direction.SOUTH);
+        // The inventory: as many solid items as it holds, the hotbar first; the first held.
+        for (int i = 0; i < Math.min(36, all.size()); i++) {
+            sp.getInventory().setItem(i, all.get(i).copy());
         }
         aim(sp, new Vec3(0.5, ground + 2.2, 8.0), new Vec3(0.5, ground + 1.0, 0.5));
         placed = true;
@@ -258,27 +293,37 @@ public final class HeftBooth {
         int[] t = {HOLD};
         s.add(new Step(t[0], () -> checks(mc)));
         t[0] += 2;
-        shot(s, t, mc, "booth-frames", new Vec3(0.0, 1.6, -6.4), new Vec3(0.0, 1.5, -8.5));
-        shot(s, t, mc, "booth-frames-close", new Vec3(-1.0, 1.5, -7.3), new Vec3(-1.0, 1.5, -8.5));
-        shot(s, t, mc, "booth-ground", new Vec3(0.0, 1.2, 5.6), new Vec3(0.0, 0.1, 3.5));
-        shot(s, t, mc, "booth-ground-close", new Vec3(-1.5, 0.6, 4.7), new Vec3(-1.5, 0.1, 3.5));
-        shot(s, t, mc, "booth-setdown", new Vec3(12.0, 1.9, 5.9), new Vec3(12.0, 1.05, 4.5));
-        shot(s, t, mc, "booth-setdown-close", new Vec3(11.5, 1.45, 5.2), new Vec3(11.5, 1.05, 4.5));
-        shot(s, t, mc, "booth-pile-close", new Vec3(13.5, 1.45, 5.2), new Vec3(13.5, 1.05, 4.5));
-        shot(s, t, mc, "booth-wall", new Vec3(-3.5, 2.6, -7.0), new Vec3(-3.5, 2.5, -8.5));
+        shot(s, t, mc, "booth-frames", new Vec3(0.0, 2.6, -1.0), new Vec3(0.0, 2.5, -8.5));
+        shot(s, t, mc, "booth-frames-left", new Vec3(-8.5, 2.6, -5.6), new Vec3(-8.5, 2.5, -8.5));
+        shot(s, t, mc, "booth-frames-mid", new Vec3(-0.5, 2.6, -5.6), new Vec3(-0.5, 2.5, -8.5));
+        shot(s, t, mc, "booth-frames-right", new Vec3(7.5, 2.6, -5.6), new Vec3(7.5, 2.5, -8.5));
+        shot(s, t, mc, "booth-ground", new Vec3(-0.5, 2.4, 9.5), new Vec3(-0.5, 0.1, 4.0));
+        shot(s, t, mc, "booth-ground-left", new Vec3(-8.5, 1.1, 6.6), new Vec3(-8.5, 0.1, 3.8));
+        shot(s, t, mc, "booth-ground-right", new Vec3(4.5, 1.1, 6.6), new Vec3(4.5, 0.1, 3.8));
+        shot(s, t, mc, "booth-setdown", new Vec3(26.0, 2.2, 8.0), new Vec3(26.0, 1.05, 4.5));
+        shot(s, t, mc, "booth-setdown-left", new Vec3(22.0, 1.6, 6.2), new Vec3(22.0, 1.05, 4.5));
+        shot(s, t, mc, "booth-setdown-right", new Vec3(29.0, 1.6, 6.2), new Vec3(29.0, 1.05, 4.5));
+        shot(s, t, mc, "booth-piles", new Vec3(37.5, 1.7, 6.6), new Vec3(37.5, 1.05, 4.5));
+        shot(s, t, mc, "booth-wall", new Vec3(-12.5, 2.6, -7.0), new Vec3(-12.5, 2.5, -8.5));
         // Grazing light from the low sun across the frames: where the twin's ridges show, if the shader reads them.
-        shot(s, t, mc, "booth-frames-grazing", new Vec3(1.8, 1.55, -7.2), new Vec3(-1.0, 1.5, -8.5));
-        // The hand: standing, the solid ingot held; first person, then the third-person front view.
-        s.add(new Step(t[0], () -> {
-            mc.options.hideGui = false;
-            onServer(mc, sp -> {
-                sp.getAbilities().flying = false;
-                sp.onUpdateAbilities();
-                sp.getInventory().selected = 0;
-                aim(sp, new Vec3(0.5, ground + sp.getEyeHeight(), 10.5), new Vec3(0.5, ground + 1.0, 0.5));
-            });
-        }));
-        s.add(new Step(t[0] += SETTLE, () -> shoot(mc, "booth-first-person")));
+        shot(s, t, mc, "booth-frames-grazing", new Vec3(13.0, 1.0, -7.0), new Vec3(9.0, 1.5, -8.5));
+        // The hand: standing, holding one of three classes in turn; then the third-person front view.
+        List<ItemStack> each = oneOfEach();
+        for (int k = 0; k < Math.min(3, each.size()); k++) {
+            int slot = k;
+            s.add(new Step(t[0], () -> {
+                mc.options.hideGui = false;
+                onServer(mc, sp -> {
+                    sp.getAbilities().flying = false;
+                    sp.onUpdateAbilities();
+                    // Into the slot the client holds: a selected slot changed on the server is never sent to it.
+                    sp.getInventory().setItem(sp.getInventory().selected, each.get(slot * 3 % each.size()).copy());
+                    aim(sp, new Vec3(0.5, ground + sp.getEyeHeight(), 10.5), new Vec3(0.5, ground + 1.0, 0.5));
+                });
+            }));
+            s.add(new Step(t[0] += SETTLE, () -> shoot(mc, "booth-first-person-" + slot)));
+            t[0] += 2;
+        }
         s.add(new Step(t[0] += 4, () -> {
             mc.options.hideGui = true;
             mc.options.setCameraType(CameraType.THIRD_PERSON_FRONT);
@@ -303,73 +348,104 @@ public final class HeftBooth {
     }
 
     /**
-     * Whose model was drawn: each view of the solid ingot drawn into a {@link Capture}, its quads counted
-     * on Heft's atlas and nothing anywhere else; the frames and the set-down displays the same way.
+     * Whose model was drawn: every solid item's every view drawn into a {@link Capture}, its quads counted on
+     * Heft's atlas and nothing anywhere else; the frames and the set-down displays the same way; the atlas
+     * holding every sheet and the block atlas none.
      */
     private static void checks(Minecraft mc) {
-        ItemStack iron = new ItemStack(Items.IRON_INGOT);
-        BakedModel model = mc.getItemRenderer().getModel(iron, mc.level, null, 0);
-        int quads = model.getQuads(null, null, RandomSource.create(42L)).size();
-        verdict("the iron ingot is drawn solid", () -> Report.kind(model) == Report.Kind.SOLID ? null : Report.kind(model).toString());
-        verdict("the copper ingot, which has no shape yet, is left as it was (flat)",
-                () -> Report.kind(mc.getItemRenderer().getModel(new ItemStack(Items.COPPER_INGOT), mc.level, null, 0)) == Report.Kind.FLAT ? null : "not flat");
-        verdict("its sheet is on Heft's atlas, and not on the block atlas (D-0002)", () -> {
-            ResourceLocation sheet = ResourceLocation.parse("heft:solid/minecraft/iron_ingot");
+        List<ItemStack> all = solids();
+        verdict("there are solid items in this game (" + all.size() + ")", () -> all.isEmpty() ? "none" : null);
+        verdict("a stick, which has no shape yet, is left as it was (flat)",
+                () -> Report.kind(mc.getItemRenderer().getModel(new ItemStack(Items.STICK), mc.level, null, 0)) == Report.Kind.FLAT ? null : "not flat");
+        verdict("every sheet is on Heft's atlas, and none on the block atlas (D-0002)", () -> {
             TextureAtlas heft = mc.getModelManager().getAtlas(HeftAtlas.LOCATION);
             TextureAtlas blocks = mc.getModelManager().getAtlas(InventoryMenu.BLOCK_ATLAS);
-            boolean onHeft = !heft.getSprite(sheet).contents().name().equals(MissingTextureAtlasSprite.getLocation());
-            boolean onBlocks = !blocks.getSprite(sheet).contents().name().equals(MissingTextureAtlasSprite.getLocation());
-            return onHeft && !onBlocks ? null : "on Heft's " + onHeft + ", on the block atlas " + onBlocks;
+            List<String> wrong = new ArrayList<>();
+            for (Solid s : HeftClient.lastRead().solids().values()) {
+                ResourceLocation sheet = ResourceLocation.parse(s.model().getMaterial("0").texture().toString());
+                if (heft.getSprite(sheet).contents().name().equals(MissingTextureAtlasSprite.getLocation())) {
+                    wrong.add(sheet + " not on Heft's");
+                }
+                if (!blocks.getSprite(sheet).contents().name().equals(MissingTextureAtlasSprite.getLocation())) {
+                    wrong.add(sheet + " on the block atlas");
+                }
+            }
+            return wrong.isEmpty() ? null : String.join(", ", wrong);
         });
-        verdict("not one of Heft's sprites is on the block atlas", () -> {
-            TextureAtlas heft = mc.getModelManager().getAtlas(HeftAtlas.LOCATION);
-            TextureAtlas blocks = mc.getModelManager().getAtlas(InventoryMenu.BLOCK_ATLAS);
-            List<ResourceLocation> there = heft.getTextures().keySet().stream()
-                    .filter(n -> !n.equals(MissingTextureAtlasSprite.getLocation())
-                            && !blocks.getSprite(n).contents().name().equals(MissingTextureAtlasSprite.getLocation())).toList();
-            return heft.getTextures().size() > 1 && there.isEmpty() ? null : heft.getTextures().size() + " on Heft's atlas; on the block atlas too: " + there;
-        });
-        verdict("its particle icon is the iron ingot's own, on the block atlas, where break particles are drawn from", () -> {
-            TextureAtlasSprite icon = model.getParticleIcon();
-            return icon.atlasLocation().equals(InventoryMenu.BLOCK_ATLAS) && icon.contents().name().getPath().endsWith("iron_ingot")
-                    ? null : icon.contents().name() + " on " + icon.atlasLocation();
-        });
-        verdict("it has quads to draw", () -> quads > 0 ? null : "none");
-        for (ItemDisplayContext view : ItemDisplayContext.values()) {
-            if (view == ItemDisplayContext.NONE) {
+        List<String> notSolid = new ArrayList<>(), badParticle = new ArrayList<>(), badViews = new ArrayList<>();
+        for (ItemStack stack : all) {
+            BakedModel model = mc.getItemRenderer().getModel(stack, mc.level, null, 0);
+            String id = BuiltInRegistries.ITEM.getKey(stack.getItem()).toString();
+            if (Report.kind(model) != Report.Kind.SOLID) {
+                notSolid.add(id);
                 continue;
             }
-            Capture c = new Capture();
-            mc.getItemRenderer().renderStatic(iron, view, LIGHT, OverlayTexture.NO_OVERLAY, new PoseStack(), c, mc.level, 0);
-            verdict("in " + view.getSerializedName() + " it is drawn whole on Heft's atlas, and nothing else",
-                    () -> c.of(HeftAtlas.ITEM) == quads * 4 && c.total() == quads * 4 ? null : "Heft " + c.of(HeftAtlas.ITEM) + " of " + quads * 4 + ": " + c);
-        }
-        for (Entity e : mc.level.entitiesForRendering()) {
-            if (e instanceof ItemFrame frame && frame.getItem().is(Items.IRON_INGOT)) {
-                Capture c = draw(mc, frame);
-                verdict("an item frame draws it on Heft's atlas (" + frame.getType().toShortString() + ")",
-                        () -> c.of(HeftAtlas.ITEM) == quads * 4 ? null : c.toString());
+            TextureAtlasSprite icon = model.getParticleIcon();
+            if (!icon.atlasLocation().equals(InventoryMenu.BLOCK_ATLAS)) {
+                badParticle.add(id);
+            }
+            int quads = model.getQuads(null, null, RandomSource.create(42L)).size();
+            for (ItemDisplayContext view : ItemDisplayContext.values()) {
+                if (view == ItemDisplayContext.NONE) {
+                    continue;
+                }
+                Capture c = new Capture();
+                mc.getItemRenderer().renderStatic(stack, view, LIGHT, OverlayTexture.NO_OVERLAY, new PoseStack(), c, mc.level, 0);
+                if (quads == 0 || c.of(HeftAtlas.ITEM) != quads * 4 || c.total() != quads * 4) {
+                    badViews.add(id + " in " + view.getSerializedName() + ": " + c);
+                }
             }
         }
-        List<Entity> displays = mc.level.getEntities((Entity) null, new net.minecraft.world.phys.AABB(BENCH.above(ground)).inflate(3.0),
+        verdict("every one is drawn solid", () -> notSolid.isEmpty() ? null : String.valueOf(notSolid));
+        verdict("every shape keeps the canon, as the game reads it (D-0003)", () -> {
+            List<String> breaches = new ArrayList<>();
+            for (Solid s : HeftClient.lastRead().solids().values()) {
+                com.chunkworks.heft.domain.Canon.breaches(s.shape()).forEach(x -> breaches.add(s.item() + ": " + x));
+            }
+            return breaches.isEmpty() ? null : String.join("; ", breaches);
+        });
+        verdict("every one's particle icon is its own, on the block atlas", () -> badParticle.isEmpty() ? null : String.valueOf(badParticle));
+        verdict("every one is drawn whole on Heft's atlas in every view, and by nothing else", () -> badViews.isEmpty() ? null : String.join("; ", badViews));
+        int[] frames = {0, 0};
+        for (Entity e : mc.level.entitiesForRendering()) {
+            if (e instanceof ItemFrame frame && Report.kind(mc.getItemRenderer().getModel(frame.getItem(), mc.level, null, 0)) == Report.Kind.SOLID) {
+                frames[0]++;
+                if (draw(mc, frame).of(HeftAtlas.ITEM) > 0) {
+                    frames[1]++;
+                }
+            }
+        }
+        verdict("every frame holding a solid item draws it on Heft's atlas (" + frames[1] + " of " + frames[0] + ")",
+                () -> frames[0] > 0 && frames[0] == frames[1] ? null : frames[1] + " of " + frames[0]);
+        List<Entity> displays = mc.level.getEntities((Entity) null, new net.minecraft.world.phys.AABB(BENCH.above(ground)).inflate(40.0, 3.0, 3.0),
                 e -> e.getClass().getName().equals("com.chunkworks.setitdown.DisplayEntity"));
-        verdict("Set It Down set ingots down on the bench", () -> displays.isEmpty() ? "no display near " + BENCH.above(ground) : null);
+        verdict("Set It Down set one of each class down, and the piles (" + displays.size() + " displays)",
+                () -> displays.size() >= oneOfEach().size() + 3 ? null : displays.size() + " displays");
+        List<String> badDisplays = new ArrayList<>();
         for (Entity d : displays) {
             Capture c = draw(mc, d);
-            verdict("a set-down display at " + d.blockPosition() + " draws whole ingots on Heft's atlas",
-                    () -> c.of(HeftAtlas.ITEM) > 0 && c.of(HeftAtlas.ITEM) % (quads * 4) == 0 ? null : c.toString());
+            if (c.of(HeftAtlas.ITEM) == 0) {
+                badDisplays.add(d.blockPosition() + ": " + c);
+            }
         }
-        verdict("Set It Down poses it as the item's own model, by its own item-frame turn (not the hand's Rest)", () -> {
+        verdict("every set-down display draws on Heft's atlas", () -> badDisplays.isEmpty() ? null : String.join("; ", badDisplays));
+        verdict("Set It Down poses each class as the item's own model, by its own item-frame turn (not the hand's Rest)", () -> {
+            List<String> rested = new ArrayList<>();
             try {
-                Object entry = Class.forName("com.chunkworks.setitdown.client.BoundsCache")
-                        .getMethod("item", ItemStack.class, net.minecraft.world.level.Level.class, int.class).invoke(null, iron, mc.level, 0);
-                Object rest = entry.getClass().getMethod("rest").invoke(entry);
-                Object box = entry.getClass().getMethod("box").invoke(entry);
-                LOG.info("booth: Set It Down measures the iron ingot at rest as {}", box);
-                return rest == null ? null : "posed by Rest." + rest;
+                var item = Class.forName("com.chunkworks.setitdown.client.BoundsCache")
+                        .getMethod("item", ItemStack.class, net.minecraft.world.level.Level.class, int.class);
+                for (ItemStack stack : oneOfEach()) {
+                    Object entry = item.invoke(null, stack, mc.level, 0);
+                    Object rest = entry.getClass().getMethod("rest").invoke(entry);
+                    LOG.info("booth: Set It Down measures {} at rest as {}", stack.getItem(), entry.getClass().getMethod("box").invoke(entry));
+                    if (rest != null) {
+                        rested.add(stack.getItem() + " by Rest." + rest);
+                    }
+                }
             } catch (ReflectiveOperationException e) {
                 return e.toString();
             }
+            return rested.isEmpty() ? null : String.valueOf(rested);
         });
     }
 

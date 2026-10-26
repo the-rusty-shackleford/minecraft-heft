@@ -37,6 +37,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.world.item.ItemDisplayContext;
+import org.joml.Vector3f;
 import org.slf4j.Logger;
 
 /**
@@ -98,7 +99,9 @@ public final class ShapeLibrary {
             if (e.rotation == null) {
                 elements.add(Element.of(from, to));
             } else {
-                elements.add(new Element(from, to, new double[] {e.rotation.origin().x(), e.rotation.origin().y(), e.rotation.origin().z()},
+                // The game's model reader keeps a turn's origin in blocks (it scales the file's sixteenths by 1/16).
+                Vector3f o = e.rotation.origin();
+                elements.add(new Element(from, to, new double[] {o.x() * 16.0, o.y() * 16.0, o.z() * 16.0},
                         e.rotation.axis().ordinal(), e.rotation.angle(), e.rotation.rescale()));
             }
         }

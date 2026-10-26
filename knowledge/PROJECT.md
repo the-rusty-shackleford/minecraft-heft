@@ -24,7 +24,21 @@ AGPL-3.0-or-later, `com.chunkworks.heft`. Client-side: on a server the jar only 
 - **Shared tools**: `minecraft mods/tools/pbr/` (measure, LabPBR encoding and range checks, noise),
   lifted from Survivalist Armor's art pipeline.
 
-## Status: phase 0 (skeleton and spikes) done 2026-10-25, unreleased, no remote
+## Status: phase 1 (metals and minerals) built 2026-10-25, unreleased, no remote
+
+**Phase 1**: eight classes (ingot, nugget, bar, raw, lump, gem, shard, dust) over 41 items, vanilla and
+every mod in the pack whose materials these are (Create's brass and zinc, steel, voidsteel, galestone,
+rose quartz, Subterranean Wilds' coal shard). Both booths pass 12 checks over the 40 present in the
+booth's game (Create, galestone, voidsteel and Metals and Materials added to it): every one drawn
+whole on Heft's atlas in every view, in all 42 frames and in Set It Down's displays; 0 canon breaches as
+the game reads the shapes. Photos: `run/gpubooth/screenshots/` (Complementary, Pixlli beside).
+- Fixed on the way: the game keeps an element turn's origin in blocks, so `ShapeLibrary` read it 16
+  times too small and the report showed false breaches (the booth now checks the canon as the game
+  reads it); the left-hand displays were mirrored twice (the game mirrors them itself); a selected
+  hotbar slot set on the server never reaches the client (the booth puts what it holds in slot 0).
+- Not yet seen: the mod items in the real pack with Rusty's packs; anything by Rusty or nfx.
+
+## Phase 0 (skeleton and spikes) done 2026-10-25
 
 Built: the domain layer (`Box`, `Turn`, `Element`, `Shape`, `Canon`, 20 JUnit tests); the client
 (`HeftAtlas`, `ShapeLibrary`, `SolidModel`, `HeftClient`, `Report`, `/heft inspect`, `HeftConfig` on

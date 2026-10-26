@@ -28,7 +28,28 @@ ASSETS = HERE.parents[1] / "src" / "main" / "resources" / "assets" / "heft"
 
 # item -> (class, material). Every item of a class is its class's boxes in its material (D-0003).
 ITEMS: dict[str, tuple[str, str]] = {
-    "minecraft:iron_ingot": ("ingot", "iron"),
+    # Phase 1: metals and minerals, vanilla and every mod in the pack.
+    "minecraft:iron_ingot": ("ingot", "iron"), "minecraft:gold_ingot": ("ingot", "gold"),
+    "minecraft:copper_ingot": ("ingot", "copper"), "minecraft:netherite_ingot": ("ingot", "netherite"),
+    "create:brass_ingot": ("ingot", "brass"), "create:zinc_ingot": ("ingot", "zinc"),
+    "metalsandmaterials:steel_ingot": ("ingot", "steel"), "voidsteel:voidsteel_ingot": ("ingot", "voidsteel"),
+    "minecraft:iron_nugget": ("nugget", "iron"), "minecraft:gold_nugget": ("nugget", "gold"),
+    "create:copper_nugget": ("nugget", "copper"), "create:brass_nugget": ("nugget", "brass"),
+    "create:zinc_nugget": ("nugget", "zinc"), "metalsandmaterials:steel_nugget": ("nugget", "steel"),
+    "minecraft:raw_iron": ("raw", "raw_iron"), "minecraft:raw_gold": ("raw", "raw_gold"),
+    "minecraft:raw_copper": ("raw", "raw_copper"), "create:raw_zinc": ("raw", "raw_zinc"),
+    "voidsteel:raw_voidsteel": ("raw", "raw_voidsteel"), "galestone:raw_galestone": ("raw", "raw_galestone"),
+    "minecraft:diamond": ("gem", "diamond"), "minecraft:emerald": ("gem", "emerald"),
+    "create:rose_quartz": ("gem", "rose_quartz"), "galestone:galestone_crystal": ("gem", "galestone"),
+    "minecraft:amethyst_shard": ("shard", "amethyst"), "minecraft:prismarine_shard": ("shard", "prismarine"),
+    "minecraft:echo_shard": ("shard", "echo"), "minecraft:quartz": ("shard", "quartz"),
+    "subwild:coal_shard": ("shard", "coal_shard"),
+    "minecraft:redstone": ("dust", "redstone"), "minecraft:glowstone_dust": ("dust", "glowstone"),
+    "minecraft:gunpowder": ("dust", "gunpowder"), "minecraft:sugar": ("dust", "sugar"),
+    "minecraft:bone_meal": ("dust", "bone_meal"), "minecraft:blaze_powder": ("dust", "blaze_powder"),
+    "minecraft:coal": ("lump", "coal"), "minecraft:charcoal": ("lump", "charcoal"),
+    "minecraft:lapis_lazuli": ("lump", "lapis"), "minecraft:netherite_scrap": ("lump", "netherite_scrap"),
+    "minecraft:brick": ("bar", "brick"), "minecraft:nether_brick": ("bar", "nether_brick"),
 }
 
 NORMAL_STRENGTH = 30.0  # a 4-level-per-texel bevel tilts its normal about 25 degrees; the face's own noise about 7
@@ -44,8 +65,10 @@ def sheet(klass: Klass, material: paint.Material):
     nx = np.zeros(shape)
     ny = np.zeros(shape)
     smooth = np.zeros(shape)
+    emission = np.zeros(shape)
     filled = np.zeros(shape, dtype=bool)
     f0 = material.f0
+    porosity = 0
     for (role, w, h), p in laid.items():
         x0, y0 = round(p.u * PPU), round(p.v * PPU)
         pw, ph = round(w * PPU), round(h * PPU)
@@ -55,18 +78,21 @@ def sheet(klass: Klass, material: paint.Material):
         height[sl] = layers.height
         ao[sl] = layers.ao
         smooth[sl] = layers.smooth
+        porosity = layers.porosity
+        if layers.emission is not None:
+            emission[sl] = layers.emission
         pnx, pny = labpbr.normals(layers.height, NORMAL_STRENGTH)
         nx[sl], ny[sl] = pnx, pny
         filled[sl] = True
     steps = int(GAP * PPU)
-    for a in (height, ao, nx, ny, smooth):
+    for a in (height, ao, nx, ny, smooth, emission):
         a[...] = labpbr.spread(a, filled, steps)
     for c in range(3):
         albedo[..., c] = labpbr.spread(albedo[..., c], filled, steps)
     rgba = np.zeros(shape + (4,), dtype=np.uint8)
     rgba[..., :3] = np.clip(np.round(albedo * 255), 0, 255)
     rgba[..., 3] = np.where(filled, 255, 0)
-    return rgba, labpbr.encode_n(nx, ny, ao, height), labpbr.encode_s(smooth, f0), (tall, laid), filled
+    return rgba, labpbr.encode_n(nx, ny, ao, height), labpbr.encode_s(smooth, f0, porosity, emission if material.glows else None), (tall, laid), filled
 
 
 def shape_json(item: str, klass: Klass, material: str, sheet_laid) -> dict:

@@ -4,7 +4,7 @@
     uv run --no-project --with numpy --with pillow python devtools/booth/loud.py
 
 Writes, into the test mod's resources only (never shipped), a copy of the iron ingot's sheet with the
-same colour and _s but an _n of strong diagonal ridges and grooves in height, put on the gold ingot. Under
+same colour and _s but an _n of strong diagonal ridges and grooves in height, put on flint. Under
 Iris with a LabPBR shader the twin shows ridges where the iron ingot is smooth if, and only if, the maps
 are read; with shaders off the two look the same.
 """
@@ -39,7 +39,7 @@ shape = json.loads((MAIN / "shapes/minecraft/iron_ingot.json").read_text())
 shape["textures"] = {"0": "heft:solid/booth/loud_ingot", "particle": "heft:solid/booth/loud_ingot"}
 shape["heft"]["material"] = "loud"
 (TEST / "shapes/minecraft").mkdir(parents=True, exist_ok=True)
-(TEST / "shapes/minecraft/gold_ingot.json").write_text(json.dumps(shape, indent=1) + "\n")
+(TEST / "shapes/minecraft/flint.json").write_text(json.dumps(shape, indent=1) + "\n")
 (TEST / "atlases").mkdir(parents=True, exist_ok=True)
 (TEST / "atlases/items.json").write_text(json.dumps({"sources": [{"type": "single", "resource": "heft:solid/booth/loud_ingot"}]}, indent=1) + "\n")
-print("wrote the loud twin on minecraft:gold_ingot")
+print("wrote the loud twin on minecraft:flint")

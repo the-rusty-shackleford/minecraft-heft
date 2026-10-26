@@ -11,7 +11,8 @@
 Both carry the mods that touch how an item is drawn:
 - Modefite and 3D Default, the other models an item may have (Heft must win where it draws);
 - ImmediatelyFast, which batches the inventory's items, and EMI, whose grid draws hundreds;
-- Hold My Items (first person); Set It Down, which measures and lays items down.
+- Hold My Items (first person); Set It Down, which measures and lays items down;
+- Create, galestone, voidsteel and Metals and Materials, whose ingots, nuggets and ores Heft draws.
 
 Mods and packs come from the published pack on the Mod Hub, checked against its sha1s; override jars
 and folders from its overrides. Then the options and Iris's settings are written, the resource packs in
@@ -29,7 +30,8 @@ from pathlib import Path
 HUB = "http://192.168.0.203:8080/pack.mrpack"
 REPO = Path(__file__).resolve().parents[2]
 PRISM = Path.home() / ".var/app/org.prismlauncher.PrismLauncher/data/PrismLauncher/instances/Minecraft/minecraft"
-MODS = ("iris-neoforge", "sodium-neoforge", "modefite", "ImmediatelyFast", "emi-", "holdmyitems", "setitdown")
+MODS = ("iris-neoforge", "sodium-neoforge", "modefite", "ImmediatelyFast", "emi-", "holdmyitems", "setitdown",
+        "create-", "galestone", "voidsteel", "metalsandmaterials")
 SHADER = "ComplementaryUnbound_r5.8.1.zip"
 # Lowest priority first, as options.txt lists them.
 PACKS = ["3D Default 1.20+ v1.15.0.zip"]

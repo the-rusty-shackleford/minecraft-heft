@@ -2,7 +2,167 @@
  "sources": [
   {
    "type": "single",
+   "resource": "heft:solid/create/brass_ingot"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/create/brass_nugget"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/create/copper_nugget"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/create/raw_zinc"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/create/rose_quartz"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/create/zinc_ingot"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/create/zinc_nugget"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/galestone/galestone_crystal"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/galestone/raw_galestone"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/metalsandmaterials/steel_ingot"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/metalsandmaterials/steel_nugget"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/amethyst_shard"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/blaze_powder"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/bone_meal"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/brick"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/charcoal"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/coal"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/copper_ingot"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/diamond"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/echo_shard"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/emerald"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/glowstone_dust"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/gold_ingot"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/gold_nugget"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/gunpowder"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/minecraft/iron_ingot"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/iron_nugget"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/lapis_lazuli"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/nether_brick"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/netherite_ingot"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/netherite_scrap"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/prismarine_shard"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/quartz"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/raw_copper"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/raw_gold"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/raw_iron"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/redstone"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/sugar"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/subwild/coal_shard"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/voidsteel/raw_voidsteel"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/voidsteel/voidsteel_ingot"
   }
  ]
 }
