@@ -162,6 +162,37 @@ def shape_json(item: str, klass: Klass, material: str, sheet_laid) -> dict:
     return {"heft": meta, "textures": {"0": sprite, "particle": sprite}, "elements": elements, "display": display}
 
 
+# How Set It Down shares a spot between several of a class (the handoff's §4.4): flat things climb in a pile,
+# lumpy things spread in a cluster; a class not named here is one to a spot.
+STACKING = {
+    "ingot": "pile", "nugget": "pile", "bar": "pile", "plate": "pile", "book": "pile", "record": "pile", "rod": "pile",
+    "steak": "pile", "disc": "pile", "loaf": "pile", "pie": "pile", "pie_slice": "pile", "stack": "pile",
+    "raw": "cluster", "lump": "cluster", "gem": "cluster", "shard": "cluster", "dust": "cluster", "orb": "cluster",
+    "fruit": "cluster", "egg": "cluster", "berries": "cluster", "tuber": "cluster", "root": "cluster",
+    "drumstick": "cluster", "fish": "cluster",
+}
+TAGS = ASSETS.parents[1] / "data" / "setitdown" / "tags" / "item"
+
+
+def write_tags() -> dict[str, list[str]]:
+    """effects: writes Set It Down's size and stacking tags for every item by its class (data/setitdown/tags/item),
+    each entry not required, so an item of a mod the pack lacks is skipped; returns the tags' members"""
+    members: dict[str, list[str]] = {}
+    for item, (class_name, _) in sorted(ITEMS.items()):
+        if item.startswith("_kind:"):
+            continue
+        klass = CLASSES[class_name]()
+        if klass.size:
+            members.setdefault(f"size/{klass.size}", []).append(item)
+        if class_name in STACKING:
+            members.setdefault(f"stackable_{STACKING[class_name]}", []).append(item)
+    for tag, items in members.items():
+        out = TAGS / f"{tag}.json"
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(json.dumps({"replace": False, "values": [{"id": i, "required": False} for i in items]}, indent=1) + "\n")
+    return members
+
+
 def main() -> None:
     sprites = []
     for item, (class_name, material_name) in ITEMS.items():
@@ -184,6 +215,8 @@ def main() -> None:
     sources = [{"type": "single", "resource": r} for r in sorted(sprites)] + [{"type": "directory", "source": "gen", "prefix": "gen/"}]
     atlas.write_text(json.dumps({"sources": sources}, indent=1) + "\n")
     print("wrote", atlas, len(sprites), "sprites")
+    tags = write_tags()
+    print("wrote Set It Down's tags:", {k: len(v) for k, v in sorted(tags.items())})
 
 
 if __name__ == "__main__":

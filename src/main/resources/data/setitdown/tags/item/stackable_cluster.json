@@ -1,0 +1,321 @@
+{
+ "replace": false,
+ "values": [
+  {
+   "id": "create:raw_zinc",
+   "required": false
+  },
+  {
+   "id": "create:rose_quartz",
+   "required": false
+  },
+  {
+   "id": "farmersdelight:chicken_cuts",
+   "required": false
+  },
+  {
+   "id": "farmersdelight:cooked_chicken_cuts",
+   "required": false
+  },
+  {
+   "id": "galestone:galestone_crystal",
+   "required": false
+  },
+  {
+   "id": "galestone:raw_galestone",
+   "required": false
+  },
+  {
+   "id": "minecraft:amethyst_shard",
+   "required": false
+  },
+  {
+   "id": "minecraft:apple",
+   "required": false
+  },
+  {
+   "id": "minecraft:baked_potato",
+   "required": false
+  },
+  {
+   "id": "minecraft:beetroot",
+   "required": false
+  },
+  {
+   "id": "minecraft:black_dye",
+   "required": false
+  },
+  {
+   "id": "minecraft:blaze_powder",
+   "required": false
+  },
+  {
+   "id": "minecraft:blue_dye",
+   "required": false
+  },
+  {
+   "id": "minecraft:bone_meal",
+   "required": false
+  },
+  {
+   "id": "minecraft:brown_dye",
+   "required": false
+  },
+  {
+   "id": "minecraft:carrot",
+   "required": false
+  },
+  {
+   "id": "minecraft:charcoal",
+   "required": false
+  },
+  {
+   "id": "minecraft:chicken",
+   "required": false
+  },
+  {
+   "id": "minecraft:chorus_fruit",
+   "required": false
+  },
+  {
+   "id": "minecraft:clay_ball",
+   "required": false
+  },
+  {
+   "id": "minecraft:coal",
+   "required": false
+  },
+  {
+   "id": "minecraft:cod",
+   "required": false
+  },
+  {
+   "id": "minecraft:cooked_chicken",
+   "required": false
+  },
+  {
+   "id": "minecraft:cooked_cod",
+   "required": false
+  },
+  {
+   "id": "minecraft:cooked_rabbit",
+   "required": false
+  },
+  {
+   "id": "minecraft:cooked_salmon",
+   "required": false
+  },
+  {
+   "id": "minecraft:cyan_dye",
+   "required": false
+  },
+  {
+   "id": "minecraft:diamond",
+   "required": false
+  },
+  {
+   "id": "minecraft:echo_shard",
+   "required": false
+  },
+  {
+   "id": "minecraft:egg",
+   "required": false
+  },
+  {
+   "id": "minecraft:emerald",
+   "required": false
+  },
+  {
+   "id": "minecraft:enchanted_golden_apple",
+   "required": false
+  },
+  {
+   "id": "minecraft:ender_eye",
+   "required": false
+  },
+  {
+   "id": "minecraft:ender_pearl",
+   "required": false
+  },
+  {
+   "id": "minecraft:fermented_spider_eye",
+   "required": false
+  },
+  {
+   "id": "minecraft:fire_charge",
+   "required": false
+  },
+  {
+   "id": "minecraft:firework_star",
+   "required": false
+  },
+  {
+   "id": "minecraft:glow_berries",
+   "required": false
+  },
+  {
+   "id": "minecraft:glowstone_dust",
+   "required": false
+  },
+  {
+   "id": "minecraft:golden_apple",
+   "required": false
+  },
+  {
+   "id": "minecraft:golden_carrot",
+   "required": false
+  },
+  {
+   "id": "minecraft:gray_dye",
+   "required": false
+  },
+  {
+   "id": "minecraft:green_dye",
+   "required": false
+  },
+  {
+   "id": "minecraft:gunpowder",
+   "required": false
+  },
+  {
+   "id": "minecraft:heart_of_the_sea",
+   "required": false
+  },
+  {
+   "id": "minecraft:lapis_lazuli",
+   "required": false
+  },
+  {
+   "id": "minecraft:light_blue_dye",
+   "required": false
+  },
+  {
+   "id": "minecraft:light_gray_dye",
+   "required": false
+  },
+  {
+   "id": "minecraft:lime_dye",
+   "required": false
+  },
+  {
+   "id": "minecraft:magenta_dye",
+   "required": false
+  },
+  {
+   "id": "minecraft:magma_cream",
+   "required": false
+  },
+  {
+   "id": "minecraft:netherite_scrap",
+   "required": false
+  },
+  {
+   "id": "minecraft:orange_dye",
+   "required": false
+  },
+  {
+   "id": "minecraft:pink_dye",
+   "required": false
+  },
+  {
+   "id": "minecraft:poisonous_potato",
+   "required": false
+  },
+  {
+   "id": "minecraft:popped_chorus_fruit",
+   "required": false
+  },
+  {
+   "id": "minecraft:potato",
+   "required": false
+  },
+  {
+   "id": "minecraft:prismarine_shard",
+   "required": false
+  },
+  {
+   "id": "minecraft:pufferfish",
+   "required": false
+  },
+  {
+   "id": "minecraft:purple_dye",
+   "required": false
+  },
+  {
+   "id": "minecraft:quartz",
+   "required": false
+  },
+  {
+   "id": "minecraft:rabbit",
+   "required": false
+  },
+  {
+   "id": "minecraft:raw_copper",
+   "required": false
+  },
+  {
+   "id": "minecraft:raw_gold",
+   "required": false
+  },
+  {
+   "id": "minecraft:raw_iron",
+   "required": false
+  },
+  {
+   "id": "minecraft:red_dye",
+   "required": false
+  },
+  {
+   "id": "minecraft:redstone",
+   "required": false
+  },
+  {
+   "id": "minecraft:salmon",
+   "required": false
+  },
+  {
+   "id": "minecraft:slime_ball",
+   "required": false
+  },
+  {
+   "id": "minecraft:snowball",
+   "required": false
+  },
+  {
+   "id": "minecraft:spider_eye",
+   "required": false
+  },
+  {
+   "id": "minecraft:sugar",
+   "required": false
+  },
+  {
+   "id": "minecraft:sweet_berries",
+   "required": false
+  },
+  {
+   "id": "minecraft:tropical_fish",
+   "required": false
+  },
+  {
+   "id": "minecraft:white_dye",
+   "required": false
+  },
+  {
+   "id": "minecraft:wind_charge",
+   "required": false
+  },
+  {
+   "id": "minecraft:yellow_dye",
+   "required": false
+  },
+  {
+   "id": "subwild:coal_shard",
+   "required": false
+  },
+  {
+   "id": "voidsteel:raw_voidsteel",
+   "required": false
+  }
+ ]
+}

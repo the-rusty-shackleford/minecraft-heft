@@ -1,0 +1,181 @@
+{
+ "replace": false,
+ "values": [
+  {
+   "id": "create:brass_nugget",
+   "required": false
+  },
+  {
+   "id": "create:copper_nugget",
+   "required": false
+  },
+  {
+   "id": "create:zinc_nugget",
+   "required": false
+  },
+  {
+   "id": "farmersdelight:honey_cookie",
+   "required": false
+  },
+  {
+   "id": "farmersdelight:sweet_berry_cookie",
+   "required": false
+  },
+  {
+   "id": "metalsandmaterials:steel_nugget",
+   "required": false
+  },
+  {
+   "id": "minecraft:black_dye",
+   "required": false
+  },
+  {
+   "id": "minecraft:blaze_powder",
+   "required": false
+  },
+  {
+   "id": "minecraft:blue_dye",
+   "required": false
+  },
+  {
+   "id": "minecraft:bone_meal",
+   "required": false
+  },
+  {
+   "id": "minecraft:brown_dye",
+   "required": false
+  },
+  {
+   "id": "minecraft:clay_ball",
+   "required": false
+  },
+  {
+   "id": "minecraft:cookie",
+   "required": false
+  },
+  {
+   "id": "minecraft:cyan_dye",
+   "required": false
+  },
+  {
+   "id": "minecraft:egg",
+   "required": false
+  },
+  {
+   "id": "minecraft:ender_eye",
+   "required": false
+  },
+  {
+   "id": "minecraft:ender_pearl",
+   "required": false
+  },
+  {
+   "id": "minecraft:fire_charge",
+   "required": false
+  },
+  {
+   "id": "minecraft:firework_star",
+   "required": false
+  },
+  {
+   "id": "minecraft:glow_berries",
+   "required": false
+  },
+  {
+   "id": "minecraft:glowstone_dust",
+   "required": false
+  },
+  {
+   "id": "minecraft:gold_nugget",
+   "required": false
+  },
+  {
+   "id": "minecraft:gray_dye",
+   "required": false
+  },
+  {
+   "id": "minecraft:green_dye",
+   "required": false
+  },
+  {
+   "id": "minecraft:gunpowder",
+   "required": false
+  },
+  {
+   "id": "minecraft:heart_of_the_sea",
+   "required": false
+  },
+  {
+   "id": "minecraft:iron_nugget",
+   "required": false
+  },
+  {
+   "id": "minecraft:light_blue_dye",
+   "required": false
+  },
+  {
+   "id": "minecraft:light_gray_dye",
+   "required": false
+  },
+  {
+   "id": "minecraft:lime_dye",
+   "required": false
+  },
+  {
+   "id": "minecraft:magenta_dye",
+   "required": false
+  },
+  {
+   "id": "minecraft:magma_cream",
+   "required": false
+  },
+  {
+   "id": "minecraft:orange_dye",
+   "required": false
+  },
+  {
+   "id": "minecraft:pink_dye",
+   "required": false
+  },
+  {
+   "id": "minecraft:purple_dye",
+   "required": false
+  },
+  {
+   "id": "minecraft:red_dye",
+   "required": false
+  },
+  {
+   "id": "minecraft:redstone",
+   "required": false
+  },
+  {
+   "id": "minecraft:slime_ball",
+   "required": false
+  },
+  {
+   "id": "minecraft:snowball",
+   "required": false
+  },
+  {
+   "id": "minecraft:sugar",
+   "required": false
+  },
+  {
+   "id": "minecraft:sweet_berries",
+   "required": false
+  },
+  {
+   "id": "minecraft:white_dye",
+   "required": false
+  },
+  {
+   "id": "minecraft:wind_charge",
+   "required": false
+  },
+  {
+   "id": "minecraft:yellow_dye",
+   "required": false
+  }
+ ]
+}

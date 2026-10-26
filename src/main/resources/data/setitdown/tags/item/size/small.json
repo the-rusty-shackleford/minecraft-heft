@@ -1,0 +1,605 @@
+{
+ "replace": false,
+ "values": [
+  {
+   "id": "alexsmobs:kangaroo_hide",
+   "required": false
+  },
+  {
+   "id": "create:brass_ingot",
+   "required": false
+  },
+  {
+   "id": "create:raw_zinc",
+   "required": false
+  },
+  {
+   "id": "create:rose_quartz",
+   "required": false
+  },
+  {
+   "id": "create:zinc_ingot",
+   "required": false
+  },
+  {
+   "id": "farmersdelight:bacon_sandwich",
+   "required": false
+  },
+  {
+   "id": "farmersdelight:chicken_cuts",
+   "required": false
+  },
+  {
+   "id": "farmersdelight:chicken_sandwich",
+   "required": false
+  },
+  {
+   "id": "farmersdelight:cod_slice",
+   "required": false
+  },
+  {
+   "id": "farmersdelight:cooked_chicken_cuts",
+   "required": false
+  },
+  {
+   "id": "farmersdelight:cooked_cod_slice",
+   "required": false
+  },
+  {
+   "id": "farmersdelight:cooked_salmon_slice",
+   "required": false
+  },
+  {
+   "id": "farmersdelight:egg_sandwich",
+   "required": false
+  },
+  {
+   "id": "farmersdelight:minced_beef",
+   "required": false
+  },
+  {
+   "id": "farmersdelight:pumpkin_pie_slice",
+   "required": false
+  },
+  {
+   "id": "farmersdelight:pumpkin_slice",
+   "required": false
+  },
+  {
+   "id": "farmersdelight:salmon_slice",
+   "required": false
+  },
+  {
+   "id": "galestone:galestone_crystal",
+   "required": false
+  },
+  {
+   "id": "galestone:raw_galestone",
+   "required": false
+  },
+  {
+   "id": "metalsandmaterials:steel_ingot",
+   "required": false
+  },
+  {
+   "id": "minecraft:amethyst_shard",
+   "required": false
+  },
+  {
+   "id": "minecraft:angler_pottery_sherd",
+   "required": false
+  },
+  {
+   "id": "minecraft:apple",
+   "required": false
+  },
+  {
+   "id": "minecraft:archer_pottery_sherd",
+   "required": false
+  },
+  {
+   "id": "minecraft:arms_up_pottery_sherd",
+   "required": false
+  },
+  {
+   "id": "minecraft:arrow",
+   "required": false
+  },
+  {
+   "id": "minecraft:axolotl_bucket",
+   "required": false
+  },
+  {
+   "id": "minecraft:baked_potato",
+   "required": false
+  },
+  {
+   "id": "minecraft:beef",
+   "required": false
+  },
+  {
+   "id": "minecraft:beetroot",
+   "required": false
+  },
+  {
+   "id": "minecraft:blade_pottery_sherd",
+   "required": false
+  },
+  {
+   "id": "minecraft:blaze_rod",
+   "required": false
+  },
+  {
+   "id": "minecraft:bone",
+   "required": false
+  },
+  {
+   "id": "minecraft:bread",
+   "required": false
+  },
+  {
+   "id": "minecraft:breeze_rod",
+   "required": false
+  },
+  {
+   "id": "minecraft:brewer_pottery_sherd",
+   "required": false
+  },
+  {
+   "id": "minecraft:brick",
+   "required": false
+  },
+  {
+   "id": "minecraft:bucket",
+   "required": false
+  },
+  {
+   "id": "minecraft:burn_pottery_sherd",
+   "required": false
+  },
+  {
+   "id": "minecraft:carrot",
+   "required": false
+  },
+  {
+   "id": "minecraft:charcoal",
+   "required": false
+  },
+  {
+   "id": "minecraft:chicken",
+   "required": false
+  },
+  {
+   "id": "minecraft:chorus_fruit",
+   "required": false
+  },
+  {
+   "id": "minecraft:coal",
+   "required": false
+  },
+  {
+   "id": "minecraft:cod_bucket",
+   "required": false
+  },
+  {
+   "id": "minecraft:cooked_beef",
+   "required": false
+  },
+  {
+   "id": "minecraft:cooked_chicken",
+   "required": false
+  },
+  {
+   "id": "minecraft:cooked_mutton",
+   "required": false
+  },
+  {
+   "id": "minecraft:cooked_porkchop",
+   "required": false
+  },
+  {
+   "id": "minecraft:cooked_rabbit",
+   "required": false
+  },
+  {
+   "id": "minecraft:copper_ingot",
+   "required": false
+  },
+  {
+   "id": "minecraft:creeper_banner_pattern",
+   "required": false
+  },
+  {
+   "id": "minecraft:danger_pottery_sherd",
+   "required": false
+  },
+  {
+   "id": "minecraft:diamond",
+   "required": false
+  },
+  {
+   "id": "minecraft:dried_kelp",
+   "required": false
+  },
+  {
+   "id": "minecraft:echo_shard",
+   "required": false
+  },
+  {
+   "id": "minecraft:emerald",
+   "required": false
+  },
+  {
+   "id": "minecraft:enchanted_golden_apple",
+   "required": false
+  },
+  {
+   "id": "minecraft:explorer_pottery_sherd",
+   "required": false
+  },
+  {
+   "id": "minecraft:fermented_spider_eye",
+   "required": false
+  },
+  {
+   "id": "minecraft:firework_rocket",
+   "required": false
+  },
+  {
+   "id": "minecraft:flow_banner_pattern",
+   "required": false
+  },
+  {
+   "id": "minecraft:flow_pottery_sherd",
+   "required": false
+  },
+  {
+   "id": "minecraft:flower_banner_pattern",
+   "required": false
+  },
+  {
+   "id": "minecraft:friend_pottery_sherd",
+   "required": false
+  },
+  {
+   "id": "minecraft:glistering_melon_slice",
+   "required": false
+  },
+  {
+   "id": "minecraft:globe_banner_pattern",
+   "required": false
+  },
+  {
+   "id": "minecraft:goat_horn",
+   "required": false
+  },
+  {
+   "id": "minecraft:gold_ingot",
+   "required": false
+  },
+  {
+   "id": "minecraft:golden_apple",
+   "required": false
+  },
+  {
+   "id": "minecraft:golden_carrot",
+   "required": false
+  },
+  {
+   "id": "minecraft:guster_banner_pattern",
+   "required": false
+  },
+  {
+   "id": "minecraft:guster_pottery_sherd",
+   "required": false
+  },
+  {
+   "id": "minecraft:heart_pottery_sherd",
+   "required": false
+  },
+  {
+   "id": "minecraft:heartbreak_pottery_sherd",
+   "required": false
+  },
+  {
+   "id": "minecraft:howl_pottery_sherd",
+   "required": false
+  },
+  {
+   "id": "minecraft:iron_ingot",
+   "required": false
+  },
+  {
+   "id": "minecraft:lapis_lazuli",
+   "required": false
+  },
+  {
+   "id": "minecraft:lava_bucket",
+   "required": false
+  },
+  {
+   "id": "minecraft:leather",
+   "required": false
+  },
+  {
+   "id": "minecraft:map",
+   "required": false
+  },
+  {
+   "id": "minecraft:melon_slice",
+   "required": false
+  },
+  {
+   "id": "minecraft:milk_bucket",
+   "required": false
+  },
+  {
+   "id": "minecraft:miner_pottery_sherd",
+   "required": false
+  },
+  {
+   "id": "minecraft:mojang_banner_pattern",
+   "required": false
+  },
+  {
+   "id": "minecraft:mourner_pottery_sherd",
+   "required": false
+  },
+  {
+   "id": "minecraft:music_disc_11",
+   "required": false
+  },
+  {
+   "id": "minecraft:music_disc_13",
+   "required": false
+  },
+  {
+   "id": "minecraft:music_disc_5",
+   "required": false
+  },
+  {
+   "id": "minecraft:music_disc_blocks",
+   "required": false
+  },
+  {
+   "id": "minecraft:music_disc_bounce",
+   "required": false
+  },
+  {
+   "id": "minecraft:music_disc_cat",
+   "required": false
+  },
+  {
+   "id": "minecraft:music_disc_chirp",
+   "required": false
+  },
+  {
+   "id": "minecraft:music_disc_creator",
+   "required": false
+  },
+  {
+   "id": "minecraft:music_disc_creator_music_box",
+   "required": false
+  },
+  {
+   "id": "minecraft:music_disc_far",
+   "required": false
+  },
+  {
+   "id": "minecraft:music_disc_lava_chicken",
+   "required": false
+  },
+  {
+   "id": "minecraft:music_disc_mall",
+   "required": false
+  },
+  {
+   "id": "minecraft:music_disc_mellohi",
+   "required": false
+  },
+  {
+   "id": "minecraft:music_disc_otherside",
+   "required": false
+  },
+  {
+   "id": "minecraft:music_disc_pigstep",
+   "required": false
+  },
+  {
+   "id": "minecraft:music_disc_precipice",
+   "required": false
+  },
+  {
+   "id": "minecraft:music_disc_relic",
+   "required": false
+  },
+  {
+   "id": "minecraft:music_disc_stal",
+   "required": false
+  },
+  {
+   "id": "minecraft:music_disc_strad",
+   "required": false
+  },
+  {
+   "id": "minecraft:music_disc_tears",
+   "required": false
+  },
+  {
+   "id": "minecraft:music_disc_wait",
+   "required": false
+  },
+  {
+   "id": "minecraft:music_disc_ward",
+   "required": false
+  },
+  {
+   "id": "minecraft:mutton",
+   "required": false
+  },
+  {
+   "id": "minecraft:nether_brick",
+   "required": false
+  },
+  {
+   "id": "minecraft:nether_star",
+   "required": false
+  },
+  {
+   "id": "minecraft:netherite_ingot",
+   "required": false
+  },
+  {
+   "id": "minecraft:netherite_scrap",
+   "required": false
+  },
+  {
+   "id": "minecraft:paper",
+   "required": false
+  },
+  {
+   "id": "minecraft:phantom_membrane",
+   "required": false
+  },
+  {
+   "id": "minecraft:piglin_banner_pattern",
+   "required": false
+  },
+  {
+   "id": "minecraft:plenty_pottery_sherd",
+   "required": false
+  },
+  {
+   "id": "minecraft:poisonous_potato",
+   "required": false
+  },
+  {
+   "id": "minecraft:popped_chorus_fruit",
+   "required": false
+  },
+  {
+   "id": "minecraft:porkchop",
+   "required": false
+  },
+  {
+   "id": "minecraft:potato",
+   "required": false
+  },
+  {
+   "id": "minecraft:powder_snow_bucket",
+   "required": false
+  },
+  {
+   "id": "minecraft:prismarine_shard",
+   "required": false
+  },
+  {
+   "id": "minecraft:prize_pottery_sherd",
+   "required": false
+  },
+  {
+   "id": "minecraft:pufferfish_bucket",
+   "required": false
+  },
+  {
+   "id": "minecraft:quartz",
+   "required": false
+  },
+  {
+   "id": "minecraft:rabbit",
+   "required": false
+  },
+  {
+   "id": "minecraft:rabbit_hide",
+   "required": false
+  },
+  {
+   "id": "minecraft:raw_copper",
+   "required": false
+  },
+  {
+   "id": "minecraft:raw_gold",
+   "required": false
+  },
+  {
+   "id": "minecraft:raw_iron",
+   "required": false
+  },
+  {
+   "id": "minecraft:rotten_flesh",
+   "required": false
+  },
+  {
+   "id": "minecraft:salmon_bucket",
+   "required": false
+  },
+  {
+   "id": "minecraft:scrape_pottery_sherd",
+   "required": false
+  },
+  {
+   "id": "minecraft:sheaf_pottery_sherd",
+   "required": false
+  },
+  {
+   "id": "minecraft:shelter_pottery_sherd",
+   "required": false
+  },
+  {
+   "id": "minecraft:skull_banner_pattern",
+   "required": false
+  },
+  {
+   "id": "minecraft:skull_pottery_sherd",
+   "required": false
+  },
+  {
+   "id": "minecraft:snort_pottery_sherd",
+   "required": false
+  },
+  {
+   "id": "minecraft:spectral_arrow",
+   "required": false
+  },
+  {
+   "id": "minecraft:spider_eye",
+   "required": false
+  },
+  {
+   "id": "minecraft:stick",
+   "required": false
+  },
+  {
+   "id": "minecraft:tadpole_bucket",
+   "required": false
+  },
+  {
+   "id": "minecraft:tipped_arrow",
+   "required": false
+  },
+  {
+   "id": "minecraft:totem_of_undying",
+   "required": false
+  },
+  {
+   "id": "minecraft:tropical_fish_bucket",
+   "required": false
+  },
+  {
+   "id": "minecraft:water_bucket",
+   "required": false
+  },
+  {
+   "id": "subwild:coal_shard",
+   "required": false
+  },
+  {
+   "id": "voidsteel:raw_voidsteel",
+   "required": false
+  },
+  {
+   "id": "voidsteel:voidsteel_ingot",
+   "required": false
+  }
+ ]
+}
