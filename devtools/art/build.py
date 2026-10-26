@@ -50,6 +50,22 @@ ITEMS: dict[str, tuple[str, str]] = {
     "minecraft:coal": ("lump", "coal"), "minecraft:charcoal": ("lump", "charcoal"),
     "minecraft:lapis_lazuli": ("lump", "lapis"), "minecraft:netherite_scrap": ("lump", "netherite_scrap"),
     "minecraft:brick": ("bar", "brick"), "minecraft:nether_brick": ("bar", "nether_brick"),
+    # Phase 3: rods, plates, books, signs, arrows.
+    "minecraft:stick": ("rod", "stick"), "minecraft:blaze_rod": ("rod", "blaze_rod"),
+    "minecraft:breeze_rod": ("rod", "breeze_rod"), "minecraft:bone": ("rod", "bone"),
+    "minecraft:paper": ("plate", "paper"), "minecraft:map": ("plate", "map_paper"), "minecraft:leather": ("plate", "leather"),
+    "minecraft:rabbit_hide": ("plate", "rabbit_hide"), "minecraft:phantom_membrane": ("plate", "phantom_membrane"),
+    "alexsmobs:kangaroo_hide": ("plate", "kangaroo_hide"),
+    "minecraft:book": ("book", "book"), "minecraft:writable_book": ("book", "writable_book"),
+    "minecraft:written_book": ("book", "written_book"), "minecraft:enchanted_book": ("book", "enchanted_book"),
+    "minecraft:knowledge_book": ("book", "knowledge_book"),
+    **{f"minecraft:{w}_sign": ("sign", f"{w}_wood") for w in ("oak", "spruce", "birch", "jungle", "acacia", "dark_oak", "mangrove",
+                                                              "cherry", "bamboo", "crimson", "warped", "pale_oak")},
+    **{f"minecraft:{w}_hanging_sign": ("hanging_sign", f"{w}_wood") for w in ("oak", "spruce", "birch", "jungle", "acacia", "dark_oak",
+                                                                              "mangrove", "cherry", "bamboo", "crimson", "warped", "pale_oak")},
+    "backport:poplar_sign": ("sign", "poplar_wood"), "backport:poplar_hanging_sign": ("hanging_sign", "poplar_wood"),
+    "minecraft:arrow": ("arrow", "arrow"), "minecraft:spectral_arrow": ("arrow", "spectral_arrow"),
+    "minecraft:tipped_arrow": ("arrow", "tipped_arrow"),
 }
 
 NORMAL_STRENGTH = 30.0  # a 4-level-per-texel bevel tilts its normal about 25 degrees; the face's own noise about 7
@@ -67,8 +83,8 @@ def sheet(klass: Klass, material: paint.Material):
     smooth = np.zeros(shape)
     emission = np.zeros(shape)
     filled = np.zeros(shape, dtype=bool)
-    f0 = material.f0
-    porosity = 0
+    f0 = np.full(shape, material.f0)
+    porosity = np.zeros(shape)
     for (role, w, h), p in laid.items():
         x0, y0 = round(p.u * PPU), round(p.v * PPU)
         pw, ph = round(w * PPU), round(h * PPU)
@@ -78,21 +94,30 @@ def sheet(klass: Klass, material: paint.Material):
         height[sl] = layers.height
         ao[sl] = layers.ao
         smooth[sl] = layers.smooth
-        porosity = layers.porosity
+        porosity[sl] = layers.porosity
+        f0[sl] = layers.f0
         if layers.emission is not None:
             emission[sl] = layers.emission
         pnx, pny = labpbr.normals(layers.height, NORMAL_STRENGTH)
         nx[sl], ny[sl] = pnx, pny
         filled[sl] = True
     steps = int(GAP * PPU)
-    for a in (height, ao, nx, ny, smooth, emission):
+    for a in (height, ao, nx, ny, smooth, emission, f0, porosity):
         a[...] = labpbr.spread(a, filled, steps)
     for c in range(3):
         albedo[..., c] = labpbr.spread(albedo[..., c], filled, steps)
     rgba = np.zeros(shape + (4,), dtype=np.uint8)
     rgba[..., :3] = np.clip(np.round(albedo * 255), 0, 255)
     rgba[..., 3] = np.where(filled, 255, 0)
-    return rgba, labpbr.encode_n(nx, ny, ao, height), labpbr.encode_s(smooth, f0, porosity, emission if material.glows else None), (tall, laid), filled
+    return rgba, labpbr.encode_n(nx, ny, ao, height), labpbr.encode_s(smooth, f0, porosity, emission if glows(material) else None), (tall, laid), filled
+
+
+def glows(material: paint.Material) -> bool:
+    """effects: returns whether material or any of its parts glows"""
+    return material.glows or any(paint.MATERIALS[m].glows for _, m in material.parts)
+
+
+TINTED = {"head"}  # roles drawn with tint index 0: a tipped arrow's head takes its potion's colour
 
 
 def shape_json(item: str, klass: Klass, material: str, sheet_laid) -> dict:
@@ -113,6 +138,8 @@ def shape_json(item: str, klass: Klass, material: str, sheet_laid) -> dict:
             w, h = box.face_size(d)
             p = laid[(role, w, h)]
             faces[d] = {"uv": [p.u, p.v * v, p.u + w, (p.v + h) * v], "texture": "#0"}
+            if role in TINTED:
+                faces[d]["tintindex"] = 0
         e = {"from": list(box.frm), "to": list(box.to), "faces": faces}
         if box.rotation:
             r = box.rotation

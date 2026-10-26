@@ -82,7 +82,7 @@ import org.slf4j.LoggerFactory;
  * and an ingot on a wall; three classes held in first person, and the third-person view; the inventory
  * full of them. Flint is the loud twin (devtools/booth/loud.py): the iron ingot's colour with ridged
  * LabPBR normals, which a shader shows only if it reads Heft's maps. Ten of the long tail (Tier B, D-0004)
- * in frames, on the ground and in the hotbar: a stick, food, a bow, tinted layers, thin things.
+ * in frames, on the ground and in the hotbar: a lead, food, a bow, tinted layers, thin things.
  *
  * <p>The checks draw what they judge into a {@link Capture} and count what each render type was given:
  * a solid item is drawn whole on Heft's atlas in every view, and by nothing else. One {@code booth: PASS}
@@ -103,7 +103,7 @@ public final class HeftBooth {
     private record Step(int at, Runnable action) {}
 
     private static final int HOLD = 100;
-    private static final int SETTLE = 40;
+    private static final int SETTLE = 60; // ticks after a camera move: chunk meshes rebuild after entities appear
 
     private static boolean muted = false;
     private static Phase phase = Phase.TITLE;
@@ -186,12 +186,11 @@ public final class HeftBooth {
         return out;
     }
 
-    /** The long tail's samples (Tier B): a stick, food, a bow (overrides), tinted layers (a tipped arrow, a dyed helmet, an egg), thin things. */
+    /** The long tail's samples (Tier B): a stick, food, a bow (overrides), tinted layers (a filled map, a dyed helmet, an egg), thin things. */
     private static List<ItemStack> tail() {
-        List<ItemStack> out = new ArrayList<>(List.of(new ItemStack(Items.STICK), new ItemStack(Items.APPLE), new ItemStack(Items.BREAD),
-                new ItemStack(Items.BOW), net.minecraft.world.item.alchemy.PotionContents.createItemStack(Items.TIPPED_ARROW,
-                        net.minecraft.world.item.alchemy.Potions.HEALING), new ItemStack(Items.LEATHER_HELMET), new ItemStack(Items.CREEPER_SPAWN_EGG),
-                new ItemStack(Items.FEATHER), new ItemStack(Items.STRING), new ItemStack(Items.PAPER)));
+        List<ItemStack> out = new ArrayList<>(List.of(new ItemStack(Items.LEAD), new ItemStack(Items.APPLE), new ItemStack(Items.BREAD),
+                new ItemStack(Items.BOW), new ItemStack(Items.FILLED_MAP), new ItemStack(Items.LEATHER_HELMET), new ItemStack(Items.CREEPER_SPAWN_EGG),
+                new ItemStack(Items.FEATHER), new ItemStack(Items.STRING), new ItemStack(Items.SLIME_BALL)));
         return out;
     }
 
@@ -219,13 +218,13 @@ public final class HeftBooth {
         List<ItemStack> all = solids();
         // A wall to the north with a frame for every solid item, two rows; then the loud twin (flint) and a
         // flat stick, for comparison, and an iron ingot in a glow frame.
-        fill(level, -13, 0, -9, 13, 4, -9, Blocks.STONE_BRICKS);
+        fill(level, -13, 0, -9, 13, 9, -9, Blocks.STONE_BRICKS);
         List<ItemStack> framed = new ArrayList<>(all);
         framed.add(new ItemStack(Items.FLINT));
         framed.addAll(tail());
         for (int i = 0; i < framed.size(); i++) {
             int row = i / 25, col = i % 25;
-            ItemFrame frame = new ItemFrame(level, new BlockPos(-12 + col, ground + 3 - row * 2, -8), Direction.SOUTH);
+            ItemFrame frame = new ItemFrame(level, new BlockPos(-12 + col, ground + 1 + row * 2, -8), Direction.SOUTH);
             frame.setItem(framed.get(i), false);
             level.addFreshEntity(frame);
         }
@@ -242,19 +241,19 @@ public final class HeftBooth {
         }
         List<ItemStack> tail = tail();
         for (int i = 0; i < tail.size(); i++) {
-            ItemEntity drop = new ItemEntity(level, -10.5 + i, ground, 6.5, tail.get(i));
+            ItemEntity drop = new ItemEntity(level, -10.5 + i, ground, 9.5, tail.get(i));
             drop.setNeverPickUp();
             drop.setUnlimitedLifetime();
             drop.setDeltaMovement(Vec3.ZERO);
             level.addFreshEntity(drop);
         }
-        ItemEntity stack = new ItemEntity(level, -12.5, ground, 6.5, new ItemStack(Items.IRON_INGOT, 16));
+        ItemEntity stack = new ItemEntity(level, -12.5, ground, 9.5, new ItemStack(Items.IRON_INGOT, 16));
         stack.setNeverPickUp();
         stack.setUnlimitedLifetime();
         stack.setDeltaMovement(Vec3.ZERO);
         level.addFreshEntity(stack);
         // The bench: one of each class set down, two blocks apart; beyond, piles of four ingots, diamonds and redstone.
-        fill(level, 18, 0, 4, 40, 0, 4, Blocks.SMOOTH_STONE);
+        fill(level, 18, 0, 4, 56, 0, 4, Blocks.SMOOTH_STONE);
         List<ItemStack> each = oneOfEach();
         for (int i = 0; i < each.size(); i++) {
             setDown(sp, each.get(i).copy(), new BlockPos(BENCH.getX() + 8 + i * 2, ground, BENCH.getZ()), Direction.UP);
@@ -262,7 +261,7 @@ public final class HeftBooth {
         Item[] piled = {Items.IRON_INGOT, Items.DIAMOND, Items.REDSTONE};
         for (int k = 0; k < piled.length; k++) {
             for (int i = 0; i < 4; i++) {
-                setDown(sp, new ItemStack(piled[k]), new BlockPos(PILE.getX() + 22 + k * 2, ground, PILE.getZ()), Direction.UP);
+                setDown(sp, new ItemStack(piled[k]), new BlockPos(PILE.getX() + 36 + k * 2, ground, PILE.getZ()), Direction.UP);
             }
         }
         setDown(sp, new ItemStack(Items.IRON_INGOT), new BlockPos(-13, ground + 2, -9), Direction.SOUTH);
@@ -314,19 +313,25 @@ public final class HeftBooth {
         int[] t = {HOLD};
         s.add(new Step(t[0], () -> checks(mc)));
         t[0] += 2;
-        shot(s, t, mc, "booth-frames", new Vec3(0.0, 2.6, -1.0), new Vec3(0.0, 2.5, -8.5));
+        shot(s, t, mc, "booth-frames", new Vec3(0.0, 4.6, 1.5), new Vec3(0.0, 4.5, -8.5));
         shot(s, t, mc, "booth-frames-left", new Vec3(-8.5, 2.6, -5.6), new Vec3(-8.5, 2.5, -8.5));
         shot(s, t, mc, "booth-frames-mid", new Vec3(-0.5, 2.6, -5.6), new Vec3(-0.5, 2.5, -8.5));
         shot(s, t, mc, "booth-frames-right", new Vec3(7.5, 2.6, -5.6), new Vec3(7.5, 2.5, -8.5));
+        shot(s, t, mc, "booth-frames-upper-left", new Vec3(-8.5, 6.6, -5.6), new Vec3(-8.5, 6.5, -8.5));
+        shot(s, t, mc, "booth-frames-upper-mid", new Vec3(-0.5, 6.6, -5.6), new Vec3(-0.5, 6.5, -8.5));
+        shot(s, t, mc, "booth-frames-upper-right", new Vec3(7.5, 6.6, -5.6), new Vec3(7.5, 6.5, -8.5));
         shot(s, t, mc, "booth-ground", new Vec3(-0.5, 2.4, 9.5), new Vec3(-0.5, 0.1, 4.0));
         shot(s, t, mc, "booth-ground-left", new Vec3(-8.5, 1.1, 6.6), new Vec3(-8.5, 0.1, 3.8));
         shot(s, t, mc, "booth-ground-right", new Vec3(4.5, 1.1, 6.6), new Vec3(4.5, 0.1, 3.8));
-        shot(s, t, mc, "booth-tail-ground", new Vec3(-6.0, 1.2, 9.4), new Vec3(-6.0, 0.1, 6.5));
-        shot(s, t, mc, "booth-tail-frames", new Vec3(-4.0, 1.6, -5.4), new Vec3(-4.0, 1.5, -8.5));
-        shot(s, t, mc, "booth-setdown", new Vec3(26.0, 2.2, 8.0), new Vec3(26.0, 1.05, 4.5));
+        shot(s, t, mc, "booth-tail-ground", new Vec3(-6.0, 1.2, 12.4), new Vec3(-6.0, 0.1, 9.5));
+        shot(s, t, mc, "booth-ground-back", new Vec3(-0.5, 1.4, 9.0), new Vec3(-0.5, 0.1, 6.0));
+        shot(s, t, mc, "booth-tail-frames", new Vec3(4.0, 7.6, -5.4), new Vec3(4.0, 7.5, -8.5));
+        shot(s, t, mc, "booth-setdown", new Vec3(33.0, 3.0, 10.0), new Vec3(33.0, 1.05, 4.5));
         shot(s, t, mc, "booth-setdown-left", new Vec3(22.0, 1.6, 6.2), new Vec3(22.0, 1.05, 4.5));
         shot(s, t, mc, "booth-setdown-right", new Vec3(29.0, 1.6, 6.2), new Vec3(29.0, 1.05, 4.5));
-        shot(s, t, mc, "booth-piles", new Vec3(37.5, 1.7, 6.6), new Vec3(37.5, 1.05, 4.5));
+        shot(s, t, mc, "booth-setdown-far", new Vec3(36.0, 1.6, 6.2), new Vec3(36.0, 1.05, 4.5));
+        shot(s, t, mc, "booth-setdown-farther", new Vec3(43.0, 1.6, 6.2), new Vec3(43.0, 1.05, 4.5));
+        shot(s, t, mc, "booth-piles", new Vec3(51.5, 1.7, 6.6), new Vec3(51.5, 1.05, 4.5));
         shot(s, t, mc, "booth-wall", new Vec3(-12.5, 2.6, -7.0), new Vec3(-12.5, 2.5, -8.5));
         // Grazing light from the low sun across the frames: where the twin's ridges show, if the shader reads them.
         shot(s, t, mc, "booth-frames-grazing", new Vec3(13.0, 1.0, -7.0), new Vec3(9.0, 1.5, -8.5));
@@ -336,7 +341,12 @@ public final class HeftBooth {
             int slot = k;
             s.add(new Step(t[0], () -> {
                 mc.options.hideGui = false;
+                if (mc.player != null) {
+                    mc.player.getAbilities().flying = false;
+                    mc.player.setNoGravity(false);
+                }
                 onServer(mc, sp -> {
+                    sp.setNoGravity(false);
                     sp.getAbilities().flying = false;
                     sp.onUpdateAbilities();
                     // Into the slot the client holds: a selected slot changed on the server is never sent to it.
@@ -476,7 +486,8 @@ public final class HeftBooth {
                 }
                 Capture c = new Capture();
                 mc.getItemRenderer().renderStatic(stack, view, LIGHT, OverlayTexture.NO_OVERLAY, new PoseStack(), c, mc.level, 0);
-                if (quads == 0 || c.of(HeftAtlas.ITEM) != quads * 4 || c.total() != quads * 4) {
+                // Whole on Heft's atlas, and nothing else but the game's own enchantment glint over it.
+                if (quads == 0 || c.of(HeftAtlas.ITEM) != quads * 4 || c.total() != quads * 4 + c.mentioning("glint")) {
                     badViews.add(id + " in " + view.getSerializedName() + ": " + c);
                 }
             }
@@ -502,7 +513,7 @@ public final class HeftBooth {
         }
         verdict("every frame holding a solid item draws it on Heft's atlas (" + frames[1] + " of " + frames[0] + ")",
                 () -> frames[0] > 0 && frames[0] == frames[1] ? null : frames[1] + " of " + frames[0]);
-        List<Entity> displays = mc.level.getEntities((Entity) null, new net.minecraft.world.phys.AABB(BENCH.above(ground)).inflate(40.0, 3.0, 3.0),
+        List<Entity> displays = mc.level.getEntities((Entity) null, new net.minecraft.world.phys.AABB(BENCH.above(ground)).inflate(50.0, 3.0, 3.0),
                 e -> e.getClass().getName().equals("com.chunkworks.setitdown.DisplayEntity"));
         verdict("Set It Down set one of each class down, and the piles (" + displays.size() + " displays)",
                 () -> displays.size() >= oneOfEach().size() + 3 ? null : displays.size() + " displays");
@@ -545,7 +556,13 @@ public final class HeftBooth {
 
     /** One photograph: the player's eye moved to {@code from} (relative to the ground), looking at {@code at}. */
     private static void shot(List<Step> s, int[] t, Minecraft mc, String name, Vec3 from, Vec3 at) {
-        s.add(new Step(t[0], () -> onServer(mc, sp -> aim(sp, from.add(0, ground, 0), at.add(0, ground, 0)))));
+        s.add(new Step(t[0], () -> {
+            hold(mc);
+            onServer(mc, sp -> {
+                sp.setNoGravity(true);
+                aim(sp, from.add(0, ground, 0), at.add(0, ground, 0));
+            });
+        }));
         s.add(new Step(t[0] += SETTLE, () -> {
             Vec3 want = from.add(0, ground, 0);
             Vec3 eye = mc.gameRenderer.getMainCamera().getPosition();
@@ -555,6 +572,19 @@ public final class HeftBooth {
             shoot(mc, name);
         }));
         t[0] += 2;
+    }
+
+    /**
+     * Holds the camera still where a shot puts it: the client's own player flying, without gravity and at rest. The
+     * server's flying flag alone does not hold it -- the client runs its own player's physics -- and a player
+     * falling from every camera position to the ground, then teleported up for the next, shook the view.
+     */
+    private static void hold(Minecraft mc) {
+        if (mc.player != null) {
+            mc.player.getAbilities().flying = true;
+            mc.player.setNoGravity(true);
+            mc.player.setDeltaMovement(Vec3.ZERO);
+        }
     }
 
     private static void onServer(Minecraft mc, Consumer<ServerPlayer> action) {

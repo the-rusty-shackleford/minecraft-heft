@@ -2,6 +2,18 @@
  "sources": [
   {
    "type": "single",
+   "resource": "heft:solid/alexsmobs/kangaroo_hide"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/backport/poplar_hanging_sign"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/backport/poplar_sign"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/create/brass_ingot"
   },
   {
@@ -46,7 +58,35 @@
   },
   {
    "type": "single",
+   "resource": "heft:solid/minecraft/acacia_hanging_sign"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/acacia_sign"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/minecraft/amethyst_shard"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/arrow"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/bamboo_hanging_sign"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/bamboo_sign"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/birch_hanging_sign"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/birch_sign"
   },
   {
    "type": "single",
@@ -54,7 +94,23 @@
   },
   {
    "type": "single",
+   "resource": "heft:solid/minecraft/blaze_rod"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/bone"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/minecraft/bone_meal"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/book"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/breeze_rod"
   },
   {
    "type": "single",
@@ -66,11 +122,35 @@
   },
   {
    "type": "single",
+   "resource": "heft:solid/minecraft/cherry_hanging_sign"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/cherry_sign"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/minecraft/coal"
   },
   {
    "type": "single",
    "resource": "heft:solid/minecraft/copper_ingot"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/crimson_hanging_sign"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/crimson_sign"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/dark_oak_hanging_sign"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/dark_oak_sign"
   },
   {
    "type": "single",
@@ -83,6 +163,10 @@
   {
    "type": "single",
    "resource": "heft:solid/minecraft/emerald"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/enchanted_book"
   },
   {
    "type": "single",
@@ -110,7 +194,35 @@
   },
   {
    "type": "single",
+   "resource": "heft:solid/minecraft/jungle_hanging_sign"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/jungle_sign"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/knowledge_book"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/minecraft/lapis_lazuli"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/leather"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/mangrove_hanging_sign"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/mangrove_sign"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/map"
   },
   {
    "type": "single",
@@ -126,11 +238,39 @@
   },
   {
    "type": "single",
+   "resource": "heft:solid/minecraft/oak_hanging_sign"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/oak_sign"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/pale_oak_hanging_sign"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/pale_oak_sign"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/paper"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/phantom_membrane"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/minecraft/prismarine_shard"
   },
   {
    "type": "single",
    "resource": "heft:solid/minecraft/quartz"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/rabbit_hide"
   },
   {
    "type": "single",
@@ -150,7 +290,43 @@
   },
   {
    "type": "single",
+   "resource": "heft:solid/minecraft/spectral_arrow"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/spruce_hanging_sign"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/spruce_sign"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/stick"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/minecraft/sugar"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/tipped_arrow"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/warped_hanging_sign"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/warped_sign"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/writable_book"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/written_book"
   },
   {
    "type": "single",

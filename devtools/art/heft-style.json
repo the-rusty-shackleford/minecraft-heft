@@ -1827,6 +1827,1308 @@
    ],
    "rim": 0.0,
    "from": "minecraft-1.21.1-client.jar: item/coal"
+  },
+  "spruce_planks": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.246,
+    0.301,
+    0.358,
+    0.376,
+    0.397
+   ],
+   "hue": 33.4,
+   "saturation": [
+    0.57,
+    0.61
+   ],
+   "palette": [
+    "#4d381e",
+    "#533d21",
+    "#5a4224",
+    "#624727",
+    "#6a4f2c",
+    "#725631",
+    "#795b35",
+    "#806038"
+   ],
+   "grain": [
+    0.0063,
+    0.0128,
+    0.0218
+   ],
+   "rim": 0.0109,
+   "smoothness": [
+    0.478,
+    0.529
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 9.33,
+   "occlusion": 0.992,
+   "height": [
+    0.816,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: block/spruce_planks"
+  },
+  "birch_planks": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.499,
+    0.606,
+    0.709,
+    0.741,
+    0.779
+   ],
+   "hue": 45.3,
+   "saturation": [
+    0.374,
+    0.394
+   ],
+   "palette": [
+    "#908258",
+    "#a29162",
+    "#b4a470",
+    "#c1b079",
+    "#cab87f",
+    "#d0be83",
+    "#d6c387",
+    "#ddc98b"
+   ],
+   "grain": [
+    0.0117,
+    0.0237,
+    0.0405
+   ],
+   "rim": 0.0201,
+   "smoothness": [
+    0.478,
+    0.529
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 9.33,
+   "occlusion": 0.992,
+   "height": [
+    0.816,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: block/birch_planks"
+  },
+  "jungle_planks": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.334,
+    0.423,
+    0.515,
+    0.542,
+    0.574
+   ],
+   "hue": 25.2,
+   "saturation": [
+    0.471,
+    0.521
+   ],
+   "palette": [
+    "#714e36",
+    "#7f583e",
+    "#8e6345",
+    "#9c7252",
+    "#a77a59",
+    "#af805d",
+    "#b68561",
+    "#be8a66"
+   ],
+   "grain": [
+    0.0099,
+    0.0202,
+    0.0344
+   ],
+   "rim": 0.0175,
+   "smoothness": [
+    0.478,
+    0.529
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 9.33,
+   "occlusion": 0.992,
+   "height": [
+    0.816,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: block/jungle_planks"
+  },
+  "acacia_planks": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.3,
+    0.355,
+    0.421,
+    0.438,
+    0.458
+   ],
+   "hue": 19.3,
+   "saturation": [
+    0.704,
+    0.729
+   ],
+   "palette": [
+    "#7e4024",
+    "#8a4627",
+    "#984b29",
+    "#a35831",
+    "#ad5c34",
+    "#b45f36",
+    "#ba6138",
+    "#c2653a"
+   ],
+   "grain": [
+    0.0063,
+    0.0128,
+    0.0218
+   ],
+   "rim": 0.0117,
+   "smoothness": [
+    0.478,
+    0.529
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 9.33,
+   "occlusion": 0.992,
+   "height": [
+    0.816,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: block/acacia_planks"
+  },
+  "dark_oak_planks": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.119,
+    0.154,
+    0.191,
+    0.202,
+    0.214
+   ],
+   "hue": 31.3,
+   "saturation": [
+    0.701,
+    0.783
+   ],
+   "palette": [
+    "#2a1a08",
+    "#2f1d0a",
+    "#33200c",
+    "#3a240e",
+    "#3f2b12",
+    "#442e15",
+    "#483117",
+    "#4d3319"
+   ],
+   "grain": [
+    0.0041,
+    0.0082,
+    0.0138
+   ],
+   "rim": 0.0071,
+   "smoothness": [
+    0.478,
+    0.529
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 9.33,
+   "occlusion": 0.992,
+   "height": [
+    0.816,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: block/dark_oak_planks"
+  },
+  "mangrove_planks": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.169,
+    0.191,
+    0.255,
+    0.297,
+    0.365
+   ],
+   "hue": 1.6,
+   "saturation": [
+    0.578,
+    0.643
+   ],
+   "palette": [
+    "#4e2122",
+    "#5a2326",
+    "#662628",
+    "#702f2e",
+    "#753937",
+    "#853b39",
+    "#814d3f",
+    "#944d41"
+   ],
+   "grain": [
+    0.0048,
+    0.01,
+    0.0183
+   ],
+   "rim": 0.0046,
+   "smoothness": [
+    0.478,
+    0.529
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 9.33,
+   "occlusion": 0.992,
+   "height": [
+    0.816,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: block/mangrove_planks"
+  },
+  "cherry_planks": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.583,
+    0.683,
+    0.733,
+    0.758,
+    0.791
+   ],
+   "hue": 6.2,
+   "saturation": [
+    0.254,
+    0.351
+   ],
+   "palette": [
+    "#c9847f",
+    "#d4908a",
+    "#db9a94",
+    "#dfa49e",
+    "#e3ada7",
+    "#e5b2ac",
+    "#e7b9b3",
+    "#e8c2bd"
+   ],
+   "grain": [
+    0.0097,
+    0.0174,
+    0.0296
+   ],
+   "rim": 0.0124,
+   "smoothness": [
+    0.471,
+    0.525
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 11.31,
+   "occlusion": 0.988,
+   "height": [
+    0.812,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: block/cherry_planks"
+  },
+  "bamboo_planks": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.444,
+    0.597,
+    0.679,
+    0.744,
+    0.799
+   ],
+   "hue": 49.7,
+   "saturation": [
+    0.592,
+    0.62
+   ],
+   "palette": [
+    "#807135",
+    "#98873f",
+    "#af9f45",
+    "#bdad4c",
+    "#cbb650",
+    "#d8c055",
+    "#e1c961",
+    "#e8d26f"
+   ],
+   "grain": [
+    0.0148,
+    0.0351,
+    0.0602
+   ],
+   "rim": 0.0413,
+   "smoothness": [
+    0.478,
+    0.529
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 7.12,
+   "occlusion": 0.996,
+   "height": [
+    0.843,
+    0.945,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: block/bamboo_planks"
+  },
+  "crimson_planks": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.15,
+    0.201,
+    0.255,
+    0.274,
+    0.294
+   ],
+   "hue": 335.2,
+   "saturation": [
+    0.509,
+    0.578
+   ],
+   "palette": [
+    "#461d2e",
+    "#532438",
+    "#5f2d41",
+    "#683348",
+    "#6d364d",
+    "#723951",
+    "#763c54",
+    "#7a3e58"
+   ],
+   "grain": [
+    0.0058,
+    0.0121,
+    0.0213
+   ],
+   "rim": 0.0099,
+   "smoothness": [
+    0.478,
+    0.529
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 9.33,
+   "occlusion": 0.992,
+   "height": [
+    0.816,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: block/crimson_planks"
+  },
+  "warped_planks": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.215,
+    0.31,
+    0.394,
+    0.425,
+    0.459
+   ],
+   "hue": 171.3,
+   "saturation": [
+    0.636,
+    0.792
+   ],
+   "palette": [
+    "#0b4239",
+    "#124f46",
+    "#195d53",
+    "#246a61",
+    "#2a736a",
+    "#2f7b70",
+    "#328276",
+    "#36897c"
+   ],
+   "grain": [
+    0.0104,
+    0.0213,
+    0.0369
+   ],
+   "rim": 0.0167,
+   "smoothness": [
+    0.478,
+    0.529
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 9.33,
+   "occlusion": 0.992,
+   "height": [
+    0.816,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: block/warped_planks"
+  },
+  "pale_oak_planks": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.681,
+    0.812,
+    0.887,
+    0.933,
+    0.972
+   ],
+   "hue": 8.6,
+   "saturation": [
+    0.042,
+    0.074
+   ],
+   "palette": [
+    "#ab9f9f",
+    "#c4b6b6",
+    "#d3c5c4",
+    "#e0d5d4",
+    "#e7e0de",
+    "#eee7e6",
+    "#f8efed",
+    "#fdf6f4"
+   ],
+   "grain": [
+    0.0161,
+    0.028,
+    0.0454
+   ],
+   "rim": 0.0207,
+   "smoothness": [
+    0.471,
+    0.525
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 11.34,
+   "occlusion": 0.992,
+   "height": [
+    0.816,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: block/pale_oak_planks"
+  },
+  "poplar_planks": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.344,
+    0.415,
+    0.522,
+    0.567,
+    0.598
+   ],
+   "hue": 22.0,
+   "saturation": [
+    0.148,
+    0.157
+   ],
+   "palette": [
+    "#5b4f4e",
+    "#655857",
+    "#6e615e",
+    "#796c67",
+    "#847871",
+    "#8e8279",
+    "#978c81",
+    "#a09588"
+   ],
+   "grain": [
+    0.0118,
+    0.0221,
+    0.0383
+   ],
+   "rim": 0.0184,
+   "smoothness": [
+    0.49,
+    0.565
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 10.39,
+   "occlusion": 0.992,
+   "height": [
+    0.855,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: block/poplar_planks"
+  },
+  "chain": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.157,
+    0.199,
+    0.265,
+    0.321,
+    0.377
+   ],
+   "hue": 222.9,
+   "saturation": [
+    0.293,
+    0.383
+   ],
+   "palette": [
+    "#1f2636",
+    "#282f3f",
+    "#303647",
+    "#383f50",
+    "#41485a",
+    "#495063",
+    "#51596c",
+    "#5d6478"
+   ],
+   "grain": [
+    0.0272,
+    0.0454,
+    0.0918
+   ],
+   "rim": -0.0019,
+   "smoothness": [
+    0.318,
+    0.384
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 9.6,
+   "occlusion": 0.988,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: block/chain"
+  },
+  "paper": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.529,
+    0.682,
+    0.917,
+    0.985,
+    0.985
+   ],
+   "hue": 29.1,
+   "saturation": [
+    0.009,
+    0.04
+   ],
+   "palette": [
+    "#999999",
+    "#d3d3d3",
+    "#e9eaeb",
+    "#e9eaeb",
+    "#fcfcf2",
+    "#fcfcf2",
+    "#fcfcf2",
+    "#fcfcf2"
+   ],
+   "grain": [
+    0.0868,
+    0.1758,
+    0.0
+   ],
+   "rim": 0.3105,
+   "from": "minecraft-1.21.1-client.jar: item/paper"
+  },
+  "map_paper": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.51,
+    0.631,
+    0.908,
+    0.985,
+    0.985
+   ],
+   "hue": 60.7,
+   "saturation": [
+    0.15,
+    0.581
+   ],
+   "palette": [
+    "#878839",
+    "#aaab4e",
+    "#daddaa",
+    "#daddaa",
+    "#eaeac7",
+    "#eaeac7",
+    "#fcfcf2",
+    "#fcfcf2"
+   ],
+   "grain": [
+    0.0943,
+    0.1895,
+    0.0
+   ],
+   "rim": 0.319,
+   "from": "minecraft-1.21.1-client.jar: item/map"
+  },
+  "leather": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.134,
+    0.186,
+    0.348,
+    0.438,
+    0.498
+   ],
+   "hue": 15.9,
+   "saturation": [
+    0.734,
+    0.738
+   ],
+   "palette": [
+    "#3d1c10",
+    "#542716",
+    "#893b25",
+    "#9e492a",
+    "#9e492a",
+    "#9e492a",
+    "#c65c35",
+    "#d76b43"
+   ],
+   "grain": [
+    0.0995,
+    0.136,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: item/leather"
+  },
+  "rabbit_hide": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.239,
+    0.396,
+    0.523,
+    0.566,
+    0.638
+   ],
+   "hue": 30.9,
+   "saturation": [
+    0.5,
+    0.5
+   ],
+   "palette": [
+    "#4e3a27",
+    "#826041",
+    "#826041",
+    "#826041",
+    "#a88054",
+    "#b48b5b",
+    "#b48b5b",
+    "#c79e67"
+   ],
+   "grain": [
+    0.118,
+    0.1665,
+    0.0
+   ],
+   "rim": 0.1021,
+   "from": "minecraft-1.21.1-client.jar: item/rabbit_hide"
+  },
+  "phantom_membrane": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.35,
+    0.446,
+    0.551,
+    0.727,
+    0.846
+   ],
+   "hue": 13.9,
+   "saturation": [
+    0.162,
+    0.27
+   ],
+   "palette": [
+    "#6f516c",
+    "#7e627b",
+    "#826d72",
+    "#826d72",
+    "#826d72",
+    "#97897d",
+    "#c3b9a1",
+    "#dcd9c0"
+   ],
+   "grain": [
+    0.1253,
+    0.1732,
+    0.0
+   ],
+   "rim": 0.2378,
+   "from": "minecraft-1.21.1-client.jar: item/phantom_membrane"
+  },
+  "kangaroo_hide": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.299,
+    0.402,
+    0.554,
+    0.604,
+    0.687
+   ],
+   "hue": 27.4,
+   "saturation": [
+    0.519,
+    0.564
+   ],
+   "palette": [
+    "#6e4530",
+    "#6e4530",
+    "#8c5f43",
+    "#8c5f43",
+    "#a77853",
+    "#b58757",
+    "#c89861",
+    "#d9a972"
+   ],
+   "grain": [
+    0.0914,
+    0.1311,
+    0.0
+   ],
+   "rim": 0.1785,
+   "from": "alexsmobs-1.22.17.jar: alexsmobs:item/kangaroo_hide"
+  },
+  "stick": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.121,
+    0.121,
+    0.218,
+    0.314,
+    0.414
+   ],
+   "hue": 38.8,
+   "saturation": [
+    0.715,
+    0.725
+   ],
+   "palette": [
+    "#281e0b",
+    "#493615",
+    "#493615",
+    "#493615",
+    "#684e1e",
+    "#896727",
+    "#896727",
+    "#896727"
+   ],
+   "grain": [
+    0.195,
+    0.0,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: item/stick"
+  },
+  "blaze_rod": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.313,
+    0.412,
+    0.456,
+    0.627,
+    0.925
+   ],
+   "hue": 38.0,
+   "saturation": [
+    0.849,
+    1.0
+   ],
+   "palette": [
+    "#a83a00",
+    "#9b5607",
+    "#bd5a02",
+    "#ae6c1a",
+    "#b9931c",
+    "#d8ae26",
+    "#ffc100",
+    "#fff548"
+   ],
+   "grain": [
+    0.3063,
+    0.0,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: item/blaze_rod"
+  },
+  "breeze_rod": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.305,
+    0.354,
+    0.42,
+    0.551,
+    0.707
+   ],
+   "hue": 233.0,
+   "saturation": [
+    0.446,
+    0.63
+   ],
+   "palette": [
+    "#45618e",
+    "#6c76ab",
+    "#7a82c4",
+    "#7a82c4",
+    "#958dd3",
+    "#b5a5ca",
+    "#b5a5ca",
+    "#bfafc9"
+   ],
+   "grain": [
+    0.2012,
+    0.0,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: item/breeze_rod"
+  },
+  "bone": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.486,
+    0.486,
+    0.833,
+    0.981,
+    0.999
+   ],
+   "hue": 58.4,
+   "saturation": [
+    0.123,
+    0.187
+   ],
+   "palette": [
+    "#7b7e6b",
+    "#cbc6a5",
+    "#cbc6a5",
+    "#e8e5d2",
+    "#e8e5d2",
+    "#fcfbed",
+    "#fcfbed",
+    "#fffffd"
+   ],
+   "grain": [
+    0.1713,
+    0.2917,
+    0.0
+   ],
+   "rim": 0.313,
+   "from": "minecraft-1.21.1-client.jar: item/bone"
+  },
+  "book": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.065,
+    0.135,
+    0.249,
+    0.301,
+    0.718
+   ],
+   "hue": 30.2,
+   "saturation": [
+    0.773,
+    0.918
+   ],
+   "palette": [
+    "#261a04",
+    "#44250a",
+    "#44250a",
+    "#44250a",
+    "#533211",
+    "#654b17",
+    "#5b5b5b",
+    "#b1b1b1"
+   ],
+   "grain": [
+    0.1068,
+    0.2125,
+    0.0
+   ],
+   "rim": 0.1736,
+   "from": "minecraft-1.21.1-client.jar: item/book"
+  },
+  "writable_book": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.065,
+    0.093,
+    0.246,
+    0.718,
+    0.871
+   ],
+   "hue": 10.8,
+   "saturation": [
+    0.744,
+    0.947
+   ],
+   "palette": [
+    "#161005",
+    "#391003",
+    "#551d0c",
+    "#72301c",
+    "#808080",
+    "#b3b3b3",
+    "#cacaca",
+    "#dcdcdc"
+   ],
+   "grain": [
+    0.2044,
+    0.3927,
+    0.0
+   ],
+   "rim": 0.2885,
+   "from": "minecraft-1.21.1-client.jar: item/writable_book"
+  },
+  "written_book": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.065,
+    0.093,
+    0.177,
+    0.246,
+    0.718
+   ],
+   "hue": 14.3,
+   "saturation": [
+    0.773,
+    0.947
+   ],
+   "palette": [
+    "#161005",
+    "#391003",
+    "#4d1807",
+    "#5d2210",
+    "#6c2c19",
+    "#6c2c19",
+    "#743320",
+    "#b1b1b1"
+   ],
+   "grain": [
+    0.1148,
+    0.2262,
+    0.0
+   ],
+   "rim": 0.1426,
+   "from": "minecraft-1.21.1-client.jar: item/written_book"
+  },
+  "enchanted_book": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.065,
+    0.161,
+    0.219,
+    0.301,
+    0.718
+   ],
+   "hue": 25.7,
+   "saturation": [
+    0.773,
+    0.918
+   ],
+   "palette": [
+    "#161005",
+    "#312104",
+    "#312104",
+    "#4d2b0f",
+    "#a81e2f",
+    "#654b19",
+    "#d39f17",
+    "#b3b3b3"
+   ],
+   "grain": [
+    0.1185,
+    0.1848,
+    0.0
+   ],
+   "rim": 0.1716,
+   "from": "minecraft-1.21.1-client.jar: item/enchanted_book"
+  },
+  "knowledge_book": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.065,
+    0.297,
+    0.41,
+    0.581,
+    0.718
+   ],
+   "hue": 98.9,
+   "saturation": [
+    0.503,
+    0.748
+   ],
+   "palette": [
+    "#161005",
+    "#1b361b",
+    "#2a592a",
+    "#2a592a",
+    "#428142",
+    "#56ad56",
+    "#56ad56",
+    "#b1b1b1"
+   ],
+   "grain": [
+    0.1436,
+    0.2406,
+    0.0
+   ],
+   "rim": 0.2649,
+   "from": "minecraft-1.21.1-client.jar: item/knowledge_book"
+  },
+  "flint": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.055,
+    0.127,
+    0.177,
+    0.236,
+    0.498
+   ],
+   "hue": 0.0,
+   "saturation": [
+    0.016,
+    0.059
+   ],
+   "palette": [
+    "#0e0e0e",
+    "#0e0e0e",
+    "#222020",
+    "#2e2d2d",
+    "#3d3c3c",
+    "#3d3c3c",
+    "#565656",
+    "#8b8b8b"
+   ],
+   "grain": [
+    0.0914,
+    0.1459,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: item/flint"
+  },
+  "feather": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.588,
+    0.745,
+    0.827,
+    0.827,
+    1.0
+   ],
+   "hue": 0.0,
+   "saturation": [
+    0.0,
+    0.0
+   ],
+   "palette": [
+    "#969696",
+    "#969696",
+    "#969696",
+    "#969696",
+    "#cecece",
+    "#ffffff",
+    "#ffffff",
+    "#ffffff"
+   ],
+   "grain": [
+    0.1653,
+    0.1686,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: item/feather"
+  },
+  "spectral_arrow": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.281,
+    0.281,
+    0.576,
+    0.9,
+    0.961
+   ],
+   "hue": 40.5,
+   "saturation": [
+    0.812,
+    0.959
+   ],
+   "palette": [
+    "#7b3f05",
+    "#7b3f05",
+    "#7b3f05",
+    "#7b3f05",
+    "#cf8c27",
+    "#dab930",
+    "#ffff77",
+    "#ffffff"
+   ],
+   "grain": [
+    0.425,
+    0.4336,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: item/spectral_arrow"
+  },
+  "arrow": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.121,
+    0.247,
+    0.414,
+    0.729,
+    0.878
+   ],
+   "hue": 14.3,
+   "saturation": [
+    0.0,
+    0.725
+   ],
+   "palette": [
+    "#281e0b",
+    "#281e0b",
+    "#3f3f3f",
+    "#444444",
+    "#896727",
+    "#896727",
+    "#969696",
+    "#dbdbdb"
+   ],
+   "grain": [
+    0.3563,
+    0.3216,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: item/arrow"
   }
  }
 }

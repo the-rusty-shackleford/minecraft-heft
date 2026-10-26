@@ -40,6 +40,7 @@ class Finish:
     smooth: float  # perceptual smoothness
     smooth_spread: float
     porosity: int = 0
+    grain: tuple[float, float] | None = None  # (across, down) texels between grain lines, for wood or a stack of pages
 
 
 FINISHES = {
@@ -50,6 +51,10 @@ FINISHES = {
     "powder": Finish(broad=0.30, fine=0.40, speck=0.45, bevel=3.0, bevel_drop=10, relief=14, relief_scale=1.5, smooth=0.12, smooth_spread=0.06, porosity=40),
     "mineral": Finish(broad=0.45, fine=0.30, speck=0.12, bevel=3.0, bevel_drop=14, relief=18, relief_scale=7, smooth=0.38, smooth_spread=0.12, porosity=10),
     "clay": Finish(broad=0.35, fine=0.30, speck=0.15, bevel=3.0, bevel_drop=12, relief=12, relief_scale=3, smooth=0.18, smooth_spread=0.05, porosity=45),
+    "wood": Finish(broad=0.45, fine=0.12, speck=0.06, bevel=3.0, bevel_drop=10, relief=8, relief_scale=4, smooth=0.30, smooth_spread=0.06, porosity=20, grain=(40.0, 1.6)),
+    "stack": Finish(broad=0.25, fine=0.10, speck=0.04, bevel=1.5, bevel_drop=4, relief=10, relief_scale=1, smooth=0.20, smooth_spread=0.04, porosity=30, grain=(60.0, 1.1)),
+    "paper": Finish(broad=0.20, fine=0.10, speck=0.05, bevel=2.0, bevel_drop=4, relief=3, relief_scale=6, smooth=0.22, smooth_spread=0.04, porosity=35),
+    "hide": Finish(broad=0.45, fine=0.25, speck=0.08, bevel=3.0, bevel_drop=8, relief=8, relief_scale=5, smooth=0.32, smooth_spread=0.08, porosity=15),
 }
 
 # The tone each role sits at along its palette (0 its darkest kept colour, 1 its lightest), and how much of
@@ -60,6 +65,11 @@ ROLES = {
     "table": (0.70, 1.0), "facet": (0.58, 1.0), "girdle": (0.48, 0.8), "facet_low": (0.40, 1.0),
     "crystal": (0.58, 1.0), "crystal_end": (0.66, 0.8),
     "dust_top": (0.60, 1.0), "dust_side": (0.48, 1.0),
+    "rod": (0.55, 0.8), "rod_end": (0.62, 0.4),
+    "sheet": (0.60, 0.6), "sheet_edge": (0.48, 0.3),
+    "cover": (0.55, 1.0), "cover_edge": (0.45, 0.6), "pages": (0.70, 0.3),
+    "board_face": (0.58, 1.0), "board_edge": (0.48, 0.6), "post": (0.50, 0.8), "bar": (0.45, 0.8), "chain": (0.55, 0.5),
+    "shaft": (0.55, 0.5), "head": (0.58, 0.6), "fletch": (0.70, 0.3),
 }
 
 
@@ -72,6 +82,7 @@ class Material:
     glows: bool = False
     keep: tuple[float, float] = (0.0, 1.0)  # the share of the palette kept, darkest to lightest: a 16x sprite's
     # darkest colours are its outline, never the material
+    parts: tuple[tuple[str, str], ...] = ()  # role -> another material that role is made of (a book's pages, a sign's chains)
 
 
 SPRITE = (0.25, 1.0)  # a palette measured off a mod's 16x sprite: its outline left out
@@ -95,7 +106,33 @@ MATERIALS = {m.name: m for m in (
     Material("coal", "coal_item", "mineral", 10, keep=SPRITE), Material("charcoal", "charcoal", "mineral", 8, keep=SPRITE),
     Material("lapis", "lapis", "mineral", 10), Material("netherite_scrap", "netherite_scrap", "mineral", 20, keep=SPRITE),
     Material("brick", "brick", "clay", 8), Material("nether_brick", "nether_brick", "clay", 8),
+    # Phase 3: rods, plates, books, signs, arrows.
+    Material("stick", "stick", "wood", 6, keep=SPRITE), Material("blaze_rod", "blaze_rod", "crystal", 10, glows=True, keep=SPRITE),
+    Material("breeze_rod", "breeze_rod", "crystal", 10, keep=SPRITE), Material("bone", "bone", "mineral", 8, keep=SPRITE),
+    Material("paper", "paper", "paper", 4, keep=SPRITE), Material("map_paper", "map_paper", "paper", 4, keep=SPRITE),
+    Material("leather", "leather", "hide", 6, keep=SPRITE), Material("rabbit_hide", "rabbit_hide", "hide", 6, keep=SPRITE),
+    Material("phantom_membrane", "phantom_membrane", "hide", 8, keep=SPRITE), Material("kangaroo_hide", "kangaroo_hide", "hide", 6, keep=SPRITE),
+    Material("pages", "paper", "stack", 4, keep=(0.4, 1.0)),
+    Material("book", "book", "hide", 6, keep=(0.15, 0.6), parts=(("pages", "pages"),)),
+    Material("writable_book", "writable_book", "hide", 6, keep=(0.15, 0.6), parts=(("pages", "pages"),)),
+    Material("written_book", "written_book", "hide", 6, keep=(0.15, 0.6), parts=(("pages", "pages"),)),
+    Material("enchanted_book", "enchanted_book", "hide", 6, keep=(0.15, 0.6), parts=(("pages", "pages"),)),
+    Material("knowledge_book", "knowledge_book", "hide", 6, keep=(0.25, 0.7), parts=(("pages", "pages"),)),
+    Material("chain", "chain", "metal", M.IRON),
+    *[Material(f"{w}_wood", f"{w}_planks", "wood", 6, parts=(("chain", "chain"),))
+      for w in ("oak", "spruce", "birch", "jungle", "acacia", "dark_oak", "mangrove", "cherry", "bamboo", "crimson", "warped", "pale_oak", "poplar")],
+    Material("flint_head", "flint", "crystal", 10, keep=SPRITE), Material("feather_fletch", "feather", "paper", 4, keep=SPRITE),
+    Material("spectral_head", "spectral_arrow", "metal", M.GOLD, keep=(0.55, 1.0)), Material("tipped_head", "iron", "crystal", 10),
+    Material("arrow", "stick", "wood", 6, keep=SPRITE, parts=(("head", "flint_head"), ("fletch", "feather_fletch"))),
+    Material("spectral_arrow", "stick", "wood", 6, keep=SPRITE, parts=(("head", "spectral_head"), ("fletch", "feather_fletch"))),
+    Material("tipped_arrow", "stick", "wood", 6, keep=SPRITE, parts=(("head", "tipped_head"), ("fletch", "feather_fletch"))),
 )}
+
+
+def part(role: str, material: Material) -> Material:
+    """effects: returns the material {@code role} is made of in material: a part's own, or material itself"""
+    name = dict(material.parts).get(role)
+    return material if name is None else MATERIALS[name]
 
 
 @dataclass
@@ -113,11 +150,13 @@ class Layers:
 def paint(role: str, w: int, h: int, material: Material) -> Layers:
     """requires: role in ROLES; w, h > 0 texels
     effects: returns the patch of that role and size painted in material, the same every run"""
+    material = part(role, material)
     numbers = STYLE[material.colour]
     finish = FINISHES[material.finish]
     tone, bevel_reach = ROLES[role]
     rng = noise.rng_for(material.name, role, w, h)
-    broad = noise.value_noise(rng, h, w, 12.0) - 0.5
+    broad = (noise.value_noise(rng, h, w, 12.0) if finish.grain is None
+             else noise.value_noise_stretched(rng, h, w, *finish.grain)) - 0.5
     fine = noise.value_noise(rng, h, w, 2.5) - 0.5
     speck = rng.random((h, w)) - 0.5
     relief_field = noise.value_noise(rng, h, w, finish.relief_scale)

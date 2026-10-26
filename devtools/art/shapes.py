@@ -176,12 +176,12 @@ HAND_FILL = 5.5  # sixteenths across, held, seen by others
 FIRST_FILL = 4.5  # sixteenths across, held, in your own first-person view
 
 
-def material_display(boxes, fill: float = 1.0) -> dict[str, Display]:
+def material_display(boxes, fill: float = 1.0, gui_turn=GUI_TURN) -> dict[str, Display]:
     """A chunky thing's display: turned three-quarters in the inventory so its depth reads in the hotbar;
     held small, as one holds an ingot; lying on its base in a frame, its top towards you. Every scale is
     worked from the shape's own extent times the class's `fill` (its size among the others: a nugget is a
     small thing in its slot, an ingot fills it)."""
-    gx, gy, _ = extent(boxes, GUI_TURN)
+    gx, gy, _ = extent(boxes, gui_turn)
     g = round(GUI_FILL * fill / max(gx, gy), 3)
     w, h, d = extent(boxes)
     across = max(w, h, d)
@@ -190,7 +190,7 @@ def material_display(boxes, fill: float = 1.0) -> dict[str, Display]:
     hand = round(HAND_FILL * fill / across, 3)
     first = round(FIRST_FILL * fill / across, 3)
     return {
-        "gui": Display(GUI_TURN, (0, 0, 0), (g, g, g)),
+        "gui": Display(gui_turn, (0, 0, 0), (g, g, g)),
         "ground": Display((0, 0, 0), (0, 2, 0), (ground,) * 3),
         "fixed": Display((-90, 0, 0), (0, 0, 0), (frame,) * 3),
         "head": Display((0, 180, 0), (0, 13, 7), (1, 1, 1)),
@@ -204,9 +204,35 @@ def material_display(boxes, fill: float = 1.0) -> dict[str, Display]:
     }
 
 
-def material(name: str, boxes: list[Box], size: str | None, fill: float = 1.0) -> Klass:
+def material(name: str, boxes: list[Box], size: str | None, fill: float = 1.0, gui_turn=GUI_TURN) -> Klass:
     b = centred(boxes)
-    return Klass(name, b, material_display(b, fill), size)
+    return Klass(name, b, material_display(b, fill, gui_turn), size)
+
+
+GUI_TURN_FLAT = (50.0, 225.0, 0.0)  # a sheet or a book seen more from above, so its face reads in the slot
+
+
+def upright_display(boxes) -> dict[str, Display]:
+    """An upright, face-on thing's display (a sign): turned a little in the inventory so its thickness shows; on
+    the ground and in the hand as the game holds a flat item (its own item/generated transforms, scaled to the
+    thing's width); face out in a frame."""
+    w, h, _ = extent(boxes)
+    k = 16.0 / max(w, h)
+    gx, gy, _ = extent(boxes, SIGN_GUI_TURN)
+    g = round(15.0 / max(gx, gy), 3)
+    return {
+        "gui": Display(SIGN_GUI_TURN, (0, 0, 0), (g, g, g)),
+        "ground": Display((0, 0, 0), (0, 2, 0), (round(0.5 * k, 3),) * 3),
+        "fixed": Display((0, 180, 0), (0, 0, 0), (round(1.0 * k, 3),) * 3),
+        "head": Display((0, 180, 0), (0, 13, 7), (1, 1, 1)),
+        "thirdperson_righthand": Display((0, 0, 0), (0, 3, 1), (round(0.55 * k, 3),) * 3),
+        "thirdperson_lefthand": Display((0, 0, 0), (0, 3, 1), (round(0.55 * k, 3),) * 3),
+        "firstperson_righthand": Display((0, -90, 25), (1.13, 3.2, 1.13), (round(0.68 * k, 3),) * 3),
+        "firstperson_lefthand": Display((0, -90, 25), (1.13, 3.2, 1.13), (round(0.68 * k, 3),) * 3),
+    }
+
+
+SIGN_GUI_TURN = (10.0, -25.0, 0.0)
 
 
 # --- the classes -------------------------------------------------------------------------------
@@ -284,4 +310,69 @@ def dust() -> Klass:
     return material("dust", [b for t in tiers for b in t], "tiny", 0.85)
 
 
-CLASSES = {"ingot": ingot, "nugget": nugget, "bar": bar, "raw": raw, "lump": lump, "gem": gem, "shard": shard, "dust": dust}
+def rod() -> Klass:
+    """The rod (stick, blaze rod, breeze rod, bone): 11 x 1.5 x 1.5 along x, each end stepped in (the handoff's
+    §4.3)."""
+    return material("rod", [
+        box((3.0, 7.25, 7.25), (13.0, 8.75, 8.75), "rod", west=None, east=None),
+        box((2.5, 7.4, 7.4), (3.0, 8.6, 8.6), "rod", west="rod_end", east=None),
+        box((13.0, 7.4, 7.4), (13.5, 8.6, 8.6), "rod", east="rod_end", west=None),
+    ], "small", 1.0)
+
+
+def plate() -> Klass:
+    """The plate (paper, a map, leather, hide, membrane): 11 x 0.5 x 9, its corners cut a sixteenth (two
+    sheets crossed, a hair apart), one corner lifted in a curl."""
+    return material("plate", [
+        box((2.5, 7.75, 4.5), (13.5, 8.25, 11.5), "sheet_edge", up="sheet", down="sheet"),
+        box((3.5, 7.76, 3.5), (12.5, 8.24, 12.5), "sheet_edge", up="sheet", down="sheet"),
+        box((10.0, 7.8, 9.5), (13.0, 8.2, 12.0), "sheet_edge", Rotation((10.0, 8.0, 10.75), "z", 22.5), up="sheet", down="sheet"),
+    ], "small", 1.0, GUI_TURN_FLAT)
+
+
+def book() -> Klass:
+    """The book: 10 x 2.5 x 7 lying shut, its spine to the west; two covers half a sixteenth thick overhanging
+    the page block half a sixteenth on the three open sides."""
+    return material("book", [
+        box((3.0, 6.75, 4.5), (13.0, 7.25, 11.5), "cover_edge", up=None, down="cover"),
+        box((3.0, 8.75, 4.5), (13.0, 9.25, 11.5), "cover_edge", up="cover", down=None),
+        box((3.0, 7.25, 4.5), (3.6, 8.75, 11.5), "cover", up=None, down=None),
+        box((3.6, 7.25, 5.0), (12.5, 8.75, 11.0), "pages", up=None, down=None, west=None),
+    ], None, 1.0, GUI_TURN_FLAT)
+
+
+def sign() -> Klass:
+    """The sign: a board 14 x 8 x 1.5 on a post, standing face on, as the sign block is."""
+    b = centred([
+        box((1.0, 5.0, 7.25), (15.0, 13.0, 8.75), "board_edge", north="board_face", south="board_face"),
+        box((7.25, 0.5, 7.4), (8.75, 5.0, 8.6), "post", up=None),
+    ])
+    return Klass("sign", b, upright_display(b), None, lies="face_out")
+
+
+def hanging_sign() -> Klass:
+    """The hanging sign: a board 14 x 8 x 1.5 under a bar, on two chains."""
+    b = centred([
+        box((1.0, 3.0, 7.25), (15.0, 11.0, 8.75), "board_edge", north="board_face", south="board_face"),
+        box((0.5, 13.5, 7.0), (15.5, 15.0, 9.0), "bar"),
+        box((3.5, 11.0, 7.75), (4.0, 13.5, 8.25), "chain", up=None, down=None),
+        box((12.0, 11.0, 7.75), (12.5, 13.5, 8.25), "chain", up=None, down=None),
+    ])
+    return Klass("hanging_sign", b, upright_display(b), None, lies="face_out")
+
+
+def arrow() -> Klass:
+    """The arrow: a shaft along x, a two-bladed head and a point at the east end, two crossed vanes of
+    fletching at the west; 13 x 2.4 x 2.4. A tipped arrow's head takes its potion's colour (tint 0)."""
+    return material("arrow", [
+        box((2.0, 7.6, 7.6), (12.0, 8.4, 8.4), "shaft", west="shaft", east=None),
+        box((12.0, 6.8, 7.85), (14.0, 9.2, 8.15), "head"),
+        box((12.0, 7.85, 6.8), (14.0, 8.15, 9.2), "head"),
+        box((14.0, 7.7, 7.7), (15.0, 8.3, 8.3), "head"),
+        box((2.0, 6.8, 7.9), (5.5, 9.2, 8.1), "fletch"),
+        box((2.0, 7.9, 6.8), (5.5, 8.1, 9.2), "fletch"),
+    ], "small", 1.0)
+
+
+CLASSES = {"ingot": ingot, "nugget": nugget, "bar": bar, "raw": raw, "lump": lump, "gem": gem, "shard": shard, "dust": dust,
+           "rod": rod, "plate": plate, "book": book, "sign": sign, "hanging_sign": hanging_sign, "arrow": arrow}

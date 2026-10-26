@@ -24,7 +24,21 @@ AGPL-3.0-or-later, `com.chunkworks.heft`. Client-side: on a server the jar only 
 - **Shared tools**: `minecraft mods/tools/pbr/` (measure, LabPBR encoding and range checks, noise),
   lifted from Survivalist Armor's art pipeline.
 
-## Status: phase 2 (the long tail, Tier B, D-0004) built 2026-10-25, unreleased, no remote
+## Status: phase 3 (rods, plates, books, signs, arrows) built 2026-10-25, unreleased, no remote
+
+**Phase 3**: six classes over 44 items (D-0003): rod (stick, blaze and breeze rods, bone), plate (paper,
+map, leather, rabbit and kangaroo hide, membrane), book (five), sign and hanging sign (13 woods each,
+Backport's pale oak and poplar among them), arrow (plain, spectral, tipped: the head takes the potion's
+tint). The painter gained parts (a book's pages, a sign's chains, an arrow's head and fletching each
+their own material) and grain (wood, a stack of pages). 85 solid items in all; the booth's game draws
+80 solid and 474 extruded. Left in the long tail on purpose: filled maps (their markings are a tinted
+layer), Farmer's Delight's canvas signs, string, lead. Open for Rusty: the bone is a rod (the
+handoff's canon) and reads as a pale stick; a knobbed bone would be a class of its own.
+- Booth: the camera is held on the client each shot. The server's flying flag did not hold it: the
+  player fell from every camera position to the ground (the shake Rusty saw in the booth window, and
+  every shot taken from the ground). Settle 60 ticks, for chunk meshes.
+
+## Phase 2 (the long tail, Tier B, D-0004) built 2026-10-25
 
 **Phase 2**: every other flat item extruded from its own sprite repainted at 64x (Rusty's call). In the
 booth's game: 513 items extruded, 1 left flat (`sculk_vein`, animated), 470 sprites repainted in about

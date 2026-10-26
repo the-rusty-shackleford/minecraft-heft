@@ -3,7 +3,7 @@
 Partitions:
 - each sheet: width and height multiples of 16; _n and _s present, the same size
 - _n over opaque texels: height FLOOR..CREST, span within the cap, unit normals
-- _s: emission only on materials that glow; F0 the material's
+- _s: emission only on materials that glow (or have a part that does); F0 the material's or its parts'
 - transparent texels' colour spread from the faces (no black pulled in by filtering)
 """
 import numpy as np
@@ -37,8 +37,9 @@ def test_ranges(item, base):
     opaque = a[..., 3] > 0
     material = paint.MATERIALS[build.ITEMS[item][1]]
     assert labpbr.breaches_n(n, opaque) == []
-    assert labpbr.breaches_s(s, opaque, material.glows) == []
-    assert (s[..., 1][opaque] == material.f0).all()
+    assert labpbr.breaches_s(s, opaque, build.glows(material)) == []
+    allowed = {material.f0} | {paint.MATERIALS[m].f0 for _, m in material.parts}
+    assert set(np.unique(s[..., 1][opaque]).tolist()) <= allowed
 
 
 @pytest.mark.parametrize("item,base", SHEETS)
