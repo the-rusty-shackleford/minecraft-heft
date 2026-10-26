@@ -70,10 +70,6 @@
    "required": false
   },
   {
-   "id": "minecraft:chicken",
-   "required": false
-  },
-  {
    "id": "minecraft:chorus_fruit",
    "required": false
   },
@@ -83,26 +79,6 @@
   },
   {
    "id": "minecraft:coal",
-   "required": false
-  },
-  {
-   "id": "minecraft:cod",
-   "required": false
-  },
-  {
-   "id": "minecraft:cooked_chicken",
-   "required": false
-  },
-  {
-   "id": "minecraft:cooked_cod",
-   "required": false
-  },
-  {
-   "id": "minecraft:cooked_rabbit",
-   "required": false
-  },
-  {
-   "id": "minecraft:cooked_salmon",
    "required": false
   },
   {
@@ -234,19 +210,11 @@
    "required": false
   },
   {
-   "id": "minecraft:pufferfish",
-   "required": false
-  },
-  {
    "id": "minecraft:purple_dye",
    "required": false
   },
   {
    "id": "minecraft:quartz",
-   "required": false
-  },
-  {
-   "id": "minecraft:rabbit",
    "required": false
   },
   {
@@ -270,10 +238,6 @@
    "required": false
   },
   {
-   "id": "minecraft:salmon",
-   "required": false
-  },
-  {
    "id": "minecraft:slime_ball",
    "required": false
   },
@@ -291,10 +255,6 @@
   },
   {
    "id": "minecraft:sweet_berries",
-   "required": false
-  },
-  {
-   "id": "minecraft:tropical_fish",
    "required": false
   },
   {

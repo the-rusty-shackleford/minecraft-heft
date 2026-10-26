@@ -114,6 +114,13 @@ public final class HeftBooth {
 
     private static final BlockPos BENCH = new BlockPos(11, 0, 4);
     private static final BlockPos PILE = new BlockPos(13, 0, 4);
+    /** The review row (Rusty's answers, 2026-10-26): what changed, each beside what it is compared with, then meat by size. */
+    private static final int REVIEW_X = 20, REVIEW_Z = 13;
+    private static final List<String> REVIEW_ONCE = List.of("minecraft:bone", "minecraft:stick", "minecraft:coal", "minecraft:charcoal",
+            "create:brass_ingot", "minecraft:gold_ingot", "create:brass_nugget", "subwild:coal_shard");
+    private static final List<String> REVIEW_MEAT = List.of("minecraft:cooked_porkchop", "farmersdelight:cooked_bacon",
+            "farmersdelight:cod_slice", "farmersdelight:chicken_cuts", "minecraft:cooked_beef", "minecraft:cooked_chicken",
+            "minecraft:cooked_mutton", "minecraft:cod");
 
     @SubscribeEvent
     public static void onClientTick(ClientTickEvent.Post event) {
@@ -282,6 +289,19 @@ public final class HeftBooth {
             }
         }
         setDown(sp, new ItemStack(Items.IRON_INGOT), new BlockPos(-13, ground + 2, -9), Direction.SOUTH);
+        // The review row: the materials once each, then four tries of each meat (a whole joint takes one, a cut piles).
+        fill(level, REVIEW_X - 2, 0, REVIEW_Z, REVIEW_X + 32, 0, REVIEW_Z, Blocks.SMOOTH_STONE);
+        for (int i = 0; i < REVIEW_ONCE.size() + REVIEW_MEAT.size(); i++) {
+            boolean meat = i >= REVIEW_ONCE.size();
+            String id = meat ? REVIEW_MEAT.get(i - REVIEW_ONCE.size()) : REVIEW_ONCE.get(i);
+            Item item = BuiltInRegistries.ITEM.get(ResourceLocation.parse(id));
+            if (item == Items.AIR) {
+                continue;
+            }
+            for (int n = 0; n < (meat ? 4 : 1); n++) {
+                setDown(sp, new ItemStack(item), new BlockPos(REVIEW_X + i * 2, ground, REVIEW_Z), Direction.UP);
+            }
+        }
         // The inventory: the long tail's samples in the hotbar, then as many solid items as the rest holds.
         for (int i = 0; i < 9; i++) {
             sp.getInventory().setItem(i, tail.get(i).copy());
@@ -291,6 +311,40 @@ public final class HeftBooth {
         }
         aim(sp, new Vec3(0.5, ground + 2.2, 8.0), new Vec3(0.5, ground + 1.0, 0.5));
         placed = true;
+    }
+
+    /**
+     * Meat by its size (D-0006): on Set It Down 1.2.0 or later, which reads the single tag first, four tries leave one
+     * cooked beef and four cooked pork chops. On an older one the single tag is ignored, and the check says so.
+     */
+    private static void reviewMeat(Minecraft mc) {
+        String version = net.neoforged.fml.ModList.get().getModContainerById("setitdown")
+                .map(c -> c.getModInfo().getVersion().toString()).orElse("");
+        if (version.isEmpty() || new org.apache.maven.artifact.versioning.DefaultArtifactVersion(version)
+                .compareTo(new org.apache.maven.artifact.versioning.DefaultArtifactVersion("1.2.0")) < 0) {
+            LOG.info("booth: meat by size not checked: Set It Down {} does not read the single tag", version.isEmpty() ? "absent" : version);
+            return;
+        }
+        int chop = REVIEW_ONCE.size(), beef = REVIEW_ONCE.size() + REVIEW_MEAT.indexOf("minecraft:cooked_beef");
+        verdict("meat by size: four tries leave one cooked beef and four cooked pork chops (Set It Down " + version + ")", () -> {
+            int beefs = reviewCount(mc, beef), chops = reviewCount(mc, chop);
+            return beefs == 1 && chops == 4 ? null : beefs + " beef, " + chops + " chops";
+        });
+    }
+
+    /** effects: returns how many items the Set It Down display at review place {@code i} holds, 0 if none */
+    private static int reviewCount(Minecraft mc, int i) {
+        BlockPos at = new BlockPos(REVIEW_X + i * 2, ground + 1, REVIEW_Z);
+        for (Entity e : mc.level.getEntities((Entity) null, new net.minecraft.world.phys.AABB(at), x -> true)) {
+            if (e.getClass().getName().equals("com.chunkworks.setitdown.DisplayEntity")) {
+                try {
+                    return (int) e.getClass().getMethod("count").invoke(e);
+                } catch (ReflectiveOperationException ex) {
+                    return -1;
+                }
+            }
+        }
+        return 0;
     }
 
     /** effects: sets {@code stack} down on {@code face} of {@code at} through Set It Down's own placing, if Set It Down is loaded */
@@ -358,6 +412,11 @@ public final class HeftBooth {
         shot(s, t, mc, "booth-setdown-back-far", new Vec3(36.0, 1.6, 9.2), new Vec3(36.0, 1.05, 7.5));
         shot(s, t, mc, "booth-setdown-back-farther", new Vec3(43.0, 1.6, 9.2), new Vec3(43.0, 1.05, 7.5));
         shot(s, t, mc, "booth-piles", new Vec3(51.5, 1.7, 6.6), new Vec3(51.5, 1.05, 4.5));
+        // One shot a pair (a frame this close holds two places): the bone and the stick, coal and charcoal, ..., then the meats.
+        for (int g = 0; g < (REVIEW_ONCE.size() + REVIEW_MEAT.size()) / 2; g++) {
+            double x = REVIEW_X + g * 4 + 1.5;
+            shot(s, t, mc, "booth-review-" + (g + 1), new Vec3(x, 1.55, REVIEW_Z + 1.9), new Vec3(x, 1.05, REVIEW_Z + 0.5));
+        }
         shot(s, t, mc, "booth-wall", new Vec3(-12.5, 2.6, -7.0), new Vec3(-12.5, 2.5, -8.5));
         // Grazing light from the low sun across the frames: where the twin's ridges show, if the shader reads them.
         shot(s, t, mc, "booth-frames-grazing", new Vec3(13.0, 1.0, -7.0), new Vec3(9.0, 1.5, -8.5));
@@ -556,6 +615,7 @@ public final class HeftBooth {
                 e -> e.getClass().getName().equals("com.chunkworks.setitdown.DisplayEntity"));
         verdict("Set It Down set one of each class down, and the piles (" + displays.size() + " displays)",
                 () -> displays.size() >= oneOfEach().size() + 3 ? null : displays.size() + " displays");
+        reviewMeat(mc);
         List<String> badDisplays = new ArrayList<>();
         // Where a pack-drawn item was set down: its display draws the pack's model, as it should.
         java.util.Set<BlockPos> packDrawnPositions = new java.util.HashSet<>();

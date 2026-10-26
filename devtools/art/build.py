@@ -52,7 +52,7 @@ ITEMS: dict[str, tuple[str, str]] = {
     "minecraft:brick": ("bar", "brick"), "minecraft:nether_brick": ("bar", "nether_brick"),
     # Phase 3: rods, plates, books, signs, arrows.
     "minecraft:stick": ("rod", "stick"), "minecraft:blaze_rod": ("rod", "blaze_rod"),
-    "minecraft:breeze_rod": ("rod", "breeze_rod"), "minecraft:bone": ("rod", "bone"),
+    "minecraft:breeze_rod": ("rod", "breeze_rod"), "minecraft:bone": ("bone", "bone"),
     "minecraft:paper": ("plate", "paper"), "minecraft:map": ("plate", "map_paper"), "minecraft:leather": ("plate", "leather"),
     "minecraft:rabbit_hide": ("plate", "rabbit_hide"), "minecraft:phantom_membrane": ("plate", "phantom_membrane"),
     "alexsmobs:kangaroo_hide": ("plate", "kangaroo_hide"),
@@ -163,13 +163,22 @@ def shape_json(item: str, klass: Klass, material: str, sheet_laid) -> dict:
 
 
 # How Set It Down shares a spot between several of a class (the handoff's §4.4): flat things climb in a pile,
-# lumpy things spread in a cluster; a class not named here is one to a spot.
+# lumpy things spread in a cluster; a class not named here is one to a spot unless Set It Down's own tags say otherwise.
 STACKING = {
     "ingot": "pile", "nugget": "pile", "bar": "pile", "plate": "pile", "book": "pile", "record": "pile", "rod": "pile",
-    "steak": "pile", "disc": "pile", "loaf": "pile", "pie": "pile", "pie_slice": "pile", "stack": "pile",
+    "bone": "pile", "steak": "pile", "disc": "pile", "loaf": "pile", "pie": "pile", "pie_slice": "pile", "stack": "pile",
     "raw": "cluster", "lump": "cluster", "gem": "cluster", "shard": "cluster", "dust": "cluster", "orb": "cluster",
     "fruit": "cluster", "egg": "cluster", "berries": "cluster", "tuber": "cluster", "root": "cluster",
-    "drumstick": "cluster", "fish": "cluster",
+    "drumstick": "cluster",
+}
+# Meat by its size (Rusty, 2026-10-26): small cuts share a spot (a chop, a slice, mince, chicken cuts, by their class
+# above); a whole joint is one to a spot: a steak, a leg of mutton, a whole chicken or rabbit, a whole fish. Set It
+# Down's stackable_single outranks its pile and cluster tags (its D-0009), so these hold against its #c: food tags.
+SINGLE = {
+    "minecraft:beef", "minecraft:cooked_beef", "minecraft:mutton", "minecraft:cooked_mutton", "minecraft:rotten_flesh",
+    "minecraft:chicken", "minecraft:cooked_chicken", "minecraft:rabbit", "minecraft:cooked_rabbit",
+    "minecraft:cod", "minecraft:cooked_cod", "minecraft:salmon", "minecraft:cooked_salmon",
+    "minecraft:tropical_fish", "minecraft:pufferfish",
 }
 TAGS = ASSETS.parents[1] / "data" / "setitdown" / "tags" / "item"
 
@@ -184,8 +193,9 @@ def write_tags() -> dict[str, list[str]]:
         klass = CLASSES[class_name]()
         if klass.size:
             members.setdefault(f"size/{klass.size}", []).append(item)
-        if class_name in STACKING:
-            members.setdefault(f"stackable_{STACKING[class_name]}", []).append(item)
+        kind = "single" if item in SINGLE else STACKING.get(class_name)
+        if kind:
+            members.setdefault(f"stackable_{kind}", []).append(item)
     for tag, items in members.items():
         out = TAGS / f"{tag}.json"
         out.parent.mkdir(parents=True, exist_ok=True)

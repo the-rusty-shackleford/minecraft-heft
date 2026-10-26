@@ -311,13 +311,27 @@ def dust() -> Klass:
 
 
 def rod() -> Klass:
-    """The rod (stick, blaze rod, breeze rod, bone): 11 x 1.5 x 1.5 along x, each end stepped in (the handoff's
+    """The rod (stick, blaze rod, breeze rod): 11 x 1.5 x 1.5 along x, each end stepped in (the handoff's
     §4.3)."""
     return material("rod", [
         box((3.0, 7.25, 7.25), (13.0, 8.75, 8.75), "rod", west=None, east=None),
         box((2.5, 7.4, 7.4), (3.0, 8.6, 8.6), "rod", west="rod_end", east=None),
         box((13.0, 7.4, 7.4), (13.5, 8.6, 8.6), "rod", east="rod_end", west=None),
     ], "small", 1.0)
+
+
+def bone() -> Klass:
+    """The bone: a shaft 1.5 thick, flaring at each end into two knobs side by side, the ends turned an eighth so they
+    read round; 12 x 2 x 5, lying flat."""
+    out = [box((4.4, 7.25, 7.25), (11.6, 8.75, 8.75), "bone", west=None, east=None)]
+    for x0, x1 in ((3.4, 4.4), (11.6, 12.6)):
+        out.append(box((x0, 7.1, 6.6), (x1, 8.9, 9.4), "bone"))
+    for (x0, x1), sx in (((2.0, 4.0), -1), ((12.0, 14.0), 1)):
+        for (z0, z1), sz in (((5.5, 7.7), -1), ((8.3, 10.5), 1)):
+            c = ((x0 + x1) / 2, 8.0, (z0 + z1) / 2)
+            # Mirrored across both axes, so each end's two knobs splay apart alike.
+            out.append(box((x0, 7.0, z0), (x1, 9.0, z1), "knob", Rotation(c, "y", 22.5 * sx * sz)))
+    return material("bone", out, "small", 1.0)
 
 
 def plate() -> Klass:
@@ -666,7 +680,7 @@ def saddle() -> Klass:
 
 
 CLASSES = {"ingot": ingot, "nugget": nugget, "bar": bar, "raw": raw, "lump": lump, "gem": gem, "shard": shard, "dust": dust,
-           "rod": rod, "plate": plate, "book": book, "sign": sign, "hanging_sign": hanging_sign, "arrow": arrow,
+           "rod": rod, "bone": bone, "plate": plate, "book": book, "sign": sign, "hanging_sign": hanging_sign, "arrow": arrow,
            "fruit": fruit, "egg": egg, "root": root, "tuber": tuber, "loaf": loaf, "disc": disc, "pie": pie, "pie_slice": pie_slice,
            "steak": steak, "drumstick": drumstick, "fish": fish, "berries": berries, "wedge": wedge, "bowl": bowl, "plated": plated,
            "stack": stack, "spawn_egg": spawn_egg, "record": record, "bucket": bucket, "bucket_empty": bucket_empty, "orb": orb,

@@ -90,10 +90,6 @@
    "required": false
   },
   {
-   "id": "minecraft:beef",
-   "required": false
-  },
-  {
    "id": "minecraft:blade_pottery_sherd",
    "required": false
   },
@@ -127,14 +123,6 @@
   },
   {
    "id": "minecraft:burn_pottery_sherd",
-   "required": false
-  },
-  {
-   "id": "minecraft:cooked_beef",
-   "required": false
-  },
-  {
-   "id": "minecraft:cooked_mutton",
    "required": false
   },
   {
@@ -338,10 +326,6 @@
    "required": false
   },
   {
-   "id": "minecraft:mutton",
-   "required": false
-  },
-  {
    "id": "minecraft:nether_brick",
    "required": false
   },
@@ -379,10 +363,6 @@
   },
   {
    "id": "minecraft:rabbit_hide",
-   "required": false
-  },
-  {
-   "id": "minecraft:rotten_flesh",
    "required": false
   },
   {

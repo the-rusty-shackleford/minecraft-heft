@@ -34,8 +34,19 @@ and VanillaBackport drawing spawn eggs itself; Heft now gives depth to whatever 
 never overrides another mod's choice. The dev launcher sometimes crashes in this pack (Controlify's
 mixin, then Sodium's config); a rerun loads.
 
-Open for Rusty: Fresh Food (keep its 3D, as now, or Heft's food instead); the meats now piling in Set
-It Down (D-0006); the bone as a rod; coal's near-black and brass's paleness (their sprites' own colours).
+Rusty's answers, applied 2026-10-26: Fresh Food keeps its own 3D; meat by its size, small cuts sharing a
+spot and whole joints one to a spot (D-0006, with Set It Down 1.2.0's single tag, its D-0009; **Heft ships with
+Set It Down 1.2.0**); the bone a knobbed class of its own; coal lifted and brass deepened (D-0003).
+
+**Review for nfx** (2026-10-26): `run/review/` (review only, never published: Pixlli is in them), from the probe
+on the 4070: `0-all-changes.png` and one close-up a pair (the bone by the stick, coal by charcoal, brass by gold, the
+brass nugget and the coal shard; chops and bacon piled, cod slices piled, chicken cuts heaped; beef, chicken, mutton
+and cod one each), the probe's overview shots beside them. The booth's review row (z 13) makes them; every run
+clears the probe's save now (`prepareProbe`), since last run's displays stood where this run sets the bench.
+The probe and the software booth carry Set It Down 1.2.0 from the sibling build (`run/probe-removed/` keeps the
+1.1.1 jars they had). Gate 2026-10-26: 964 art tests, 2 GameTests, the booth's 18 checks; the probe's 18 pass.
+Seen in the close-ups, older than these answers and not fixed: a set-down cod stands propped on its tail fin
+rather than lying on its side; the cooked pork chop's edges draw olive-dark under Rusty's shaders.
 
 **Phase 6** (D-0006): Set It Down's size and stacking tags from the classes; the jar goes on the server too.
 

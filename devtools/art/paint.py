@@ -82,7 +82,7 @@ ROLES = {
     "shaft": (0.55, 0.5), "head": (0.58, 0.6), "fletch": (0.70, 0.3),
     "skin": (0.55, 0.6), "skin_top": (0.62, 0.6), "stem": (0.45, 0.4), "leaf": (0.55, 0.4),
     "crust": (0.50, 0.8), "crust_top": (0.62, 0.8), "filling": (0.58, 0.4),
-    "meat": (0.58, 0.6), "meat_edge": (0.45, 0.5), "bone": (0.70, 0.5),
+    "meat": (0.58, 0.6), "meat_edge": (0.45, 0.5), "bone": (0.70, 0.5), "knob": (0.76, 0.8),
     "body": (0.55, 0.6), "fin": (0.48, 0.4), "rind": (0.50, 0.6), "flesh": (0.62, 0.4),
     "bowl": (0.50, 0.6), "fill": (0.60, 0.2), "dish": (0.70, 0.4), "food": (0.55, 0.5), "food_top": (0.62, 0.5),
     "bread": (0.55, 0.8), "bread_top": (0.62, 0.8),
@@ -106,6 +106,8 @@ class Material:
     parts: tuple[tuple[str, str], ...] = ()  # role -> another material that role is made of (a book's pages, a sign's chains)
     band: tuple[float, float] | None = None  # only the palette's colours whose hue lies in this band (degrees, wrapping)
     minus: str | None = None  # without the palette's colours close to another class's (a stew's sprite less its bowl)
+    gain: float = 1.0  # each kept colour's value multiplied by it: a 16x sprite drawn near black (coal) lifted so its faces part
+    chroma: float = 1.0  # and its saturation, so a lift does not bring up a cast the sprite's near-blacks hid
 
 
 SPRITE = (0.25, 1.0)  # a palette measured off a mod's 16x sprite: its outline left out
@@ -113,7 +115,8 @@ M = labpbr
 MATERIALS = {m.name: m for m in (
     Material("iron", "iron", "metal", M.IRON), Material("gold", "gold", "metal", M.GOLD),
     Material("copper", "copper", "metal", M.COPPER), Material("netherite", "netherite", "metal", M.ALBEDO_METAL),
-    Material("brass", "brass", "metal", M.ALBEDO_METAL, keep=SPRITE), Material("zinc", "zinc", "metal", M.ALBEDO_METAL, keep=SPRITE),
+    # Create's brass sprite keeps half its palette at a near-white yellow; its middle is the metal (Rusty, 2026-10-26: too pale).
+    Material("brass", "brass", "metal", M.ALBEDO_METAL, keep=(0.25, 0.5)), Material("zinc", "zinc", "metal", M.ALBEDO_METAL, keep=SPRITE),
     Material("steel", "steel", "metal", M.IRON, keep=SPRITE), Material("voidsteel", "voidsteel", "metal", M.ALBEDO_METAL, keep=SPRITE),
     Material("raw_iron", "raw_iron", "rock", 18), Material("raw_gold", "raw_gold", "rock", 18),
     Material("raw_copper", "raw_copper", "rock", 18), Material("raw_zinc", "raw_zinc", "rock", 18, keep=SPRITE),
@@ -122,11 +125,12 @@ MATERIALS = {m.name: m for m in (
     Material("rose_quartz", "rose_quartz", "gem", 12, keep=SPRITE), Material("galestone", "galestone", "gem", 12, keep=SPRITE),
     Material("amethyst", "amethyst", "crystal", 12), Material("prismarine", "prismarine", "crystal", 10),
     Material("echo", "echo", "crystal", 12, glows=True, keep=SPRITE), Material("quartz", "quartz", "crystal", 12),
-    Material("coal_shard", "coal_shard", "crystal", 10, keep=SPRITE),
+    Material("coal_shard", "coal_shard", "crystal", 10, keep=SPRITE, gain=1.9, chroma=0.35),
     Material("redstone", "redstone_dust_item", "powder", 6, keep=SPRITE), Material("glowstone", "glowstone", "powder", 6, glows=True),
     Material("gunpowder", "gunpowder", "powder", 5, keep=SPRITE), Material("sugar", "sugar", "powder", 8, keep=SPRITE),
     Material("bone_meal", "bone_meal", "powder", 6, keep=SPRITE), Material("blaze_powder", "blaze_powder", "powder", 6, glows=True, keep=SPRITE),
-    Material("coal", "coal_item", "mineral", 10, keep=SPRITE), Material("charcoal", "charcoal", "mineral", 8, keep=SPRITE),
+    # Coal's sprite tops out at #353637: its faces drew as one black (Rusty, 2026-10-26: lift it).
+    Material("coal", "coal_item", "mineral", 10, keep=SPRITE, gain=1.9, chroma=0.35), Material("charcoal", "charcoal", "mineral", 8, keep=SPRITE),
     Material("lapis", "lapis", "mineral", 10), Material("netherite_scrap", "netherite_scrap", "mineral", 20, keep=SPRITE),
     Material("brick", "brick", "clay", 8), Material("nether_brick", "nether_brick", "clay", 8),
     # Phase 3: rods, plates, books, signs, arrows.
@@ -221,7 +225,18 @@ def select(palette: list[str], material: Material) -> list[str]:
     if material.minus is not None:
         other = [style.rgb(c) for c in STYLE[material.minus]["palette"]]
         out = [c for c in out if min(float(np.abs(style.rgb(c) - o).sum()) for o in other) > 0.18]
-    return out if out else kept
+    out = out if out else kept
+    if (material.gain, material.chroma) != (1.0, 1.0):
+        out = [_gained(c, material.gain, material.chroma) for c in out]
+    return out
+
+
+def _gained(c: str, gain: float, chroma: float) -> str:
+    """effects: returns colour c with its value multiplied by gain and its saturation by chroma (each at most 1), its hue kept"""
+    import colorsys
+    h, s, v = colorsys.rgb_to_hsv(*style.rgb(c))
+    r, g, b = colorsys.hsv_to_rgb(h, min(1.0, s * chroma), min(1.0, v * gain))
+    return "#%02x%02x%02x" % tuple(round(x * 255) for x in (r, g, b))
 
 
 MATERIALS.update({m.name: m for m in _food_materials()})

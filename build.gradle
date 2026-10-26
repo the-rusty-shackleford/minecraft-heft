@@ -40,10 +40,12 @@ var copyGameTestStructures = tasks.register("copyGameTestStructures", Copy) {
     into "run/gameteststructures"
 }
 
-// The booths have game directories of their own, run/booth (software, the checks) and run/gpubooth
-// (the 4070, shaders on, the photographs): only the old photos and the save are cleared (their mods,
-// resource packs and shader pack stay; devtools/booth/fetch.py puts them there).
-['booth', 'gpubooth'].each { dir ->
+// The booths have game directories of their own, run/booth (software, the checks), run/gpubooth
+// (the 4070, shaders on, the photographs) and run/probe (a copy of Rusty's instance): only the old photos
+// and the save are cleared (their mods, resource packs and shader pack stay; devtools/booth/fetch.py puts
+// them in the first two, the probe's are copied by hand). A save kept from a run before is in the way: its
+// displays still stand where this run sets one of each class down.
+['booth', 'gpubooth', 'probe'].each { dir ->
     tasks.register("prepare${dir.capitalize()}") {
         def game = layout.projectDirectory.dir("run/${dir}").asFile
         outputs.upToDateWhen { false }
@@ -51,7 +53,8 @@ var copyGameTestStructures = tasks.register("copyGameTestStructures", Copy) {
             new File(game, 'screenshots').deleteDir()
             new File(game, 'saves').deleteDir()
             if (!new File(game, 'options.txt').exists()) {
-                throw new GradleException("run/${dir} is empty: uv run --no-project python devtools/booth/fetch.py" + (dir == 'gpubooth' ? ' --gpu' : ''))
+                throw new GradleException(dir == 'probe' ? "run/probe is empty: copy Rusty's instance into it by hand (knowledge/PROJECT.md)"
+                        : "run/${dir} is empty: uv run --no-project python devtools/booth/fetch.py" + (dir == 'gpubooth' ? ' --gpu' : ''))
             }
         }
     }
@@ -106,6 +109,7 @@ neoForge {
             gameDirectory = file('run/probe')
             systemProperty 'heft.booth', 'photos'
             systemProperty 'heft.traceDraw', 'true'
+            taskBefore tasks.named('prepareProbe')
         }
         configureEach {
             logLevel = org.slf4j.event.Level.DEBUG

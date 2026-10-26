@@ -48,7 +48,12 @@ public final class ServerGameTests {
     public void setItDownsTagsFollowTheClasses(GameTestHelper helper) {
         helper.assertTrue(new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.IRON_INGOT).is(tag("stackable_pile")), "an ingot piles");
         helper.assertTrue(new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.BOOK).is(tag("stackable_pile")), "a book piles");
-        helper.assertTrue(new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.COOKED_BEEF).is(tag("stackable_pile")), "a steak piles");
+        // Meat by its size (D-0006): a chop piles, a whole steak and a whole chicken are one to a spot.
+        helper.assertTrue(new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.COOKED_PORKCHOP).is(tag("stackable_pile")), "a chop piles");
+        helper.assertTrue(new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.COOKED_BEEF).is(tag("stackable_single"))
+                && !new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.COOKED_BEEF).is(tag("stackable_pile")), "a whole steak is single");
+        helper.assertTrue(new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.COOKED_CHICKEN).is(tag("stackable_single")), "a whole chicken is single");
+        helper.assertTrue(new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.BONE).is(tag("stackable_pile")), "a bone piles");
         helper.assertTrue(new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.RAW_IRON).is(tag("stackable_cluster")), "a raw chunk clusters");
         helper.assertTrue(new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.GUNPOWDER).is(tag("stackable_cluster")), "a dust clusters");
         helper.assertTrue(new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.RED_DYE).is(tag("size/tiny")), "a dye is tiny");
