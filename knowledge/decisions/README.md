@@ -18,3 +18,4 @@ tags: [index]
 | D-0004 | The long tail (Tier B) is the game's own flat model thickened to two sixteenths, drawn from each sprite repainted at 64x (Scale2x, our grain, flat maps) on the client from its own mod's jar; overrides kept; translucent as a flat item |
 | D-0005 | Plants drawn crossed at runtime (bush and coral block items); every spawn egg one kind tinted 0 and 1; dyes, sherds, patterns reuse classes; record, bucket, orb, star, shell, rocket, horn, totem, saddle; armour left to the packs |
 | D-0006 | Set It Down's size and stacking tags written from the classes (data, so the jar goes on the server too); where its own tags say more, they win; meats now pile |
+| D-0007 | Never override another mod's chosen model; at draw time (after Modefite decides) a flat model, whoever chose it, is extruded; Fresh Food is alive in this pack and keeps its 3D; Backport's eggs stay its own |

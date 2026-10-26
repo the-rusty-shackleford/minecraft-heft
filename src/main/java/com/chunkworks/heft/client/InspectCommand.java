@@ -29,6 +29,7 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 
 /**
@@ -72,6 +73,14 @@ final class InspectCommand {
             out.add("  canon: " + (breaches.isEmpty() ? "kept" : String.join("; ", breaches)));
             solid.missing().forEach(m -> out.add("  no sprite " + m));
         }
+        StringBuilder drawn = new StringBuilder();
+        for (ItemDisplayContext view : ItemDisplayContext.values()) {
+            HeftClient.Decision d = HeftClient.decided(BuiltInRegistries.ITEM.getKey(stack.getItem()), view);
+            if (d != null) {
+                drawn.append(drawn.length() == 0 ? "" : ", ").append(view.getSerializedName()).append(' ').append(d.name().toLowerCase(Locale.ROOT));
+            }
+        }
+        out.add("  as last drawn: " + (drawn.length() == 0 ? "not yet" : drawn));
         out.add("  Set It Down tags: " + (tags.isEmpty() ? "none" : tags));
         return out;
     }

@@ -16,6 +16,9 @@ three-dimensional models in the inventory, in the hand, on the ground, in frames
 shape for every item of a kind, with house-made 128x textures and LabPBR maps for shaders.
 '''
 
+[[mixins]]
+    config="heft.mixins.json"
+
 [[dependencies.${mod_id}]]
     modId="neoforge"
     type="required"

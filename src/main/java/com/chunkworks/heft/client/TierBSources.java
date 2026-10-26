@@ -40,7 +40,8 @@ import org.jetbrains.annotations.Nullable;
  * Which sprites the long tail repaints (Tier B, D-0004): every layer texture of every item model that, as
  * the resources stand (a resource pack's 3D model counts), still resolves to the game's flat sprite model
  * (item/generated, and item/handheld through it) -- an override's model (a bow's draw) as much as an item's
- * own -- leaving out items with a Heft shape and items the settings leave flat. The models are read from
+ * own, an item with a Heft shape too (another mod may draw its flat model in some views, D-0007) -- leaving out
+ * items the settings leave flat. The models are read from
  * the merged resources, since what a player sees is what the winning pack says; the sprites themselves are
  * taken from their own mod ({@link OwnSprites}).
  */
@@ -52,14 +53,6 @@ final class TierBSources {
 
     /** effects: returns the layer textures to repaint, in no particular order, read from {@code resources} */
     static Set<ResourceLocation> textures(ResourceManager resources) {
-        Set<ResourceLocation> shaped = new java.util.HashSet<>();
-        resources.listResources("shapes", rl -> rl.getNamespace().equals(Heft.MOD_ID) && rl.getPath().endsWith(".json")).keySet()
-                .forEach(rl -> {
-                    String[] p = rl.getPath().substring("shapes/".length(), rl.getPath().length() - ".json".length()).split("/", 2);
-                    if (p.length == 2) {
-                        shaped.add(ResourceLocation.fromNamespaceAndPath(p[0], p[1]));
-                    }
-                });
         Set<ResourceLocation> out = new LinkedHashSet<>();
         Map<ResourceLocation, Resource> files = resources.listResources("models/item",
                 rl -> rl.getPath().endsWith(".json") && !rl.getNamespace().equals(Heft.MOD_ID));
@@ -68,7 +61,9 @@ final class TierBSources {
             String name = sub.substring("item/".length());
             if (!name.contains("/")) {
                 ResourceLocation item = ResourceLocation.fromNamespaceAndPath(file.getNamespace(), name);
-                if (shaped.contains(item) || !HeftConfig.extruded(item)) {
+                // An item with a shape is repainted all the same: another mod may draw its own flat model in some views
+                // (Modefite with a pack's item definition: Fresh Food's apple on the ground), and that is extruded (D-0007).
+                if (!HeftConfig.extruded(item)) {
                     continue;
                 }
             }

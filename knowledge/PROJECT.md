@@ -24,7 +24,18 @@ AGPL-3.0-or-later, `com.chunkworks.heft`. Client-side: on a server the jar only 
 - **Shared tools**: `minecraft mods/tools/pbr/` (measure, LabPBR encoding and range checks, noise),
   lifted from Survivalist Armor's art pipeline.
 
-## Status: phases 0 to 6 built 2026-10-26, unreleased, no remote; next: a run in a copy of Rusty's instance, then review
+## Status: phases 0 to 6 built and probed in a copy of Rusty's instance 2026-10-26; unreleased, no remote; awaiting Rusty's and nfx's review
+
+**The probe** (D-0007): Heft in a copy of Rusty's own instance (`run/probe`, `./gradlew runProbeBooth`;
+copy his mods, resource packs, shaders, config and options there by hand, leaving out Old Cannons, a Fabric
+jar the dev launcher refuses). 493 solid, 863 extruded, 88 crossed, 19 flat; block atlas unchanged at
+8192x8192; all 17 checks pass. It found Modefite running Fresh Food's and Refined Tools' item definitions
+and VanillaBackport drawing spawn eggs itself; Heft now gives depth to whatever would be drawn flat and
+never overrides another mod's choice. The dev launcher sometimes crashes in this pack (Controlify's
+mixin, then Sodium's config); a rerun loads.
+
+Open for Rusty: Fresh Food (keep its 3D, as now, or Heft's food instead); the meats now piling in Set
+It Down (D-0006); the bone as a rod; coal's near-black and brass's paleness (their sprites' own colours).
 
 **Phase 6** (D-0006): Set It Down's size and stacking tags from the classes; the jar goes on the server too.
 

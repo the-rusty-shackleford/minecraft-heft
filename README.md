@@ -30,6 +30,10 @@ still join.
   as it grows when placed, from its repainted sprite. Every spawn egg (any mod's) is one egg shape, its
   shell and spots tinted with the mob's two colours.
 - **Armour** is left as your resource packs draw it.
+- **Other mods' choices are kept.** A model another mod or pack chooses (a 1.21.4 item definition through
+  Modefite: Fresh Food, Refined Tools) is left as it is if it is 3D; if it is flat, it is drawn extruded
+  from its own repainted sprite. A mod that draws an item with code of its own (VanillaBackport's spawn eggs,
+  unless its `use_legacy_spawn_eggs` is on) is left to it.
 - **Set It Down.** A Heft model is the item's own, so Set It Down lays it down by its item-frame turn
   (`display.fixed`) and sizes it by its measured box. Every class's `fixed` turn lays it with its
   thinnest side out of the surface and its top towards you.
@@ -54,7 +58,10 @@ Both take effect on the next resource reload (F3+T).
   shape files unread`, and `logs/heft-report.txt` lists every item by how it is drawn,
   per mod, with any shape that breaks the canon or names a sprite missing from the atlas.
 - `/heft inspect` (client command): for the item in your main hand, how it is drawn, its class,
-  material and size, its shape's box as built and as set down or framed, and its Set It Down tags.
+  material and size, its shape's box as built and as set down or framed, what Heft did in each view it
+  was last drawn in (its own model, extruded, a pack's 3D left, custom code, flat), and its Set It Down tags.
+- A line `Heft: <item> in <view> is drawn flat by another mod's choice; no repainted sheet for <sprites>`
+  names a sprite Heft could not repaint (no mod ships it, or it is animated).
 - A solid item drawn as the purple-and-black missing texture: its sheet is not in
   `assets/heft/atlases/items.json`. The report names it.
 

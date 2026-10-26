@@ -96,6 +96,17 @@ neoForge {
             systemProperty 'heft.booth', 'photos'
             taskBefore tasks.named('prepareGpubooth')
         }
+        // The same booth in a copy of Rusty's own instance (run/probe: his mods, resource packs, shader, config and
+        // options, copied in by hand), on the GPU: Heft among everything the pack plays with. Never his instance.
+        probeBooth {
+            client()
+            programArguments.addAll('--width', '1600', '--height', '900')
+            jvmArguments.add('-Xmx10G')
+            sourceSet = sourceSets.gametest
+            gameDirectory = file('run/probe')
+            systemProperty 'heft.booth', 'photos'
+            systemProperty 'heft.traceDraw', 'true'
+        }
         configureEach {
             logLevel = org.slf4j.event.Level.DEBUG
         }
@@ -116,7 +127,7 @@ neoForge {
     addModdingDependenciesTo(sourceSets.gametest)
 }
 
-neoForge.runs.matching { !(it.name in ['gameTestServer', 'photoBooth', 'gpuBooth']) }.configureEach {
+neoForge.runs.matching { !(it.name in ['gameTestServer', 'photoBooth', 'gpuBooth', 'probeBooth']) }.configureEach {
     loadedMods = neoForge.mods.matching { it.name != "${mod_id}_gametest" }
 }
 
@@ -169,7 +180,7 @@ if (!project.hasProperty('skipGameTests')) {
 }
 
 // The booth's verdict lines are the assertion.
-['runPhotoBooth': 'booth', 'runGpuBooth': 'gpubooth'].each { taskName, dir ->
+['runPhotoBooth': 'booth', 'runGpuBooth': 'gpubooth', 'runProbeBooth': 'probe'].each { taskName, dir ->
     tasks.named(taskName) { task ->
         def logFile = layout.projectDirectory.file("run/${dir}/logs/latest.log").asFile
         task.doLast {

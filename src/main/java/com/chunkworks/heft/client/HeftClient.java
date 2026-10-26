@@ -35,6 +35,7 @@ import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackCompatibility;
 import net.minecraft.server.packs.repository.PackSource;
 import net.minecraft.world.flag.FeatureFlagSet;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -168,8 +169,79 @@ public final class HeftClient {
                 && !(block instanceof net.minecraft.world.level.block.WaterlilyBlock) && !(block instanceof net.minecraft.world.level.block.PinkPetalsBlock);
     }
 
+    /** Flat models met at draw time, extruded, until the next bake (D-0007). */
+    private static volatile ExtrudedModel.Cache atDraw = new ExtrudedModel.Cache(name -> null);
+
+    /** What Heft drew in place of what it was handed, for an item in a view (D-0007). */
+    public enum Decision {
+        /** One of Heft's own models (solid, extruded at bake, crossed). */
+        HEFT,
+        /** A flat model another mod chose at draw time, extruded from its repainted sprite. */
+        EXTRUDED,
+        /** A 3D model another mod or pack chose, left as it is. */
+        LEFT_3D,
+        /** Drawn by code of its own (a block entity renderer), left. */
+        CUSTOM,
+        /** A flat model left flat: the settings deny it, or no repainted sheet exists for its sprite. */
+        FLAT
+    }
+
+    private static final java.util.Map<String, Decision> DECISIONS = new java.util.concurrent.ConcurrentHashMap<>();
+    /** Item and view pairs already traced (-Dheft.traceDraw), each once per bake. */
+    private static final java.util.Set<String> TRACED = java.util.concurrent.ConcurrentHashMap.newKeySet();
+    /** Item and view pairs already logged as left flat for want of a sheet, so each is logged once per bake. */
+    private static final java.util.Set<String> UNSHEETED = java.util.concurrent.ConcurrentHashMap.newKeySet();
+
+    /** effects: returns what Heft last drew for {@code item} in {@code view}, or null if it has not been drawn there since the last bake */
+    @org.jetbrains.annotations.Nullable
+    public static Decision decided(ResourceLocation item, net.minecraft.world.item.ItemDisplayContext view) {
+        return DECISIONS.get(item + "|" + view.getSerializedName());
+    }
+
+    /**
+     * effects: returns the model to draw for {@code stack} in {@code view} in place of {@code model}, which another mod
+     * may have chosen at draw time: a flat one extruded from its repainted sprite (if it has one and the settings allow
+     * it), anything else as it is; notes what it decided (D-0007)
+     */
+    public static BakedModel atDraw(ItemStack stack, net.minecraft.world.item.ItemDisplayContext view, BakedModel model) {
+        if (stack.isEmpty()) {
+            return model;
+        }
+        ResourceLocation id = BuiltInRegistries.ITEM.getKey(stack.getItem());
+        Decision d;
+        BakedModel out = model;
+        if (model instanceof SolidModel || model instanceof ExtrudedModel || model instanceof CrossedModel) {
+            d = Decision.HEFT;
+        } else if (model.isCustomRenderer()) {
+            d = Decision.CUSTOM;
+        } else if (model.isGui3d()) {
+            d = Decision.LEFT_3D;
+        } else if (!HeftConfig.extruded(id)) {
+            d = Decision.FLAT;
+        } else {
+            out = atDraw.apply(model);
+            d = out instanceof ExtrudedModel ? Decision.EXTRUDED : Decision.FLAT;
+            if (d == Decision.FLAT && UNSHEETED.add(id + "|" + view.getSerializedName())) {
+                java.util.Set<String> sprites = new java.util.TreeSet<>();
+                model.getQuads(null, null, net.minecraft.util.RandomSource.create(42L)).forEach(q -> sprites.add(q.getSprite().contents().name().toString()));
+                LOG.info("Heft: {} in {} is drawn flat by another mod's choice; no repainted sheet for {}", id, view.getSerializedName(), sprites);
+            }
+        }
+        DECISIONS.put(id + "|" + view.getSerializedName(), d);
+        if (Boolean.getBoolean("heft.traceDraw") && TRACED.add(id + "|" + view.getSerializedName())) {
+            LOG.info("Heft: {} in {} handed {} -> {}", id, view.getSerializedName(), model.getClass().getName(), d);
+        }
+        return out;
+    }
+
     @SubscribeEvent
     public static void onBaked(ModelEvent.BakingCompleted event) {
+        // Draw-time extrusion looks its sheets up on Heft's atlas as stitched for this bake.
+        var atlas = event.getModelManager().getAtlas(HeftAtlas.LOCATION);
+        atDraw = new ExtrudedModel.Cache(atlas::getSprite);
+        DECISIONS.clear();
+        UNSHEETED.clear();
+        TRACED.clear();
         Report.write(event.getModels(), lastRead);
     }
 

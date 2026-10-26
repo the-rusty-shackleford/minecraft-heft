@@ -414,26 +414,18 @@ public final class HeftBooth {
     private static void checks(Minecraft mc) {
         List<ItemStack> all = solids();
         verdict("there are solid items in this game (" + all.size() + ")", () -> all.isEmpty() ? "none" : null);
-        // The long tail (Tier B, D-0004).
-        List<String> notExtruded = new ArrayList<>(), badTail = new ArrayList<>();
+        // The long tail (Tier B, D-0004), judged by what is drawn: whoever chose the model (a pack through Modefite), a flat
+        // one is drawn extruded on Heft's atlas (D-0007).
+        List<String> notDeep = new ArrayList<>();
         for (ItemStack stack : tail()) {
-            BakedModel model = mc.getItemRenderer().getModel(stack, mc.level, null, 0);
-            String id = BuiltInRegistries.ITEM.getKey(stack.getItem()).toString();
-            if (Report.kind(model) != Report.Kind.EXTRUDED) {
-                notExtruded.add(id + " " + Report.kind(model));
-                continue;
-            }
-            int quads = model.getQuads(null, null, RandomSource.create(42L)).size();
-            for (ItemDisplayContext view : List.of(ItemDisplayContext.GUI, ItemDisplayContext.GROUND, ItemDisplayContext.FIXED,
-                    ItemDisplayContext.FIRST_PERSON_RIGHT_HAND)) {
-                Capture c = new Capture();
-                mc.getItemRenderer().renderStatic(stack, view, LIGHT, OverlayTexture.NO_OVERLAY, new PoseStack(), c, mc.level, 0);
-                if (quads == 0 || c.of(HeftAtlas.ITEM_TRANSLUCENT) != quads * 4 || c.total() != quads * 4) {
-                    badTail.add(id + " in " + view.getSerializedName() + ": " + c);
-                }
-            }
+            notDeep.addAll(flatIn(mc, stack));
         }
-        verdict("the long tail's samples are drawn extruded", () -> notExtruded.isEmpty() ? null : String.valueOf(notExtruded));
+        verdict("the long tail's samples have depth in every view, whoever chose their model (Heft's, or a pack's 3D left)",
+                () -> notDeep.isEmpty() ? null : String.valueOf(notDeep));
+        verdict("a bow has depth in every view", () -> {
+            List<String> flat = flatIn(mc, new ItemStack(Items.BOW));
+            return flat.isEmpty() ? null : String.valueOf(flat);
+        });
         verdict("plants are drawn crossed, as they grow (D-0005)", () -> {
             List<String> wrong = new ArrayList<>();
             for (var plant : PLANTS) {
@@ -444,24 +436,13 @@ public final class HeftBooth {
             }
             return wrong.isEmpty() ? null : String.valueOf(wrong);
         });
-        verdict("spawn eggs are the egg of their kind, on Heft's atlas, tinted 0 and 1 as the game tints them", () -> {
+        verdict("spawn eggs have depth in every view: Heft's tinted egg, or another mod's own egg art extruded (D-0005, D-0007)", () -> {
             List<String> wrong = new ArrayList<>();
             for (var egg : EGGS) {
-                BakedModel m = mc.getItemRenderer().getModel(new ItemStack(egg), mc.level, null, 0);
-                java.util.Set<Integer> tints = new java.util.TreeSet<>();
-                m.getQuads(null, null, RandomSource.create(42L)).forEach(q -> tints.add(q.getTintIndex()));
-                if (Report.kind(m) != Report.Kind.SOLID || !tints.equals(java.util.Set.of(0, 1))) {
-                    wrong.add(BuiltInRegistries.ITEM.getKey(egg) + " " + Report.kind(m) + " tints " + tints);
-                }
+                wrong.addAll(flatIn(mc, new ItemStack(egg)));
+                LOG.info("booth: {} in the gui: {}", BuiltInRegistries.ITEM.getKey(egg), drawnAs(mc, new ItemStack(egg), ItemDisplayContext.GUI));
             }
             return wrong.isEmpty() ? null : String.valueOf(wrong);
-        });
-        verdict("and whole, on Heft's atlas, translucent as the game draws a flat item", () -> badTail.isEmpty() ? null : String.join("; ", badTail));
-        verdict("a bow's draw resolves to an extruded model too", () -> {
-            ItemStack bow = new ItemStack(Items.BOW);
-            BakedModel model = mc.getItemRenderer().getModel(bow, mc.level, null, 0);
-            return Report.kind(model) == Report.Kind.EXTRUDED && model.getOverrides() != net.minecraft.client.renderer.block.model.ItemOverrides.EMPTY
-                    ? null : Report.kind(model) + " with " + model.getOverrides();
         });
         verdict("a repainted sheet is painted from the game's own sprite, never the winning pack's (D-0001)", () -> {
             var rm = mc.getResourceManager();
@@ -515,10 +496,14 @@ public final class HeftBooth {
             }
             return wrong.isEmpty() ? null : String.join(", ", wrong);
         });
-        List<String> notSolid = new ArrayList<>(), badParticle = new ArrayList<>(), badViews = new ArrayList<>();
+        List<String> notSolid = new ArrayList<>(), badParticle = new ArrayList<>(), badViews = new ArrayList<>(), leftToPacks = new ArrayList<>();
         for (ItemStack stack : all) {
             BakedModel model = mc.getItemRenderer().getModel(stack, mc.level, null, 0);
             String id = BuiltInRegistries.ITEM.getKey(stack.getItem()).toString();
+            if (packDraws(mc, stack) || drawnAs(mc, stack, ItemDisplayContext.GUI) != HeftClient.Decision.HEFT) {
+                leftToPacks.add(id);
+                continue;
+            }
             if (Report.kind(model) != Report.Kind.SOLID) {
                 notSolid.add(id);
                 continue;
@@ -540,7 +525,13 @@ public final class HeftBooth {
                 }
             }
         }
-        verdict("every one is drawn solid", () -> notSolid.isEmpty() ? null : String.valueOf(notSolid));
+        LOG.info("booth: {} solid items another mod or pack chooses the model for (D-0007): {}", leftToPacks.size(), leftToPacks);
+        List<String> flatViews = new ArrayList<>();
+        for (ItemStack stack : all) {
+            flatViews.addAll(flatIn(mc, stack));
+        }
+        verdict("every one is drawn solid, unless a pack draws it in 3D of its own", () -> notSolid.isEmpty() ? null : String.valueOf(notSolid));
+        verdict("and none is drawn flat in any view, whoever chose its model (D-0007)", () -> flatViews.isEmpty() ? null : String.valueOf(flatViews));
         verdict("every shape keeps the canon, as the game reads it (D-0003)", () -> {
             List<String> breaches = new ArrayList<>();
             for (Solid s : HeftClient.lastRead().solids().values()) {
@@ -566,9 +557,18 @@ public final class HeftBooth {
         verdict("Set It Down set one of each class down, and the piles (" + displays.size() + " displays)",
                 () -> displays.size() >= oneOfEach().size() + 3 ? null : displays.size() + " displays");
         List<String> badDisplays = new ArrayList<>();
+        // Where a pack-drawn item was set down: its display draws the pack's model, as it should.
+        java.util.Set<BlockPos> packDrawnPositions = new java.util.HashSet<>();
+        List<ItemStack> each = oneOfEach();
+        for (int i = 0; i < each.size(); i++) {
+            if (packDraws(mc, each.get(i)) || drawnAs(mc, each.get(i), ItemDisplayContext.GUI) != HeftClient.Decision.HEFT) {
+                packDrawnPositions.add(new BlockPos(BENCH.getX() + 8 + (i % 15) * 2, ground + 1, BENCH.getZ() + (i / 15) * 3));
+            }
+        }
         for (Entity d : displays) {
             Capture c = draw(mc, d);
-            if (c.of(HeftAtlas.ITEM) == 0) {
+            if (c.of(HeftAtlas.ITEM) == 0 && c.of(HeftAtlas.ITEM_TRANSLUCENT) == 0 && c.mentioning("atlas/blocks") > 0 && !packDrawnPositions.contains(d.blockPosition())
+                    && !packDrawnPositions.contains(d.blockPosition().below())) {
                 badDisplays.add(d.blockPosition() + ": " + c);
             }
         }
@@ -579,6 +579,9 @@ public final class HeftBooth {
                 var item = Class.forName("com.chunkworks.setitdown.client.BoundsCache")
                         .getMethod("item", ItemStack.class, net.minecraft.world.level.Level.class, int.class);
                 for (ItemStack stack : oneOfEach()) {
+                    if (packDraws(mc, stack) || drawnAs(mc, stack, ItemDisplayContext.GUI) != HeftClient.Decision.HEFT) {
+                        continue;
+                    }
                     Object entry = item.invoke(null, stack, mc.level, 0);
                     Object rest = entry.getClass().getMethod("rest").invoke(entry);
                     LOG.info("booth: Set It Down measures {} at rest as {}", stack.getItem(), entry.getClass().getMethod("box").invoke(entry));
@@ -591,6 +594,44 @@ public final class HeftBooth {
             }
             return rested.isEmpty() ? null : String.valueOf(rested);
         });
+    }
+
+    /** effects: returns whether another mod or pack draws {@code stack} with a 3D model of its own (Fresh Food's apple), which Heft leaves (D-0007) */
+    private static boolean packDraws(Minecraft mc, ItemStack stack) {
+        BakedModel drawn = mc.getItemRenderer().getModel(stack, mc.level, null, 0);
+        Report.Kind k = Report.kind(drawn);
+        return k == Report.Kind.THREE_D || k == Report.Kind.CUSTOM;
+    }
+
+    /** effects: draws {@code stack} in {@code view} into nothing and returns what Heft decided for it there (D-0007) */
+    private static HeftClient.Decision drawnAs(Minecraft mc, ItemStack stack, ItemDisplayContext view) {
+        mc.getItemRenderer().renderStatic(stack, view, LIGHT, OverlayTexture.NO_OVERLAY, new PoseStack(), new Capture(), mc.level, 0);
+        HeftClient.Decision d = HeftClient.decided(BuiltInRegistries.ITEM.getKey(stack.getItem()), view);
+        // Never handed to the item renderer's drawing: another mod draws it with code of its own (VanillaBackport's
+        // spawn eggs, while its use_legacy_spawn_eggs is off), which Heft leaves (D-0007).
+        return d == null ? HeftClient.Decision.CUSTOM : d;
+    }
+
+    /** The views an item is seen in. */
+    private static final List<ItemDisplayContext> VIEWS = List.of(ItemDisplayContext.GUI, ItemDisplayContext.GROUND, ItemDisplayContext.FIXED,
+            ItemDisplayContext.FIRST_PERSON_RIGHT_HAND, ItemDisplayContext.THIRD_PERSON_RIGHT_HAND);
+
+    /** effects: returns, for every view {@code stack} is drawn flat in, a line naming it; empty if it has depth in every one */
+    private static List<String> flatIn(Minecraft mc, ItemStack stack) {
+        List<String> out = new ArrayList<>();
+        for (ItemDisplayContext view : VIEWS) {
+            if (drawnAs(mc, stack, view) == HeftClient.Decision.FLAT) {
+                out.add(BuiltInRegistries.ITEM.getKey(stack.getItem()) + " in " + view.getSerializedName());
+            }
+        }
+        return out;
+    }
+
+    /** effects: returns the vertices drawing {@code stack} in {@code view} gives on Heft's atlas, either render type */
+    private static int onHeft(Minecraft mc, ItemStack stack, ItemDisplayContext view) {
+        Capture c = new Capture();
+        mc.getItemRenderer().renderStatic(stack, view, LIGHT, OverlayTexture.NO_OVERLAY, new PoseStack(), c, mc.level, 0);
+        return c.of(HeftAtlas.ITEM) + c.of(HeftAtlas.ITEM_TRANSLUCENT);
     }
 
     /** effects: returns what drawing {@code entity} at the origin gives, through its renderer alone */
