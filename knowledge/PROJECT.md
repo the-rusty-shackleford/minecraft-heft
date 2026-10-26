@@ -45,8 +45,10 @@ and cod one each), the probe's overview shots beside them. The booth's review ro
 clears the probe's save now (`prepareProbe`), since last run's displays stood where this run sets the bench.
 The probe and the software booth carry Set It Down 1.2.0 from the sibling build (`run/probe-removed/` keeps the
 1.1.1 jars they had). Gate 2026-10-26: 964 art tests, 2 GameTests, the booth's 18 checks; the probe's 18 pass.
-Seen in the close-ups, older than these answers and not fixed: a set-down cod stands propped on its tail fin
-rather than lying on its side; the cooked pork chop's edges draw olive-dark under Rusty's shaders.
+Every vanilla meat and fish in the close-ups is Fresh Food's model (run by Modefite; Heft leaves it, D-0007), not
+Heft's: the cod propped on its fin, the wood-looking pork chop and the cooked mutton Rusty called "too much of a blob"
+(its slices not distinct) are Fresh Food's. The report's "solid" section lists items Heft has a shape for, not who
+draws them in a given pack.
 
 **Phase 6** (D-0006): Set It Down's size and stacking tags from the classes; the jar goes on the server too.
 
