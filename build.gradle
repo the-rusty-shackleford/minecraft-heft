@@ -1,0 +1,240 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'net.neoforged.moddev' version '2.0.144'
+    id 'idea'
+}
+
+version = mod_version
+group = mod_group_id
+
+base {
+    archivesName = mod_id
+}
+
+// Mojang ships Java 21 to end users in 1.21.1, so mods must target Java 21.
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+repositories {
+    mavenCentral()
+}
+
+// Three layers, one direction of dependency, as in Set It Down:
+//
+//   domain   <--  main (adapters)  <--  gametest (a real server, and the booth's client)
+//     ^
+//     +----  test (plain JUnit; no Minecraft on its classpath at all)
+//
+// `domain` is the pure layer: a shape's elements and their turned box, how Set It Down would rest
+// it, the class canon, a sprite's mask meshed into boxes -- over plain numbers, compiled against
+// nothing but the JDK.
+sourceSets {
+    domain
+    gametest
+}
+
+// In a dev run the structure template manager reads gametest templates from
+// <cwd>/gameteststructures/; they are kept under devtools/ and copied there.
+var copyGameTestStructures = tasks.register("copyGameTestStructures", Copy) {
+    from "devtools/gameteststructures"
+    into "run/gameteststructures"
+}
+
+// The booths have game directories of their own, run/booth (software, the checks) and run/gpubooth
+// (the 4070, shaders on, the photographs): only the old photos and the save are cleared (their mods,
+// resource packs and shader pack stay; devtools/booth/fetch.py puts them there).
+['booth', 'gpubooth'].each { dir ->
+    tasks.register("prepare${dir.capitalize()}") {
+        def game = layout.projectDirectory.dir("run/${dir}").asFile
+        outputs.upToDateWhen { false }
+        doLast {
+            new File(game, 'screenshots').deleteDir()
+            new File(game, 'saves').deleteDir()
+            if (!new File(game, 'options.txt').exists()) {
+                throw new GradleException("run/${dir} is empty: uv run --no-project python devtools/booth/fetch.py" + (dir == 'gpubooth' ? ' --gpu' : ''))
+            }
+        }
+    }
+}
+
+neoForge {
+    version = project.neo_version
+
+    parchment {
+        mappingsVersion = project.parchment_mappings_version
+        minecraftVersion = project.parchment_minecraft_version
+    }
+
+    runs {
+        client {
+            client()
+        }
+        // A dedicated server with the gametest framework on: the item tags load and resolve.
+        gameTestServer {
+            type = "gameTestServer"
+            sourceSet = sourceSets.gametest
+            systemProperty 'neoforge.enabledGameTestNamespaces', providers.gradleProperty('gameTestNamespaces').getOrElse(mod_id)
+            taskBefore copyGameTestStructures
+        }
+        // A client that lays the solid items out in a flat world -- inventory, hands, ground, frames,
+        // set down -- checks what was drawn, and photographs it. In software on :7; needs a display.
+        photoBooth {
+            client()
+            programArguments.addAll('--width', '1280', '--height', '720')
+            sourceSet = sourceSets.gametest
+            gameDirectory = file('run/booth')
+            systemProperty 'heft.booth', 'checks'
+            taskBefore tasks.named('prepareBooth')
+        }
+        // The same booth's photographs on the GPU, shaders on, the players' resource packs in: through
+        // tools/booth/run_iconified.sh, or on :7 with the GPU (the Survivalist Armor recipe).
+        gpuBooth {
+            client()
+            programArguments.addAll('--width', '1600', '--height', '900')
+            sourceSet = sourceSets.gametest
+            gameDirectory = file('run/gpubooth')
+            systemProperty 'heft.booth', 'photos'
+            taskBefore tasks.named('prepareGpubooth')
+        }
+        configureEach {
+            logLevel = org.slf4j.event.Level.DEBUG
+        }
+    }
+
+    mods {
+        "${mod_id}" {
+            sourceSet(sourceSets.domain)
+            sourceSet(sourceSets.main)
+        }
+        // The gametests and the booth are a mod of their own.
+        "${mod_id}_gametest" {
+            sourceSet(sourceSets.gametest)
+        }
+    }
+
+    // Deliberately not `domain` and not `test`.
+    addModdingDependenciesTo(sourceSets.gametest)
+}
+
+neoForge.runs.matching { !(it.name in ['gameTestServer', 'photoBooth', 'gpuBooth']) }.configureEach {
+    loadedMods = neoForge.mods.matching { it.name != "${mod_id}_gametest" }
+}
+
+configurations {
+    gametestImplementation.extendsFrom implementation
+    gametestRuntimeOnly.extendsFrom runtimeOnly
+}
+
+dependencies {
+    implementation sourceSets.domain.output
+
+    gametestImplementation sourceSets.main.output
+    gametestImplementation sourceSets.domain.output
+
+    testImplementation sourceSets.domain.output
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
+    testRuntimeOnly    'org.junit.jupiter:junit-jupiter-engine:5.9.2'
+    testRuntimeOnly    'org.junit.platform:junit-platform-launcher:1.9.2'
+}
+
+tasks.named('test', Test) {
+    useJUnitPlatform()
+}
+
+// The shipped jar is main + domain. gametest is never shipped.
+jar {
+    from sourceSets.domain.output
+}
+
+// The gametest server's exit code is zero when no test ran at all (a refused
+// mod, a namespace typo), so the assertion is the framework's own summary line.
+tasks.named('runGameTestServer') { task ->
+    def logFile = layout.projectDirectory.file('run/logs/latest.log').asFile
+    task.doLast {
+        def text = logFile.exists() ? logFile.text : ''
+        if (text =~ /Missing or unsupported mandatory|Mod loading has failed/) {
+            throw new GradleException("gametest: the loader refused a mod; see ${logFile}")
+        }
+        def passed = (text =~ /All (\d+) required tests passed/)
+        if (!passed.find()) {
+            throw new GradleException("gametest: no 'required tests passed' line in ${logFile}")
+        }
+        task.logger.lifecycle("gametest: all ${passed.group(1)} required tests passed")
+    }
+}
+if (!project.hasProperty('skipGameTests')) {
+    tasks.named('check') {
+        dependsOn 'runGameTestServer'
+    }
+}
+
+// The booth's verdict lines are the assertion.
+['runPhotoBooth': 'booth', 'runGpuBooth': 'gpubooth'].each { taskName, dir ->
+    tasks.named(taskName) { task ->
+        def logFile = layout.projectDirectory.file("run/${dir}/logs/latest.log").asFile
+        task.doLast {
+            def text = logFile.exists() ? logFile.text : ''
+            if (text =~ /Missing or unsupported mandatory|Mod loading has failed/) {
+                throw new GradleException("booth: the loader refused a mod; see ${logFile}")
+            }
+            def failures = text.readLines().findAll { it.contains('booth: FAIL') }
+            if (!failures.isEmpty()) {
+                throw new GradleException("booth: ${failures.size()} failed check(s):\n" + failures.join('\n'))
+            }
+            if (!text.contains('booth: PASS all checks ran')) {
+                throw new GradleException("booth: missing completion marker in ${logFile}")
+            }
+            task.logger.lifecycle("booth: " + text.readLines().count { it.contains('booth: PASS') } + " checks passed")
+        }
+    }
+}
+if (!project.hasProperty('skipBooth') && !project.hasProperty('skipGameTests')) {
+    tasks.named('runPhotoBooth') { mustRunAfter 'runGameTestServer' }
+    tasks.named('check') { dependsOn 'runPhotoBooth' }
+}
+
+// The art pipeline's own tests (devtools/art/tests): the canon, the LabPBR channels, the clean-room
+// wall (D-0001). Python under uv, as the pipeline runs.
+def uv = ((System.getenv('PATH') ?: '').split(File.pathSeparator).toList() + ["${System.getProperty('user.home')}/.local/bin".toString()])
+        .collect { new File(it, 'uv') }.find { it.canExecute() }?.absolutePath ?: 'uv'
+def artTests = tasks.register('artTests', Exec) {
+    group = 'verification'
+    description = 'Runs the art pipeline tests under uv'
+    workingDir = projectDir
+    commandLine uv, 'run', '--no-project', '--with', 'numpy', '--with', 'pillow', '--with', 'pytest',
+            'python', '-m', 'pytest', '-q', '-p', 'no:cacheprovider', 'devtools/art/tests'
+    inputs.dir('devtools/art')
+    inputs.dir('src/main/resources/assets/heft')
+    outputs.upToDateWhen { false }
+}
+tasks.named('check') { dependsOn artTests }
+
+var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
+    var replaceProperties = [
+            minecraft_version      : minecraft_version,
+            minecraft_version_range: minecraft_version_range,
+            neo_version            : neo_version,
+            loader_version_range   : loader_version_range,
+            mod_id                 : mod_id,
+            mod_name               : mod_name,
+            mod_license            : mod_license,
+            mod_version            : mod_version,
+    ]
+    inputs.properties replaceProperties
+    expand replaceProperties
+    from "src/main/templates"
+    into "build/generated/sources/modMetadata"
+}
+sourceSets.main.resources.srcDir generateModMetadata
+neoForge.ideSyncTask generateModMetadata
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+idea {
+    module {
+        downloadSources = true
+        downloadJavadoc = true
+    }
+}

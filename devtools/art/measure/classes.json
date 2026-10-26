@@ -1,0 +1,23 @@
+{
+ "stone": "block/stone",
+ "oak_planks": "block/oak_planks",
+ "iron": "block/iron_block",
+ "gold": "block/gold_block",
+ "copper": "block/copper_block",
+ "netherite": "block/netherite_block",
+ "diamond": "block/diamond_block",
+ "emerald": "block/emerald_block",
+ "lapis": "block/lapis_block",
+ "coal": "block/coal_block",
+ "redstone": "block/redstone_block",
+ "amethyst": "block/amethyst_block",
+ "raw_iron": "block/raw_iron_block",
+ "raw_copper": "block/raw_copper_block",
+ "raw_gold": "block/raw_gold_block",
+ "brick": "block/bricks",
+ "nether_brick": "block/nether_bricks",
+ "quartz": ["block/quartz_block_side", "block/quartz_block_top", "block/smooth_quartz", "block/quartz_bricks"],
+ "glowstone": "block/glowstone",
+ "prismarine": "block/prismarine",
+ "redstone_dust_item": "item/redstone"
+}

@@ -1,0 +1,17 @@
+# The gametests and the booth, as a mod of their own; never shipped.
+modLoader="javafml"
+loaderVersion="[1,)"
+license="AGPL-3.0-or-later"
+
+[[mods]]
+modId="heft_gametest"
+version="1.0.0"
+displayName="Heft gametests"
+description='''The gametests and the booth.'''
+
+[[dependencies.heft_gametest]]
+    modId="heft"
+    type="required"
+    versionRange="[0.1,)"
+    ordering="AFTER"
+    side="BOTH"

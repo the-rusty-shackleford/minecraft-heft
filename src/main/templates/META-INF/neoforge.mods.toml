@@ -1,0 +1,31 @@
+modLoader="javafml"
+loaderVersion="${loader_version_range}"
+license="${mod_license}"
+issueTrackerURL="https://github.com/the-rusty-shackleford/minecraft-heft/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+authors="Chunkworks"
+# Everything it draws is on the client; on a server it only adds item tags. Either side may go without it.
+displayTest="IGNORE_ALL_VERSION"
+description='''
+Every flat item becomes a solid one: ingots, gems, dusts, food, paper and the rest drawn as real
+three-dimensional models in the inventory, in the hand, on the ground, in frames and set down, one
+shape for every item of a kind, with house-made 128x textures and LabPBR maps for shaders.
+'''
+
+[[dependencies.${mod_id}]]
+    modId="neoforge"
+    type="required"
+    versionRange="[${neo_version},)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="minecraft"
+    type="required"
+    versionRange="${minecraft_version_range}"
+    ordering="NONE"
+    side="BOTH"

@@ -1,0 +1,8 @@
+{
+ "sources": [
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/iron_ingot"
+  }
+ ]
+}
