@@ -24,7 +24,18 @@ AGPL-3.0-or-later, `com.chunkworks.heft`. Client-side: on a server the jar only 
 - **Shared tools**: `minecraft mods/tools/pbr/` (measure, LabPBR encoding and range checks, noise),
   lifted from Survivalist Armor's art pipeline.
 
-## Status: phase 1 (metals and minerals) built 2026-10-25, unreleased, no remote
+## Status: phase 2 (the long tail, Tier B, D-0004) built 2026-10-25, unreleased, no remote
+
+**Phase 2**: every other flat item extruded from its own sprite repainted at 64x (Rusty's call). In the
+booth's game: 513 items extruded, 1 left flat (`sculk_vein`, animated), 470 sprites repainted in about
+1.2 s, Heft's atlas 2048x2048. Both booths pass 15 checks, among them: the samples (stick, apple, bread,
+bow, tipped arrow, dyed helmet, egg, feather, string, paper) extruded and drawn whole on Heft's atlas,
+translucent; a bow's overrides kept; a sheet whose sprite Pixlli replaces is painted from the game's
+own. Not yet run in Rusty's full instance (his ~1,400 flat items).
+- Booth fixes: `pauseOnLostFocus:false` (the pause menu was in the GPU photos when the window lost
+  focus) and `enableVsync:false` (a GPU window under others drew about a frame a second).
+
+## Phase 1 (metals and minerals) built 2026-10-25
 
 **Phase 1**: eight classes (ingot, nugget, bar, raw, lump, gem, shard, dust) over 41 items, vanilla and
 every mod in the pack whose materials these are (Create's brass and zinc, steel, voidsteel, galestone,

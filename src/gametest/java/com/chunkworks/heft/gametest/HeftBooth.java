@@ -81,7 +81,8 @@ import org.slf4j.LoggerFactory;
  * the ground, and a stack of ingots; one of each class set down by Set It Down on a bench, piles of four,
  * and an ingot on a wall; three classes held in first person, and the third-person view; the inventory
  * full of them. Flint is the loud twin (devtools/booth/loud.py): the iron ingot's colour with ridged
- * LabPBR normals, which a shader shows only if it reads Heft's maps. A stick is left flat, for comparison.
+ * LabPBR normals, which a shader shows only if it reads Heft's maps. Ten of the long tail (Tier B, D-0004)
+ * in frames, on the ground and in the hotbar: a stick, food, a bow, tinted layers, thin things.
  *
  * <p>The checks draw what they judge into a {@link Capture} and count what each render type was given:
  * a solid item is drawn whole on Heft's atlas in every view, and by nothing else. One {@code booth: PASS}
@@ -185,6 +186,15 @@ public final class HeftBooth {
         return out;
     }
 
+    /** The long tail's samples (Tier B): a stick, food, a bow (overrides), tinted layers (a tipped arrow, a dyed helmet, an egg), thin things. */
+    private static List<ItemStack> tail() {
+        List<ItemStack> out = new ArrayList<>(List.of(new ItemStack(Items.STICK), new ItemStack(Items.APPLE), new ItemStack(Items.BREAD),
+                new ItemStack(Items.BOW), net.minecraft.world.item.alchemy.PotionContents.createItemStack(Items.TIPPED_ARROW,
+                        net.minecraft.world.item.alchemy.Potions.HEALING), new ItemStack(Items.LEATHER_HELMET), new ItemStack(Items.CREEPER_SPAWN_EGG),
+                new ItemStack(Items.FEATHER), new ItemStack(Items.STRING), new ItemStack(Items.PAPER)));
+        return out;
+    }
+
     /** One of each class, in class order. */
     private static List<ItemStack> oneOfEach() {
         java.util.Map<String, ItemStack> first = new java.util.TreeMap<>();
@@ -212,7 +222,7 @@ public final class HeftBooth {
         fill(level, -13, 0, -9, 13, 4, -9, Blocks.STONE_BRICKS);
         List<ItemStack> framed = new ArrayList<>(all);
         framed.add(new ItemStack(Items.FLINT));
-        framed.add(new ItemStack(Items.STICK));
+        framed.addAll(tail());
         for (int i = 0; i < framed.size(); i++) {
             int row = i / 25, col = i % 25;
             ItemFrame frame = new ItemFrame(level, new BlockPos(-12 + col, ground + 3 - row * 2, -8), Direction.SOUTH);
@@ -225,6 +235,14 @@ public final class HeftBooth {
         // On the ground: every solid item, a row, and a stack of sixteen ingots (the game draws several copies).
         for (int i = 0; i < all.size(); i++) {
             ItemEntity drop = new ItemEntity(level, -12.5 + (i % 25), ground, 3.5 + (i / 25) * 1.2, all.get(i));
+            drop.setNeverPickUp();
+            drop.setUnlimitedLifetime();
+            drop.setDeltaMovement(Vec3.ZERO);
+            level.addFreshEntity(drop);
+        }
+        List<ItemStack> tail = tail();
+        for (int i = 0; i < tail.size(); i++) {
+            ItemEntity drop = new ItemEntity(level, -10.5 + i, ground, 6.5, tail.get(i));
             drop.setNeverPickUp();
             drop.setUnlimitedLifetime();
             drop.setDeltaMovement(Vec3.ZERO);
@@ -248,9 +266,12 @@ public final class HeftBooth {
             }
         }
         setDown(sp, new ItemStack(Items.IRON_INGOT), new BlockPos(-13, ground + 2, -9), Direction.SOUTH);
-        // The inventory: as many solid items as it holds, the hotbar first; the first held.
-        for (int i = 0; i < Math.min(36, all.size()); i++) {
-            sp.getInventory().setItem(i, all.get(i).copy());
+        // The inventory: the long tail's samples in the hotbar, then as many solid items as the rest holds.
+        for (int i = 0; i < 9; i++) {
+            sp.getInventory().setItem(i, tail.get(i).copy());
+        }
+        for (int i = 0; i < Math.min(27, all.size()); i++) {
+            sp.getInventory().setItem(9 + i, all.get(i).copy());
         }
         aim(sp, new Vec3(0.5, ground + 2.2, 8.0), new Vec3(0.5, ground + 1.0, 0.5));
         placed = true;
@@ -300,6 +321,8 @@ public final class HeftBooth {
         shot(s, t, mc, "booth-ground", new Vec3(-0.5, 2.4, 9.5), new Vec3(-0.5, 0.1, 4.0));
         shot(s, t, mc, "booth-ground-left", new Vec3(-8.5, 1.1, 6.6), new Vec3(-8.5, 0.1, 3.8));
         shot(s, t, mc, "booth-ground-right", new Vec3(4.5, 1.1, 6.6), new Vec3(4.5, 0.1, 3.8));
+        shot(s, t, mc, "booth-tail-ground", new Vec3(-6.0, 1.2, 9.4), new Vec3(-6.0, 0.1, 6.5));
+        shot(s, t, mc, "booth-tail-frames", new Vec3(-4.0, 1.6, -5.4), new Vec3(-4.0, 1.5, -8.5));
         shot(s, t, mc, "booth-setdown", new Vec3(26.0, 2.2, 8.0), new Vec3(26.0, 1.05, 4.5));
         shot(s, t, mc, "booth-setdown-left", new Vec3(22.0, 1.6, 6.2), new Vec3(22.0, 1.05, 4.5));
         shot(s, t, mc, "booth-setdown-right", new Vec3(29.0, 1.6, 6.2), new Vec3(29.0, 1.05, 4.5));
@@ -355,8 +378,70 @@ public final class HeftBooth {
     private static void checks(Minecraft mc) {
         List<ItemStack> all = solids();
         verdict("there are solid items in this game (" + all.size() + ")", () -> all.isEmpty() ? "none" : null);
-        verdict("a stick, which has no shape yet, is left as it was (flat)",
-                () -> Report.kind(mc.getItemRenderer().getModel(new ItemStack(Items.STICK), mc.level, null, 0)) == Report.Kind.FLAT ? null : "not flat");
+        // The long tail (Tier B, D-0004).
+        List<String> notExtruded = new ArrayList<>(), badTail = new ArrayList<>();
+        for (ItemStack stack : tail()) {
+            BakedModel model = mc.getItemRenderer().getModel(stack, mc.level, null, 0);
+            String id = BuiltInRegistries.ITEM.getKey(stack.getItem()).toString();
+            if (Report.kind(model) != Report.Kind.EXTRUDED) {
+                notExtruded.add(id + " " + Report.kind(model));
+                continue;
+            }
+            int quads = model.getQuads(null, null, RandomSource.create(42L)).size();
+            for (ItemDisplayContext view : List.of(ItemDisplayContext.GUI, ItemDisplayContext.GROUND, ItemDisplayContext.FIXED,
+                    ItemDisplayContext.FIRST_PERSON_RIGHT_HAND)) {
+                Capture c = new Capture();
+                mc.getItemRenderer().renderStatic(stack, view, LIGHT, OverlayTexture.NO_OVERLAY, new PoseStack(), c, mc.level, 0);
+                if (quads == 0 || c.of(HeftAtlas.ITEM_TRANSLUCENT) != quads * 4 || c.total() != quads * 4) {
+                    badTail.add(id + " in " + view.getSerializedName() + ": " + c);
+                }
+            }
+        }
+        verdict("the long tail's samples are drawn extruded", () -> notExtruded.isEmpty() ? null : String.valueOf(notExtruded));
+        verdict("and whole, on Heft's atlas, translucent as the game draws a flat item", () -> badTail.isEmpty() ? null : String.join("; ", badTail));
+        verdict("a bow's draw resolves to an extruded model too", () -> {
+            ItemStack bow = new ItemStack(Items.BOW);
+            BakedModel model = mc.getItemRenderer().getModel(bow, mc.level, null, 0);
+            return Report.kind(model) == Report.Kind.EXTRUDED && model.getOverrides() != net.minecraft.client.renderer.block.model.ItemOverrides.EMPTY
+                    ? null : Report.kind(model) + " with " + model.getOverrides();
+        });
+        verdict("a repainted sheet is painted from the game's own sprite, never the winning pack's (D-0001)", () -> {
+            var rm = mc.getResourceManager();
+            int compared = 0;
+            for (ItemStack stack : tail()) {
+                ResourceLocation sprite = mc.getItemRenderer().getItemModelShaper().getItemModel(stack.getItem()).getParticleIcon().contents().name();
+                ResourceLocation file = sprite.withPath(p -> "textures/" + p + ".png");
+                var own = mc.getVanillaPackResources().getResource(net.minecraft.server.packs.PackType.CLIENT_RESOURCES, file);
+                var won = rm.getResource(file);
+                var sheet = rm.getResource(com.chunkworks.heft.Heft.id("textures/gen/" + sprite.getNamespace() + "/" + sprite.getPath() + ".png"));
+                if (own == null || won.isEmpty() || sheet.isEmpty()) {
+                    continue;
+                }
+                try (var a = own.get(); var w = won.get().open(); var g = sheet.get().open();
+                     var ownImg = com.mojang.blaze3d.platform.NativeImage.read(a); var wonImg = com.mojang.blaze3d.platform.NativeImage.read(w);
+                     var sheetImg = com.mojang.blaze3d.platform.NativeImage.read(g)) {
+                    if (ownImg.getWidth() == wonImg.getWidth() && java.util.Arrays.equals(ownImg.getPixelsRGBA(), wonImg.getPixelsRGBA())) {
+                        continue;
+                    }
+                    // The pack replaced this sprite: the sheet must follow the game's own, texel for texel in its mask.
+                    int n = ownImg.getWidth(), s = sheetImg.getWidth();
+                    for (int y = 0; y < s; y++) {
+                        for (int x = 0; x < s; x++) {
+                            boolean ownOpaque = (ownImg.getPixelRGBA(x * n / s, y * n / s) >>> 24) != 0;
+                            boolean sheetOpaque = (sheetImg.getPixelRGBA(x, y) >>> 24) != 0;
+                            if (ownOpaque != sheetOpaque) {
+                                return sprite + ": the sheet's mask is not the game's own sprite's at " + x + "," + y;
+                            }
+                        }
+                    }
+                    compared++;
+                } catch (java.io.IOException e) {
+                    return e.toString();
+                }
+            }
+            LOG.info("booth: {} repainted sheets compared against a pack that replaced their sprite", compared);
+            return null;
+        });
         verdict("every sheet is on Heft's atlas, and none on the block atlas (D-0002)", () -> {
             TextureAtlas heft = mc.getModelManager().getAtlas(HeftAtlas.LOCATION);
             TextureAtlas blocks = mc.getModelManager().getAtlas(InventoryMenu.BLOCK_ATLAS);

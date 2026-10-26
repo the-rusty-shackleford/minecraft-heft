@@ -37,7 +37,7 @@ import org.slf4j.Logger;
 
 /**
  * The progress bar (the handoff's §7.2): after every model bake, every item in the game sorted by
- * how it is drawn -- solid (Heft's), flat (still a sprite), 3D (a block, or another pack's model),
+ * how it is drawn -- solid (Heft's shapes), extruded (the long tail), flat (still a sprite), 3D (a block, or another pack's model),
  * custom (drawn by code), none (a model with nothing in it) -- and every solid shape's breaches of the
  * canon and sprites missing from the atlas. One line to the log, the lists to logs/heft-report.txt.
  */
@@ -47,12 +47,15 @@ public final class Report {
     private static final Logger LOG = LogUtils.getLogger();
 
     /** How an item is drawn. */
-    public enum Kind { SOLID, FLAT, THREE_D, CUSTOM, NONE }
+    public enum Kind { SOLID, EXTRUDED, FLAT, THREE_D, CUSTOM, NONE }
 
     /** effects: returns how {@code model} draws its item */
     public static Kind kind(BakedModel model) {
         if (model instanceof SolidModel) {
             return Kind.SOLID;
+        }
+        if (model instanceof ExtrudedModel) {
+            return Kind.EXTRUDED;
         }
         if (model.isCustomRenderer()) {
             return Kind.CUSTOM;
@@ -89,8 +92,8 @@ public final class Report {
             }
         }
         byKind.values().forEach(list -> list.sort(null));
-        LOG.info("Heft: {} solid, {} flat, {} 3D, {} custom, {} empty; {} breaches, {} shape files unread",
-                byKind.get(Kind.SOLID).size(), byKind.get(Kind.FLAT).size(), byKind.get(Kind.THREE_D).size(),
+        LOG.info("Heft: {} solid, {} extruded, {} flat, {} 3D, {} custom, {} empty; {} breaches, {} shape files unread",
+                byKind.get(Kind.SOLID).size(), byKind.get(Kind.EXTRUDED).size(), byKind.get(Kind.FLAT).size(), byKind.get(Kind.THREE_D).size(),
                 byKind.get(Kind.CUSTOM).size(), byKind.get(Kind.NONE).size(), breaches.size(), read.unread().size());
         breaches.forEach(b -> LOG.warn("Heft: {}", b));
         StringBuilder out = new StringBuilder("# Heft report: how every item is drawn after the last model bake\n");

@@ -24,6 +24,18 @@ import java.util.Map;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.PackLocationInfo;
+import net.minecraft.server.packs.PackResources;
+import net.minecraft.server.packs.PackSelectionConfig;
+import net.minecraft.server.packs.PackType;
+import net.minecraft.server.packs.repository.Pack;
+import net.minecraft.server.packs.repository.PackCompatibility;
+import net.minecraft.server.packs.repository.PackSource;
+import net.minecraft.world.flag.FeatureFlagSet;
+import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -48,6 +60,31 @@ public final class HeftClient {
     /** effects: returns what the last model bake read of the shape files */
     public static ShapeLibrary.Read lastRead() {
         return lastRead;
+    }
+
+    /**
+     * The long tail's sheets: a hidden, always-on pack of Heft's own, made on the client (GeneratedPack).
+     */
+    @SubscribeEvent
+    public static void onPacks(AddPackFindersEvent event) {
+        if (event.getPackType() != PackType.CLIENT_RESOURCES) {
+            return;
+        }
+        Component title = Component.literal("Heft: the long tail, repainted");
+        PackLocationInfo info = new PackLocationInfo(GeneratedPack.ID, title, PackSource.BUILT_IN, java.util.Optional.empty());
+        Pack pack = new Pack(info, new Pack.ResourcesSupplier() {
+            @Override
+            public PackResources openPrimary(PackLocationInfo location) {
+                return new GeneratedPack(location);
+            }
+
+            @Override
+            public PackResources openFull(PackLocationInfo location, Pack.Metadata metadata) {
+                return new GeneratedPack(location);
+            }
+        }, new Pack.Metadata(title, PackCompatibility.COMPATIBLE, FeatureFlagSet.of(), java.util.List.of(), true),
+                new PackSelectionConfig(true, Pack.Position.TOP, false));
+        event.addRepositorySource(consumer -> consumer.accept(pack));
     }
 
     @SubscribeEvent
@@ -79,6 +116,26 @@ public final class HeftClient {
             placed++;
         }
         LOG.info("Heft: {} of {} shapes in place", placed, read.solids().size());
+        // The long tail (Tier B, D-0004): every item still drawn flat, extruded from its repainted sprite.
+        java.util.function.Function<ResourceLocation, net.minecraft.client.renderer.texture.TextureAtlasSprite> heft =
+                name -> event.getTextureGetter().apply(new net.minecraft.client.resources.model.Material(HeftAtlas.LOCATION, name));
+        ExtrudedModel.Cache extrude = new ExtrudedModel.Cache(heft);
+        int extruded = 0, left = 0;
+        for (ResourceLocation id : BuiltInRegistries.ITEM.keySet()) {
+            ModelResourceLocation key = ModelResourceLocation.inventory(id);
+            BakedModel model = models.get(key);
+            if (model == null || model instanceof SolidModel || model.isGui3d() || model.isCustomRenderer() || !HeftConfig.extruded(id)) {
+                continue;
+            }
+            BakedModel done = extrude.apply(model);
+            if (done instanceof ExtrudedModel) {
+                models.put(key, done);
+                extruded++;
+            } else {
+                left++;
+            }
+        }
+        LOG.info("Heft: {} items extruded, {} left flat (no own sprite to repaint)", extruded, left);
     }
 
     @SubscribeEvent

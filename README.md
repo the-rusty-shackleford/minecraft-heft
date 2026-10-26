@@ -20,6 +20,12 @@ still join.
 - **One model in every view.** As models bake, each item with a shape gets a `SolidModel` in place of
   its own, drawn on Heft's atlas in the inventory, both hands, on the ground, in frames, on the head
   and when set down. Its break particles stay the item's own.
+- **The long tail.** Every other item still drawn as a flat sprite is drawn extruded: the game's own
+  flat model of it made two sixteenths thick, its sprite repainted at 64x. The repaint is made on your
+  client, as the game loads, from the sprite as its own mod ships it, never from a resource pack that
+  replaces it: doubled by Scale2x, with a fine grain, and flat LabPBR maps. A bow's draw and other
+  overrides still work. An item another resource pack already makes 3D is left as that pack draws it,
+  and an animated sprite stays flat.
 - **Set It Down.** A Heft model is the item's own, so Set It Down lays it down by its item-frame turn
   (`display.fixed`) and sizes it by its measured box. Every class's `fixed` turn lays it with its
   thinnest side out of the surface and its top towards you.
@@ -31,14 +37,17 @@ still join.
 The mod list's config button (or `config/heft-client.toml`):
 
 - `enabled`: draw flat items as solid ones;
-- `flatClasses`: classes of shape left flat (`ingot`, ...).
+- `flatClasses`: classes of shape left flat (`ingot`, ...);
+- `tierB.enabled`: draw the long tail extruded;
+- `tierB.denylist`: items the long tail leaves flat, by id (`minecraft:filled_map`) or a whole mod (`somemod:*`).
 
 Both take effect on the next resource reload (F3+T).
 
 ## Diagnosing
 
-- After every resource reload the log has one line, `Heft: N solid, N flat, N 3D, N custom, N empty;
-  N breaches, N shape files unread`, and `logs/heft-report.txt` lists every item by how it is drawn,
+- After every resource reload the log has the line `Heft: N sprites repainted for the extruded tier in
+  N ms; ...` and one more, `Heft: N solid, N extruded, N flat, N 3D, N custom, N empty; N breaches, N
+  shape files unread`, and `logs/heft-report.txt` lists every item by how it is drawn,
   per mod, with any shape that breaks the canon or names a sprite missing from the atlas.
 - `/heft inspect` (client command): for the item in your main hand, how it is drawn, its class,
   material and size, its shape's box as built and as set down or framed, and its Set It Down tags.

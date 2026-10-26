@@ -93,6 +93,7 @@ def main():
     (booth / "options.txt").write_text(
         "onboardAccessibility:false\nnarrator:0\nsoundCategory_master:0.0\nrenderDistance:4\nsimulationDistance:5\n"
         "graphicsMode:1\nmaxFps:60\nguiScale:2\nentityShadows:true\nfov:0.0\nbobView:false\ntutorialStep:none\n"
+        "pauseOnLostFocus:false\nenableVsync:false\n"
         f"resourcePacks:[{listed}]\nincompatibleResourcePacks:[]\n")
     print(f"wrote {booth}/options.txt and config/iris.properties (shaders {'on' if gpu else 'off'})")
 

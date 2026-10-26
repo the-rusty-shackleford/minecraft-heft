@@ -144,7 +144,9 @@ def main() -> None:
         print("wrote", item, class_name, material_name)
     atlas = ASSETS / "atlases" / "items.json"
     atlas.parent.mkdir(parents=True, exist_ok=True)
-    atlas.write_text(json.dumps({"sources": [{"type": "single", "resource": r} for r in sorted(sprites)]}, indent=1) + "\n")
+    # The shapes' sheets one by one; the long tail's (Tier B), made on the client, by the folder they are served in.
+    sources = [{"type": "single", "resource": r} for r in sorted(sprites)] + [{"type": "directory", "source": "gen", "prefix": "gen/"}]
+    atlas.write_text(json.dumps({"sources": sources}, indent=1) + "\n")
     print("wrote", atlas, len(sprites), "sprites")
 
 

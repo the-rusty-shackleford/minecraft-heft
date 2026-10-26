@@ -163,6 +163,11 @@
   {
    "type": "single",
    "resource": "heft:solid/voidsteel/voidsteel_ingot"
+  },
+  {
+   "type": "directory",
+   "source": "gen",
+   "prefix": "gen/"
   }
  ]
 }

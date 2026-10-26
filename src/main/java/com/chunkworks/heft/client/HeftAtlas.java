@@ -52,4 +52,19 @@ public final class HeftAtlas {
                     .setLightmapState(RenderStateShard.LIGHTMAP)
                     .setOverlayState(RenderStateShard.OVERLAY)
                     .createCompositeState(true));
+
+    /**
+     * How an extruded item (Tier B) is drawn: as the game draws a flat item, translucent (a bottle's glass,
+     * ice, a slime ball), on this atlas through its mipmaps.
+     */
+    public static final RenderType ITEM_TRANSLUCENT = RenderType.create("heft_item_translucent", DefaultVertexFormat.NEW_ENTITY,
+            VertexFormat.Mode.QUADS, 1536, true, true, RenderType.CompositeState.builder()
+                    .setShaderState(RenderStateShard.RENDERTYPE_ITEM_ENTITY_TRANSLUCENT_CULL_SHADER)
+                    .setTextureState(new RenderStateShard.TextureStateShard(LOCATION, false, true))
+                    .setTransparencyState(RenderStateShard.TRANSLUCENT_TRANSPARENCY)
+                    .setOutputState(RenderStateShard.ITEM_ENTITY_TARGET)
+                    .setLightmapState(RenderStateShard.LIGHTMAP)
+                    .setOverlayState(RenderStateShard.OVERLAY)
+                    .setWriteMaskState(RenderStateShard.COLOR_DEPTH_WRITE)
+                    .createCompositeState(true));
 }
