@@ -2,6 +2,10 @@
  "sources": [
   {
    "type": "single",
+   "resource": "heft:solid/_kind/spawn_egg"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/alexsmobs/kangaroo_hide"
   },
   {
@@ -226,11 +230,27 @@
   },
   {
    "type": "single",
+   "resource": "heft:solid/minecraft/angler_pottery_sherd"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/minecraft/apple"
   },
   {
    "type": "single",
+   "resource": "heft:solid/minecraft/archer_pottery_sherd"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/arms_up_pottery_sherd"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/minecraft/arrow"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/axolotl_bucket"
   },
   {
    "type": "single",
@@ -266,11 +286,23 @@
   },
   {
    "type": "single",
+   "resource": "heft:solid/minecraft/black_dye"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/blade_pottery_sherd"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/minecraft/blaze_powder"
   },
   {
    "type": "single",
    "resource": "heft:solid/minecraft/blaze_rod"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/blue_dye"
   },
   {
    "type": "single",
@@ -294,7 +326,23 @@
   },
   {
    "type": "single",
+   "resource": "heft:solid/minecraft/brewer_pottery_sherd"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/minecraft/brick"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/brown_dye"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/bucket"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/burn_pottery_sherd"
   },
   {
    "type": "single",
@@ -322,11 +370,19 @@
   },
   {
    "type": "single",
+   "resource": "heft:solid/minecraft/clay_ball"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/minecraft/coal"
   },
   {
    "type": "single",
    "resource": "heft:solid/minecraft/cod"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/cod_bucket"
   },
   {
    "type": "single",
@@ -366,11 +422,23 @@
   },
   {
    "type": "single",
+   "resource": "heft:solid/minecraft/creeper_banner_pattern"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/minecraft/crimson_hanging_sign"
   },
   {
    "type": "single",
    "resource": "heft:solid/minecraft/crimson_sign"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/cyan_dye"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/danger_pottery_sherd"
   },
   {
    "type": "single",
@@ -410,11 +478,55 @@
   },
   {
    "type": "single",
+   "resource": "heft:solid/minecraft/ender_eye"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/ender_pearl"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/explorer_pottery_sherd"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/minecraft/fermented_spider_eye"
   },
   {
    "type": "single",
+   "resource": "heft:solid/minecraft/fire_charge"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/firework_rocket"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/firework_star"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/flow_banner_pattern"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/flow_pottery_sherd"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/flower_banner_pattern"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/friend_pottery_sherd"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/minecraft/glistering_melon_slice"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/globe_banner_pattern"
   },
   {
    "type": "single",
@@ -423,6 +535,10 @@
   {
    "type": "single",
    "resource": "heft:solid/minecraft/glowstone_dust"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/goat_horn"
   },
   {
    "type": "single",
@@ -442,7 +558,39 @@
   },
   {
    "type": "single",
+   "resource": "heft:solid/minecraft/gray_dye"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/green_dye"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/minecraft/gunpowder"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/guster_banner_pattern"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/guster_pottery_sherd"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/heart_of_the_sea"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/heart_pottery_sherd"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/heartbreak_pottery_sherd"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/howl_pottery_sherd"
   },
   {
    "type": "single",
@@ -470,7 +618,31 @@
   },
   {
    "type": "single",
+   "resource": "heft:solid/minecraft/lava_bucket"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/minecraft/leather"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/light_blue_dye"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/light_gray_dye"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/lime_dye"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/magenta_dye"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/magma_cream"
   },
   {
    "type": "single",
@@ -490,7 +662,111 @@
   },
   {
    "type": "single",
+   "resource": "heft:solid/minecraft/milk_bucket"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/miner_pottery_sherd"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/mojang_banner_pattern"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/mourner_pottery_sherd"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/minecraft/mushroom_stew"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/music_disc_11"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/music_disc_13"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/music_disc_5"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/music_disc_blocks"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/music_disc_bounce"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/music_disc_cat"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/music_disc_chirp"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/music_disc_creator"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/music_disc_creator_music_box"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/music_disc_far"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/music_disc_lava_chicken"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/music_disc_mall"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/music_disc_mellohi"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/music_disc_otherside"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/music_disc_pigstep"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/music_disc_precipice"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/music_disc_relic"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/music_disc_stal"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/music_disc_strad"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/music_disc_tears"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/music_disc_wait"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/music_disc_ward"
   },
   {
    "type": "single",
@@ -499,6 +775,10 @@
   {
    "type": "single",
    "resource": "heft:solid/minecraft/nether_brick"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/nether_star"
   },
   {
    "type": "single",
@@ -518,6 +798,10 @@
   },
   {
    "type": "single",
+   "resource": "heft:solid/minecraft/orange_dye"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/minecraft/pale_oak_hanging_sign"
   },
   {
@@ -531,6 +815,18 @@
   {
    "type": "single",
    "resource": "heft:solid/minecraft/phantom_membrane"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/piglin_banner_pattern"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/pink_dye"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/plenty_pottery_sherd"
   },
   {
    "type": "single",
@@ -550,7 +846,15 @@
   },
   {
    "type": "single",
+   "resource": "heft:solid/minecraft/powder_snow_bucket"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/minecraft/prismarine_shard"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/prize_pottery_sherd"
   },
   {
    "type": "single",
@@ -558,7 +862,15 @@
   },
   {
    "type": "single",
+   "resource": "heft:solid/minecraft/pufferfish_bucket"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/minecraft/pumpkin_pie"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/purple_dye"
   },
   {
    "type": "single",
@@ -590,6 +902,10 @@
   },
   {
    "type": "single",
+   "resource": "heft:solid/minecraft/red_dye"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/minecraft/redstone"
   },
   {
@@ -598,7 +914,51 @@
   },
   {
    "type": "single",
+   "resource": "heft:solid/minecraft/saddle"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/minecraft/salmon"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/salmon_bucket"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/scrape_pottery_sherd"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/sheaf_pottery_sherd"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/shelter_pottery_sherd"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/shulker_shell"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/skull_banner_pattern"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/skull_pottery_sherd"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/slime_ball"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/snort_pottery_sherd"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/snowball"
   },
   {
    "type": "single",
@@ -634,11 +994,23 @@
   },
   {
    "type": "single",
+   "resource": "heft:solid/minecraft/tadpole_bucket"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/minecraft/tipped_arrow"
   },
   {
    "type": "single",
+   "resource": "heft:solid/minecraft/totem_of_undying"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/minecraft/tropical_fish"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/tropical_fish_bucket"
   },
   {
    "type": "single",
@@ -650,11 +1022,27 @@
   },
   {
    "type": "single",
+   "resource": "heft:solid/minecraft/water_bucket"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/white_dye"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/wind_charge"
+  },
+  {
+   "type": "single",
    "resource": "heft:solid/minecraft/writable_book"
   },
   {
    "type": "single",
    "resource": "heft:solid/minecraft/written_book"
+  },
+  {
+   "type": "single",
+   "resource": "heft:solid/minecraft/yellow_dye"
   },
   {
    "type": "single",

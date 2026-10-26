@@ -86,6 +86,11 @@ ROLES = {
     "body": (0.55, 0.6), "fin": (0.48, 0.4), "rind": (0.50, 0.6), "flesh": (0.62, 0.4),
     "bowl": (0.50, 0.6), "fill": (0.60, 0.2), "dish": (0.70, 0.4), "food": (0.55, 0.5), "food_top": (0.62, 0.5),
     "bread": (0.55, 0.8), "bread_top": (0.62, 0.8),
+    "egg_base": (0.70, 0.5), "egg_spot": (0.70, 0.3), "record": (0.40, 0.6), "label": (0.60, 0.3),
+    "pail": (0.55, 0.6), "handle": (0.45, 0.4), "contents": (0.60, 0.2),
+    "orb": (0.58, 0.6), "orb_top": (0.66, 0.6), "star": (0.65, 0.5), "shell": (0.55, 0.6), "shell_inner": (0.35, 0.3),
+    "tube": (0.55, 0.6), "cone": (0.62, 0.5), "horn": (0.58, 0.5), "horn_tip": (0.48, 0.5),
+    "figure": (0.58, 0.6), "wing": (0.52, 0.5), "seat": (0.55, 0.8), "strap": (0.45, 0.4),
 }
 
 
@@ -155,6 +160,27 @@ MATERIALS = {m.name: m for m in (
 BAND = {"wedge": (330, 50), "root": (0, 65)}
 
 
+def _odd_materials() -> list[Material]:
+    """Each of phase 5's items' material: its own sprite's palette, its finish, its class's parts."""
+    import odds
+    out = [Material("egg_white", "quartz", "shell", 12), Material("record_body", "record_body", "metal", 30, keep=(0.0, 0.35)),
+           Material("bucket_iron", "iron", "metal", M.IRON)]
+    for item, (klass, finish) in odds.ODDS.items():
+        name = odds.colour(item)
+        parts, band, minus = (), None, None
+        if klass == "record":
+            parts, band = (("record", "record_body"),), (0, 359.9)
+        keep = SPRITE
+        if klass in ("bucket", "bucket_empty"):
+            # What the bucket holds: the sprite's saturated colours (water's blue is among its darker ones), or for a
+            # white (milk, powder snow) its lightest; the pail and handle are iron.
+            parts = (("pail", "bucket_iron"), ("handle", "bucket_iron"))
+            keep, band = ((0.8, 1.0), None) if item in odds.WHITE else ((0.0, 1.0), (0, 359.9))
+        out.append(Material(item, name, finish, odds.F0.get(finish, 10), glows=item in odds.GLOWS, keep=keep, parts=parts,
+                            band=band, minus=minus))
+    return out
+
+
 def _food_materials() -> list[Material]:
     """Each food item's material: its own sprite's palette (its outline left out), its finish, its class's parts."""
     import food
@@ -178,7 +204,7 @@ def _food_materials() -> list[Material]:
 
 def select(palette: list[str], material: Material) -> list[str]:
     """effects: returns the colours of palette (darkest first) the material keeps: its share by value, then those in its
-    hue band and not close to its `minus` class's colours; the share alone if a filter would leave fewer than two"""
+    hue band and not close to its `minus` class's colours; the share alone if a filter would leave none"""
     import colorsys
     lo, hi = material.keep
     kept = palette[int(round(lo * 7)):int(round(hi * 7)) + 1]
@@ -195,10 +221,11 @@ def select(palette: list[str], material: Material) -> list[str]:
     if material.minus is not None:
         other = [style.rgb(c) for c in STYLE[material.minus]["palette"]]
         out = [c for c in out if min(float(np.abs(style.rgb(c) - o).sum()) for o in other) > 0.18]
-    return out if len(out) >= 2 else kept
+    return out if out else kept
 
 
 MATERIALS.update({m.name: m for m in _food_materials()})
+MATERIALS.update({m.name: m for m in _odd_materials()})
 
 
 def part(role: str, material: Material) -> Material:

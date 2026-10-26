@@ -24,7 +24,14 @@ AGPL-3.0-or-later, `com.chunkworks.heft`. Client-side: on a server the jar only 
 - **Shared tools**: `minecraft mods/tools/pbr/` (measure, LabPBR encoding and range checks, noise),
   lifted from Survivalist Armor's art pipeline.
 
-## Status: phase 4 (food) built 2026-10-25, unreleased, no remote
+## Status: phase 5 (plants, spawn eggs, odds and ends) built 2026-10-26, unreleased, no remote
+
+**Phase 5** (D-0005): plants crossed and spawn eggs as one tinted kind, at runtime by what an item is; 97
+more items by hand (dyes, discs, buckets, sherds, patterns, orbs, star, shell, rocket, horn, totem,
+saddle). In the booth's game: 296 solid, 208 extruded, 63 crossed, 1 flat. Booth fix: NeoForge's early
+loading window is off (`earlyWindowControl`), its handoff failed on Xwayland and hung the run on a dialog.
+
+## Phase 4 (food) built 2026-10-25
 
 **Phase 4**: 82 food items in 16 classes (D-0003), vanilla's and Farmer's Delight's; 167 solid items in all.
 Heft's atlas in the booth's game: 4096x2048 (the solid sheets and the long tail together).

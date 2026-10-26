@@ -47,7 +47,7 @@ public final class Report {
     private static final Logger LOG = LogUtils.getLogger();
 
     /** How an item is drawn. */
-    public enum Kind { SOLID, EXTRUDED, FLAT, THREE_D, CUSTOM, NONE }
+    public enum Kind { SOLID, EXTRUDED, CROSSED, FLAT, THREE_D, CUSTOM, NONE }
 
     /** effects: returns how {@code model} draws its item */
     public static Kind kind(BakedModel model) {
@@ -56,6 +56,9 @@ public final class Report {
         }
         if (model instanceof ExtrudedModel) {
             return Kind.EXTRUDED;
+        }
+        if (model instanceof CrossedModel) {
+            return Kind.CROSSED;
         }
         if (model.isCustomRenderer()) {
             return Kind.CUSTOM;
@@ -92,8 +95,8 @@ public final class Report {
             }
         }
         byKind.values().forEach(list -> list.sort(null));
-        LOG.info("Heft: {} solid, {} extruded, {} flat, {} 3D, {} custom, {} empty; {} breaches, {} shape files unread",
-                byKind.get(Kind.SOLID).size(), byKind.get(Kind.EXTRUDED).size(), byKind.get(Kind.FLAT).size(), byKind.get(Kind.THREE_D).size(),
+        LOG.info("Heft: {} solid, {} extruded, {} crossed, {} flat, {} 3D, {} custom, {} empty; {} breaches, {} shape files unread",
+                byKind.get(Kind.SOLID).size(), byKind.get(Kind.EXTRUDED).size(), byKind.get(Kind.CROSSED).size(), byKind.get(Kind.FLAT).size(), byKind.get(Kind.THREE_D).size(),
                 byKind.get(Kind.CUSTOM).size(), byKind.get(Kind.NONE).size(), breaches.size(), read.unread().size());
         breaches.forEach(b -> LOG.warn("Heft: {}", b));
         StringBuilder out = new StringBuilder("# Heft report: how every item is drawn after the last model bake\n");

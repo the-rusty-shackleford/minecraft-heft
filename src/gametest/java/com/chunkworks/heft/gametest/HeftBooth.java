@@ -189,10 +189,16 @@ public final class HeftBooth {
     /** The long tail's samples (Tier B): a stick, food, a bow (overrides), tinted layers (a filled map, a dyed helmet, an egg), thin things. */
     private static List<ItemStack> tail() {
         List<ItemStack> out = new ArrayList<>(List.of(new ItemStack(Items.LEAD), new ItemStack(Items.INK_SAC), new ItemStack(Items.RABBIT_FOOT),
-                new ItemStack(Items.BOW), new ItemStack(Items.FILLED_MAP), new ItemStack(Items.LEATHER_HELMET), new ItemStack(Items.CREEPER_SPAWN_EGG),
-                new ItemStack(Items.FEATHER), new ItemStack(Items.STRING), new ItemStack(Items.SLIME_BALL)));
+                new ItemStack(Items.BOW), new ItemStack(Items.FILLED_MAP), new ItemStack(Items.LEATHER_HELMET), new ItemStack(Items.FLINT_AND_STEEL),
+                new ItemStack(Items.FEATHER), new ItemStack(Items.STRING), new ItemStack(Items.HONEYCOMB)));
         return out;
     }
+
+    /** Phase 5's runtime kinds: plants drawn crossed, and spawn eggs drawn as one egg tinted per mob (D-0005). */
+    private static final List<net.minecraft.world.item.Item> PLANTS = List.of(Items.DANDELION, Items.POPPY, Items.OAK_SAPLING,
+            Items.CHERRY_SAPLING, Items.SHORT_GRASS, Items.FERN, Items.BLUE_ORCHID, Items.BRAIN_CORAL, Items.TORCHFLOWER);
+    private static final List<net.minecraft.world.item.Item> EGGS = List.of(Items.CREEPER_SPAWN_EGG, Items.ZOMBIE_SPAWN_EGG,
+            Items.PIG_SPAWN_EGG, Items.ENDERMAN_SPAWN_EGG, Items.SHEEP_SPAWN_EGG);
 
     /** One of each class, in class order. */
     private static List<ItemStack> oneOfEach() {
@@ -247,6 +253,14 @@ public final class HeftBooth {
             drop.setDeltaMovement(Vec3.ZERO);
             level.addFreshEntity(drop);
         }
+        for (int i = 0; i < PLANTS.size() + EGGS.size(); i++) {
+            ItemStack kind = new ItemStack(i < PLANTS.size() ? PLANTS.get(i) : EGGS.get(i - PLANTS.size()));
+            ItemEntity drop = new ItemEntity(level, -10.5 + i, ground, 13.5, kind);
+            drop.setNeverPickUp();
+            drop.setUnlimitedLifetime();
+            drop.setDeltaMovement(Vec3.ZERO);
+            level.addFreshEntity(drop);
+        }
         ItemEntity stack = new ItemEntity(level, -12.5, ground, 11.5, new ItemStack(Items.IRON_INGOT, 16));
         stack.setNeverPickUp();
         stack.setUnlimitedLifetime();
@@ -256,6 +270,7 @@ public final class HeftBooth {
         // Two rows of bench, every display within the distance the client tracks them from the camera's start.
         fill(level, 18, 0, 4, 56, 0, 4, Blocks.SMOOTH_STONE);
         fill(level, 18, 0, 7, 48, 0, 7, Blocks.SMOOTH_STONE);
+        fill(level, 18, 0, 10, 48, 0, 10, Blocks.SMOOTH_STONE);
         List<ItemStack> each = oneOfEach();
         for (int i = 0; i < each.size(); i++) {
             setDown(sp, each.get(i).copy(), new BlockPos(BENCH.getX() + 8 + (i % 15) * 2, ground, BENCH.getZ() + (i / 15) * 3), Direction.UP);
@@ -331,6 +346,7 @@ public final class HeftBooth {
         shot(s, t, mc, "booth-ground-right", new Vec3(4.5, 1.1, 6.6), new Vec3(4.5, 0.1, 3.8));
         shot(s, t, mc, "booth-tail-ground", new Vec3(-6.0, 1.2, 14.4), new Vec3(-6.0, 0.1, 11.5));
         shot(s, t, mc, "booth-ground-back", new Vec3(-0.5, 1.4, 9.0), new Vec3(-0.5, 0.1, 6.0));
+        shot(s, t, mc, "booth-kinds-ground", new Vec3(-4.0, 1.3, 16.4), new Vec3(-4.0, 0.2, 13.5));
         shot(s, t, mc, "booth-tail-frames", new Vec3(7.0, 9.6, -5.4), new Vec3(7.0, 9.5, -8.5));
         shot(s, t, mc, "booth-setdown", new Vec3(33.0, 3.0, 10.0), new Vec3(33.0, 1.05, 4.5));
         shot(s, t, mc, "booth-setdown-left", new Vec3(22.0, 1.6, 6.2), new Vec3(22.0, 1.05, 4.5));
@@ -418,6 +434,28 @@ public final class HeftBooth {
             }
         }
         verdict("the long tail's samples are drawn extruded", () -> notExtruded.isEmpty() ? null : String.valueOf(notExtruded));
+        verdict("plants are drawn crossed, as they grow (D-0005)", () -> {
+            List<String> wrong = new ArrayList<>();
+            for (var plant : PLANTS) {
+                Report.Kind k = Report.kind(mc.getItemRenderer().getModel(new ItemStack(plant), mc.level, null, 0));
+                if (k != Report.Kind.CROSSED) {
+                    wrong.add(BuiltInRegistries.ITEM.getKey(plant) + " " + k);
+                }
+            }
+            return wrong.isEmpty() ? null : String.valueOf(wrong);
+        });
+        verdict("spawn eggs are the egg of their kind, on Heft's atlas, tinted 0 and 1 as the game tints them", () -> {
+            List<String> wrong = new ArrayList<>();
+            for (var egg : EGGS) {
+                BakedModel m = mc.getItemRenderer().getModel(new ItemStack(egg), mc.level, null, 0);
+                java.util.Set<Integer> tints = new java.util.TreeSet<>();
+                m.getQuads(null, null, RandomSource.create(42L)).forEach(q -> tints.add(q.getTintIndex()));
+                if (Report.kind(m) != Report.Kind.SOLID || !tints.equals(java.util.Set.of(0, 1))) {
+                    wrong.add(BuiltInRegistries.ITEM.getKey(egg) + " " + Report.kind(m) + " tints " + tints);
+                }
+            }
+            return wrong.isEmpty() ? null : String.valueOf(wrong);
+        });
         verdict("and whole, on Heft's atlas, translucent as the game draws a flat item", () -> badTail.isEmpty() ? null : String.join("; ", badTail));
         verdict("a bow's draw resolves to an extruded model too", () -> {
             ItemStack bow = new ItemStack(Items.BOW);
@@ -523,7 +561,7 @@ public final class HeftBooth {
         }
         verdict("every frame holding a solid item draws it on Heft's atlas (" + frames[1] + " of " + frames[0] + ")",
                 () -> frames[0] > 0 && frames[0] == frames[1] ? null : frames[1] + " of " + frames[0]);
-        List<Entity> displays = mc.level.getEntities((Entity) null, new net.minecraft.world.phys.AABB(BENCH.above(ground)).inflate(50.0, 3.0, 5.0),
+        List<Entity> displays = mc.level.getEntities((Entity) null, new net.minecraft.world.phys.AABB(BENCH.above(ground)).inflate(50.0, 3.0, 8.0),
                 e -> e.getClass().getName().equals("com.chunkworks.setitdown.DisplayEntity"));
         verdict("Set It Down set one of each class down, and the piles (" + displays.size() + " displays)",
                 () -> displays.size() >= oneOfEach().size() + 3 ? null : displays.size() + " displays");

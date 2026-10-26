@@ -42,7 +42,8 @@ import org.slf4j.Logger;
 
 /**
  * Every solid item's shape file, read from assets/heft/shapes/&lt;namespace&gt;/&lt;item&gt;.json: a
- * model file (elements, textures, display) with a "heft" object naming its class, material and size.
+ * model file (elements, textures, display) with a "heft" object naming its class, material and size;
+ * shapes/_kind/&lt;kind&gt;.json is the shape of every item of a kind (every spawn egg, any mod's).
  * Written by devtools/art/build.py; only Heft's own namespace is read, so no other pack can put a
  * model on its atlas.
  */
@@ -55,11 +56,19 @@ public final class ShapeLibrary {
     /**
      * What a reading found: the solid items by item, and a line for each file that could not be read.
      */
-    public record Read(Map<ResourceLocation, Solid> solids, List<String> unread) {}
+    public record Read(Map<ResourceLocation, Solid> solids, List<String> unread, Map<String, Solid> kinds) {
+        public Read(Map<ResourceLocation, Solid> solids, List<String> unread) {
+            this(solids, unread, Map.of());
+        }
+    }
+
+    /** The folder of shapes for a kind of item rather than one item (shapes/_kind/&lt;kind&gt;.json): every spawn egg. */
+    private static final String KIND = "_kind";
 
     /** effects: returns every shape file {@code resources} holds, read; a file that cannot be read is skipped and named */
     public static Read read(ResourceManager resources) {
         Map<ResourceLocation, Solid> solids = new TreeMap<>();
+        Map<String, Solid> kinds = new TreeMap<>();
         List<String> unread = new ArrayList<>();
         Map<ResourceLocation, Resource> files = resources.listResources(FOLDER,
                 rl -> rl.getNamespace().equals(Heft.MOD_ID) && rl.getPath().endsWith(".json"));
@@ -70,7 +79,7 @@ public final class ShapeLibrary {
                 unread.add(path + ": not shapes/<namespace>/<item>.json");
                 continue;
             }
-            ResourceLocation item = ResourceLocation.tryBuild(parts[0], parts[1]);
+            ResourceLocation item = ResourceLocation.tryBuild(parts[0].equals(KIND) ? Heft.MOD_ID : parts[0], parts[1]);
             if (item == null) {
                 unread.add(path + ": not an item id");
                 continue;
@@ -80,14 +89,18 @@ public final class ShapeLibrary {
                 JsonObject heft = JsonParser.parseString(text).getAsJsonObject().getAsJsonObject("heft");
                 BlockModel model = BlockModel.fromString(text);
                 String size = heft.has("size") ? heft.get("size").getAsString() : null;
-                solids.put(item, new Solid(item, heft.get("class").getAsString(), heft.get("material").getAsString(), size, model,
-                        shape(model)));
+                Solid solid = new Solid(item, heft.get("class").getAsString(), heft.get("material").getAsString(), size, model, shape(model));
+                if (parts[0].equals(KIND)) {
+                    kinds.put(parts[1], solid);
+                } else {
+                    solids.put(item, solid);
+                }
             } catch (IOException | RuntimeException bad) {
                 unread.add(path + ": " + bad);
             }
         }
         unread.forEach(line -> LOG.warn("Heft could not read a shape: {}", line));
-        return new Read(solids, unread);
+        return new Read(solids, unread, kinds);
     }
 
     /** effects: returns {@code model}'s elements and item-frame turn as a domain shape */

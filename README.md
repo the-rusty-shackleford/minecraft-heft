@@ -26,6 +26,10 @@ still join.
   replaces it: doubled by Scale2x, with a fine grain, and flat LabPBR maps. A bow's draw and other
   overrides still work. An item another resource pack already makes 3D is left as that pack draws it,
   and an animated sprite stays flat.
+- **Plants and spawn eggs.** A flower, sapling, grass or coral (any mod's) is drawn as two crossed planes,
+  as it grows when placed, from its repainted sprite. Every spawn egg (any mod's) is one egg shape, its
+  shell and spots tinted with the mob's two colours.
+- **Armour** is left as your resource packs draw it.
 - **Set It Down.** A Heft model is the item's own, so Set It Down lays it down by its item-frame turn
   (`display.fixed`) and sizes it by its measured box. Every class's `fixed` turn lays it with its
   thinnest side out of the surface and its top towards you.

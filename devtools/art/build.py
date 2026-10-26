@@ -70,6 +70,10 @@ ITEMS: dict[str, tuple[str, str]] = {
 # Phase 4: food, each item its own material (paint._food_materials).
 import food  # noqa: E402
 ITEMS.update({item: (klass, item) for item, (klass, _) in food.FOOD.items()})
+# Phase 5: odds and ends, each its own material (paint._odd_materials); every spawn egg is one kind.
+import odds  # noqa: E402
+ITEMS.update({item: (klass, item) for item, (klass, _) in odds.ODDS.items()})
+ITEMS["_kind:spawn_egg"] = ("spawn_egg", "egg_white")
 
 NORMAL_STRENGTH = 30.0  # a 4-level-per-texel bevel tilts its normal about 25 degrees; the face's own noise about 7
 
@@ -120,7 +124,9 @@ def glows(material: paint.Material) -> bool:
     return material.glows or any(paint.MATERIALS[m].glows for _, m in material.parts)
 
 
-TINTED = {"head"}  # roles drawn with tint index 0: a tipped arrow's head takes its potion's colour
+# Roles drawn with a tint index: a tipped arrow's head takes its potion's colour (0); a spawn egg's shell its mob's
+# first colour (0) and its spots the second (1).
+TINTED = {"head": 0, "egg_base": 0, "egg_spot": 1}
 
 
 def shape_json(item: str, klass: Klass, material: str, sheet_laid) -> dict:
@@ -142,7 +148,7 @@ def shape_json(item: str, klass: Klass, material: str, sheet_laid) -> dict:
             p = laid[(role, w, h)]
             faces[d] = {"uv": [p.u, p.v * v, p.u + w, (p.v + h) * v], "texture": "#0"}
             if role in TINTED:
-                faces[d]["tintindex"] = 0
+                faces[d]["tintindex"] = TINTED[role]
         e = {"from": list(box.frm), "to": list(box.to), "faces": faces}
         if box.rotation:
             r = box.rotation

@@ -543,8 +543,131 @@ def stack() -> Klass:
     ], "small", 1.0)
 
 
+# --- phase 5: odds and ends -------------------------------------------------------------------------
+
+def spawn_egg() -> Klass:
+    """Every spawn egg, any mod's (a kind, shapes/_kind/spawn_egg.json): the egg in a pale shell tinted with the
+    mob's first colour, five spots standing proud of it tinted with its second, as the game tints its sprite."""
+    out = [
+        *octagon(8, 8, 2.0, 5.8, 6.6, "egg_base", "egg_base", "egg_base"),
+        *octagon(8, 8, 2.8, 6.6, 8.4, "egg_base", "egg_base", None),
+        *octagon(8, 8, 2.4, 8.4, 9.6, "egg_base", "egg_base", None),
+        *octagon(8, 8, 1.4, 9.6, 10.3, "egg_base", "egg_base", None),
+    ]
+    a = 2.8 * math.cos(math.radians(22.5))
+    for x0, x1, z0, z1 in ((7.3, 8.5, 8 + a - 0.05, 8 + a + 0.15), (7.6, 8.6, 8 - a - 0.15, 8 - a + 0.05),
+                           (8 + a - 0.05, 8 + a + 0.15, 7.2, 8.3), (8 - a - 0.15, 8 - a + 0.05, 7.8, 8.8)):
+        out.append(box((x0, 7.0, z0), (x1, 8.1, z1), "egg_spot"))
+    out.append(box((7.4, 10.3, 7.6), (8.4, 10.45, 8.5), "egg_spot"))
+    return material("spawn_egg", out, "tiny", 0.7)
+
+
+def record() -> Klass:
+    """A music disc: an octagonal record 9 across, its label raised a quarter sixteenth at the middle."""
+    return material("record", [
+        *octagon(8, 8, 4.6, 7.7, 8.3, "record", "record", "record"),
+        *octagon(8, 8, 1.6, 8.3, 8.55, "label", "label", None),
+    ], "small", 1.0, GUI_TURN_FLAT)
+
+
+def _pail(fill_y: float, name: str) -> Klass:
+    return material(name, [
+        *octagon(8, 8, 3.2, 5.6, 6.1, "pail", "pail", "pail"),
+        *ring(8, 8, 3.25, 0.5, 6.1, 10.4, "pail"),
+        *octagon(8, 8, 3.45, 6.1, fill_y, "contents", "pail", None),
+        box((4.2, 10.4, 7.8), (4.6, 11.4, 8.2), "handle"),
+        box((11.4, 10.4, 7.8), (11.8, 11.4, 8.2), "handle"),
+        box((4.2, 11.4, 7.8), (11.8, 11.8, 8.2), "handle"),
+    ], "small", 0.9)
+
+
+def bucket() -> Klass:
+    """A bucket of something: a hollow iron pail on a foot, its handle up, what it holds just below the rim."""
+    return _pail(9.8, "bucket")
+
+
+def bucket_empty() -> Klass:
+    """The empty bucket: the same pail, its floor showing."""
+    return _pail(6.3, "bucket_empty")
+
+
+def orb() -> Klass:
+    """An orb (a pearl, a slime ball, a snowball, a charge): three octagonal tiers rounding a ball 6 across."""
+    return material("orb", [
+        *octagon(8, 8, 1.9, 5.6, 6.4, "orb", "orb", "orb"),
+        *octagon(8, 8, 3.0, 6.4, 9.2, "orb", "orb", None),
+        *octagon(8, 8, 1.9, 9.2, 10.0, "orb_top", "orb", None),
+    ], "tiny", 0.7)
+
+
+def star() -> Klass:
+    """The nether star: four points, two bars crossed and turned 45 degrees, about a heart, standing face on."""
+    b = centred([
+        box((3.0, 7.0, 7.4), (13.0, 9.0, 8.6), "star", Rotation((8.0, 8.0, 8.0), "z", 45.0)),
+        box((3.0, 7.0, 7.4), (13.0, 9.0, 8.6), "star", Rotation((8.0, 8.0, 8.0), "z", -45.0)),
+        box((6.6, 6.6, 7.0), (9.4, 9.4, 9.0), "star"),
+    ])
+    return Klass("star", b, upright_display(b), "small", lies="face_out")
+
+
+def shell() -> Klass:
+    """The shulker's shell: a low dome of three octagonal tiers, open beneath."""
+    return material("shell", [
+        *octagon(8, 8, 4.4, 5.6, 7.0, "shell", "shell", "shell_inner"),
+        *octagon(8, 8, 3.6, 7.0, 8.6, "shell", "shell", None),
+        *octagon(8, 8, 2.4, 8.6, 9.6, "shell", "shell", None),
+    ], None, 1.0)
+
+
+def rocket() -> Klass:
+    """The firework rocket: a paper tube of diamond section along x, its nose stepped to a point, its stick behind."""
+    out = []
+    x = 4.0
+    for side, length, role in ((2.6, 6.0, "tube"), (1.8, 1.2, "cone"), (1.0, 0.9, "cone")):
+        h = side / 2
+        out.append(box((x, 8 - h, 8 - h), (x + length, 8 + h, 8 + h), role, Rotation((x + length / 2, 8.0, 8.0), "x", 45.0)))
+        x += length
+    out.append(box((1.0, 7.8, 7.8), (4.0, 8.2, 8.2), "handle"))
+    return material("rocket", out, "small", 1.0)
+
+
+def horn() -> Klass:
+    """The goat horn: three segments sweeping upward along x, thin side to side, lying on its side set down."""
+    b = centred([
+        box((2.5, 6.6, 6.9), (6.6, 9.0, 9.1), "horn"),
+        box((6.3, 7.0, 7.1), (9.6, 9.0, 8.9), "horn", Rotation((6.5, 8.0, 8.0), "z", 22.5)),
+        box((8.8, 8.4, 7.3), (11.4, 10.0, 8.7), "horn", Rotation((9.0, 9.2, 8.0), "z", 45.0)),
+        box((10.4, 10.3, 7.6), (12.0, 11.3, 8.4), "horn_tip", Rotation((10.6, 10.8, 8.0), "z", 45.0)),
+    ])
+    return Klass("horn", b, upright_display(b), "small", lies="face_out")
+
+
+def totem() -> Klass:
+    """The totem of undying: a little figure, its head, its body, its wings spread, its feet, standing face on."""
+    b = centred([
+        box((6.4, 10.4, 7.0), (9.6, 13.6, 9.0), "figure"),
+        box((6.6, 6.0, 7.2), (9.4, 10.4, 8.8), "figure"),
+        box((3.4, 7.2, 7.6), (6.6, 10.2, 8.4), "wing"),
+        box((9.4, 7.2, 7.6), (12.6, 10.2, 8.4), "wing"),
+        box((6.8, 3.6, 7.4), (7.8, 6.0, 8.6), "figure"),
+        box((8.2, 3.6, 7.4), (9.2, 6.0, 8.6), "figure"),
+    ])
+    return Klass("totem", b, upright_display(b), "small", lies="face_out")
+
+
+def saddle() -> Klass:
+    """The saddle: a seat eased along its sides, a pommel at the front, a stirrup strap down each side."""
+    return material("saddle", [
+        *chamfered((3.5, 7.0, 5.0), (12.5, 9.0, 11.0), 0.8, "seat", "seat", "seat", "seat", cb=0.2, end="seat"),
+        box((10.8, 9.0, 7.0), (12.2, 10.2, 9.0), "seat"),
+        box((7.4, 5.0, 4.6), (8.6, 7.6, 5.0), "strap"),
+        box((7.4, 5.0, 11.0), (8.6, 7.6, 11.4), "strap"),
+    ], None, 1.0)
+
+
 CLASSES = {"ingot": ingot, "nugget": nugget, "bar": bar, "raw": raw, "lump": lump, "gem": gem, "shard": shard, "dust": dust,
            "rod": rod, "plate": plate, "book": book, "sign": sign, "hanging_sign": hanging_sign, "arrow": arrow,
            "fruit": fruit, "egg": egg, "root": root, "tuber": tuber, "loaf": loaf, "disc": disc, "pie": pie, "pie_slice": pie_slice,
            "steak": steak, "drumstick": drumstick, "fish": fish, "berries": berries, "wedge": wedge, "bowl": bowl, "plated": plated,
-           "stack": stack}
+           "stack": stack, "spawn_egg": spawn_egg, "record": record, "bucket": bucket, "bucket_empty": bucket_empty, "orb": orb,
+           "star": star, "shell": shell, "rocket": rocket, "horn": horn, "totem": totem, "saddle": saddle}

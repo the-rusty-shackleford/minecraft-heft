@@ -6027,6 +6027,4283 @@
    ],
    "rim": 0.0,
    "from": "minecraft-1.21.1-client.jar: item/bowl"
+  },
+  "odd_minecraft_white_dye": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.141,
+    0.284,
+    0.54,
+    0.875,
+    0.902
+   ],
+   "hue": 261.5,
+   "saturation": [
+    0.22,
+    0.463
+   ],
+   "palette": [
+    "#222144",
+    "#403d65",
+    "#59557f",
+    "#817f9f",
+    "#a6a6b8",
+    "#bdbdcd",
+    "#d4d4db",
+    "#e5e5e5"
+   ],
+   "grain": [
+    0.0571,
+    0.1515,
+    0.3487
+   ],
+   "rim": 0.2352,
+   "smoothness": [
+    0.62,
+    0.647
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 29.22,
+   "occlusion": 0.933,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/white_dye"
+  },
+  "odd_minecraft_orange_dye": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.225,
+    0.387,
+    0.539,
+    0.641,
+    0.76
+   ],
+   "hue": 32.1,
+   "saturation": [
+    0.847,
+    0.946
+   ],
+   "palette": [
+    "#702208",
+    "#8f3f0a",
+    "#a9530c",
+    "#be6912",
+    "#d17f1f",
+    "#e0922e",
+    "#e4ac3e",
+    "#e5c754"
+   ],
+   "grain": [
+    0.0477,
+    0.1011,
+    0.1502
+   ],
+   "rim": 0.1737,
+   "smoothness": [
+    0.624,
+    0.647
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 28.71,
+   "occlusion": 0.945,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/orange_dye"
+  },
+  "odd_minecraft_magenta_dye": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.12,
+    0.282,
+    0.432,
+    0.535,
+    0.698
+   ],
+   "hue": 300.5,
+   "saturation": [
+    0.539,
+    0.784
+   ],
+   "palette": [
+    "#4d0c4a",
+    "#68206b",
+    "#82398f",
+    "#a849a4",
+    "#c05dba",
+    "#d170cc",
+    "#e18bde",
+    "#e5a6e4"
+   ],
+   "grain": [
+    0.0478,
+    0.1016,
+    0.18
+   ],
+   "rim": 0.0,
+   "smoothness": [
+    0.624,
+    0.647
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 29.8,
+   "occlusion": 0.937,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/magenta_dye"
+  },
+  "odd_minecraft_light_blue_dye": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.131,
+    0.344,
+    0.477,
+    0.601,
+    0.822
+   ],
+   "hue": 214.0,
+   "saturation": [
+    0.608,
+    0.835
+   ],
+   "palette": [
+    "#0b2356",
+    "#1c4177",
+    "#3361a7",
+    "#4979c1",
+    "#5d8cd3",
+    "#76a2de",
+    "#9ac1e4",
+    "#c1dbe5"
+   ],
+   "grain": [
+    0.0528,
+    0.1143,
+    0.2081
+   ],
+   "rim": 0.0,
+   "smoothness": [
+    0.627,
+    0.647
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 30.1,
+   "occlusion": 0.933,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/light_blue_dye"
+  },
+  "odd_minecraft_yellow_dye": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.264,
+    0.393,
+    0.534,
+    0.745,
+    0.855
+   ],
+   "hue": 48.2,
+   "saturation": [
+    0.857,
+    0.942
+   ],
+   "palette": [
+    "#573d09",
+    "#765910",
+    "#916f11",
+    "#a48837",
+    "#b08c10",
+    "#d2b121",
+    "#e3de34",
+    "#e4e49f"
+   ],
+   "grain": [
+    0.0556,
+    0.1431,
+    0.2276
+   ],
+   "rim": 0.0586,
+   "smoothness": [
+    0.62,
+    0.647
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 28.54,
+   "occlusion": 0.937,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/yellow_dye"
+  },
+  "odd_minecraft_lime_dye": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.142,
+    0.325,
+    0.542,
+    0.667,
+    0.806
+   ],
+   "hue": 95.0,
+   "saturation": [
+    0.845,
+    0.952
+   ],
+   "palette": [
+    "#0d2d0a",
+    "#214f16",
+    "#3b6e2f",
+    "#44890a",
+    "#5fa90c",
+    "#73c310",
+    "#8fdc27",
+    "#b9e44a"
+   ],
+   "grain": [
+    0.0474,
+    0.1064,
+    0.2006
+   ],
+   "rim": 0.0,
+   "smoothness": [
+    0.627,
+    0.647
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 29.5,
+   "occlusion": 0.937,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/lime_dye"
+  },
+  "odd_minecraft_pink_dye": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.181,
+    0.373,
+    0.6,
+    0.719,
+    0.847
+   ],
+   "hue": 321.7,
+   "saturation": [
+    0.372,
+    0.65
+   ],
+   "palette": [
+    "#6f244d",
+    "#974687",
+    "#ba689a",
+    "#d183ad",
+    "#e096be",
+    "#e4acd0",
+    "#e5c3df",
+    "#e6d9e3"
+   ],
+   "grain": [
+    0.0479,
+    0.1059,
+    0.2003
+   ],
+   "rim": 0.0,
+   "smoothness": [
+    0.627,
+    0.647
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 29.82,
+   "occlusion": 0.937,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/pink_dye"
+  },
+  "odd_minecraft_gray_dye": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.149,
+    0.29,
+    0.416,
+    0.537,
+    0.703
+   ],
+   "hue": 0.0,
+   "saturation": [
+    0.0,
+    0.0
+   ],
+   "palette": [
+    "#1f1f1f",
+    "#393939",
+    "#4d4d4d",
+    "#5f5f5f",
+    "#727272",
+    "#868686",
+    "#9d9d9d",
+    "#bab9b9"
+   ],
+   "grain": [
+    0.052,
+    0.1064,
+    0.1759
+   ],
+   "rim": 0.0,
+   "smoothness": [
+    0.624,
+    0.647
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 30.13,
+   "occlusion": 0.929,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/gray_dye"
+  },
+  "odd_minecraft_light_gray_dye": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.134,
+    0.339,
+    0.648,
+    0.786,
+    0.883
+   ],
+   "hue": 249.6,
+   "saturation": [
+    0.041,
+    0.328
+   ],
+   "palette": [
+    "#1b1b2a",
+    "#37374a",
+    "#575579",
+    "#838297",
+    "#9f9fa9",
+    "#b7b7bd",
+    "#cbcbce",
+    "#dfdfdf"
+   ],
+   "grain": [
+    0.0528,
+    0.1191,
+    0.2225
+   ],
+   "rim": 0.3131,
+   "smoothness": [
+    0.627,
+    0.647
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 29.54,
+   "occlusion": 0.941,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/light_gray_dye"
+  },
+  "odd_minecraft_cyan_dye": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.129,
+    0.211,
+    0.28,
+    0.382,
+    0.577
+   ],
+   "hue": 200.6,
+   "saturation": [
+    0.827,
+    0.907
+   ],
+   "palette": [
+    "#081833",
+    "#092b46",
+    "#093b56",
+    "#0d4965",
+    "#175876",
+    "#236a8c",
+    "#3480a3",
+    "#53a7c9"
+   ],
+   "grain": [
+    0.0472,
+    0.0892,
+    0.1388
+   ],
+   "rim": 0.0095,
+   "smoothness": [
+    0.627,
+    0.647
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 29.27,
+   "occlusion": 0.929,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/cyan_dye"
+  },
+  "odd_minecraft_purple_dye": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.096,
+    0.195,
+    0.313,
+    0.434,
+    0.646
+   ],
+   "hue": 276.8,
+   "saturation": [
+    0.697,
+    0.87
+   ],
+   "palette": [
+    "#300954",
+    "#481573",
+    "#5a2494",
+    "#782cab",
+    "#8e3dbe",
+    "#a454cf",
+    "#be70e0",
+    "#d99be0"
+   ],
+   "grain": [
+    0.047,
+    0.1002,
+    0.176
+   ],
+   "rim": 0.0,
+   "smoothness": [
+    0.627,
+    0.647
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 29.79,
+   "occlusion": 0.937,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/purple_dye"
+  },
+  "odd_minecraft_blue_dye": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.053,
+    0.144,
+    0.28,
+    0.473,
+    0.654
+   ],
+   "hue": 223.0,
+   "saturation": [
+    0.812,
+    0.912
+   ],
+   "palette": [
+    "#080b41",
+    "#091c5d",
+    "#0f3180",
+    "#17459b",
+    "#2a57b5",
+    "#436dcf",
+    "#668fe4",
+    "#86abe5"
+   ],
+   "grain": [
+    0.0519,
+    0.117,
+    0.1652
+   ],
+   "rim": 0.1804,
+   "smoothness": [
+    0.624,
+    0.647
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 30.44,
+   "occlusion": 0.925,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/blue_dye"
+  },
+  "odd_minecraft_brown_dye": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.058,
+    0.126,
+    0.206,
+    0.338,
+    0.579
+   ],
+   "hue": 19.3,
+   "saturation": [
+    0.802,
+    0.897
+   ],
+   "palette": [
+    "#240a08",
+    "#3f1509",
+    "#54240c",
+    "#6a3411",
+    "#7e4721",
+    "#925932",
+    "#aa6e43",
+    "#d6905d"
+   ],
+   "grain": [
+    0.0472,
+    0.0975,
+    0.1622
+   ],
+   "rim": 0.114,
+   "smoothness": [
+    0.627,
+    0.647
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 29.49,
+   "occlusion": 0.925,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/brown_dye"
+  },
+  "odd_minecraft_green_dye": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.098,
+    0.171,
+    0.284,
+    0.442,
+    0.564
+   ],
+   "hue": 88.9,
+   "saturation": [
+    0.742,
+    0.846
+   ],
+   "palette": [
+    "#102209",
+    "#21370a",
+    "#334d10",
+    "#456417",
+    "#567723",
+    "#658830",
+    "#74973e",
+    "#85a84f"
+   ],
+   "grain": [
+    0.0504,
+    0.1106,
+    0.2063
+   ],
+   "rim": 0.0779,
+   "smoothness": [
+    0.62,
+    0.647
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 29.27,
+   "occlusion": 0.931,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/green_dye"
+  },
+  "odd_minecraft_red_dye": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.103,
+    0.161,
+    0.247,
+    0.397,
+    0.575
+   ],
+   "hue": 356.5,
+   "saturation": [
+    0.753,
+    0.902
+   ],
+   "palette": [
+    "#55090b",
+    "#6f0d18",
+    "#811828",
+    "#a42126",
+    "#92293c",
+    "#b9383e",
+    "#d64c4a",
+    "#e4796f"
+   ],
+   "grain": [
+    0.0472,
+    0.1027,
+    0.1736
+   ],
+   "rim": 0.0,
+   "smoothness": [
+    0.62,
+    0.647
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 29.53,
+   "occlusion": 0.929,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/red_dye"
+  },
+  "odd_minecraft_black_dye": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.01,
+    0.047,
+    0.106,
+    0.188,
+    0.294
+   ],
+   "hue": 252.5,
+   "saturation": [
+    0.338,
+    0.5
+   ],
+   "palette": [
+    "#030306",
+    "#0b080f",
+    "#121018",
+    "#1b1925",
+    "#252438",
+    "#313047",
+    "#42415a",
+    "#5d597f"
+   ],
+   "grain": [
+    0.0344,
+    0.0584,
+    0.0873
+   ],
+   "rim": 0.0833,
+   "smoothness": [
+    0.627,
+    0.647
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 28.84,
+   "occlusion": 0.925,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/black_dye"
+  },
+  "odd_minecraft_music_disc_11": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.08,
+    0.135,
+    0.222,
+    0.302,
+    0.396
+   ],
+   "hue": 231.0,
+   "saturation": [
+    0.113,
+    0.353
+   ],
+   "palette": [
+    "#12181d",
+    "#1f252a",
+    "#2f3238",
+    "#3d3e45",
+    "#4a4a50",
+    "#56565a",
+    "#656566",
+    "#7c7c7c"
+   ],
+   "grain": [
+    0.0309,
+    0.0598,
+    0.12
+   ],
+   "rim": 0.0619,
+   "smoothness": [
+    0.31,
+    0.369
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 12.09,
+   "occlusion": 0.984,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/music_disc_11"
+  },
+  "odd_minecraft_music_disc_13": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.098,
+    0.18,
+    0.282,
+    0.337,
+    0.737
+   ],
+   "hue": 4.1,
+   "saturation": [
+    0.0,
+    0.011
+   ],
+   "palette": [
+    "#181818",
+    "#272727",
+    "#323232",
+    "#434343",
+    "#505050",
+    "#606060",
+    "#d6bc28",
+    "#e2e0d4"
+   ],
+   "grain": [
+    0.0281,
+    0.0577,
+    0.1294
+   ],
+   "rim": 0.1098,
+   "smoothness": [
+    0.314,
+    0.369
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 10.99,
+   "occlusion": 0.984,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/music_disc_13"
+  },
+  "odd_minecraft_music_disc_5": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.102,
+    0.221,
+    0.286,
+    0.373,
+    0.482
+   ],
+   "hue": 235.7,
+   "saturation": [
+    0.111,
+    0.809
+   ],
+   "palette": [
+    "#141b21",
+    "#202a30",
+    "#3c3c44",
+    "#4c4d52",
+    "#145d64",
+    "#616162",
+    "#767676",
+    "#1fbbc0"
+   ],
+   "grain": [
+    0.0303,
+    0.0619,
+    0.1215
+   ],
+   "rim": 0.0597,
+   "smoothness": [
+    0.302,
+    0.361
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 13.3,
+   "occlusion": 0.98,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/music_disc_5"
+  },
+  "odd_minecraft_music_disc_blocks": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.098,
+    0.18,
+    0.282,
+    0.333,
+    0.442
+   ],
+   "hue": 0.9,
+   "saturation": [
+    0.0,
+    0.053
+   ],
+   "palette": [
+    "#1a1a1a",
+    "#2a2a2a",
+    "#353434",
+    "#424242",
+    "#4b4b4b",
+    "#555555",
+    "#636363",
+    "#d35a44"
+   ],
+   "grain": [
+    0.0257,
+    0.0462,
+    0.0801
+   ],
+   "rim": 0.0784,
+   "smoothness": [
+    0.31,
+    0.365
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 11.77,
+   "occlusion": 0.984,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/music_disc_blocks"
+  },
+  "odd_minecraft_music_disc_bounce": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.129,
+    0.251,
+    0.318,
+    0.584,
+    0.979
+   ],
+   "hue": 17.9,
+   "saturation": [
+    0.0,
+    0.421
+   ],
+   "palette": [
+    "#212121",
+    "#404040",
+    "#404040",
+    "#515151",
+    "#8f654f",
+    "#a1795f",
+    "#969968",
+    "#e2deb0"
+   ],
+   "grain": [
+    0.1629,
+    0.2805,
+    0.0
+   ],
+   "rim": 0.1366,
+   "from": "VanillaBackport-neoforge-1.21.1-1.1.7.10.jar: minecraft:item/music_disc_bounce"
+  },
+  "odd_minecraft_music_disc_cat": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.098,
+    0.18,
+    0.282,
+    0.337,
+    0.771
+   ],
+   "hue": 6.2,
+   "saturation": [
+    0.0,
+    0.075
+   ],
+   "palette": [
+    "#191919",
+    "#272727",
+    "#333333",
+    "#454545",
+    "#515151",
+    "#616161",
+    "#2d790e",
+    "#5cf912"
+   ],
+   "grain": [
+    0.0274,
+    0.0564,
+    0.1173
+   ],
+   "rim": 0.1003,
+   "smoothness": [
+    0.314,
+    0.369
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 11.24,
+   "occlusion": 0.984,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/music_disc_cat"
+  },
+  "odd_minecraft_music_disc_chirp": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.098,
+    0.176,
+    0.255,
+    0.318,
+    0.38
+   ],
+   "hue": 359.9,
+   "saturation": [
+    0.0,
+    0.014
+   ],
+   "palette": [
+    "#1b1b1b",
+    "#8c1719",
+    "#303030",
+    "#f90e12",
+    "#474747",
+    "#814143",
+    "#545454",
+    "#636363"
+   ],
+   "grain": [
+    0.0245,
+    0.0429,
+    0.0737
+   ],
+   "rim": 0.0578,
+   "smoothness": [
+    0.316,
+    0.369
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 10.86,
+   "occlusion": 0.984,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/music_disc_chirp"
+  },
+  "odd_minecraft_music_disc_creator": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.193,
+    0.287,
+    0.551,
+    0.692,
+    0.867
+   ],
+   "hue": 149.0,
+   "saturation": [
+    0.45,
+    0.527
+   ],
+   "palette": [
+    "#1c372c",
+    "#274539",
+    "#325346",
+    "#3e6658",
+    "#4d9c80",
+    "#62b795",
+    "#7dd7b2",
+    "#ead890"
+   ],
+   "grain": [
+    0.041,
+    0.0769,
+    0.1524
+   ],
+   "rim": 0.2038,
+   "smoothness": [
+    0.38,
+    0.416
+   ],
+   "f0": 255,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 12.34,
+   "occlusion": 0.984,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/music_disc_creator"
+  },
+  "odd_minecraft_music_disc_creator_music_box": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.213,
+    0.316,
+    0.525,
+    0.645,
+    0.863
+   ],
+   "hue": 18.5,
+   "saturation": [
+    0.549,
+    0.617
+   ],
+   "palette": [
+    "#582f22",
+    "#744333",
+    "#915643",
+    "#c57153",
+    "#dc8665",
+    "#f2a17a",
+    "#fcd98b",
+    "#fefbe5"
+   ],
+   "grain": [
+    0.0414,
+    0.0728,
+    0.1381
+   ],
+   "rim": 0.1608,
+   "smoothness": [
+    0.373,
+    0.416
+   ],
+   "f0": 255,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 13.49,
+   "occlusion": 0.98,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/music_disc_creator_music_box"
+  },
+  "odd_minecraft_music_disc_far": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.094,
+    0.184,
+    0.281,
+    0.337,
+    0.78
+   ],
+   "hue": 4.3,
+   "saturation": [
+    0.0,
+    0.036
+   ],
+   "palette": [
+    "#191919",
+    "#2a2a2a",
+    "#353535",
+    "#464746",
+    "#535353",
+    "#636363",
+    "#18fb95",
+    "#c3fb19"
+   ],
+   "grain": [
+    0.0294,
+    0.0631,
+    0.1341
+   ],
+   "rim": 0.1112,
+   "smoothness": [
+    0.302,
+    0.361
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 13.19,
+   "occlusion": 0.98,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/music_disc_far"
+  },
+  "odd_minecraft_music_disc_lava_chicken": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.129,
+    0.22,
+    0.251,
+    0.275,
+    0.71
+   ],
+   "hue": 2.1,
+   "saturation": [
+    0.0,
+    0.767
+   ],
+   "palette": [
+    "#212121",
+    "#561414",
+    "#262626",
+    "#383838",
+    "#404040",
+    "#de1d1d",
+    "#515151",
+    "#dbcac8"
+   ],
+   "grain": [
+    0.0985,
+    0.2013,
+    0.0
+   ],
+   "rim": 0.1672,
+   "from": "VanillaBackport-neoforge-1.21.1-1.1.7.10.jar: minecraft:item/music_disc_lava_chicken"
+  },
+  "odd_minecraft_music_disc_mall": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.098,
+    0.18,
+    0.275,
+    0.329,
+    0.561
+   ],
+   "hue": 354.3,
+   "saturation": [
+    0.0,
+    0.03
+   ],
+   "palette": [
+    "#181818",
+    "#242424",
+    "#2e2e2e",
+    "#383838",
+    "#474747",
+    "#525253",
+    "#616161",
+    "#966afc"
+   ],
+   "grain": [
+    0.0264,
+    0.0506,
+    0.0952
+   ],
+   "rim": 0.0827,
+   "smoothness": [
+    0.314,
+    0.369
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 11.24,
+   "occlusion": 0.984,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/music_disc_mall"
+  },
+  "odd_minecraft_music_disc_mellohi": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.098,
+    0.18,
+    0.275,
+    0.325,
+    0.405
+   ],
+   "hue": 355.5,
+   "saturation": [
+    0.0,
+    0.0
+   ],
+   "palette": [
+    "#151515",
+    "#1f1f1f",
+    "#2b2b2b",
+    "#373637",
+    "#484849",
+    "#555455",
+    "#646364",
+    "#d56afb"
+   ],
+   "grain": [
+    0.0297,
+    0.0647,
+    0.1161
+   ],
+   "rim": 0.0867,
+   "smoothness": [
+    0.31,
+    0.365
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 11.66,
+   "occlusion": 0.984,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/music_disc_mellohi"
+  },
+  "odd_minecraft_music_disc_otherside": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.098,
+    0.18,
+    0.282,
+    0.337,
+    0.599
+   ],
+   "hue": 2.2,
+   "saturation": [
+    0.0,
+    0.032
+   ],
+   "palette": [
+    "#1a1a1a",
+    "#2b2b2b",
+    "#383938",
+    "#494b4a",
+    "#565958",
+    "#577470",
+    "#4cbaf4",
+    "#6ed462"
+   ],
+   "grain": [
+    0.0276,
+    0.0551,
+    0.1076
+   ],
+   "rim": 0.0934,
+   "smoothness": [
+    0.31,
+    0.365
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 11.68,
+   "occlusion": 0.984,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/music_disc_otherside"
+  },
+  "odd_minecraft_music_disc_pigstep": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.046,
+    0.159,
+    0.225,
+    0.288,
+    0.697
+   ],
+   "hue": 4.4,
+   "saturation": [
+    0.606,
+    0.76
+   ],
+   "palette": [
+    "#1e0909",
+    "#4e1818",
+    "#5f2524",
+    "#6f3030",
+    "#803f3f",
+    "#915440",
+    "#e9961d",
+    "#f3eb5d"
+   ],
+   "grain": [
+    0.0258,
+    0.052,
+    0.1191
+   ],
+   "rim": 0.078,
+   "smoothness": [
+    0.435,
+    0.478
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 14.65,
+   "occlusion": 0.976,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/music_disc_pigstep"
+  },
+  "odd_minecraft_music_disc_precipice": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.153,
+    0.305,
+    0.416,
+    0.519,
+    0.663
+   ],
+   "hue": 112.7,
+   "saturation": [
+    0.092,
+    0.487
+   ],
+   "palette": [
+    "#242318",
+    "#37382f",
+    "#4a4d47",
+    "#5b6462",
+    "#717974",
+    "#8f9088",
+    "#d18573",
+    "#7abe9f"
+   ],
+   "grain": [
+    0.0489,
+    0.0831,
+    0.1449
+   ],
+   "rim": 0.1683,
+   "smoothness": [
+    0.396,
+    0.553
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 14.02,
+   "occlusion": 0.976,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/music_disc_precipice"
+  },
+  "odd_minecraft_music_disc_relic": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.156,
+    0.258,
+    0.364,
+    0.454,
+    0.672
+   ],
+   "hue": 13.7,
+   "saturation": [
+    0.477,
+    0.558
+   ],
+   "palette": [
+    "#3e231e",
+    "#58362e",
+    "#79483d",
+    "#8e594c",
+    "#9d6f5f",
+    "#b98365",
+    "#3ba1e8",
+    "#9cf2fa"
+   ],
+   "grain": [
+    0.0403,
+    0.0738,
+    0.1374
+   ],
+   "rim": 0.1202,
+   "smoothness": [
+    0.376,
+    0.416
+   ],
+   "f0": 255,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 12.89,
+   "occlusion": 0.98,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/music_disc_relic"
+  },
+  "odd_minecraft_music_disc_stal": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.067,
+    0.157,
+    0.243,
+    0.318,
+    0.38
+   ],
+   "hue": 0.0,
+   "saturation": [
+    0.0,
+    0.0
+   ],
+   "palette": [
+    "#131313",
+    "#232323",
+    "#313131",
+    "#404040",
+    "#4c4c4c",
+    "#545454",
+    "#5d5d5d",
+    "#686868"
+   ],
+   "grain": [
+    0.025,
+    0.0462,
+    0.091
+   ],
+   "rim": 0.0445,
+   "smoothness": [
+    0.31,
+    0.365
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 11.77,
+   "occlusion": 0.984,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/music_disc_stal"
+  },
+  "odd_minecraft_music_disc_strad": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.098,
+    0.18,
+    0.282,
+    0.337,
+    1.0
+   ],
+   "hue": 0.0,
+   "saturation": [
+    0.0,
+    0.0
+   ],
+   "palette": [
+    "#171717",
+    "#232323",
+    "#2e2e2e",
+    "#383838",
+    "#464646",
+    "#525252",
+    "#606060",
+    "#fcfcfc"
+   ],
+   "grain": [
+    0.0286,
+    0.063,
+    0.1544
+   ],
+   "rim": 0.1269,
+   "smoothness": [
+    0.31,
+    0.365
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 11.77,
+   "occlusion": 0.984,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/music_disc_strad"
+  },
+  "odd_minecraft_music_disc_tears": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.22,
+    0.329,
+    0.907,
+    0.907,
+    0.976
+   ],
+   "hue": 0.0,
+   "saturation": [
+    0.004,
+    0.014
+   ],
+   "palette": [
+    "#383838",
+    "#383838",
+    "#545656",
+    "#8a8888",
+    "#8a8888",
+    "#a3c8c8",
+    "#e8e7e7",
+    "#f9f9f9"
+   ],
+   "grain": [
+    0.114,
+    0.2649,
+    0.0
+   ],
+   "rim": 0.3615,
+   "from": "VanillaBackport-neoforge-1.21.1-1.1.7.10.jar: minecraft:item/music_disc_tears"
+  },
+  "odd_minecraft_music_disc_wait": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.098,
+    0.18,
+    0.282,
+    0.333,
+    0.55
+   ],
+   "hue": 355.2,
+   "saturation": [
+    0.0,
+    0.081
+   ],
+   "palette": [
+    "#1a1a1a",
+    "#2a2b2b",
+    "#353536",
+    "#424343",
+    "#4c4c4c",
+    "#565656",
+    "#636464",
+    "#6b94d0"
+   ],
+   "grain": [
+    0.027,
+    0.0524,
+    0.0996
+   ],
+   "rim": 0.0885,
+   "smoothness": [
+    0.31,
+    0.365
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 11.62,
+   "occlusion": 0.984,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/music_disc_wait"
+  },
+  "odd_minecraft_music_disc_ward": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.098,
+    0.18,
+    0.282,
+    0.333,
+    0.424
+   ],
+   "hue": 3.1,
+   "saturation": [
+    0.0,
+    0.0
+   ],
+   "palette": [
+    "#1a1a1a",
+    "#2b2b2b",
+    "#363636",
+    "#464646",
+    "#525252",
+    "#306e62",
+    "#616161",
+    "#9cd413"
+   ],
+   "grain": [
+    0.0261,
+    0.0493,
+    0.0975
+   ],
+   "rim": 0.0877,
+   "smoothness": [
+    0.314,
+    0.369
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 10.99,
+   "occlusion": 0.984,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/music_disc_ward"
+  },
+  "odd_minecraft_angler_pottery_sherd": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.121,
+    0.188,
+    0.273,
+    0.336,
+    0.433
+   ],
+   "hue": 10.4,
+   "saturation": [
+    0.537,
+    0.621
+   ],
+   "palette": [
+    "#331714",
+    "#42211a",
+    "#4e2a22",
+    "#5b342b",
+    "#6c3e33",
+    "#7d473a",
+    "#8a5144",
+    "#a36152"
+   ],
+   "grain": [
+    0.0257,
+    0.0545,
+    0.0921
+   ],
+   "rim": 0.0557,
+   "smoothness": [
+    0.255,
+    0.388
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 11.72,
+   "occlusion": 0.996,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/angler_pottery_sherd"
+  },
+  "odd_minecraft_archer_pottery_sherd": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.11,
+    0.174,
+    0.262,
+    0.333,
+    0.429
+   ],
+   "hue": 10.2,
+   "saturation": [
+    0.534,
+    0.618
+   ],
+   "palette": [
+    "#2d1413",
+    "#3a1a16",
+    "#44221c",
+    "#4f2c24",
+    "#5f372e",
+    "#714136",
+    "#844d40",
+    "#a16052"
+   ],
+   "grain": [
+    0.0261,
+    0.0552,
+    0.0928
+   ],
+   "rim": 0.0455,
+   "smoothness": [
+    0.251,
+    0.388
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 12.64,
+   "occlusion": 0.992,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/archer_pottery_sherd"
+  },
+  "odd_minecraft_arms_up_pottery_sherd": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.116,
+    0.178,
+    0.254,
+    0.331,
+    0.433
+   ],
+   "hue": 10.3,
+   "saturation": [
+    0.53,
+    0.623
+   ],
+   "palette": [
+    "#341714",
+    "#422019",
+    "#4e2a22",
+    "#5b342c",
+    "#6c3f34",
+    "#7e4a3d",
+    "#905648",
+    "#a66455"
+   ],
+   "grain": [
+    0.0289,
+    0.0628,
+    0.0954
+   ],
+   "rim": 0.0456,
+   "smoothness": [
+    0.247,
+    0.376
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 12.82,
+   "occlusion": 0.992,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/arms_up_pottery_sherd"
+  },
+  "odd_minecraft_blade_pottery_sherd": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.121,
+    0.196,
+    0.278,
+    0.34,
+    0.427
+   ],
+   "hue": 10.5,
+   "saturation": [
+    0.535,
+    0.618
+   ],
+   "palette": [
+    "#331715",
+    "#44221b",
+    "#522d25",
+    "#60372f",
+    "#724034",
+    "#80493c",
+    "#8d5345",
+    "#a26051"
+   ],
+   "grain": [
+    0.0241,
+    0.0509,
+    0.0855
+   ],
+   "rim": 0.0592,
+   "smoothness": [
+    0.263,
+    0.384
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 10.46,
+   "occlusion": 0.996,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/blade_pottery_sherd"
+  },
+  "odd_minecraft_brewer_pottery_sherd": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.112,
+    0.174,
+    0.267,
+    0.338,
+    0.43
+   ],
+   "hue": 10.3,
+   "saturation": [
+    0.537,
+    0.625
+   ],
+   "palette": [
+    "#2b1413",
+    "#3a1b16",
+    "#45231c",
+    "#512d25",
+    "#60382f",
+    "#734136",
+    "#864e40",
+    "#a05f50"
+   ],
+   "grain": [
+    0.025,
+    0.0529,
+    0.0961
+   ],
+   "rim": 0.0491,
+   "smoothness": [
+    0.251,
+    0.385
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 11.79,
+   "occlusion": 0.992,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/brewer_pottery_sherd"
+  },
+  "odd_minecraft_burn_pottery_sherd": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.117,
+    0.182,
+    0.273,
+    0.338,
+    0.432
+   ],
+   "hue": 10.3,
+   "saturation": [
+    0.535,
+    0.621
+   ],
+   "palette": [
+    "#371915",
+    "#49261f",
+    "#5b342c",
+    "#6f4035",
+    "#824b3e",
+    "#965849",
+    "#996458",
+    "#a86455"
+   ],
+   "grain": [
+    0.0252,
+    0.0537,
+    0.0955
+   ],
+   "rim": 0.0549,
+   "smoothness": [
+    0.255,
+    0.388
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 11.5,
+   "occlusion": 0.996,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/burn_pottery_sherd"
+  },
+  "odd_minecraft_danger_pottery_sherd": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.118,
+    0.178,
+    0.258,
+    0.342,
+    0.433
+   ],
+   "hue": 10.3,
+   "saturation": [
+    0.535,
+    0.624
+   ],
+   "palette": [
+    "#381a16",
+    "#49261e",
+    "#59332b",
+    "#6d3e33",
+    "#7c483c",
+    "#8a5143",
+    "#9d5c4d",
+    "#aa6859"
+   ],
+   "grain": [
+    0.0262,
+    0.0564,
+    0.0927
+   ],
+   "rim": 0.0511,
+   "smoothness": [
+    0.247,
+    0.388
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 12.0,
+   "occlusion": 0.992,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/danger_pottery_sherd"
+  },
+  "odd_minecraft_explorer_pottery_sherd": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.111,
+    0.165,
+    0.236,
+    0.324,
+    0.432
+   ],
+   "hue": 10.2,
+   "saturation": [
+    0.535,
+    0.627
+   ],
+   "palette": [
+    "#341714",
+    "#412019",
+    "#4c2a22",
+    "#58332b",
+    "#673c33",
+    "#78463a",
+    "#895143",
+    "#a46253"
+   ],
+   "grain": [
+    0.0265,
+    0.0542,
+    0.0863
+   ],
+   "rim": 0.0352,
+   "smoothness": [
+    0.235,
+    0.38
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 13.86,
+   "occlusion": 0.988,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/explorer_pottery_sherd"
+  },
+  "odd_minecraft_flow_pottery_sherd": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.122,
+    0.177,
+    0.241,
+    0.316,
+    0.412
+   ],
+   "hue": 10.4,
+   "saturation": [
+    0.535,
+    0.621
+   ],
+   "palette": [
+    "#311613",
+    "#3e1d17",
+    "#47251d",
+    "#512d25",
+    "#5d362e",
+    "#724136",
+    "#844e41",
+    "#a06051"
+   ],
+   "grain": [
+    0.0244,
+    0.048,
+    0.0775
+   ],
+   "rim": 0.0365,
+   "smoothness": [
+    0.239,
+    0.357
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 13.48,
+   "occlusion": 0.988,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/flow_pottery_sherd"
+  },
+  "odd_minecraft_friend_pottery_sherd": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.113,
+    0.175,
+    0.25,
+    0.335,
+    0.426
+   ],
+   "hue": 10.2,
+   "saturation": [
+    0.534,
+    0.619
+   ],
+   "palette": [
+    "#341815",
+    "#46251d",
+    "#563028",
+    "#663b32",
+    "#774438",
+    "#864e41",
+    "#97594b",
+    "#a66556"
+   ],
+   "grain": [
+    0.0243,
+    0.0497,
+    0.0853
+   ],
+   "rim": 0.0445,
+   "smoothness": [
+    0.243,
+    0.38
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 12.76,
+   "occlusion": 0.992,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/friend_pottery_sherd"
+  },
+  "odd_minecraft_guster_pottery_sherd": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.113,
+    0.179,
+    0.269,
+    0.337,
+    0.432
+   ],
+   "hue": 10.2,
+   "saturation": [
+    0.536,
+    0.618
+   ],
+   "palette": [
+    "#341815",
+    "#46241d",
+    "#563028",
+    "#683c32",
+    "#784539",
+    "#854d40",
+    "#96584a",
+    "#a76556"
+   ],
+   "grain": [
+    0.0227,
+    0.047,
+    0.084
+   ],
+   "rim": 0.0513,
+   "smoothness": [
+    0.255,
+    0.384
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 12.08,
+   "occlusion": 0.992,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/guster_pottery_sherd"
+  },
+  "odd_minecraft_heart_pottery_sherd": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.116,
+    0.168,
+    0.236,
+    0.318,
+    0.429
+   ],
+   "hue": 10.2,
+   "saturation": [
+    0.535,
+    0.625
+   ],
+   "palette": [
+    "#311614",
+    "#3d1d17",
+    "#47251e",
+    "#522e27",
+    "#603830",
+    "#734237",
+    "#864e41",
+    "#a46253"
+   ],
+   "grain": [
+    0.0245,
+    0.0471,
+    0.0812
+   ],
+   "rim": 0.0343,
+   "smoothness": [
+    0.231,
+    0.376
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 12.2,
+   "occlusion": 0.992,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/heart_pottery_sherd"
+  },
+  "odd_minecraft_heartbreak_pottery_sherd": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.116,
+    0.171,
+    0.249,
+    0.332,
+    0.429
+   ],
+   "hue": 10.3,
+   "saturation": [
+    0.537,
+    0.625
+   ],
+   "palette": [
+    "#341714",
+    "#41201a",
+    "#4d2922",
+    "#5a342c",
+    "#6b3e34",
+    "#7c473b",
+    "#8a5143",
+    "#a36253"
+   ],
+   "grain": [
+    0.0255,
+    0.0524,
+    0.0885
+   ],
+   "rim": 0.042,
+   "smoothness": [
+    0.239,
+    0.38
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 12.51,
+   "occlusion": 0.992,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/heartbreak_pottery_sherd"
+  },
+  "odd_minecraft_howl_pottery_sherd": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.122,
+    0.189,
+    0.262,
+    0.335,
+    0.426
+   ],
+   "hue": 10.4,
+   "saturation": [
+    0.534,
+    0.616
+   ],
+   "palette": [
+    "#331714",
+    "#42201a",
+    "#4d2a23",
+    "#5a342c",
+    "#6b3d33",
+    "#7c473a",
+    "#895042",
+    "#a26051"
+   ],
+   "grain": [
+    0.0244,
+    0.0489,
+    0.0839
+   ],
+   "rim": 0.051,
+   "smoothness": [
+    0.251,
+    0.384
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 11.6,
+   "occlusion": 0.992,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/howl_pottery_sherd"
+  },
+  "odd_minecraft_miner_pottery_sherd": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.121,
+    0.185,
+    0.267,
+    0.336,
+    0.429
+   ],
+   "hue": 10.4,
+   "saturation": [
+    0.536,
+    0.62
+   ],
+   "palette": [
+    "#371915",
+    "#45231c",
+    "#512c25",
+    "#5d362e",
+    "#6f3f35",
+    "#80493c",
+    "#8d5345",
+    "#a36152"
+   ],
+   "grain": [
+    0.0237,
+    0.0487,
+    0.0882
+   ],
+   "rim": 0.0529,
+   "smoothness": [
+    0.255,
+    0.384
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 11.1,
+   "occlusion": 0.996,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/miner_pottery_sherd"
+  },
+  "odd_minecraft_mourner_pottery_sherd": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.117,
+    0.174,
+    0.249,
+    0.313,
+    0.423
+   ],
+   "hue": 10.4,
+   "saturation": [
+    0.541,
+    0.627
+   ],
+   "palette": [
+    "#301513",
+    "#3b1c16",
+    "#44231b",
+    "#4f2b23",
+    "#5d352c",
+    "#6f3f34",
+    "#824d41",
+    "#a26152"
+   ],
+   "grain": [
+    0.028,
+    0.0594,
+    0.0844
+   ],
+   "rim": 0.0362,
+   "smoothness": [
+    0.239,
+    0.369
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 12.97,
+   "occlusion": 0.992,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/mourner_pottery_sherd"
+  },
+  "odd_minecraft_plenty_pottery_sherd": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.119,
+    0.178,
+    0.238,
+    0.308,
+    0.414
+   ],
+   "hue": 10.4,
+   "saturation": [
+    0.535,
+    0.62
+   ],
+   "palette": [
+    "#301614",
+    "#401f19",
+    "#4a2820",
+    "#563129",
+    "#643a31",
+    "#744338",
+    "#854f42",
+    "#a06153"
+   ],
+   "grain": [
+    0.0263,
+    0.0521,
+    0.0803
+   ],
+   "rim": 0.0319,
+   "smoothness": [
+    0.243,
+    0.357
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 14.36,
+   "occlusion": 0.984,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/plenty_pottery_sherd"
+  },
+  "odd_minecraft_prize_pottery_sherd": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.121,
+    0.176,
+    0.254,
+    0.332,
+    0.426
+   ],
+   "hue": 10.4,
+   "saturation": [
+    0.537,
+    0.629
+   ],
+   "palette": [
+    "#381a15",
+    "#47241d",
+    "#553028",
+    "#653b31",
+    "#764438",
+    "#844d40",
+    "#96594a",
+    "#a86657"
+   ],
+   "grain": [
+    0.0256,
+    0.0536,
+    0.0916
+   ],
+   "rim": 0.0449,
+   "smoothness": [
+    0.247,
+    0.373
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 12.92,
+   "occlusion": 0.992,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/prize_pottery_sherd"
+  },
+  "odd_minecraft_scrape_pottery_sherd": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.118,
+    0.191,
+    0.263,
+    0.332,
+    0.426
+   ],
+   "hue": 10.3,
+   "saturation": [
+    0.532,
+    0.61
+   ],
+   "palette": [
+    "#331715",
+    "#44221b",
+    "#502c25",
+    "#5d362e",
+    "#6f3f34",
+    "#7f493c",
+    "#8d5345",
+    "#a36152"
+   ],
+   "grain": [
+    0.0248,
+    0.0515,
+    0.0855
+   ],
+   "rim": 0.0512,
+   "smoothness": [
+    0.255,
+    0.38
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 11.35,
+   "occlusion": 0.992,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/scrape_pottery_sherd"
+  },
+  "odd_minecraft_sheaf_pottery_sherd": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.11,
+    0.166,
+    0.243,
+    0.332,
+    0.434
+   ],
+   "hue": 10.1,
+   "saturation": [
+    0.53,
+    0.629
+   ],
+   "palette": [
+    "#301614",
+    "#3f1e18",
+    "#4a2720",
+    "#563129",
+    "#653b31",
+    "#764539",
+    "#895144",
+    "#a36253"
+   ],
+   "grain": [
+    0.0278,
+    0.0611,
+    0.1004
+   ],
+   "rim": 0.0389,
+   "smoothness": [
+    0.239,
+    0.384
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 12.84,
+   "occlusion": 0.992,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/sheaf_pottery_sherd"
+  },
+  "odd_minecraft_shelter_pottery_sherd": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.121,
+    0.181,
+    0.256,
+    0.331,
+    0.436
+   ],
+   "hue": 10.4,
+   "saturation": [
+    0.535,
+    0.621
+   ],
+   "palette": [
+    "#351815",
+    "#43211a",
+    "#4f2b23",
+    "#5b352d",
+    "#6c3e34",
+    "#7c473b",
+    "#8a5144",
+    "#a56354"
+   ],
+   "grain": [
+    0.0239,
+    0.0487,
+    0.0829
+   ],
+   "rim": 0.048,
+   "smoothness": [
+    0.251,
+    0.38
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 11.49,
+   "occlusion": 0.992,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/shelter_pottery_sherd"
+  },
+  "odd_minecraft_skull_pottery_sherd": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.112,
+    0.172,
+    0.246,
+    0.327,
+    0.433
+   ],
+   "hue": 10.2,
+   "saturation": [
+    0.532,
+    0.627
+   ],
+   "palette": [
+    "#351815",
+    "#45231c",
+    "#542f27",
+    "#623930",
+    "#734337",
+    "#844d41",
+    "#985a4b",
+    "#a86657"
+   ],
+   "grain": [
+    0.0264,
+    0.0548,
+    0.0852
+   ],
+   "rim": 0.0419,
+   "smoothness": [
+    0.243,
+    0.388
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 12.82,
+   "occlusion": 0.992,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/skull_pottery_sherd"
+  },
+  "odd_minecraft_snort_pottery_sherd": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.121,
+    0.17,
+    0.238,
+    0.327,
+    0.424
+   ],
+   "hue": 10.4,
+   "saturation": [
+    0.539,
+    0.625
+   ],
+   "palette": [
+    "#361915",
+    "#42211a",
+    "#4c2a22",
+    "#5a342c",
+    "#6b3e34",
+    "#7e483c",
+    "#8c5345",
+    "#a56353"
+   ],
+   "grain": [
+    0.0241,
+    0.0479,
+    0.0802
+   ],
+   "rim": 0.0364,
+   "smoothness": [
+    0.235,
+    0.369
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 13.1,
+   "occlusion": 0.992,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/snort_pottery_sherd"
+  },
+  "odd_minecraft_creeper_banner_pattern": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.464,
+    0.545,
+    0.824,
+    0.922,
+    0.922
+   ],
+   "hue": 27.0,
+   "saturation": [
+    0.138,
+    0.386
+   ],
+   "palette": [
+    "#5b3523",
+    "#653e2c",
+    "#988b69",
+    "#dad2bc",
+    "#dad2bc",
+    "#ebebeb",
+    "#ebebeb",
+    "#ebebeb"
+   ],
+   "grain": [
+    0.1052,
+    0.2078,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/creeper_banner_pattern"
+  },
+  "odd_minecraft_flow_banner_pattern": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.464,
+    0.545,
+    0.824,
+    0.922,
+    0.922
+   ],
+   "hue": 27.0,
+   "saturation": [
+    0.138,
+    0.386
+   ],
+   "palette": [
+    "#7f6d4b",
+    "#968b6c",
+    "#b2a684",
+    "#dad2bc",
+    "#dad2bc",
+    "#dad2bc",
+    "#ebebeb",
+    "#ebebeb"
+   ],
+   "grain": [
+    0.1052,
+    0.2078,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/flow_banner_pattern"
+  },
+  "odd_minecraft_flower_banner_pattern": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.464,
+    0.545,
+    0.824,
+    0.922,
+    0.922
+   ],
+   "hue": 27.0,
+   "saturation": [
+    0.138,
+    0.386
+   ],
+   "palette": [
+    "#623b29",
+    "#847651",
+    "#968b6c",
+    "#b2a684",
+    "#dad2bc",
+    "#ebebeb",
+    "#ebebeb",
+    "#ebebeb"
+   ],
+   "grain": [
+    0.1052,
+    0.2078,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/flower_banner_pattern"
+  },
+  "odd_minecraft_globe_banner_pattern": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.464,
+    0.545,
+    0.824,
+    0.922,
+    0.922
+   ],
+   "hue": 27.0,
+   "saturation": [
+    0.138,
+    0.386
+   ],
+   "palette": [
+    "#623b29",
+    "#8d805e",
+    "#b2a684",
+    "#b2a684",
+    "#dad2bc",
+    "#ebebeb",
+    "#ebebeb",
+    "#ebebeb"
+   ],
+   "grain": [
+    0.1052,
+    0.2078,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/globe_banner_pattern"
+  },
+  "odd_minecraft_guster_banner_pattern": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.464,
+    0.545,
+    0.824,
+    0.922,
+    0.922
+   ],
+   "hue": 27.0,
+   "saturation": [
+    0.138,
+    0.386
+   ],
+   "palette": [
+    "#897a59",
+    "#b2a684",
+    "#dad2bc",
+    "#dad2bc",
+    "#ebebeb",
+    "#ebebeb",
+    "#ebebeb",
+    "#ebebeb"
+   ],
+   "grain": [
+    0.1052,
+    0.2078,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/guster_banner_pattern"
+  },
+  "odd_minecraft_mojang_banner_pattern": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.464,
+    0.545,
+    0.824,
+    0.922,
+    0.922
+   ],
+   "hue": 27.0,
+   "saturation": [
+    0.138,
+    0.386
+   ],
+   "palette": [
+    "#897a59",
+    "#b2a684",
+    "#dad2bc",
+    "#dad2bc",
+    "#dad2bc",
+    "#ebebeb",
+    "#ebebeb",
+    "#ebebeb"
+   ],
+   "grain": [
+    0.1052,
+    0.2078,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/mojang_banner_pattern"
+  },
+  "odd_minecraft_piglin_banner_pattern": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.464,
+    0.545,
+    0.824,
+    0.922,
+    0.922
+   ],
+   "hue": 27.0,
+   "saturation": [
+    0.138,
+    0.386
+   ],
+   "palette": [
+    "#7f6d4b",
+    "#968b6c",
+    "#b2a684",
+    "#dad2bc",
+    "#dad2bc",
+    "#ebebeb",
+    "#ebebeb",
+    "#ebebeb"
+   ],
+   "grain": [
+    0.1052,
+    0.2078,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/piglin_banner_pattern"
+  },
+  "odd_minecraft_skull_banner_pattern": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.464,
+    0.545,
+    0.824,
+    0.922,
+    0.922
+   ],
+   "hue": 27.0,
+   "saturation": [
+    0.138,
+    0.386
+   ],
+   "palette": [
+    "#7f6d4b",
+    "#968b6c",
+    "#b2a684",
+    "#dad2bc",
+    "#dad2bc",
+    "#dad2bc",
+    "#ebebeb",
+    "#ebebeb"
+   ],
+   "grain": [
+    0.1052,
+    0.2078,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/skull_banner_pattern"
+  },
+  "odd_minecraft_bucket": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.208,
+    0.208,
+    0.447,
+    0.659,
+    0.847
+   ],
+   "hue": 0.0,
+   "saturation": [
+    0.0,
+    0.0
+   ],
+   "palette": [
+    "#353535",
+    "#353535",
+    "#353535",
+    "#5b5b5b",
+    "#727272",
+    "#969696",
+    "#a8a8a8",
+    "#dedede"
+   ],
+   "grain": [
+    0.1289,
+    0.2303,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/bucket"
+  },
+  "odd_minecraft_water_bucket": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.208,
+    0.208,
+    0.447,
+    0.659,
+    0.847
+   ],
+   "hue": 350.9,
+   "saturation": [
+    0.0,
+    0.735
+   ],
+   "palette": [
+    "#353535",
+    "#3863dd",
+    "#737373",
+    "#969696",
+    "#a8a8a8",
+    "#a8a8a8",
+    "#a8a8a8",
+    "#dedede"
+   ],
+   "grain": [
+    0.1325,
+    0.2321,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/water_bucket"
+  },
+  "odd_minecraft_lava_bucket": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.208,
+    0.208,
+    0.588,
+    0.659,
+    0.847
+   ],
+   "hue": 7.0,
+   "saturation": [
+    0.0,
+    0.722
+   ],
+   "palette": [
+    "#3e3634",
+    "#727272",
+    "#d66632",
+    "#ad877a",
+    "#969696",
+    "#a8a8a8",
+    "#e4d25c",
+    "#dedede"
+   ],
+   "grain": [
+    0.1753,
+    0.2788,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/lava_bucket"
+  },
+  "odd_minecraft_milk_bucket": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.208,
+    0.208,
+    0.588,
+    0.847,
+    1.0
+   ],
+   "hue": 359.2,
+   "saturation": [
+    0.0,
+    0.0
+   ],
+   "palette": [
+    "#353535",
+    "#353535",
+    "#353535",
+    "#737373",
+    "#969696",
+    "#a8a8a8",
+    "#acccd5",
+    "#e9ebec"
+   ],
+   "grain": [
+    0.1492,
+    0.3093,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/milk_bucket"
+  },
+  "odd_minecraft_powder_snow_bucket": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.208,
+    0.208,
+    0.659,
+    0.847,
+    1.0
+   ],
+   "hue": 358.1,
+   "saturation": [
+    0.0,
+    0.208
+   ],
+   "palette": [
+    "#353535",
+    "#727272",
+    "#a1a1a1",
+    "#71c3d2",
+    "#d8d8d8",
+    "#bef0f0",
+    "#dcf5f5",
+    "#fcffff"
+   ],
+   "grain": [
+    0.1895,
+    0.3252,
+    0.0
+   ],
+   "rim": -0.087,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/powder_snow_bucket"
+  },
+  "odd_minecraft_cod_bucket": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.208,
+    0.208,
+    0.455,
+    0.659,
+    0.847
+   ],
+   "hue": 4.4,
+   "saturation": [
+    0.0,
+    0.598
+   ],
+   "palette": [
+    "#3a3633",
+    "#325ed9",
+    "#858585",
+    "#b28b5f",
+    "#a8a8a8",
+    "#a8a8a8",
+    "#a8a8a8",
+    "#dddbd8"
+   ],
+   "grain": [
+    0.1722,
+    0.2598,
+    0.0
+   ],
+   "rim": 0.2972,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/cod_bucket"
+  },
+  "odd_minecraft_salmon_bucket": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.208,
+    0.208,
+    0.44,
+    0.588,
+    0.847
+   ],
+   "hue": 3.7,
+   "saturation": [
+    0.0,
+    0.702
+   ],
+   "palette": [
+    "#343434",
+    "#4d4a40",
+    "#234fcc",
+    "#3964df",
+    "#786e68",
+    "#9f9f9f",
+    "#d8d8d8",
+    "#ffffff"
+   ],
+   "grain": [
+    0.1537,
+    0.237,
+    0.0
+   ],
+   "rim": 0.2509,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/salmon_bucket"
+  },
+  "odd_minecraft_pufferfish_bucket": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.208,
+    0.372,
+    0.537,
+    0.659,
+    0.847
+   ],
+   "hue": 7.8,
+   "saturation": [
+    0.0,
+    0.859
+   ],
+   "palette": [
+    "#323433",
+    "#3262d3",
+    "#b27b1b",
+    "#909090",
+    "#6ca4bc",
+    "#d79720",
+    "#fdb60a",
+    "#e4e0da"
+   ],
+   "grain": [
+    0.1867,
+    0.2648,
+    0.0
+   ],
+   "rim": 0.3298,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/pufferfish_bucket"
+  },
+  "odd_minecraft_tropical_fish_bucket": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.208,
+    0.208,
+    0.447,
+    0.659,
+    0.847
+   ],
+   "hue": 1.7,
+   "saturation": [
+    0.0,
+    0.869
+   ],
+   "palette": [
+    "#343434",
+    "#692e09",
+    "#325ed9",
+    "#727272",
+    "#d96125",
+    "#969696",
+    "#b0a9a5",
+    "#e4d9d3"
+   ],
+   "grain": [
+    0.1781,
+    0.2702,
+    0.0
+   ],
+   "rim": 0.2895,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/tropical_fish_bucket"
+  },
+  "odd_minecraft_axolotl_bucket": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.208,
+    0.359,
+    0.558,
+    0.659,
+    0.915
+   ],
+   "hue": 342.4,
+   "saturation": [
+    0.0,
+    0.742
+   ],
+   "palette": [
+    "#3a006c",
+    "#353535",
+    "#5166a4",
+    "#de598b",
+    "#969696",
+    "#e98ed5",
+    "#a8a8a8",
+    "#f1dbe8"
+   ],
+   "grain": [
+    0.1778,
+    0.246,
+    0.0
+   ],
+   "rim": 0.2808,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/axolotl_bucket"
+  },
+  "odd_minecraft_tadpole_bucket": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.208,
+    0.208,
+    0.447,
+    0.659,
+    0.847
+   ],
+   "hue": 3.2,
+   "saturation": [
+    0.0,
+    0.518
+   ],
+   "palette": [
+    "#11362b",
+    "#353535",
+    "#7f4d23",
+    "#3a796e",
+    "#79736e",
+    "#969696",
+    "#a8a8a8",
+    "#dedede"
+   ],
+   "grain": [
+    0.1437,
+    0.2354,
+    0.0
+   ],
+   "rim": 0.2641,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/tadpole_bucket"
+  },
+  "odd_minecraft_ender_pearl": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.063,
+    0.136,
+    0.206,
+    0.357,
+    0.559
+   ],
+   "hue": 167.0,
+   "saturation": [
+    0.945,
+    1.0
+   ],
+   "palette": [
+    "#00130c",
+    "#012219",
+    "#023127",
+    "#033f33",
+    "#075345",
+    "#167968",
+    "#269b87",
+    "#5cd0c0"
+   ],
+   "grain": [
+    0.0266,
+    0.0739,
+    0.1703
+   ],
+   "rim": 0.1378,
+   "smoothness": [
+    1.0,
+    1.0
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 18.24,
+   "occlusion": 0.98,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/ender_pearl"
+  },
+  "odd_minecraft_ender_eye": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.101,
+    0.213,
+    0.428,
+    0.556,
+    0.774
+   ],
+   "hue": 144.5,
+   "saturation": [
+    0.486,
+    0.691
+   ],
+   "palette": [
+    "#0a1f18",
+    "#15382e",
+    "#285449",
+    "#47795c",
+    "#639880",
+    "#679e58",
+    "#9dcf72",
+    "#def3d8"
+   ],
+   "grain": [
+    0.0652,
+    0.1321,
+    0.2491
+   ],
+   "rim": 0.1977,
+   "smoothness": [
+    1.0,
+    1.0
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 18.22,
+   "occlusion": 0.98,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/ender_eye"
+  },
+  "odd_minecraft_slime_ball": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.289,
+    0.42,
+    0.502,
+    0.662,
+    0.757
+   ],
+   "hue": 112.2,
+   "saturation": [
+    0.43,
+    0.459
+   ],
+   "palette": [
+    "#34532f",
+    "#477a42",
+    "#508049",
+    "#57914f",
+    "#74b769",
+    "#8cd782",
+    "#8cd782",
+    "#d6feda"
+   ],
+   "grain": [
+    0.0869,
+    0.1885,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/slime_ball"
+  },
+  "odd_minecraft_magma_cream": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.156,
+    0.344,
+    0.56,
+    0.807,
+    0.879
+   ],
+   "hue": 42.1,
+   "saturation": [
+    0.716,
+    0.873
+   ],
+   "palette": [
+    "#751822",
+    "#527529",
+    "#d0711e",
+    "#98b846",
+    "#c6dc57",
+    "#c6dc57",
+    "#f0e045",
+    "#fefefe"
+   ],
+   "grain": [
+    0.1343,
+    0.3183,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/magma_cream"
+  },
+  "odd_minecraft_snowball": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.548,
+    0.75,
+    0.866,
+    0.949,
+    0.98
+   ],
+   "hue": 180.0,
+   "saturation": [
+    0.115,
+    0.269
+   ],
+   "palette": [
+    "#679191",
+    "#78a2a2",
+    "#a6c1c1",
+    "#b8d1d1",
+    "#c5e1e1",
+    "#d5eeee",
+    "#e8f3f3",
+    "#f6f8f8"
+   ],
+   "grain": [
+    0.0338,
+    0.066,
+    0.1134
+   ],
+   "rim": 0.0,
+   "smoothness": [
+    0.51,
+    0.682
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 23.74,
+   "occlusion": 0.949,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/snowball"
+  },
+  "odd_minecraft_fire_charge": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.093,
+    0.175,
+    0.276,
+    0.379,
+    0.539
+   ],
+   "hue": 27.4,
+   "saturation": [
+    0.323,
+    1.0
+   ],
+   "palette": [
+    "#1f1615",
+    "#372a28",
+    "#562a00",
+    "#373529",
+    "#993500",
+    "#514931",
+    "#745e4c",
+    "#b58237"
+   ],
+   "grain": [
+    0.1001,
+    0.1672,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/fire_charge"
+  },
+  "odd_minecraft_wind_charge": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.575,
+    0.692,
+    0.795,
+    0.862,
+    0.938
+   ],
+   "hue": 223.0,
+   "saturation": [
+    0.086,
+    0.246
+   ],
+   "palette": [
+    "#8494af",
+    "#96a3b9",
+    "#b1b6c0",
+    "#c7cbd4",
+    "#c7cbd4",
+    "#ccd5ff",
+    "#d7dbe5",
+    "#e6ebff"
+   ],
+   "grain": [
+    0.0796,
+    0.1316,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/wind_charge"
+  },
+  "odd_minecraft_heart_of_the_sea": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.12,
+    0.194,
+    0.37,
+    0.432,
+    0.497
+   ],
+   "hue": 198.0,
+   "saturation": [
+    0.825,
+    0.905
+   ],
+   "palette": [
+    "#082054",
+    "#082054",
+    "#0b3a4d",
+    "#0d485f",
+    "#0f5875",
+    "#1d6d8d",
+    "#1d6d8d",
+    "#2090ac"
+   ],
+   "grain": [
+    0.0378,
+    0.0967,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/heart_of_the_sea"
+  },
+  "odd_minecraft_clay_ball": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.225,
+    0.27,
+    0.489,
+    0.653,
+    0.725
+   ],
+   "hue": 224.0,
+   "saturation": [
+    0.188,
+    0.289
+   ],
+   "palette": [
+    "#3b3e4e",
+    "#5e6c8d",
+    "#5e6c8d",
+    "#757d90",
+    "#757d90",
+    "#757d90",
+    "#9ea4ae",
+    "#aeb5ce"
+   ],
+   "grain": [
+    0.1052,
+    0.2157,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/clay_ball"
+  },
+  "odd_minecraft_firework_star": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.176,
+    0.286,
+    0.286,
+    0.447,
+    0.541
+   ],
+   "hue": 0.0,
+   "saturation": [
+    0.0,
+    0.0
+   ],
+   "palette": [
+    "#2d2d2d",
+    "#2d2d2d",
+    "#494949",
+    "#494949",
+    "#575757",
+    "#626262",
+    "#727272",
+    "#8a8a8a"
+   ],
+   "grain": [
+    0.0676,
+    0.1239,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/firework_star"
+  },
+  "odd_minecraft_nether_star": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.401,
+    0.528,
+    0.62,
+    0.83,
+    0.974
+   ],
+   "hue": 169.5,
+   "saturation": [
+    0.206,
+    0.341
+   ],
+   "palette": [
+    "#5a7777",
+    "#88a4a4",
+    "#88a4a4",
+    "#88a4a4",
+    "#88a4a4",
+    "#c3d1d1",
+    "#dbdd4f",
+    "#fdffa8"
+   ],
+   "grain": [
+    0.1486,
+    0.2338,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/nether_star"
+  },
+  "odd_minecraft_shulker_shell": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.185,
+    0.241,
+    0.322,
+    0.463,
+    0.561
+   ],
+   "hue": 292.5,
+   "saturation": [
+    0.333,
+    0.525
+   ],
+   "palette": [
+    "#432650",
+    "#432650",
+    "#523460",
+    "#523460",
+    "#6c486b",
+    "#88598b",
+    "#976997",
+    "#ab84aa"
+   ],
+   "grain": [
+    0.083,
+    0.114,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/shulker_shell"
+  },
+  "odd_minecraft_firework_rocket": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.052,
+    0.124,
+    0.227,
+    0.451,
+    0.878
+   ],
+   "hue": 360.0,
+   "saturation": [
+    0.783,
+    1.0
+   ],
+   "palette": [
+    "#240b05",
+    "#5b0202",
+    "#830b0b",
+    "#412920",
+    "#af1818",
+    "#d33f3f",
+    "#869599",
+    "#d4d8d9"
+   ],
+   "grain": [
+    0.0486,
+    0.1343,
+    0.3597
+   ],
+   "rim": 0.2594,
+   "smoothness": [
+    0.267,
+    0.325
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 17.72,
+   "occlusion": 0.953,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: minecraft:item/firework_rocket"
+  },
+  "odd_minecraft_goat_horn": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.154,
+    0.195,
+    0.282,
+    0.349,
+    0.494
+   ],
+   "hue": 26.4,
+   "saturation": [
+    0.059,
+    0.145
+   ],
+   "palette": [
+    "#2f2b29",
+    "#433e3d",
+    "#494845",
+    "#494845",
+    "#494845",
+    "#494845",
+    "#494845",
+    "#696864"
+   ],
+   "grain": [
+    0.073,
+    0.0935,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/goat_horn"
+  },
+  "odd_minecraft_totem_of_undying": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.295,
+    0.399,
+    0.562,
+    0.735,
+    0.921
+   ],
+   "hue": 37.8,
+   "saturation": [
+    0.665,
+    0.887
+   ],
+   "palette": [
+    "#85400f",
+    "#85400f",
+    "#a05b23",
+    "#00bb46",
+    "#c58742",
+    "#d1a75d",
+    "#41e67f",
+    "#f1e6a1"
+   ],
+   "grain": [
+    0.1551,
+    0.2733,
+    0.0
+   ],
+   "rim": 0.2794,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/totem_of_undying"
+  },
+  "odd_minecraft_saddle": {
+   "size": [
+    16,
+    16
+   ],
+   "value": [
+    0.112,
+    0.163,
+    0.273,
+    0.48,
+    0.617
+   ],
+   "hue": 19.2,
+   "saturation": [
+    0.803,
+    0.852
+   ],
+   "palette": [
+    "#481e0b",
+    "#7f3919",
+    "#554843",
+    "#a74e21",
+    "#7f6f63",
+    "#da662c",
+    "#b09988",
+    "#f18b5c"
+   ],
+   "grain": [
+    0.1118,
+    0.1391,
+    0.0
+   ],
+   "rim": 0.0,
+   "from": "minecraft-1.21.1-client.jar: minecraft:item/saddle"
+  },
+  "record_body": {
+   "size": [
+    128,
+    128
+   ],
+   "value": [
+    0.098,
+    0.18,
+    0.282,
+    0.337,
+    0.737
+   ],
+   "hue": 4.3,
+   "saturation": [
+    0.0,
+    0.021
+   ],
+   "palette": [
+    "#181818",
+    "#272727",
+    "#333333",
+    "#454544",
+    "#515151",
+    "#616160",
+    "#d6bb28",
+    "#e3e1d5"
+   ],
+   "grain": [
+    0.0281,
+    0.0577,
+    0.1294
+   ],
+   "rim": 0.1098,
+   "smoothness": [
+    0.314,
+    0.369
+   ],
+   "f0": 0,
+   "porosity": 0.0,
+   "emissive": 0.0,
+   "tilt": 10.99,
+   "occlusion": 0.984,
+   "height": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "from": "Pixlli V57 26.3-1.13 128x.zip: item/music_disc_13"
   }
  }
 }

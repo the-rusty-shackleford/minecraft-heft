@@ -116,6 +116,21 @@ public final class HeftClient {
             placed++;
         }
         LOG.info("Heft: {} of {} shapes in place", placed, read.solids().size());
+        // Every spawn egg, any mod's, is the egg of its kind, its base and spots tinted with the mob's colours (D-0005).
+        Solid egg = read.kinds().get("spawn_egg");
+        int eggs = 0;
+        if (egg != null && HeftConfig.solid(egg.klass())) {
+            for (ResourceLocation id : BuiltInRegistries.ITEM.keySet()) {
+                ModelResourceLocation key = ModelResourceLocation.inventory(id);
+                BakedModel model = models.get(key);
+                if (BuiltInRegistries.ITEM.get(id) instanceof net.minecraft.world.item.SpawnEggItem && model != null && !(model instanceof SolidModel)
+                        && !model.isGui3d()) {
+                    models.put(key, SolidModel.bake(egg, model, event.getTextureGetter()));
+                    eggs++;
+                }
+            }
+        }
+        LOG.info("Heft: {} spawn eggs", eggs);
         // The long tail (Tier B, D-0004): every item still drawn flat, extruded from its repainted sprite.
         java.util.function.Function<ResourceLocation, net.minecraft.client.renderer.texture.TextureAtlasSprite> heft =
                 name -> event.getTextureGetter().apply(new net.minecraft.client.resources.model.Material(HeftAtlas.LOCATION, name));
@@ -127,6 +142,15 @@ public final class HeftClient {
             if (model == null || model instanceof SolidModel || model.isGui3d() || model.isCustomRenderer() || !HeftConfig.extruded(id)) {
                 continue;
             }
+            // A plant is drawn crossed, as it grows (D-0005); everything else of the long tail extruded.
+            if (BuiltInRegistries.ITEM.get(id) instanceof net.minecraft.world.item.BlockItem block && growsCrossed(block.getBlock())) {
+                CrossedModel crossed = CrossedModel.of(model, heft);
+                if (crossed != null) {
+                    models.put(key, crossed);
+                    extruded++;
+                    continue;
+                }
+            }
             BakedModel done = extrude.apply(model);
             if (done instanceof ExtrudedModel) {
                 models.put(key, done);
@@ -136,6 +160,12 @@ public final class HeftClient {
             }
         }
         LOG.info("Heft: {} items extruded, {} left flat (no own sprite to repaint)", extruded, left);
+    }
+
+    /** effects: returns whether {@code block}, placed, is drawn crossed: a bush or a coral, but not what lies flat (a lily pad, petals) */
+    private static boolean growsCrossed(net.minecraft.world.level.block.Block block) {
+        return (block instanceof net.minecraft.world.level.block.BushBlock || block instanceof net.minecraft.world.level.block.BaseCoralPlantTypeBlock)
+                && !(block instanceof net.minecraft.world.level.block.WaterlilyBlock) && !(block instanceof net.minecraft.world.level.block.PinkPetalsBlock);
     }
 
     @SubscribeEvent
