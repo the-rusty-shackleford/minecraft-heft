@@ -124,6 +124,15 @@ def glows(material: paint.Material) -> bool:
     return material.glows or any(paint.MATERIALS[m].glows for _, m in material.parts)
 
 
+# Items Heft draws in place of a pack's own plain model of them (D-0008; Rusty, 2026-10-26: "anything that doesn't look
+# like what it's supposed to"). Judged by eye against Fresh Food's: its mutton a kinked slab, its cooked pork chop a
+# striped plank, its bread a grooved board, its potato a box. A pair's other half goes with it, so raw and cooked match.
+OVER_PACKS = {
+    "minecraft:mutton", "minecraft:cooked_mutton", "minecraft:porkchop", "minecraft:cooked_porkchop", "minecraft:bread",
+    "minecraft:potato", "minecraft:baked_potato",
+}
+
+
 # Roles drawn with a tint index: a tipped arrow's head takes its potion's colour (0); a spawn egg's shell its mob's
 # first colour (0) and its spots the second (1).
 TINTED = {"head": 0, "egg_base": 0, "egg_spot": 1}
@@ -157,6 +166,8 @@ def shape_json(item: str, klass: Klass, material: str, sheet_laid) -> dict:
     display = {k: {"rotation": list(v.rotation), "translation": list(v.translation), "scale": list(v.scale)}
                for k, v in klass.display.items()}
     meta = {"class": klass.name, "material": material, "lies": klass.lies}
+    if item in OVER_PACKS:
+        meta["over_packs"] = True
     if klass.size:
         meta["size"] = klass.size
     return {"heft": meta, "textures": {"0": sprite, "particle": sprite}, "elements": elements, "display": display}
@@ -166,7 +177,7 @@ def shape_json(item: str, klass: Klass, material: str, sheet_laid) -> dict:
 # lumpy things spread in a cluster; a class not named here is one to a spot unless Set It Down's own tags say otherwise.
 STACKING = {
     "ingot": "pile", "nugget": "pile", "bar": "pile", "plate": "pile", "book": "pile", "record": "pile", "rod": "pile",
-    "bone": "pile", "steak": "pile", "disc": "pile", "loaf": "pile", "pie": "pile", "pie_slice": "pile", "stack": "pile",
+    "bone": "pile", "steak": "pile", "chop": "pile", "disc": "pile", "loaf": "pile", "pie": "pile", "pie_slice": "pile", "stack": "pile",
     "raw": "cluster", "lump": "cluster", "gem": "cluster", "shard": "cluster", "dust": "cluster", "orb": "cluster",
     "fruit": "cluster", "egg": "cluster", "berries": "cluster", "tuber": "cluster", "root": "cluster",
     "drumstick": "cluster",

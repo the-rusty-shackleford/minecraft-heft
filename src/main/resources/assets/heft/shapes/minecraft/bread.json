@@ -3,6 +3,7 @@
   "class": "loaf",
   "material": "minecraft:bread",
   "lies": "on_base",
+  "over_packs": true,
   "size": "small"
  },
  "textures": {

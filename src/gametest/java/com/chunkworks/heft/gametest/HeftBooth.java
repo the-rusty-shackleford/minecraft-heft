@@ -117,7 +117,8 @@ public final class HeftBooth {
     /** The review row (Rusty's answers, 2026-10-26): what changed, each beside what it is compared with, then meat by size. */
     private static final int REVIEW_X = 20, REVIEW_Z = 13;
     private static final List<String> REVIEW_ONCE = List.of("minecraft:bone", "minecraft:stick", "minecraft:coal", "minecraft:charcoal",
-            "create:brass_ingot", "minecraft:gold_ingot", "create:brass_nugget", "subwild:coal_shard");
+            "create:brass_ingot", "minecraft:gold_ingot", "create:brass_nugget", "subwild:coal_shard",
+            "minecraft:bread", "minecraft:potato", "minecraft:baked_potato", "minecraft:porkchop");
     private static final List<String> REVIEW_MEAT = List.of("minecraft:cooked_porkchop", "farmersdelight:cooked_bacon",
             "farmersdelight:cod_slice", "farmersdelight:chicken_cuts", "minecraft:cooked_beef", "minecraft:cooked_chicken",
             "minecraft:cooked_mutton", "minecraft:cod");
@@ -290,7 +291,7 @@ public final class HeftBooth {
         }
         setDown(sp, new ItemStack(Items.IRON_INGOT), new BlockPos(-13, ground + 2, -9), Direction.SOUTH);
         // The review row: the materials once each, then four tries of each meat (a whole joint takes one, a cut piles).
-        fill(level, REVIEW_X - 2, 0, REVIEW_Z, REVIEW_X + 32, 0, REVIEW_Z, Blocks.SMOOTH_STONE);
+        fill(level, REVIEW_X - 2, 0, REVIEW_Z, REVIEW_X + 2 * (REVIEW_ONCE.size() + REVIEW_MEAT.size()), 0, REVIEW_Z, Blocks.SMOOTH_STONE);
         for (int i = 0; i < REVIEW_ONCE.size() + REVIEW_MEAT.size(); i++) {
             boolean meat = i >= REVIEW_ONCE.size();
             String id = meat ? REVIEW_MEAT.get(i - REVIEW_ONCE.size()) : REVIEW_ONCE.get(i);
@@ -417,6 +418,9 @@ public final class HeftBooth {
             double x = REVIEW_X + g * 4 + 1.5;
             shot(s, t, mc, "booth-review-" + (g + 1), new Vec3(x, 1.55, REVIEW_Z + 1.9), new Vec3(x, 1.05, REVIEW_Z + 0.5));
         }
+        // The last pair (cooked mutton and a cod) from above: how a set-down fish lies.
+        double last = REVIEW_X + (REVIEW_ONCE.size() + REVIEW_MEAT.size() - 2) * 2 + 1.5;
+        shot(s, t, mc, "booth-review-top", new Vec3(last, 2.9, REVIEW_Z + 1.0), new Vec3(last, 1.0, REVIEW_Z + 0.5));
         shot(s, t, mc, "booth-wall", new Vec3(-12.5, 2.6, -7.0), new Vec3(-12.5, 2.5, -8.5));
         // Grazing light from the low sun across the frames: where the twin's ridges show, if the shader reads them.
         shot(s, t, mc, "booth-frames-grazing", new Vec3(13.0, 1.0, -7.0), new Vec3(9.0, 1.5, -8.5));
@@ -557,9 +561,10 @@ public final class HeftBooth {
         });
         List<String> notSolid = new ArrayList<>(), badParticle = new ArrayList<>(), badViews = new ArrayList<>(), leftToPacks = new ArrayList<>();
         for (ItemStack stack : all) {
-            BakedModel model = mc.getItemRenderer().getModel(stack, mc.level, null, 0);
+            // What is drawn: the model chosen at draw time, with Heft's own where it draws over a pack's (D-0008).
+            BakedModel model = HeftClient.beforeDraw(stack, mc.getItemRenderer().getModel(stack, mc.level, null, 0));
             String id = BuiltInRegistries.ITEM.getKey(stack.getItem()).toString();
-            if (packDraws(mc, stack) || drawnAs(mc, stack, ItemDisplayContext.GUI) != HeftClient.Decision.HEFT) {
+            if ((packDraws(mc, stack) && Report.kind(model) != Report.Kind.SOLID) || drawnAs(mc, stack, ItemDisplayContext.GUI) != HeftClient.Decision.HEFT) {
                 leftToPacks.add(id);
                 continue;
             }
@@ -616,6 +621,20 @@ public final class HeftBooth {
         verdict("Set It Down set one of each class down, and the piles (" + displays.size() + " displays)",
                 () -> displays.size() >= oneOfEach().size() + 3 ? null : displays.size() + " displays");
         reviewMeat(mc);
+        // D-0008: what Heft draws over a pack's own is Heft's in every view, whatever the pack chose.
+        List<String> notOurs = new ArrayList<>();
+        for (net.minecraft.resources.ResourceLocation id : HeftClient.drawnOverPacks()) {
+            ItemStack stack = new ItemStack(BuiltInRegistries.ITEM.get(id));
+            for (ItemDisplayContext view : VIEWS) {
+                HeftClient.Decision d = drawnAs(mc, stack, view);
+                if (d != HeftClient.Decision.HEFT) {
+                    notOurs.add(id + " in " + view.getSerializedName() + ": " + d);
+                }
+            }
+        }
+        LOG.info("booth: drawn over a pack's own model: {}", HeftClient.swapped());
+        verdict("what Heft draws over a pack's own is Heft's in every view (" + HeftClient.drawnOverPacks().size() + " items, D-0008)",
+                () -> HeftClient.drawnOverPacks().isEmpty() ? "none placed" : notOurs.isEmpty() ? null : String.join("; ", notOurs));
         List<String> badDisplays = new ArrayList<>();
         // Where a pack-drawn item was set down: its display draws the pack's model, as it should.
         java.util.Set<BlockPos> packDrawnPositions = new java.util.HashSet<>();

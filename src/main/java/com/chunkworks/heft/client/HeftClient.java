@@ -101,6 +101,7 @@ public final class HeftClient {
     public static void onModify(ModelEvent.ModifyBakingResult event) {
         ShapeLibrary.Read read = ShapeLibrary.read(Minecraft.getInstance().getResourceManager());
         lastRead = read;
+        java.util.Map<ResourceLocation, BakedModel> over = new java.util.HashMap<>();
         Map<ModelResourceLocation, BakedModel> models = event.getModels();
         int placed = 0;
         for (Solid solid : read.solids().values()) {
@@ -113,10 +114,17 @@ public final class HeftClient {
                 // No such item in this game: a mod the pack does not have.
                 continue;
             }
-            models.put(key, SolidModel.bake(solid, original, event.getTextureGetter()));
+            BakedModel baked = SolidModel.bake(solid, original, event.getTextureGetter());
+            models.put(key, baked);
+            if (solid.overPacks()) {
+                over.put(solid.item(), baked);
+            }
             placed++;
         }
-        LOG.info("Heft: {} of {} shapes in place", placed, read.solids().size());
+        LOG.info("Heft: {} of {} shapes in place, {} drawn over a pack's own (D-0008)", placed, read.solids().size(), over.size());
+        overPacks = Map.copyOf(over);
+        PLAIN.clear();
+        SWAPPED.clear();
         // Every spawn egg, any mod's, is the egg of its kind, its base and spots tinted with the mob's colours (D-0005).
         Solid egg = read.kinds().get("spawn_egg");
         int eggs = 0;
@@ -196,6 +204,63 @@ public final class HeftClient {
     @org.jetbrains.annotations.Nullable
     public static Decision decided(ResourceLocation item, net.minecraft.world.item.ItemDisplayContext view) {
         return DECISIONS.get(item + "|" + view.getSerializedName());
+    }
+
+    /** Heft's own baked model of each item drawn over a pack's (D-0008), from the last bake. */
+    private static volatile Map<ResourceLocation, BakedModel> overPacks = Map.of();
+    /** Whether a model another mod chose is that item's plain one, by identity: measured once a bake. */
+    private static final Map<BakedModel, Boolean> PLAIN = java.util.Collections.synchronizedMap(new java.util.IdentityHashMap<>());
+
+    /**
+     * effects: returns the model whose transforms and quads are to be drawn for {@code stack} where another mod may have
+     * chosen {@code model}: Heft's own where the item is drawn over a pack's and {@code model} is the pack's plain model
+     * of it (D-0008); else {@code model}
+     */
+    public static BakedModel beforeDraw(ItemStack stack, BakedModel model) {
+        if (stack.isEmpty() || overPacks.isEmpty() || model instanceof SolidModel) {
+            return model;
+        }
+        ResourceLocation id = BuiltInRegistries.ITEM.getKey(stack.getItem());
+        BakedModel own = overPacks.get(id);
+        if (own == null) {
+            return model;
+        }
+        if (!PLAIN.computeIfAbsent(model, m -> plain(id, m))) {
+            return model;
+        }
+        SWAPPED.add(id);
+        return own;
+    }
+
+    /** The items whose pack model Heft has drawn over since the last bake (D-0008), for the booth and the report. */
+    private static final java.util.Set<ResourceLocation> SWAPPED = java.util.concurrent.ConcurrentHashMap.newKeySet();
+
+    /** effects: returns the items Heft draws over a pack's own plain model (D-0008), as the last bake placed them */
+    public static java.util.Set<ResourceLocation> drawnOverPacks() {
+        return overPacks.keySet();
+    }
+
+    /** effects: returns the items whose pack model has been swapped for Heft's since the last bake (D-0008) */
+    public static java.util.Set<ResourceLocation> swapped() {
+        return java.util.Set.copyOf(SWAPPED);
+    }
+
+    /**
+     * effects: whether {@code model} is a pack's plain model of item {@code id}: every quad of it on the item's own
+     * sprite ({@code item/<id>}) or its 3D one ({@code item/<id>_3d}), as Fresh Food names them. A plated, an
+     * eating or a renamed variant draws other sprites and is left to the pack.
+     */
+    private static boolean plain(ResourceLocation id, BakedModel model) {
+        String flat = id.getNamespace() + ":item/" + id.getPath();
+        String deep = flat + "_3d";
+        java.util.Set<String> sprites = new java.util.HashSet<>();
+        net.minecraft.util.RandomSource r = net.minecraft.util.RandomSource.create(42L);
+        model.getQuads(null, null, r).forEach(q -> sprites.add(q.getSprite().contents().name().toString()));
+        for (net.minecraft.core.Direction d : net.minecraft.core.Direction.values()) {
+            model.getQuads(null, d, r).forEach(q -> sprites.add(q.getSprite().contents().name().toString()));
+        }
+        return !sprites.isEmpty() && (sprites.equals(java.util.Set.of(flat)) || sprites.equals(java.util.Set.of(deep))
+                || sprites.equals(java.util.Set.of(flat, deep)));
     }
 
     /**

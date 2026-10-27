@@ -442,11 +442,14 @@ def root() -> Klass:
 
 
 def tuber() -> Klass:
-    """The tuber (a potato): a lump 8 x 3.6 x 5 rounded along its length, and a nub."""
-    return material("tuber", [
-        *chamfered((4, 6.2, 5.5), (12, 9.8, 10.5), 1.2, "skin_top", "skin", "skin", "skin", cb=1.0, end="skin"),
-        box((10.5, 7.0, 6.2), (12.8, 9.0, 8.5), "skin", Rotation((11.6, 8.0, 7.3), "y", 22.5)),
-    ], "small", 0.85)
+    """The tuber (a potato): two rounded lumps run together, a long one and a smaller one set a little off it, so it
+    reads as an oblong with a dip; each lump three octagonal tiers, swelling in the middle. About 9.5 x 3.3 x 6."""
+    out = []
+    for cx, cz, tiers in ((6.6, 8.0, ((2.4, 6.0, 6.6), (3.0, 6.6, 8.6), (2.2, 8.6, 9.3))),
+                          (9.6, 8.3, ((2.0, 6.1, 6.7), (2.6, 6.7, 8.4), (1.8, 8.4, 9.0)))):
+        for k, (r, y0, y1) in enumerate(tiers):
+            out += octagon(cx, cz, r, y0, y1, "skin_top", "skin", "skin" if k == 0 else None)
+    return material("tuber", out, "small", 0.85)
 
 
 def loaf() -> Klass:
@@ -491,6 +494,28 @@ def drumstick() -> Klass:
         box((10.5, 7.6, 7.6), (13.4, 8.4, 8.4), "bone", west=None),
         box((13.4, 7.3, 7.2), (14.4, 8.7, 8.8), "bone"),
     ], "small", 0.95)
+
+
+def chop() -> Klass:
+    """A pork chop: a round of meat in a rim of fat, a slab 8.4 across and 1.6 thick, the bone running out of its side;
+    the meat shows on both faces, set a hair proud inside the fat."""
+    return material("chop", [
+        *octagon(7.4, 8.0, 4.2, 7.2, 8.8, "fat", "fat", "fat"),
+        *octagon(7.0, 8.0, 3.2, 8.8, 8.9, "chop_meat", None, None),
+        *octagon(7.0, 8.0, 3.2, 7.1, 7.2, None, None, "chop_meat"),
+        box((11.4, 7.6, 7.4), (13.8, 8.4, 8.6), "bone", west=None),
+    ], "small", 0.95, GUI_TURN_FLAT)
+
+
+def leg() -> Klass:
+    """A leg of mutton: a whole joint, full at the rump and narrowing to the shank, its bone running out to a knuckle;
+    about 12.5 x 4.4 x 6.4, lying on its side, one to a spot."""
+    return material("leg", [
+        *chamfered((2.6, 5.8, 4.8), (8.0, 10.2, 11.2), 1.4, "meat", "meat", "meat_edge", "meat_edge", cb=1.4, end="meat"),
+        *chamfered((8.0, 6.4, 5.6), (11.0, 9.6, 10.4), 1.0, "meat", "meat", "meat_edge", "meat_edge", cb=1.0, end="meat"),
+        box((11.0, 7.4, 7.4), (13.4, 8.6, 8.6), "bone", west=None),
+        box((13.4, 7.0, 7.0), (14.6, 9.0, 9.0), "bone"),
+    ], "small", 1.0)
 
 
 def fish() -> Klass:
@@ -682,6 +707,6 @@ def saddle() -> Klass:
 CLASSES = {"ingot": ingot, "nugget": nugget, "bar": bar, "raw": raw, "lump": lump, "gem": gem, "shard": shard, "dust": dust,
            "rod": rod, "bone": bone, "plate": plate, "book": book, "sign": sign, "hanging_sign": hanging_sign, "arrow": arrow,
            "fruit": fruit, "egg": egg, "root": root, "tuber": tuber, "loaf": loaf, "disc": disc, "pie": pie, "pie_slice": pie_slice,
-           "steak": steak, "drumstick": drumstick, "fish": fish, "berries": berries, "wedge": wedge, "bowl": bowl, "plated": plated,
+           "steak": steak, "chop": chop, "leg": leg, "drumstick": drumstick, "fish": fish, "berries": berries, "wedge": wedge, "bowl": bowl, "plated": plated,
            "stack": stack, "spawn_egg": spawn_egg, "record": record, "bucket": bucket, "bucket_empty": bucket_empty, "orb": orb,
            "star": star, "shell": shell, "rocket": rocket, "horn": horn, "totem": totem, "saddle": saddle}

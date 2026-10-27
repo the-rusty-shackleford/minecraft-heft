@@ -83,6 +83,7 @@ ROLES = {
     "skin": (0.55, 0.6), "skin_top": (0.62, 0.6), "stem": (0.45, 0.4), "leaf": (0.55, 0.4),
     "crust": (0.50, 0.8), "crust_top": (0.62, 0.8), "filling": (0.58, 0.4),
     "meat": (0.58, 0.6), "meat_edge": (0.45, 0.5), "bone": (0.70, 0.5), "knob": (0.76, 0.8),
+    "fat": (0.88, 0.4), "chop_meat": (0.06, 0.6),
     "body": (0.55, 0.6), "fin": (0.48, 0.4), "rind": (0.50, 0.6), "flesh": (0.62, 0.4),
     "bowl": (0.50, 0.6), "fill": (0.60, 0.2), "dish": (0.70, 0.4), "food": (0.55, 0.5), "food_top": (0.62, 0.5),
     "bread": (0.55, 0.8), "bread_top": (0.62, 0.8),
@@ -190,7 +191,7 @@ def _food_materials() -> list[Material]:
     import food
     parts = {
         "fruit": (("stem", "food_stem"), ("leaf", "foliage")), "root": (("leaf", "foliage"),), "berries": (("stem", "food_stem"),),
-        "drumstick": (("bone", "food_bone"),), "bowl": (("bowl", "bowl_wood"),), "plated": (("dish", "dish"),),
+        "drumstick": (("bone", "food_bone"),), "leg": (("bone", "food_bone"),), "chop": (("bone", "food_bone"),), "bowl": (("bowl", "bowl_wood"),), "plated": (("dish", "dish"),),
         "stack": (("bread", "bread_food"), ("bread_top", "bread_food")),
     }
     minus = {"bowl": "bowl", "plated": "quartz", "stack": "food_minecraft_bread"}

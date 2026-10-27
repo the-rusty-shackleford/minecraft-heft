@@ -89,7 +89,9 @@ public final class ShapeLibrary {
                 JsonObject heft = JsonParser.parseString(text).getAsJsonObject().getAsJsonObject("heft");
                 BlockModel model = BlockModel.fromString(text);
                 String size = heft.has("size") ? heft.get("size").getAsString() : null;
-                Solid solid = new Solid(item, heft.get("class").getAsString(), heft.get("material").getAsString(), size, model, shape(model));
+                boolean overPacks = heft.has("over_packs") && heft.get("over_packs").getAsBoolean();
+                Solid solid = new Solid(item, heft.get("class").getAsString(), heft.get("material").getAsString(), size, model, shape(model),
+                        overPacks);
                 if (parts[0].equals(KIND)) {
                     kinds.put(parts[1], solid);
                 } else {

@@ -45,7 +45,12 @@ and cod one each), the probe's overview shots beside them. The booth's review ro
 clears the probe's save now (`prepareProbe`), since last run's displays stood where this run sets the bench.
 The probe and the software booth carry Set It Down 1.2.0 from the sibling build (`run/probe-removed/` keeps the
 1.1.1 jars they had). Gate 2026-10-26: 964 art tests, 2 GameTests, the booth's 18 checks; the probe's 18 pass.
-Every vanilla meat and fish in the close-ups is Fresh Food's model (run by Modefite; Heft leaves it, D-0007), not
+**Drawn over Fresh Food** (D-0008, Rusty 2026-10-26: "anything that doesn't look like what it's supposed to"): of
+Fresh Food's 43 models, judged by eye, mutton (raw, cooked), the pork chops, bread and the potatoes (raw, baked) are
+Heft's now: a new leg class, a new chop class, the tuber made two rounded lumps, the loaf kept. Set It Down 1.2.0's
+D-0010 lays Fresh Food's fish on their sides. Probe 2026-10-26 20:02: all seven swapped, Heft's in every view, 19 of
+19 checks; review set rebuilt (`run/review/00-all-changes.png`, 01 to 11).
+Before D-0008: every vanilla meat and fish in the close-ups was Fresh Food's model (run by Modefite; Heft leaves it, D-0007), not
 Heft's: the cod propped on its fin, the wood-looking pork chop and the cooked mutton Rusty called "too much of a blob"
 (its slices not distinct) are Fresh Food's. The report's "solid" section lists items Heft has a shape for, not who
 draws them in a given pack.

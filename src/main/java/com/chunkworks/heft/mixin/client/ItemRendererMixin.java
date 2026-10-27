@@ -44,6 +44,7 @@ public abstract class ItemRendererMixin {
             target = "Lnet/neoforged/neoforge/client/ClientHooks;handleCameraTransforms(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/resources/model/BakedModel;Lnet/minecraft/world/item/ItemDisplayContext;Z)Lnet/minecraft/client/resources/model/BakedModel;"))
     private BakedModel heft$deepen(PoseStack pose, BakedModel model, ItemDisplayContext view, boolean leftHand, Operation<BakedModel> original,
                                    @Local(argsOnly = true) ItemStack stack) {
-        return HeftClient.atDraw(stack, view, original.call(pose, model, view, leftHand));
+        // An item Heft draws over a pack's own is swapped before the transforms are set, so they are Heft's (D-0008).
+        return HeftClient.atDraw(stack, view, original.call(pose, HeftClient.beforeDraw(stack, model), view, leftHand));
     }
 }

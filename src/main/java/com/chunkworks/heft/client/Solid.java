@@ -27,7 +27,9 @@ import org.jetbrains.annotations.Nullable;
  *
  * <p>AF: {@code item} drawn as {@code model} (a model file's elements and display, its textures on
  * Heft's atlas), a {@code klass} shape in {@code material}, of Set It Down size {@code size} (null:
- * normal); {@code shape} is the model's elements and item-frame turn, for checking against the canon.
+ * normal); {@code shape} is the model's elements and item-frame turn, for checking against the canon;
+ * {@code overPacks}: drawn in place of a pack's own plain model of the item too (D-0008).
  * RI: shape's elements are model's.
  */
-public record Solid(ResourceLocation item, String klass, String material, @Nullable String size, BlockModel model, Shape shape) {}
+public record Solid(ResourceLocation item, String klass, String material, @Nullable String size, BlockModel model, Shape shape,
+                    boolean overPacks) {}
