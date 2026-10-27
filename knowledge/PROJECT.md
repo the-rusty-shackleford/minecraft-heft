@@ -24,7 +24,15 @@ AGPL-3.0-or-later, `com.chunkworks.heft`. Client-side: on a server the jar only 
 - **Shared tools**: `minecraft mods/tools/pbr/` (measure, LabPBR encoding and range checks, noise),
   lifted from Survivalist Armor's art pipeline.
 
-## Status: phases 0 to 6 built and probed in a copy of Rusty's instance 2026-10-26; unreleased, no remote; awaiting Rusty's and nfx's review
+## Status: 0.1.0 released 2026-10-27 in pack 1.94.0
+
+nfx approved the review set as is. Released on Rusty's go with Set It Down 1.2.0: public at
+`the-rusty-shackleford/minecraft-heft`, tag `v0.1.0` (`4e1c600`, adding the wiki page), jar `11f1e4a4` and
+`wiki.zip` on the GitHub release, on both sides of the pack. Gate: 29 JUnit tests, 972 art tests, 2 GameTests,
+19 booth checks. The server repo's `knowledge/releases/pack-1.94.0.md` is the deployment record. Not yet seen:
+anyone playing with it on the box.
+
+## Before release: phases 0 to 6 built and probed in a copy of Rusty's instance 2026-10-26
 
 **The probe** (D-0007): Heft in a copy of Rusty's own instance (`run/probe`, `./gradlew runProbeBooth`;
 copy his mods, resource packs, shaders, config and options there by hand, leaving out Old Cannons, a Fabric
