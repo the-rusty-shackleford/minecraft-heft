@@ -39,7 +39,7 @@ package com.chunkworks.heft.domain;
 public final class Repaint {
     private Repaint() {}
 
-    /** Texels across a repainted sheet: 64 to the block (Rusty, 2026-10-25). */
+    /** Texels across a repainted sheet: 64 to the block (D-0004). */
     public static final int TARGET = 64;
     /** The largest sprite repainted; a bigger one is left flat. */
     public static final int LARGEST = 512;

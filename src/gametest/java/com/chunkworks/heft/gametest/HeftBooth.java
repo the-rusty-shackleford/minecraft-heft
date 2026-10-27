@@ -114,7 +114,7 @@ public final class HeftBooth {
 
     private static final BlockPos BENCH = new BlockPos(11, 0, 4);
     private static final BlockPos PILE = new BlockPos(13, 0, 4);
-    /** The review row (Rusty's answers, 2026-10-26): what changed, each beside what it is compared with, then meat by size. */
+    /** The review row (D-0003, D-0006, D-0008): what changed, each beside what it is compared with, then meat by size. */
     private static final int REVIEW_X = 20, REVIEW_Z = 13;
     private static final List<String> REVIEW_ONCE = List.of("minecraft:bone", "minecraft:stick", "minecraft:coal", "minecraft:charcoal",
             "create:brass_ingot", "minecraft:gold_ingot", "create:brass_nugget", "subwild:coal_shard",

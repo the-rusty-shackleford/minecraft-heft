@@ -1,5 +1,5 @@
 #!/bin/sh
-# The measuring side of the wall (D-0001): reads Rusty's own copy of Pixlli, and, for a material it
+# The measuring side of the wall (D-0001): reads a local copy of Pixlli, and, for a material it
 # draws nothing for, the owning mod's own sprite (the client jar, the instance's mods); writes numbers
 # only to devtools/art/heft-style.json. Nothing under devtools/art/ but this folder names a pack.
 here=$(dirname "$0")

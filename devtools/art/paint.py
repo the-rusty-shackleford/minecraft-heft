@@ -116,7 +116,7 @@ M = labpbr
 MATERIALS = {m.name: m for m in (
     Material("iron", "iron", "metal", M.IRON), Material("gold", "gold", "metal", M.GOLD),
     Material("copper", "copper", "metal", M.COPPER), Material("netherite", "netherite", "metal", M.ALBEDO_METAL),
-    # Create's brass sprite keeps half its palette at a near-white yellow; its middle is the metal (Rusty, 2026-10-26: too pale).
+    # Create's brass sprite keeps half its palette at a near-white yellow; its middle is the metal (D-0003: too pale).
     Material("brass", "brass", "metal", M.ALBEDO_METAL, keep=(0.25, 0.5)), Material("zinc", "zinc", "metal", M.ALBEDO_METAL, keep=SPRITE),
     Material("steel", "steel", "metal", M.IRON, keep=SPRITE), Material("voidsteel", "voidsteel", "metal", M.ALBEDO_METAL, keep=SPRITE),
     Material("raw_iron", "raw_iron", "rock", 18), Material("raw_gold", "raw_gold", "rock", 18),
@@ -130,7 +130,7 @@ MATERIALS = {m.name: m for m in (
     Material("redstone", "redstone_dust_item", "powder", 6, keep=SPRITE), Material("glowstone", "glowstone", "powder", 6, glows=True),
     Material("gunpowder", "gunpowder", "powder", 5, keep=SPRITE), Material("sugar", "sugar", "powder", 8, keep=SPRITE),
     Material("bone_meal", "bone_meal", "powder", 6, keep=SPRITE), Material("blaze_powder", "blaze_powder", "powder", 6, glows=True, keep=SPRITE),
-    # Coal's sprite tops out at #353637: its faces drew as one black (Rusty, 2026-10-26: lift it).
+    # Coal's sprite tops out at #353637: its faces drew as one black (D-0003: lift it).
     Material("coal", "coal_item", "mineral", 10, keep=SPRITE, gain=1.9, chroma=0.35), Material("charcoal", "charcoal", "mineral", 8, keep=SPRITE),
     Material("lapis", "lapis", "mineral", 10), Material("netherite_scrap", "netherite_scrap", "mineral", 20, keep=SPRITE),
     Material("brick", "brick", "clay", 8), Material("nether_brick", "nether_brick", "clay", 8),

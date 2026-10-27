@@ -124,7 +124,7 @@ def glows(material: paint.Material) -> bool:
     return material.glows or any(paint.MATERIALS[m].glows for _, m in material.parts)
 
 
-# Items Heft draws in place of a pack's own plain model of them (D-0008; Rusty, 2026-10-26: "anything that doesn't look
+# Items Heft draws in place of a pack's own plain model of them (D-0008: "anything that doesn't look
 # like what it's supposed to"). Judged by eye against Fresh Food's: its mutton a kinked slab, its cooked pork chop a
 # striped plank, its bread a grooved board, its potato a box. A pair's other half goes with it, so raw and cooked match.
 OVER_PACKS = {
@@ -182,7 +182,7 @@ STACKING = {
     "fruit": "cluster", "egg": "cluster", "berries": "cluster", "tuber": "cluster", "root": "cluster",
     "drumstick": "cluster",
 }
-# Meat by its size (Rusty, 2026-10-26): small cuts share a spot (a chop, a slice, mince, chicken cuts, by their class
+# Meat by its size (D-0006): small cuts share a spot (a chop, a slice, mince, chicken cuts, by their class
 # above); a whole joint is one to a spot: a steak, a leg of mutton, a whole chicken or rabbit, a whole fish. Set It
 # Down's stackable_single outranks its pile and cluster tags (its D-0009), so these hold against its #c: food tags.
 SINGLE = {

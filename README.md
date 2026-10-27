@@ -34,6 +34,10 @@ still join.
   Modefite: Fresh Food, Refined Tools) is left as it is if it is 3D; if it is flat, it is drawn extruded
   from its own repainted sprite. A mod that draws an item with code of its own (VanillaBackport's spawn eggs,
   unless its `use_legacy_spawn_eggs` is on) is left to it.
+- **Except where a pack's model does not read as the thing.** A shape file with `"over_packs": true` is drawn
+  in place of another mod's *plain* model of that item (every quad on `item/<id>` or `item/<id>_3d`): today
+  mutton (raw, cooked), the pork chops, bread and the potatoes (raw, baked), over Fresh Food's. A
+  pack's eating frames and plated variants stay its own. Each item is named by looking, never by rule.
 - **Set It Down.** A Heft model is the item's own, so Set It Down lays it down by its item-frame turn
   (`display.fixed`) and sizes it by its measured box. Every class's `fixed` turn lays it with its
   thinnest side out of the surface and its top towards you.
