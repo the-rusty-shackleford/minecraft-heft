@@ -21,7 +21,13 @@ Chunkworks, AGPL-3.0-or-later, `com.chunkworks.heft`. Client-side: on a server t
   another mod chooses (D-0007); D-0008's items drawn over a pack's own.
 - **Set It Down's tags** (D-0006): `devtools/tags.py` from the class table.
 
-## Status: 0.2.0 built and gated 2026-10-28, unreleased (release on Rusty's go)
+## Status: 0.2.0 released 2026-10-29 in pack 1.95.0
+
+Released on Rusty's go after his look in the showcase: tag `v0.2.0` (`163ba52`), jar `15dfeb7d` and `wiki.zip` on
+the GitHub release, both sides of the pack. The server repo's `knowledge/releases/pack-1.95.0.md` is the deployment
+record. Not yet seen: anyone playing with 0.2.0 on the box; nfx has not reviewed 0.2.0.
+
+What 0.2.0 is, as built:
 
 The live rebuild (D-0009, D-0010, D-0011), from Rusty's "take the beautiful art ... and just 3D-ify them" on 0.1.0 in
 his own game (2026-10-27): every flat item made solid on the client from the sprite the game draws it with (the pack's,
@@ -40,8 +46,6 @@ paint pipeline, the shape files, the generator and its art tests are gone; `asse
   passes the same 16: 457 raised, 902 extruded, 88 crossed; 155 classed items drawn raised there average 332 quads up
   close.
 - The wiki page and its three pictures (software booth, no Pixlli) are 0.2.0's.
-- **Not yet seen by Rusty**: 0.2.0 after the stutter fix in his showcase (the instance carries the dev jar); the far
-  level of detail item by item; the carrot fix.
 - **Maybe** (Rusty's earlier nit): coal, raw iron and the shell from the side still a little pillowy.
 - **The showcase** is the Prism instance "Chunkworks Showcase" (`chunkworks-showcase`, world "Heft Showcase"), dev jar
   `heft-0.2.0-dev.jar`. The prototype's history (inflate, extrude and mixed modes; sizing, dropped) is in D-0009 and
