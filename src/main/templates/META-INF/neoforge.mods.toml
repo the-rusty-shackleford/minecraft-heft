@@ -11,9 +11,9 @@ authors="Chunkworks"
 # Everything it draws is on the client; on a server it only adds item tags. Either side may go without it.
 displayTest="IGNORE_ALL_VERSION"
 description='''
-Every flat item becomes a solid one: ingots, gems, dusts, food, paper and the rest drawn as real
-three-dimensional models in the inventory, in the hand, on the ground, in frames and set down, one
-shape for every item of a kind, with house-made 128x textures and LabPBR maps for shaders.
+Every flat item becomes a solid one: in the hand, on the ground and set down, each made from the
+art your resource packs already give it, raised by what it is (a fruit round, a loaf domed, a cookie
+a thin disc, an ingot a bevelled bar) or given depth. Slots and item frames keep the flat icon.
 '''
 
 [[mixins]]

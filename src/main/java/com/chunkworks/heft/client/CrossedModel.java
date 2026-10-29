@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.block.model.ItemOverrides;
@@ -42,8 +41,8 @@ import org.joml.Vector3f;
 /**
  * A plant drawn as it grows (D-0005): its sprite on two planes crossed at 45 degrees, as the placed plant is
  * drawn, each layer with its tint, every plane seen from both sides -- for a flat block item whose block is a
- * bush or a coral. Drawn from the sprite repainted on Heft's atlas (the long tail's sheet, D-0004); held, framed
- * and in the inventory as a block is.
+ * bush or a coral. Drawn from the sprite the game draws it with (D-0009), on the game's atlas; held and dropped as a
+ * block is, flat in a slot and a frame (D-0010).
  *
  * <p>AF: the plant whose layers are the original's sprites, drawn as quads. RI: four quads per layer.
  */
@@ -59,22 +58,25 @@ final class CrossedModel implements BakedModel {
         this.quads = List.copyOf(quads);
     }
 
-    /**
-     * requires: {@code heft} looks up a sprite on Heft's atlas by name
-     * effects: returns {@code original} drawn crossed, or null if a sprite of it has no repainted sheet
-     */
+    /** effects: returns the flat model this one was made from: what the inventory and a frame show (D-0010) */
+    BakedModel original() {
+        return original;
+    }
+
+    /** effects: returns {@code original} drawn crossed from the sprites it is drawn with (D-0009), or null if it has none */
     @Nullable
-    static CrossedModel of(BakedModel original, Function<ResourceLocation, TextureAtlasSprite> heft) {
-        Map<ResourceLocation, Integer> layers = new LinkedHashMap<>();
-        for (BakedQuad q : original.getQuads(null, null, RandomSource.create(42L))) {
-            layers.putIfAbsent(q.getSprite().contents().name(), q.getTintIndex());
-        }
-        if (layers.isEmpty()) {
+    static CrossedModel live(BakedModel original) {
+        List<BakedQuad> all = original.getQuads(null, null, RandomSource.create(42L));
+        if (all.isEmpty() || !LiveModel.flat(all)) {
+            // A pack's own 3D plant is drawn as the pack made it.
             return null;
         }
+        // Each layer once, bottom first: its sprite and tint.
+        Map<ResourceLocation, BakedQuad> layers = new LinkedHashMap<>();
+        all.forEach(q -> layers.putIfAbsent(q.getSprite().contents().name(), q));
         List<BakedQuad> out = new ArrayList<>();
-        for (Map.Entry<ResourceLocation, Integer> layer : layers.entrySet()) {
-            TextureAtlasSprite sprite = heft.apply(ExtrudedModel.sheet(layer.getKey()));
+        for (BakedQuad layer : layers.values()) {
+            TextureAtlasSprite sprite = layer.getSprite();
             if (sprite.contents().name().equals(MissingTextureAtlasSprite.getLocation())) {
                 return null;
             }
@@ -82,8 +84,8 @@ final class CrossedModel implements BakedModel {
             // The two diagonals, each from one side and the other.
             float[][] planes = {{0.5F - d, 0.5F - d, 0.5F + d, 0.5F + d}, {0.5F - d, 0.5F + d, 0.5F + d, 0.5F - d}};
             for (float[] p : planes) {
-                out.add(quad(sprite, layer.getValue(), p[0], p[1], p[2], p[3]));
-                out.add(quad(sprite, layer.getValue(), p[2], p[3], p[0], p[1]));
+                out.add(quad(sprite, layer.getTintIndex(), p[0], p[1], p[2], p[3]));
+                out.add(quad(sprite, layer.getTintIndex(), p[2], p[3], p[0], p[1]));
             }
         }
         return new CrossedModel(original, out);
@@ -127,7 +129,7 @@ final class CrossedModel implements BakedModel {
 
     @Override
     public List<RenderType> getRenderTypes(ItemStack stack, boolean fabulous) {
-        return List.of(HeftAtlas.ITEM_TRANSLUCENT);
+        return List.of(net.minecraft.client.renderer.Sheets.translucentItemSheet());
     }
 
     @Override

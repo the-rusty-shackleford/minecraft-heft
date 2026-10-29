@@ -19,3 +19,7 @@ tags: [index]
 | D-0005 | Plants drawn crossed at runtime (bush and coral block items); every spawn egg one kind tinted 0 and 1; dyes, sherds, patterns reuse classes; record, bucket, orb, star, shell, rocket, horn, totem, saddle; armour left to the packs |
 | D-0006 | Set It Down's size and stacking tags written from the classes (data, so the jar goes on the server too); where its own tags say more, they win; meats now pile |
 | D-0007 | Never override another mod's chosen model; at draw time (after Modefite decides) a flat model, whoever chose it, is extruded; Fresh Food is alive in this pack and keeps its 3D; Backport's eggs stay its own |
+| D-0008 | Heft draws over a pack's own plain model where it does not read as the thing (Fresh Food's mutton, pork chops, bread, potatoes) |
+| D-0009 | Every item drawn solid from the sprite the game already draws it with (the pack's, at its resolution); no hand shapes, no sheets, no atlas of Heft's; supersedes D-0001, D-0002, D-0004 |
+| D-0010 | A relief per class (a fruit round, a loaf domed on a flat bottom, a cookie a disc), not puffy, at vanilla's sizes; solid in the world, flat in every slot and frame; supersedes D-0003's geometry |
+| D-0011 | A raised item merged into as few quads as keep it within 0.1 sixteenth, at three levels of detail by distance: the showcase's stutter (33.7 to 56.7 fps facing the gallery) |

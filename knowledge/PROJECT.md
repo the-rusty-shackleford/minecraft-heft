@@ -10,19 +10,42 @@ tags: [overview]
 ## What this is
 
 Every flat item drawn as a solid one. From nfx's handoff of 2026-10-25
-(`knowledge/sources/3D-ITEM-REPLACER-HANDOFF.md`), as Rusty amended it the same day: 128x and
-LabPBR where possible, and no Pixlli asset used. Every texture is house-made (D-0001). Chunkworks,
-AGPL-3.0-or-later, `com.chunkworks.heft`. Client-side: on a server the jar only adds item tags.
+(`knowledge/sources/3D-ITEM-REPLACER-HANDOFF.md`). 0.1.0 drew house-made shapes and 128x textures (D-0001 to
+D-0004, superseded); since 0.2.0 every item is made solid from the art the player's packs already give it (D-0009).
+Chunkworks, AGPL-3.0-or-later, `com.chunkworks.heft`. Client-side: on a server the jar only adds item tags.
 
-- **The plan.** `~/.claude/plans/sparkling-drifting-metcalfe.md`, approved by Rusty 2026-10-25, with
-  his answers: numbers-only clean room; only our art drawn; leave 3D Default and Refined Tools' items;
-  ship in the Mod Hub pack on his go; the handoff's §8 recommendations adopted.
-- **How it draws** (D-0002): sheets on Heft's own atlas, one `SolidModel` per item in every view, put
-  in place at `ModifyBakingResult` from the shape files `devtools/art/build.py` writes.
-- **The canon** (D-0003): one function per class, the same elements for every item of it; the
-  `fixed` turn is the rest pose Set It Down uses.
-- **Shared tools**: `minecraft mods/tools/pbr/` (measure, LabPBR encoding and range checks, noise),
-  lifted from Survivalist Armor's art pipeline.
+- **The plan.** `~/.claude/plans/sparkling-drifting-metcalfe.md`, approved by Rusty 2026-10-25 (0.1.0's).
+- **How it draws** (D-0009 to D-0011): `LiveModel` made at `ModifyBakingResult` from each flat model's own sprites,
+  raised by a `domain/Relief` chosen by the item's class (`assets/heft/classes.json`) or extruded, merged by
+  `domain/Patches`, three levels of detail by distance; flat in slots and frames; made at draw time for a flat model
+  another mod chooses (D-0007); D-0008's items drawn over a pack's own.
+- **Set It Down's tags** (D-0006): `devtools/tags.py` from the class table.
+
+## Status: 0.2.0 built and gated 2026-10-28, unreleased (release on Rusty's go)
+
+The live rebuild (D-0009, D-0010, D-0011), from Rusty's "take the beautiful art ... and just 3D-ify them" on 0.1.0 in
+his own game (2026-10-27): every flat item made solid on the client from the sprite the game draws it with (the pack's,
+at its resolution, its LabPBR maps with it), raised by its class's relief or extruded; vanilla's sizes; flat in every slot
+and frame; D-0008's seven drawn over Fresh Food. No hand shapes (Rusty kept none), no sheets, no atlas of Heft's: the
+paint pipeline, the shape files, the generator and its art tests are gone; `assets/heft/classes.json` is the class table
+(263 items), `devtools/tags.py` writes Set It Down's tags from it (byte for byte the 0.1.0 tags; the build checks them).
+
+- **The stutter** Rusty saw in the showcase (D-0011): measured with `-Dheft.perf` (`client/Perf`), fixed by
+  `domain/Patches` and three levels of detail by distance: facing the gallery 33.7 to 56.7 fps, facing the lineup 13.2
+  to 42.9. Probe photos old against new in `run/review-perf/` (Pixlli in them: never published).
+- **Fixed on the way**: a carrot or sweet berries (a classed item that plants a crop) was drawn crossed as a plant.
+- **Gate 2026-10-28**: 27 JUnit tests (Relief 16, Patches 11), the tag check, 2 GameTests, the software booth's 16
+  checks (raised or extruded by class; whole in every view in the world; flat in slot and frame; the far detail; the
+  quad budget; D-0008; Set It Down's displays and poses; meat by size); the probe (a copy of Rusty's instance, the 4070)
+  passes the same 16: 457 raised, 902 extruded, 88 crossed; 155 classed items drawn raised there average 332 quads up
+  close.
+- The wiki page and its three pictures (software booth, no Pixlli) are 0.2.0's.
+- **Not yet seen by Rusty**: 0.2.0 after the stutter fix in his showcase (the instance carries the dev jar); the far
+  level of detail item by item; the carrot fix.
+- **Maybe** (Rusty's earlier nit): coal, raw iron and the shell from the side still a little pillowy.
+- **The showcase** is the Prism instance "Chunkworks Showcase" (`chunkworks-showcase`, world "Heft Showcase"), dev jar
+  `heft-0.2.0-dev.jar`. The prototype's history (inflate, extrude and mixed modes; sizing, dropped) is in D-0009 and
+  D-0010.
 
 ## Status: 0.1.0 released 2026-10-27 in pack 1.94.0
 
@@ -153,10 +176,12 @@ Rusty; nfx reviews before any release.
 
 ## Building
 
-- `./gradlew clean build`: JUnit, the art tests (`artTests`, under uv), the gametest server, the booth
-  (`runPhotoBooth`, needs display `:7`; `-PskipBooth` to leave it out). Fill the booth first:
-  `uv run --no-project python devtools/booth/fetch.py` (and `--gpu` for `runGpuBooth`).
-- `uv run --no-project --with numpy --with pillow python devtools/art/build.py` writes every shape,
-  sheet and map; `devtools/art/measure/run.sh` re-measures the numbers.
-- After every model bake the client logs one `Heft:` line (solid, flat, 3D, custom, empty; breaches)
-  and writes `logs/heft-report.txt`: the progress bar.
+- `./gradlew clean build`: JUnit, the tag check (`tagsCheck`, under uv), the gametest server, the booth
+  (`runPhotoBooth`, needs display `:7` and the software variables; `-PskipBooth` to leave it out). Fill the booth
+  first: `uv run --no-project python devtools/booth/fetch.py` (and `--gpu` for `runGpuBooth`).
+- The probe, Heft in a copy of Rusty's instance on the 4070: `DISPLAY=:0 tools/booth/run_iconified.sh <repo> run/probe
+  runProbeBooth` (`-PheftShots=<prefix>` for some photos only, `none` for the checks alone; `-PheftTolerance`,
+  `-PheftDetail` to compare).
+- After changing `classes.json`: `uv run --no-project python devtools/tags.py`.
+- After every model bake the client logs two `Heft:` lines and writes `logs/heft-report.txt` and `logs/heft-live.txt`;
+  `-Dheft.perf=60` measures what drawing costs (README, Diagnosing).

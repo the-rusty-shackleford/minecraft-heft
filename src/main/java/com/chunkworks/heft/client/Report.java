@@ -17,7 +17,6 @@
  */
 package com.chunkworks.heft.client;
 
-import com.chunkworks.heft.domain.Canon;
 import com.mojang.logging.LogUtils;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -36,10 +35,10 @@ import net.minecraft.util.RandomSource;
 import org.slf4j.Logger;
 
 /**
- * The progress bar (the handoff's §7.2): after every model bake, every item in the game sorted by
- * how it is drawn -- solid (Heft's shapes), extruded (the long tail), flat (still a sprite), 3D (a block, or another pack's model),
- * custom (drawn by code), none (a model with nothing in it) -- and every solid shape's breaches of the
- * canon and sprites missing from the atlas. One line to the log, the lists to logs/heft-report.txt.
+ * The progress bar (the handoff's §7.2): after every model bake, every item in the game sorted by how it is drawn --
+ * raised (by a relief, D-0010), extruded, crossed (a plant), flat (still a sprite), 3D (a block, or a pack's own
+ * model), custom (drawn by code), none (a model with nothing in it). One line to the log, the lists to
+ * logs/heft-report.txt; logs/heft-live.txt has each made item's class, relief, sprite and quads.
  */
 public final class Report {
     private Report() {}
@@ -47,15 +46,12 @@ public final class Report {
     private static final Logger LOG = LogUtils.getLogger();
 
     /** How an item is drawn. */
-    public enum Kind { SOLID, EXTRUDED, CROSSED, FLAT, THREE_D, CUSTOM, NONE }
+    public enum Kind { RAISED, EXTRUDED, CROSSED, FLAT, THREE_D, CUSTOM, NONE }
 
     /** effects: returns how {@code model} draws its item */
     public static Kind kind(BakedModel model) {
-        if (model instanceof SolidModel) {
-            return Kind.SOLID;
-        }
-        if (model instanceof ExtrudedModel) {
-            return Kind.EXTRUDED;
+        if (model instanceof LiveModel live) {
+            return live.relief() == null ? Kind.EXTRUDED : Kind.RAISED;
         }
         if (model instanceof CrossedModel) {
             return Kind.CROSSED;
@@ -76,34 +72,22 @@ public final class Report {
     }
 
     /** effects: writes the report on {@code models} to the log and logs/heft-report.txt */
-    static void write(Map<ModelResourceLocation, BakedModel> models, ShapeLibrary.Read read) {
+    static void write(Map<ModelResourceLocation, BakedModel> models) {
         Map<Kind, List<ResourceLocation>> byKind = new TreeMap<>();
         for (Kind k : Kind.values()) {
             byKind.put(k, new ArrayList<>());
         }
-        List<String> breaches = new ArrayList<>();
         for (ResourceLocation id : BuiltInRegistries.ITEM.keySet()) {
             BakedModel model = models.get(ModelResourceLocation.inventory(id));
-            if (model == null) {
-                continue;
-            }
-            Kind kind = kind(model);
-            byKind.get(kind).add(id);
-            if (model instanceof SolidModel solid) {
-                Canon.breaches(solid.solid().shape()).forEach(b -> breaches.add(id + ": " + b));
-                solid.missing().forEach(m -> breaches.add(id + ": no sprite " + m + " on Heft's atlas"));
+            if (model != null) {
+                byKind.get(kind(model)).add(id);
             }
         }
         byKind.values().forEach(list -> list.sort(null));
-        LOG.info("Heft: {} solid, {} extruded, {} crossed, {} flat, {} 3D, {} custom, {} empty; {} breaches, {} shape files unread",
-                byKind.get(Kind.SOLID).size(), byKind.get(Kind.EXTRUDED).size(), byKind.get(Kind.CROSSED).size(), byKind.get(Kind.FLAT).size(), byKind.get(Kind.THREE_D).size(),
-                byKind.get(Kind.CUSTOM).size(), byKind.get(Kind.NONE).size(), breaches.size(), read.unread().size());
-        breaches.forEach(b -> LOG.warn("Heft: {}", b));
+        LOG.info("Heft: {} raised, {} extruded, {} crossed, {} flat, {} 3D, {} custom, {} empty",
+                byKind.get(Kind.RAISED).size(), byKind.get(Kind.EXTRUDED).size(), byKind.get(Kind.CROSSED).size(), byKind.get(Kind.FLAT).size(),
+                byKind.get(Kind.THREE_D).size(), byKind.get(Kind.CUSTOM).size(), byKind.get(Kind.NONE).size());
         StringBuilder out = new StringBuilder("# Heft report: how every item is drawn after the last model bake\n");
-        out.append("\n## breaches (").append(breaches.size()).append(")\n");
-        breaches.forEach(b -> out.append(b).append('\n'));
-        out.append("\n## unread shape files (").append(read.unread().size()).append(")\n");
-        read.unread().forEach(b -> out.append(b).append('\n'));
         for (Map.Entry<Kind, List<ResourceLocation>> e : byKind.entrySet()) {
             out.append("\n## ").append(e.getKey().name().toLowerCase(java.util.Locale.ROOT)).append(" (").append(e.getValue().size()).append(")\n");
             Map<String, Integer> perMod = new TreeMap<>();

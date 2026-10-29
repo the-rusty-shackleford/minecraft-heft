@@ -17,8 +17,6 @@
  */
 package com.chunkworks.heft.client;
 
-import com.chunkworks.heft.domain.Box;
-import com.chunkworks.heft.domain.Canon;
 import com.mojang.brigadier.CommandDispatcher;
 import java.util.List;
 import java.util.Locale;
@@ -29,13 +27,14 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 
 /**
- * {@code /heft inspect}: what Heft makes of the item in the main hand -- how it is drawn, its class,
- * material and size, its shape's box as built and as set down or framed, the canon's verdict, and the
- * Set It Down tags it carries. A pose question becomes one command, not a squint (the handoff's §7.2).
+ * {@code /heft inspect}: what Heft makes of the item in the main hand -- how it is drawn, its class and relief, the
+ * sprite it is made from, its quads at each level of detail, what was last drawn in each view, and the Set It Down
+ * tags it carries. A pose question becomes one command, not a squint (the handoff's §7.2).
  */
 final class InspectCommand {
     private InspectCommand() {}
@@ -57,25 +56,23 @@ final class InspectCommand {
             return List.of("Heft: nothing in the main hand");
         }
         Minecraft mc = Minecraft.getInstance();
-        BakedModel model = mc.getItemRenderer().getModel(stack, mc.level, mc.player, 0);
-        Report.Kind kind = Report.kind(model);
-        String id = BuiltInRegistries.ITEM.getKey(stack.getItem()).toString();
+        BakedModel model = HeftClient.beforeDraw(stack, mc.getItemRenderer().getModel(stack, mc.level, mc.player, 0));
+        ResourceLocation id = BuiltInRegistries.ITEM.getKey(stack.getItem());
         String tags = stack.getTags().filter(t -> t.location().getNamespace().equals("setitdown"))
                 .map(t -> "#" + t.location()).sorted().collect(Collectors.joining(" "));
         List<String> out = new java.util.ArrayList<>();
-        out.add("Heft: " + id + " is drawn " + kind.name().toLowerCase(Locale.ROOT).replace('_', ' '));
-        if (model instanceof SolidModel solid) {
-            Solid s = solid.solid();
-            out.add("  class " + s.klass() + ", material " + s.material() + ", size " + (s.size() == null ? "normal" : s.size()));
-            out.add("  built " + dims(s.shape().box()) + ", set down / framed " + dims(s.shape().rested())
-                    + (Canon.topOut(s.shape().fixed()) ? ", top out" : ", top not out"));
-            List<String> breaches = Canon.breaches(s.shape());
-            out.add("  canon: " + (breaches.isEmpty() ? "kept" : String.join("; ", breaches)));
-            solid.missing().forEach(m -> out.add("  no sprite " + m));
+        out.add("Heft: " + id + " is drawn " + Report.kind(model).name().toLowerCase(Locale.ROOT).replace('_', ' ')
+                + (HeftClient.drawnOverPacks().contains(id) ? ", over a pack's own model (D-0008)" : ""));
+        String klass = HeftClient.classes().of(id);
+        out.add("  class " + (klass == null ? "none" : klass) + ", relief "
+                + (model instanceof LiveModel live ? java.util.Objects.toString(live.relief(), "none (extruded)") : "-"));
+        if (model instanceof LiveModel live) {
+            out.add("  from " + live.source().replace(" ", ", ") + " px; quads near " + live.quadCount(0) + ", mid " + live.quadCount(1)
+                    + ", far " + live.quadCount(2));
         }
         StringBuilder drawn = new StringBuilder();
         for (ItemDisplayContext view : ItemDisplayContext.values()) {
-            HeftClient.Decision d = HeftClient.decided(BuiltInRegistries.ITEM.getKey(stack.getItem()), view);
+            HeftClient.Decision d = HeftClient.decided(id, view);
             if (d != null) {
                 drawn.append(drawn.length() == 0 ? "" : ", ").append(view.getSerializedName()).append(' ').append(d.name().toLowerCase(Locale.ROOT));
             }
@@ -83,10 +80,5 @@ final class InspectCommand {
         out.add("  as last drawn: " + (drawn.length() == 0 ? "not yet" : drawn));
         out.add("  Set It Down tags: " + (tags.isEmpty() ? "none" : tags));
         return out;
-    }
-
-    private static String dims(Box b) {
-        double[] s = b.size();
-        return String.format(Locale.ROOT, "%.2f x %.2f x %.2f", s[0], s[1], s[2]);
     }
 }

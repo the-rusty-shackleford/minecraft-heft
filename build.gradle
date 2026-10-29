@@ -109,6 +109,11 @@ neoForge {
             gameDirectory = file('run/probe')
             systemProperty 'heft.booth', 'photos'
             systemProperty 'heft.traceDraw', 'true'
+            // -PheftShots=<prefix>: take only the photographs whose name starts with it.
+            systemProperty 'heft.shots', providers.gradleProperty('heftShots').getOrElse('')
+            // -PheftTolerance=<sixteenths> -PheftDetail=<blocks,blocks>: how a raised item is merged and where its detail drops.
+            systemProperty 'heft.tolerance', providers.gradleProperty('heftTolerance').getOrElse('0.1')
+            systemProperty 'heft.detail', providers.gradleProperty('heftDetail').getOrElse('6,12')
             taskBefore tasks.named('prepareProbe')
         }
         configureEach {
@@ -208,21 +213,21 @@ if (!project.hasProperty('skipBooth') && !project.hasProperty('skipGameTests')) 
     tasks.named('check') { dependsOn 'runPhotoBooth' }
 }
 
-// The art pipeline's own tests (devtools/art/tests): the canon, the LabPBR channels, the clean-room
-// wall (D-0001). Python under uv, as the pipeline runs.
+// Set It Down's tags as the class table gives them (devtools/tags.py --check): a class changed without the tags
+// rewritten fails the build. Python under uv.
 def uv = ((System.getenv('PATH') ?: '').split(File.pathSeparator).toList() + ["${System.getProperty('user.home')}/.local/bin".toString()])
         .collect { new File(it, 'uv') }.find { it.canExecute() }?.absolutePath ?: 'uv'
-def artTests = tasks.register('artTests', Exec) {
+def tagsCheck = tasks.register('tagsCheck', Exec) {
     group = 'verification'
-    description = 'Runs the art pipeline tests under uv'
+    description = "Checks Set It Down's tags against the class table"
     workingDir = projectDir
-    commandLine uv, 'run', '--no-project', '--with', 'numpy', '--with', 'pillow', '--with', 'pytest',
-            'python', '-m', 'pytest', '-q', '-p', 'no:cacheprovider', 'devtools/art/tests'
-    inputs.dir('devtools/art')
-    inputs.dir('src/main/resources/assets/heft')
+    commandLine uv, 'run', '--no-project', 'python', 'devtools/tags.py', '--check'
+    inputs.file('devtools/tags.py')
+    inputs.file('src/main/resources/assets/heft/classes.json')
+    inputs.dir('src/main/resources/data/setitdown')
     outputs.upToDateWhen { false }
 }
-tasks.named('check') { dependsOn artTests }
+tasks.named('check') { dependsOn tagsCheck }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
     var replaceProperties = [

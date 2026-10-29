@@ -22,7 +22,7 @@ import net.neoforged.neoforge.common.ModConfigSpec;
 
 /**
  * The player's settings, read when models are baked (a resource reload, F3+T, applies a change):
- * Heft on or off, and classes of shape left flat.
+ * Heft on or off, classes left flat, and items or whole mods left flat.
  */
 public final class HeftConfig {
     private HeftConfig() {}
@@ -34,36 +34,27 @@ public final class HeftConfig {
             .define("enabled", true);
 
     public static final ModConfigSpec.ConfigValue<List<? extends String>> FLAT_CLASSES = BUILDER
-            .comment("Classes of shape left flat, by name: ingot, nugget, gem, dust, food, ... Takes effect on the next resource reload.")
+            .comment("Classes left flat, by name: ingot, nugget, gem, dust, fruit, loaf, spawn_egg, ... Takes effect on the next resource reload.")
             .defineListAllowEmpty("flatClasses", List.of(), () -> "", o -> o instanceof String);
 
-    public static final ModConfigSpec.BooleanValue TIER_B = BUILDER
-            .comment("Draw every other flat item extruded: its own sprite repainted at 64x, given thickness. Takes effect on the next resource reload.")
-            .define("tierB.enabled", true);
-
-    public static final ModConfigSpec.ConfigValue<List<? extends String>> TIER_B_DENYLIST = BUILDER
-            .comment("Items left flat by the extruded tier: item ids (minecraft:filled_map) or whole mods (somemod:*). Takes effect on the next resource reload.")
-            .defineListAllowEmpty("tierB.denylist", List.of(), () -> "", o -> o instanceof String);
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> DENYLIST = BUILDER
+            .comment("Items left flat: item ids (minecraft:filled_map) or whole mods (somemod:*). Takes effect on the next resource reload.")
+            .defineListAllowEmpty("denylist", List.of(), () -> "", o -> o instanceof String);
 
     public static final ModConfigSpec SPEC = BUILDER.build();
 
-    /** effects: returns whether items of class {@code name} are drawn solid, as the settings stand (the defaults before they are read) */
-    public static boolean solid(String name) {
+    /**
+     * effects: returns whether {@code item}, of class {@code klass} (null: none), is drawn solid, as the settings stand
+     * (the defaults before they are read)
+     */
+    public static boolean drawn(net.minecraft.resources.ResourceLocation item, @org.jetbrains.annotations.Nullable String klass) {
         if (!SPEC.isLoaded()) {
             return true;
         }
-        return ENABLED.get() && !FLAT_CLASSES.get().contains(name);
-    }
-
-    /** effects: returns whether {@code item} is drawn extruded when it has no shape, as the settings stand (the defaults before they are read) */
-    public static boolean extruded(net.minecraft.resources.ResourceLocation item) {
-        if (!SPEC.isLoaded()) {
-            return true;
-        }
-        if (!ENABLED.get() || !TIER_B.get()) {
+        if (!ENABLED.get() || (klass != null && FLAT_CLASSES.get().contains(klass))) {
             return false;
         }
-        List<? extends String> denied = TIER_B_DENYLIST.get();
+        List<? extends String> denied = DENYLIST.get();
         return !denied.contains(item.toString()) && !denied.contains(item.getNamespace() + ":*");
     }
 }

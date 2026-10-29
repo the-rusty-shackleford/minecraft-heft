@@ -1,7 +1,7 @@
 {
   "shots": [
     {"from": "run/booth/screenshots/booth-ground.png", "to": "img/ground.webp", "crop": [0, 260, 1280, 720]},
-    {"from": "run/booth/screenshots/booth-frames-mid.png", "to": "img/frames.webp"},
+    {"from": "run/booth/screenshots/booth-setdown-left.png", "to": "img/setdown.webp", "crop": [300, 280, 1180, 460]},
     {"from": "run/booth/screenshots/booth-piles.png", "to": "img/piles.webp", "crop": [120, 300, 1160, 440]}
   ]
 }
